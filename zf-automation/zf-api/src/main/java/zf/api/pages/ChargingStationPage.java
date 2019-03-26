@@ -12,7 +12,8 @@ import framework.RestApiUtility;
 
 public class ChargingStationPage extends ExtentReport {
 	String chargingStationID = null;	
-	
+	DatabaseUtility databaseutility=new DatabaseUtility();
+	RestApiUtility restapiutility=new RestApiUtility();
 	JsonReader jsonData=new JsonReader();
 	List<String> SelectQueryResult = null;
 	String vehicleResponse = null;
@@ -25,7 +26,7 @@ public class ChargingStationPage extends ExtentReport {
 		
 		try {
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
-			chargingStationID = RestApiUtility.CreateChargingStation("CreateChargingStationData");
+			chargingStationID = restapiutility.CreateChargingStation("CreateChargingStationData");
 			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -35,7 +36,7 @@ public class ChargingStationPage extends ExtentReport {
 	
 	public void validateNewChargingStationusingGetAPI(String chargingStationID) {
 		try {
-			chargingStationResponse = RestApiUtility.GetChargingStation(chargingStationID);
+			chargingStationResponse = restapiutility.GetChargingStation(chargingStationID);
 			
 			if(chargingStationResponse!= null) {
 				ExtentReport.testPassed("Value from GetAPI "+chargingStationResponse.toString()+" contains the chargingStationID : "+chargingStationID );
@@ -53,7 +54,7 @@ public class ChargingStationPage extends ExtentReport {
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
 			String SelectQuery = jsonData.getJsonData("SelectAssetQueryUsingChargingStationId");	
 			SelectQuery = SelectQuery.replaceFirst("tempValue", chargingStationID);
-			SelectQueryResult = DatabaseUtility.getSelectQueryResult(DatabaseUtility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
+			SelectQueryResult = databaseutility.getSelectQueryResult(databaseutility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
 			if(DatabaseUtility.selectQueryComparision(SelectQueryResult,chargingStationID)){
 				ExtentReport.testPassed("Value from DB "+SelectQueryResult.toString()+" contains the chargingStationID : "+chargingStationID+ " in the database" );
 			}else {
@@ -69,21 +70,21 @@ public class ChargingStationPage extends ExtentReport {
 			
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
 			String SelectQuery = jsonData.getJsonData("SelectAssetQueryUsingChargingStationId");
-			chargingStationDelete = RestApiUtility.DeleteChargingStation(chargingStationID);
+			chargingStationDelete = restapiutility.DeleteChargingStation(chargingStationID);
 			
 			if(chargingStationDelete) {
 				ExtentReport.testPassed("chargingStationID "+chargingStationID +"is deleted from DB");
 			}else {
 				ExtentReport.testFailed("chargingStationID "+chargingStationID +"is not deleted from DB");
 			}
-			SelectQueryResult = DatabaseUtility.getSelectQueryResult(DatabaseUtility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
+			SelectQueryResult = databaseutility.getSelectQueryResult(databaseutility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
 			
 			if(!DatabaseUtility.selectQueryComparision(SelectQueryResult,chargingStationID)){
 				ExtentReport.testPassed("Unable to find the charging Station with id :"+chargingStationID +" deleted sucessfully in DB" );
 			}else {
 				ExtentReport.testFailed("Able to find the charging Station with id :"+chargingStationID +" in DB" );
 			}
-			chargingStationResponse = RestApiUtility.GetChargingStation(chargingStationID);
+			chargingStationResponse = restapiutility.GetChargingStation(chargingStationID);
 			Assert.assertNull(vehicleResponse, "Unable to find the charging Station with id :"+chargingStationID +" deleted sucessfully Checking using Get charging Station API");
 		}catch(Exception e) {
 			System.out.println(e.getMessage());

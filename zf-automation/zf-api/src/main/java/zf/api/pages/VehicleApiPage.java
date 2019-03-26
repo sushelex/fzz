@@ -12,7 +12,8 @@ import framework.RestApiUtility;
 
 public class VehicleApiPage extends ExtentReport {
 	String vehicleID = null;	
-	
+	DatabaseUtility databaseutility=new DatabaseUtility();
+	RestApiUtility restapiutility=new RestApiUtility();
 	JsonReader jsonData=new JsonReader();
 	List<String> SelectQueryResult = null;
 	String vehicleResponse = null;
@@ -23,7 +24,7 @@ public class VehicleApiPage extends ExtentReport {
 		
 		try {
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
-			 vehicleID = RestApiUtility.CreateVehicle("CreateVehicleData");
+			 vehicleID = restapiutility.CreateVehicle("CreateVehicleData");
 			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -33,7 +34,7 @@ public class VehicleApiPage extends ExtentReport {
 	
 	public void validateNewVehicleusingGetAPI(String vehicleID) {
 		try {
-			vehicleResponse = RestApiUtility.GetVehicle(vehicleID);
+			vehicleResponse = restapiutility.GetVehicle(vehicleID);
 			
 			if(vehicleResponse!= null) {
 				ExtentReport.testPassed("Value from GetAPI "+vehicleResponse.toString()+" contains the vehicleID : "+vehicleID );
@@ -51,7 +52,7 @@ public class VehicleApiPage extends ExtentReport {
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
 			String SelectQuery = jsonData.getJsonData("SelectAssetQueryUsingVehicleId");	
 			SelectQuery = SelectQuery.replaceFirst("tempValue", vehicleID);
-			SelectQueryResult = DatabaseUtility.getSelectQueryResult(DatabaseUtility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
+			SelectQueryResult = databaseutility.getSelectQueryResult(databaseutility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
 			if(DatabaseUtility.selectQueryComparision(SelectQueryResult,vehicleID)){
 				ExtentReport.testPassed("Value from DB "+SelectQueryResult.toString()+" contains the VehicleId : "+vehicleID+ " in the database" );
 			}else {
@@ -67,21 +68,21 @@ public class VehicleApiPage extends ExtentReport {
 			
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
 			String SelectQuery = jsonData.getJsonData("SelectAssetQueryUsingVehicleId");
-			vehicleDelete = RestApiUtility.DeleteVehicle(vehicleID);
+			vehicleDelete = restapiutility.DeleteVehicle(vehicleID);
 			
 			if(vehicleDelete) {
 				ExtentReport.testPassed("vehicleID "+vehicleID +"is deleted from DB");
 			}else {
 				ExtentReport.testFailed("vehicleID "+vehicleID +"is not deleted from DB");
 			}
-			SelectQueryResult = DatabaseUtility.getSelectQueryResult(DatabaseUtility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
+			SelectQueryResult = databaseutility.getSelectQueryResult(databaseutility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
 			
 			if(!DatabaseUtility.selectQueryComparision(SelectQueryResult,vehicleID)){
 				ExtentReport.testPassed("Unable to find the vehicle with id :"+vehicleID +" deleted sucessfully in DB" );
 			}else {
 				ExtentReport.testFailed("Able to find the vehicle with id :"+vehicleID +" in DB" );
 			}
-			vehicleResponse = RestApiUtility.GetVehicle(vehicleID);
+			vehicleResponse = restapiutility.GetVehicle(vehicleID);
 			Assert.assertNull(vehicleResponse, "Unable to find the vehicle with id :"+vehicleID +" deleted sucessfully Checking using Get vehicle API");
 		}catch(Exception e) {
 			System.out.println(e.getMessage());

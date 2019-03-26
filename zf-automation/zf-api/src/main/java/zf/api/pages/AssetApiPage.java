@@ -13,6 +13,8 @@ import framework.RestApiUtility;
 public class AssetApiPage extends ExtentReport{
 	//JsonReader jsonObj=new JsonReader();
 	JsonReader jsonData=new JsonReader();
+	RestApiUtility restapiutility=new RestApiUtility();
+	DatabaseUtility databaseutility=new DatabaseUtility();
 	List<String> SelectQueryResult = null;
 	String assetResponse = null;
 	boolean assetDelete = false;
@@ -20,7 +22,7 @@ public class AssetApiPage extends ExtentReport{
 	public String createAsset() {
 		String assetID = null;
 		try {
-			assetID = RestApiUtility.CreateAssets("CreateAsset");
+			assetID = restapiutility.CreateAssets("CreateAsset");
 
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -31,7 +33,7 @@ public class AssetApiPage extends ExtentReport{
 
 	public void validateNewAssetusingGetAPI(String assetID) {
 		try {
-			assetResponse = RestApiUtility.GetAsset(assetID);
+			assetResponse = restapiutility.GetAsset(assetID);
 			if(assetResponse!= null) {
 				ExtentReport.testPassed("Value from GetAPI "+assetResponse.toString()+" contains the AssetID : "+assetID );
 			}else {
@@ -47,20 +49,20 @@ public class AssetApiPage extends ExtentReport{
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
 			String SelectQuery = jsonData.getJsonData("SelectAssetQueryUsingAssetId");
 			SelectQuery = SelectQuery.replaceFirst("tempValue", assetID);
-			assetDelete = RestApiUtility.DeleteAsset(assetID);
+			assetDelete = restapiutility.DeleteAsset(assetID);
 			if(assetDelete) {
 				ExtentReport.testPassed("Assetid "+assetID +"is deleted from DB");
 			}else {
 				ExtentReport.testFailed("Assetid "+assetID +"is not deleted from DB");
 			}
 			
-			SelectQueryResult = DatabaseUtility.getSelectQueryResult(DatabaseUtility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
+			SelectQueryResult = databaseutility.getSelectQueryResult(databaseutility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
 			if(!DatabaseUtility.selectQueryComparision(SelectQueryResult,assetID)){
 				ExtentReport.testPassed("Unable to find the Asset with id :"+assetID +" deleted sucessfully in DB" );
 			}else {
 				ExtentReport.testFailed("Able to find the Asset with id :"+assetID +" in DB" );
 			}
-			assetResponse = RestApiUtility.GetAsset(assetID);
+			assetResponse = restapiutility.GetAsset(assetID);
 			Assert.assertNull(assetResponse, "Unable to find the Asset with id :"+assetID +" deleted sucessfully Checking using Get Assest API");
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -73,7 +75,7 @@ public class AssetApiPage extends ExtentReport{
 			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
 			String SelectQuery = jsonData.getJsonData("SelectAssetQueryUsingAssetId");	
 			SelectQuery = SelectQuery.replaceFirst("tempValue", assetID);
-			SelectQueryResult = DatabaseUtility.getSelectQueryResult(DatabaseUtility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
+			SelectQueryResult = databaseutility.getSelectQueryResult(databaseutility.getConnection(EnvironmentManager.getSqlServer()),SelectQuery);
 			if(DatabaseUtility.selectQueryComparision(SelectQueryResult,assetID)){
 				ExtentReport.testPassed("Value from DB "+SelectQueryResult.toString()+" contains the AssetID : "+assetID+ " in the database" );
 			}else {

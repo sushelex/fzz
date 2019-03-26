@@ -16,7 +16,7 @@ import framework.ExtentReport;
 
 
 public class RestApiUtility extends ExtentReport{
-	
+	public JsonReader jsonData=new JsonReader();
 	public static JsonReader jsonObj = null;
 	
 	public RestApiUtility (){
@@ -35,7 +35,7 @@ public class RestApiUtility extends ExtentReport{
 	
 	
 	
-	static public String getAssettoken(String authorizationURL,String serviceName) {		
+ public String getAssettoken(String authorizationURL,String serviceName) {		
 				
 		String strToken = null;
 		Map<String,String> form = null;
@@ -45,11 +45,11 @@ public class RestApiUtility extends ExtentReport{
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of AssetAuthorization Token ");
 			form.put("auth_url", authorizationURL);
-			form.put("grant_type", JsonReader.getJsonData("GRANT_TYPE"));
-			form.put("client_id", JsonReader.getJsonData("ASSET_ADD_ID"));
-			form.put("client_secret", JsonReader.getJsonData("ASSET_ADD_SECRET"));
-			form.put("resource", JsonReader.getJsonData("ASSET_RESOURCE"));
-			form.put("Content-Type", JsonReader.getJsonData("AUTHORIZATION_CONTENT_TYPE"));				
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("ASSET_ADD_ID"));
+			form.put("client_secret", jsonData.getJsonData("ASSET_ADD_SECRET"));
+			form.put("resource", jsonData.getJsonData("ASSET_RESOURCE"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));				
 			strToken = getToken(form,serviceName);
 			ExtentReport.info("Token genereated successfuly "+strToken);
 		}catch(Exception e) {
@@ -61,13 +61,13 @@ public class RestApiUtility extends ExtentReport{
 	
 	
 	
-	static public String getVehicletoken(String authorizationURL,String serviceName) {
+	 public String getVehicletoken(String authorizationURL,String serviceName) {
 		
 		return getAssettoken(authorizationURL,serviceName);
 		
 	}
 	
-	static public String getChargingStationtoken(String authorizationURL,String serviceName) {
+	 public String getChargingStationtoken(String authorizationURL,String serviceName) {
 		
 		return getAssettoken(authorizationURL,serviceName);
 		
@@ -81,7 +81,7 @@ public class RestApiUtility extends ExtentReport{
 	 * ******************************************************************************
 	*/	
 	
-	static public String getCreateServicetoken(String authorizationURL,String serviceName) {		
+	public String getCreateServicetoken(String authorizationURL,String serviceName) {		
 		
 		String strToken = null;
 		Map<String,String> form = null;
@@ -90,11 +90,11 @@ public class RestApiUtility extends ExtentReport{
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of CreateService Authorization Token ");
 			form.put("auth_url", authorizationURL);
-			form.put("grant_type", JsonReader.getJsonData("GRANT_TYPE"));
-			form.put("client_id", JsonReader.getJsonData("INITS_AAD_ID"));
-			form.put("client_secret", JsonReader.getJsonData("INITS_AAD_SECRET"));
-			form.put("resource", JsonReader.getJsonData("INITIATION_RESOURCE"));
-			form.put("Content-Type", JsonReader.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("INITS_AAD_ID"));
+			form.put("client_secret", jsonData.getJsonData("INITS_AAD_SECRET"));
+			form.put("resource", jsonData.getJsonData("INITIATION_RESOURCE"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
 			strToken = getToken(form,serviceName);	
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
@@ -110,7 +110,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : To get the Authorization token of the ClientService
 	 * ******************************************************************************
 	*/
-	static public String getClientServicetoken(String authorizationURL,String serviceName) {		
+	public String getClientServicetoken(String authorizationURL,String serviceName) {		
 		
 		String strToken = null;
 		Map<String,String> form = null;
@@ -120,11 +120,11 @@ public class RestApiUtility extends ExtentReport{
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of ClientService Authorization Token ");
 			form.put("auth_url", authorizationURL);
-			form.put("grant_type", JsonReader.getJsonData("GRANT_TYPE"));
-			form.put("client_id", JsonReader.getJsonData("SMS_ADD_ID"));
-			form.put("client_secret", JsonReader.getJsonData("SMS_ADD_SECRET"));
-			form.put("resource", JsonReader.getJsonData("SMS_ADD_ID"));
-			form.put("Content-Type", JsonReader.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("SMS_ADD_ID"));
+			form.put("client_secret", jsonData.getJsonData("SMS_ADD_SECRET"));
+			form.put("resource", jsonData.getJsonData("SMS_ADD_ID"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
 			strToken = getToken(form,serviceName);	
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
@@ -142,7 +142,7 @@ public class RestApiUtility extends ExtentReport{
 	 * ******************************************************************************
 	*/
 	
-	static public String getDevicetoken(String authorizationURL,String serviceName) {
+	public String getDevicetoken(String authorizationURL,String serviceName) {
 		
 		String strToken = null;
 		Map<String,String> form = null;
@@ -152,11 +152,11 @@ public class RestApiUtility extends ExtentReport{
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of DeviceAuthorization Token ");
 			form.put("auth_url", authorizationURL);
-			form.put("grant_type", JsonReader.getJsonData("GRANT_TYPE"));
-			form.put("client_id", JsonReader.getJsonData("DEVICE_ADD_ID"));
-			form.put("client_secret", JsonReader.getJsonData("DEVICE_ADD_SECRET"));
-			form.put("resource", JsonReader.getJsonData("DEVICE_RESOURCE"));
-			form.put("Content-Type", JsonReader.getJsonData("AUTHORIZATION_CONTENT_TYPE"));	
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("DEVICE_ADD_ID"));
+			form.put("client_secret", jsonData.getJsonData("DEVICE_ADD_SECRET"));
+			form.put("resource", jsonData.getJsonData("DEVICE_RESOURCE"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));	
 			strToken = getToken(form,serviceName);	
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of DeviceAuthorization Token "+e.getMessage());
@@ -172,7 +172,7 @@ public class RestApiUtility extends ExtentReport{
 	 * ******************************************************************************
 	*/
 	
-	static public String getClienttoken(String authorizationURL,String serviceName) {	
+	public String getClienttoken(String authorizationURL,String serviceName) {	
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
@@ -181,11 +181,11 @@ public class RestApiUtility extends ExtentReport{
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of ClientAuthorization Token ");
 			form.put("auth_url", authorizationURL);
-			form.put("grant_type", JsonReader.getJsonData("GRANT_TYPE"));
-			form.put("client_id", JsonReader.getJsonData("CLIENT_AAD_ID"));
-			form.put("client_secret", JsonReader.getJsonData("CLIENT_AAD_SERCET"));
-			form.put("resource", JsonReader.getJsonData("CLIENT_RESOURCE"));
-			form.put("Content-Type", JsonReader.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("CLIENT_AAD_ID"));
+			form.put("client_secret", jsonData.getJsonData("CLIENT_AAD_SERCET"));
+			form.put("resource", jsonData.getJsonData("CLIENT_RESOURCE"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
 			strToken = getToken(form,serviceName);	
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
@@ -201,7 +201,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : To get the Authorization token of the User service
 	 * ******************************************************************************
 	*/	
-	static public String getUsertoken(String authorizationURL,String serviceName) {		
+	public String getUsertoken(String authorizationURL,String serviceName) {		
 		
 		String strToken = null;
 		Map<String,String> form = null;
@@ -210,11 +210,11 @@ public class RestApiUtility extends ExtentReport{
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of UserAuthorization Token ");
 			form.put("auth_url", authorizationURL);
-			form.put("grant_type", JsonReader.getJsonData("GRANT_TYPE"));
-			form.put("client_id", JsonReader.getJsonData("CLIENT_AAD_ID"));
-			form.put("client_secret", JsonReader.getJsonData("CLIENT_AAD_SERCET"));
-			form.put("resource", JsonReader.getJsonData("CLIENT_RESOURCE"));
-			form.put("Content-Type", JsonReader.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("CLIENT_AAD_ID"));
+			form.put("client_secret", jsonData.getJsonData("CLIENT_AAD_SERCET"));
+			form.put("resource", jsonData.getJsonData("CLIENT_RESOURCE"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
 			strToken = getToken(form,serviceName);	
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of UserAuthorization Token "+e.getMessage());
@@ -314,15 +314,15 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : Creating the Authorization token of specified service 
 	 * ******************************************************************************
 	*/
-	static public String getAuthorizationToken(String serviceName) {
+	public String getAuthorizationToken(String serviceName) {
 		String base_url = null;
 		String aad_tenant = null;
 		String tauri_authorization_url = null;
 		String token = null; 
 		
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("LOGIN_MICROSOFT");
-		aad_tenant = JsonReader.getJsonData("AAD_TENANT");
+		base_url = jsonData.getJsonData("LOGIN_MICROSOFT");
+		aad_tenant = jsonData.getJsonData("AAD_TENANT");
 		tauri_authorization_url = "https://"+base_url+"/"+aad_tenant+"/oauth2/token";
 		
 		try {
@@ -774,22 +774,22 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For getting the list of specified service as json
 	 * ******************************************************************************
 	*/
-	static public Response PutServices(String servicename,JSONObject payload) {
+public Response PutServices(String servicename,JSONObject payload) {
 		Response ServiceManagementService = null;
 		String base_url = null;
 		String token = null;
 		
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 			switch(servicename) {
 			case "clientservice":
 				String ClientServiceId = (String)payload.get("clientserviceid");
 				String ServiceId = (String)payload.get("serviceid");
-				String ServiceManagementClient = JsonReader.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
-				String Clients = JsonReader.getJsonData("CLIENT");
+				String ServiceManagementClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String Clients = jsonData.getJsonData("CLIENT");
 				String urlInitiateService = base_url +"/"+ServiceManagementClient+"/"+Clients+"/"+ClientServiceId+"/service/";
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				ServiceManagementService =  Put(urlInitiateService,token,servicename,ServiceId);
@@ -811,48 +811,48 @@ public class RestApiUtility extends ExtentReport{
 	 * ******************************************************************************
 	*/
 	
-	static public Response GetServices(String servicename ) {
+ public Response GetServices(String servicename ) {
 		
 		String base_url = null;
 		String token = null;
 		
 		Response getJSON = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 		
 		switch(servicename) {
 			case "device":
-				String DevicesUrl = JsonReader.getJsonData("DEVICE_URL");
-				String Devices = JsonReader.getJsonData("DEVICES");
+				String DevicesUrl = jsonData.getJsonData("DEVICE_URL");
+				String Devices = jsonData.getJsonData("DEVICES");
 				String urlDevice = base_url +"/"+DevicesUrl+"/"+Devices+"/";
 				getJSON = Get(urlDevice,token);
 				break;
 			case "asset":
-				String AssetsUrl = JsonReader.getJsonData("ASSET_URL");
-				String Assets = JsonReader.getJsonData("ASSETS");
+				String AssetsUrl = jsonData.getJsonData("ASSET_URL");
+				String Assets = jsonData.getJsonData("ASSETS");
 				String urlAsset = base_url +"/"+AssetsUrl+"/"+Assets+"/";
 				ExtentReport.info("The asset url is :"+urlAsset);
 				getJSON = Get(urlAsset,token);
 				break;
 			case "client":
-				String ClientsUrl = JsonReader.getJsonData("CLIENT_URL");
-				String Clients = JsonReader.getJsonData("CLIENTS");;
+				String ClientsUrl = jsonData.getJsonData("CLIENT_URL");
+				String Clients = jsonData.getJsonData("CLIENTS");;
 				String urlClient = base_url +"/"+ClientsUrl+"/"+Clients;
 				ExtentReport.info("The asset url is :"+urlClient);
 				getJSON = Get(urlClient,token);
 				break;	
 			case "clientservice":
-				String ServiceManagementClient = JsonReader.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
-				String Client = JsonReader.getJsonData("CLIENT");
+				String ServiceManagementClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String Client = jsonData.getJsonData("CLIENT");
 				String urlInitiateService = base_url +"/"+ServiceManagementClient+"/"+Client;
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				getJSON = Get(urlInitiateService,token);
 				break;
 			case "servicedescriptorservice":
-				String ServiceManagementMultiClient = JsonReader.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
-				String Services = JsonReader.getJsonData("SERVICES");
+				String ServiceManagementMultiClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String Services = jsonData.getJsonData("SERVICES");
 				String urlServiceDescriptorService = base_url +"/"+ServiceManagementMultiClient+"/"+Services;
 				ExtentReport.info("The InitiateService url is :"+urlServiceDescriptorService);
 				getJSON = Get(urlServiceDescriptorService,token);
@@ -875,7 +875,7 @@ public class RestApiUtility extends ExtentReport{
 	 * ******************************************************************************
 	*/
 	
-	static public Response GetServices(String servicename ,String serviceId) {
+	 public Response GetServices(String servicename ,String serviceId) {
 		
 		String base_url = null;
 		String token = null;
@@ -883,54 +883,54 @@ public class RestApiUtility extends ExtentReport{
 		Response getJSON = null;
 		jsonObj = new JsonReader();
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 		
 		switch(servicename) {
 			case "device":
-				String DevicesUrl = JsonReader.getJsonData("DEVICE_URL");
-				String Devices = JsonReader.getJsonData("DEVICES");
+				String DevicesUrl = jsonData.getJsonData("DEVICE_URL");
+				String Devices = jsonData.getJsonData("DEVICES");
 				String urlDevice = base_url +"/"+DevicesUrl+"/"+Devices+"/"+serviceId;
 				getJSON = Get(urlDevice,token);
 				break;
 			case "asset":
-				String AssetsUrl = JsonReader.getJsonData("ASSET_URL");
-				String Assets = JsonReader.getJsonData("ASSETS");
+				String AssetsUrl = jsonData.getJsonData("ASSET_URL");
+				String Assets = jsonData.getJsonData("ASSETS");
 				String urlAsset = base_url +"/"+AssetsUrl+"/"+Assets+"/"+serviceId;
 				ExtentReport.info("The asset url is :"+urlAsset);
 				getJSON = Get(urlAsset,token);
 				break;
 			case "chargingstation":
-				String ChargingStationUrl = JsonReader.getJsonData("ASSET_URL");
-				String ChargingStation = JsonReader.getJsonData("CHARGINGSTATIONS");
+				String ChargingStationUrl = jsonData.getJsonData("ASSET_URL");
+				String ChargingStation = jsonData.getJsonData("CHARGINGSTATIONS");
 				String urlChargingStation = base_url +"/"+ChargingStationUrl+"/"+ChargingStation+"/"+serviceId;
 				ExtentReport.info("The Charging Station url is :"+urlChargingStation);
 				getJSON = Get(urlChargingStation,token);
 				break;
 			case "vehicle":
-				String VehiclesUrl = JsonReader.getJsonData("VEHICLE_URL");
-				String Vehicles = JsonReader.getJsonData("VEHICLES");
+				String VehiclesUrl = jsonData.getJsonData("VEHICLE_URL");
+				String Vehicles = jsonData.getJsonData("VEHICLES");
 				String urlVehicle = base_url +"/"+VehiclesUrl+"/"+Vehicles+"/"+serviceId;
 				ExtentReport.info("The vehicle url is :"+urlVehicle);
 				getJSON = Get(urlVehicle,token);
 				break;
 			case "client":
-				String ClientsUrl = JsonReader.getJsonData("CLIENT_URL");
-				String Clients = JsonReader.getJsonData("CLIENTS");;
+				String ClientsUrl = jsonData.getJsonData("CLIENT_URL");
+				String Clients = jsonData.getJsonData("CLIENTS");;
 				String urlClient = base_url +"/"+ClientsUrl+"/"+Clients+"/"+serviceId;
 				ExtentReport.info("The asset url is :"+urlClient);
 				getJSON = Get(urlClient,token);
 				break;	
 			case "user":
-				String ClientUrl = JsonReader.getJsonData("CLIENT_URL");
-				String Users = JsonReader.getJsonData("USERS");
+				String ClientUrl = jsonData.getJsonData("CLIENT_URL");
+				String Users = jsonData.getJsonData("USERS");
 				String urlUser = base_url +"/"+ClientUrl+"/"+Users+"/"+serviceId;
 				ExtentReport.info("The Users url is :"+urlUser);
 				getJSON =  Get(urlUser,token);
 				break;
 			case "clientservice":
-				String ClientServiceUrl = JsonReader.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");
+				String ClientServiceUrl = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");
 				String urlClientService = base_url +"/"+ClientServiceUrl+serviceId;
 				ExtentReport.info("The Users url is :"+urlClientService);
 				getJSON =  Get(urlClientService,token);
@@ -955,13 +955,13 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Creating Specified Service
 	 * ******************************************************************************
 	*/
-	static public Response CreateServicesJson(String servicename,String payloadtemplate,String payloadValues) {
+public Response CreateServicesJson(String servicename,String payloadtemplate,String payloadValues) {
 		Response CreateServiceString = null;
 		String base_url = null;
 		String token = null;
 		
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 			switch(servicename) {
@@ -994,47 +994,47 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Deleting Specified Service
 	 * ******************************************************************************
 	*/
-	static public Response DeleteServices(String servicename,String id) {
+	public Response DeleteServices(String servicename,String id) {
 		Response DeleteServiceString = null;
 		String base_url = null;
 		String token = null;
 		jsonObj = new JsonReader();
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 			try {
 				switch(servicename) {
 				case "asset":
-					String AssetsUrl = JsonReader.getJsonData("ASSET_URL");
-					String Assets = JsonReader.getJsonData("ASSETS");
+					String AssetsUrl = jsonData.getJsonData("ASSET_URL");
+					String Assets = jsonData.getJsonData("ASSETS");
 					String urlAssetDelete = base_url +"/"+AssetsUrl+"/"+Assets+"/"+id;
 					ExtentReport.info("The asset url is :"+urlAssetDelete);
 					DeleteServiceString =  Delete(urlAssetDelete,token);
 					break;
 				case "vehicle":
-					String VehiclesUrl = JsonReader.getJsonData("VEHICLE_URL");
-					String Vehicles = JsonReader.getJsonData("VEHICLES");
+					String VehiclesUrl = jsonData.getJsonData("VEHICLE_URL");
+					String Vehicles = jsonData.getJsonData("VEHICLES");
 					String urlVehicleDelete = base_url +"/"+VehiclesUrl+"/"+Vehicles+"/"+id;
 					ExtentReport.info("The vehicle url is :"+urlVehicleDelete);
 					DeleteServiceString =  Delete(urlVehicleDelete,token);
 					break;
 				case "user":
-					String UsersUrl = JsonReader.getJsonData("CLIENT_URL");
-					String Users = JsonReader.getJsonData("USERS");
+					String UsersUrl = jsonData.getJsonData("CLIENT_URL");
+					String Users = jsonData.getJsonData("USERS");
 					String urlUserDelete = base_url +"/"+UsersUrl+"/"+Users+"/"+id;
 					ExtentReport.info("The User url is :"+urlUserDelete);
 					DeleteServiceString =  Delete(urlUserDelete,token);
 					break;
 				case "chargingstation":
-					String ChargingStationUrl = JsonReader.getJsonData("ASSET_URL");
-					String ChargingStation = JsonReader.getJsonData("CHARGINGSTATIONS");
+					String ChargingStationUrl = jsonData.getJsonData("ASSET_URL");
+					String ChargingStation = jsonData.getJsonData("CHARGINGSTATIONS");
 					String urlChargingStation = base_url +"/"+ChargingStationUrl+"/"+ChargingStation+"/"+id;
 					ExtentReport.info("The Charging Station url is :"+urlChargingStation);
 					DeleteServiceString = Delete(urlChargingStation,token);
 					break;
 				case "device":
-					String DeviceUrl = JsonReader.getJsonData("DEVICE_URL");
-					String Devices = JsonReader.getJsonData("DEVICES");
+					String DeviceUrl = jsonData.getJsonData("DEVICE_URL");
+					String Devices = jsonData.getJsonData("DEVICES");
 					String urlDeviceDelete = base_url +"/"+DeviceUrl+"/"+Devices+"/"+id;
 					ExtentReport.info("The Device url is :"+urlDeviceDelete);
 					DeleteServiceString =  Delete(urlDeviceDelete,token);
@@ -1056,40 +1056,40 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Creating Specified Service
 	 * ******************************************************************************
 	*/
-	static public Response CreateServices(String servicename,String payloadTemplate,String payloadValues) {
+public Response CreateServices(String servicename,String payloadTemplate,String payloadValues) {
 		Response CreateServiceString = null;
 		String base_url = null;
 		String token = null;
 		
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 			switch(servicename) {
 			case "asset":
-				String AssetsUrl = JsonReader.getJsonData("ASSET_URL");
-				String Assets = JsonReader.getJsonData("ASSETS");
+				String AssetsUrl = jsonData.getJsonData("ASSET_URL");
+				String Assets = jsonData.getJsonData("ASSETS");
 				String urlAsset = base_url +"/"+AssetsUrl+"/"+Assets;
 				ExtentReport.info("The asset url is :"+urlAsset);
 				CreateServiceString =  Post(urlAsset,token,servicename,payloadTemplate,payloadValues);
 				break;
 			case "user":
-				String ClientUrl = JsonReader.getJsonData("CLIENT_URL");
-				String Users = JsonReader.getJsonData("USERS");
+				String ClientUrl = jsonData.getJsonData("CLIENT_URL");
+				String Users = jsonData.getJsonData("USERS");
 				String urlUser = base_url +"/"+ClientUrl+"/"+Users+"/";
 				ExtentReport.info("The Users url is :"+urlUser);
 				CreateServiceString =  Post(urlUser,token,servicename,payloadTemplate,payloadValues);
 				break;
 			case "createservice":
-				String CreateServiceUrl = JsonReader.getJsonData("CREATESERVICE_URL");
-				String InitiateService = JsonReader.getJsonData("INITIATE_SERVICE");
+				String CreateServiceUrl = jsonData.getJsonData("CREATESERVICE_URL");
+				String InitiateService = jsonData.getJsonData("INITIATE_SERVICE");
 				String urlInitiateService = base_url +"/"+CreateServiceUrl+"/"+InitiateService+"/";
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				CreateServiceString =  Post(urlInitiateService,token,servicename,payloadTemplate,payloadValues);
 				break;
 			case "device":
-				String DeviceUrl = JsonReader.getJsonData("DEVICE_URL");
-				String Devices = JsonReader.getJsonData("DEVICES");
+				String DeviceUrl = jsonData.getJsonData("DEVICE_URL");
+				String Devices = jsonData.getJsonData("DEVICES");
 				String urlDevice = base_url +"/"+DeviceUrl+"/"+Devices+"/";
 				ExtentReport.info("The Users url is :"+urlDevice);
 				CreateServiceString =  Post(urlDevice,token,servicename,payloadTemplate,payloadValues);
@@ -1114,41 +1114,41 @@ public class RestApiUtility extends ExtentReport{
 	 * ******************************************************************************
 	*/
 	
-	static public Response CreateServices(String servicename,JSONObject payloadValues) {
+	public Response CreateServices(String servicename,JSONObject payloadValues) {
 		Response CreateServiceString = null;
 		String base_url = null;
 		String token = null;
 		
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		base_url = JsonReader.getJsonData("BASE_URL");
+		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 			switch(servicename) {			
 			
 			case "device":
-				String DeviceUrl = JsonReader.getJsonData("DEVICE_URL");
-				String Devices = JsonReader.getJsonData("DEVICES");
+				String DeviceUrl = jsonData.getJsonData("DEVICE_URL");
+				String Devices = jsonData.getJsonData("DEVICES");
 				String urlDevice = base_url +"/"+DeviceUrl+"/"+Devices+"/";
 				ExtentReport.info("The Users url is :"+urlDevice);
 				CreateServiceString =  Post(urlDevice,token,servicename,payloadValues);
 			case "user":
-				String ClientUrl = JsonReader.getJsonData("CLIENT_URL");
-				String Users = JsonReader.getJsonData("USERS");
+				String ClientUrl = jsonData.getJsonData("CLIENT_URL");
+				String Users = jsonData.getJsonData("USERS");
 				String urlUser = base_url +"/"+ClientUrl+"/"+Users+"/";
 				ExtentReport.info("The Users url is :"+urlUser);
 				CreateServiceString =  Post(urlUser,token,servicename,payloadValues);
 				break;	
 			case "createservice":
-				String CreateServiceUrl = JsonReader.getJsonData("CREATESERVICE_URL");
-				String InitiateService = JsonReader.getJsonData("INITIATE_SERVICE");
+				String CreateServiceUrl = jsonData.getJsonData("CREATESERVICE_URL");
+				String InitiateService = jsonData.getJsonData("INITIATE_SERVICE");
 				String urlInitiateService = base_url +"/"+CreateServiceUrl+"/"+InitiateService+"/";
 				
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				CreateServiceString =  Post(urlInitiateService,token,servicename,payloadValues);
 				break;
 			case "createversion":
-				String CreateversionUrl = JsonReader.getJsonData("CREATESERVICE_URL");
-				String InitiateServiceVer = JsonReader.getJsonData("INITIATE_SERVICE");
+				String CreateversionUrl = jsonData.getJsonData("CREATESERVICE_URL");
+				String InitiateServiceVer = jsonData.getJsonData("INITIATE_SERVICE");
 				String ServiceName = (String)payloadValues.get("servicename");
 				payloadValues.remove("servicename");				
 				String urlInitiateServicever = base_url +"/"+CreateversionUrl+"/"+InitiateServiceVer+"/"+ServiceName+"/versions";
@@ -1156,22 +1156,22 @@ public class RestApiUtility extends ExtentReport{
 				CreateServiceString =  Post(urlInitiateServicever,token,servicename,payloadValues);
 				break;
 			case "asset":
-				String AssetsUrl = JsonReader.getJsonData("ASSET_URL");
-				String Assets = JsonReader.getJsonData("ASSETS");
+				String AssetsUrl = jsonData.getJsonData("ASSET_URL");
+				String Assets = jsonData.getJsonData("ASSETS");
 				String urlAsset = base_url +"/"+AssetsUrl+"/"+Assets;
 				ExtentReport.info("The asset url is :"+urlAsset);
 				CreateServiceString =  Post(urlAsset,token,servicename,payloadValues);
 				break;
 			case "vehicle":
-				String VehicleUrl = JsonReader.getJsonData("VEHICLE_URL");
-				String Vehicles = JsonReader.getJsonData("VEHICLES");
+				String VehicleUrl = jsonData.getJsonData("VEHICLE_URL");
+				String Vehicles = jsonData.getJsonData("VEHICLES");
 				String urlVehicle = base_url +"/"+VehicleUrl+"/"+Vehicles;
 				ExtentReport.info("The vehicles url is :"+urlVehicle);
 				CreateServiceString =  Post(urlVehicle,token,servicename,payloadValues);
 				break;
 			case "chargingstation":
-				String ChargingStationsUrl = JsonReader.getJsonData("ASSET_URL");
-				String ChargingStations = JsonReader.getJsonData("CHARGINGSTATIONS");
+				String ChargingStationsUrl = jsonData.getJsonData("ASSET_URL");
+				String ChargingStations = jsonData.getJsonData("CHARGINGSTATIONS");
 				String urlChargingStations = base_url +"/"+ChargingStationsUrl+"/"+ChargingStations;
 				ExtentReport.info("The Charging Station url is :"+urlChargingStations);
 				CreateServiceString =  Post(urlChargingStations,token,servicename,payloadValues);
@@ -1195,7 +1195,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Creating User
 	 * ******************************************************************************
 	*/
-	static public String CreateUser(String payLoad) {
+	 public String CreateUser(String payLoad) {
 		
 		Response userCreated = null;
 		String createUserID = null;	
@@ -1206,7 +1206,7 @@ public class RestApiUtility extends ExtentReport{
 			String displayName = CreateUserJson.get("displayName").toString() + RestApiUtility.getRandomNumber();
 			CreateUserJson.put("displayName",displayName);
 			ExtentReport.info("Created UserData payload is "+CreateUserJson.toJSONString());			
-			userCreated = RestApiUtility.CreateServices("user",CreateUserJson);				
+			userCreated = CreateServices("user",CreateUserJson);				
 			if( userCreated!=null && userCreated.getStatusCode()==200) {
 				ExtentReport.info("The created User response status code is : "+userCreated.getStatusCode());
 				ExtentReport.info("The created User response is : "+userCreated.getBody().asString());
@@ -1231,7 +1231,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Creating Asset
 	 * ******************************************************************************
 	*/
-	static public String CreateAssets(String payLoad) {
+	 public String CreateAssets(String payLoad) {
 		
 		JSONObject CreateAssetJson = null;
 		String AssetId = null;
@@ -1243,7 +1243,7 @@ public class RestApiUtility extends ExtentReport{
 			CreateAssetJson.put("description",CreateAssetJson.get("description").toString() + getRandomNumber());	
 			
 			ExtentReport.info("Creating asset with:"+CreateAssetJson.toJSONString());
-			AssetResponse = RestApiUtility.CreateServices("asset",CreateAssetJson);	
+			AssetResponse = CreateServices("asset",CreateAssetJson);	
 			
 			if( AssetResponse!=null && AssetResponse.getStatusCode()==200) {
 				ExtentReport.info("The created Asset response status code is : "+AssetResponse.getStatusCode());
@@ -1271,7 +1271,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Creating Charging Station
 	 * ******************************************************************************
 	*/
-	static public String CreateChargingStation(String payLoad) {
+	public String CreateChargingStation(String payLoad) {
 		
 		JSONObject CreateChargingStationJson = null;
 		String ChargingStationId = null;
@@ -1283,7 +1283,7 @@ public class RestApiUtility extends ExtentReport{
 			
 			ExtentReport.info("Executing Post Request against ChargingStation using payload : "+CreateChargingStationJson.toJSONString());
 			//ExtentReport.info("Created ChargingStationData payload is "+CreateChargingStationJson.toJSONString());
-			ChargingStationResponse = RestApiUtility.CreateServices("chargingstation",CreateChargingStationJson);	
+			ChargingStationResponse = CreateServices("chargingstation",CreateChargingStationJson);	
 			
 			if( ChargingStationResponse!=null && ChargingStationResponse.getStatusCode()==200) {
 				ExtentReport.info("The created ChargingStation response status code is : "+ChargingStationResponse.getStatusCode());
@@ -1311,7 +1311,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For Creating Vehicle
 	 * ******************************************************************************
 	*/
-	static public String CreateVehicle(String payLoad) {
+	public String CreateVehicle(String payLoad) {
 		JSONObject CreateVehicleJson = null;
 		String vehicleId = null;
 		Response VehicleResponse = null;
@@ -1326,7 +1326,7 @@ public class RestApiUtility extends ExtentReport{
 			ExtentReport.info("Executing Post Request against Vehicle using payload : "+CreateVehicleJson.toJSONString());
 			
 			//ExtentReport.info("Created VehicleData payload is "+CreateVehicleJson.toJSONString());
-			VehicleResponse = RestApiUtility.CreateServices("vehicle",CreateVehicleJson);	
+			VehicleResponse = CreateServices("vehicle",CreateVehicleJson);	
 			
 			if( VehicleResponse!=null && VehicleResponse.getStatusCode()==200) {
 				ExtentReport.info("The created vehicle response status code is : "+VehicleResponse.getStatusCode());
@@ -1354,7 +1354,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For retrieving the specific user
 	 * ******************************************************************************
 	*/
-	static public String GetUser(String createUserID) {
+	public String GetUser(String createUserID) {
 		Response userJson = null;			
 		String userId = null;
 				
@@ -1364,7 +1364,7 @@ public class RestApiUtility extends ExtentReport{
 			//ExtentReport.info(createUserID +" dictionary is not found in the data file hence using it as user Id string ");
 			userId = createUserID;
 		}		
-		userJson = RestApiUtility.GetServices("user",userId);
+		userJson = GetServices("user",userId);
 		if(userJson.getStatusCode()==200) {
 			ExtentReport.info("User with UserId "+userId +" is present in the available Users");
 			ExtentReport.info("User with UserId "+userId +" is present in the available Users and its response body is : "+ userJson.getBody().asString());			
@@ -1383,7 +1383,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For retrieving the specific Asset
 	 * ******************************************************************************
 	*/
-	static public String GetAsset(String createAssetID) {
+	public String GetAsset(String createAssetID) {
 		Response assetJson = null;			
 		String assetId = null;
 		String assetResponse = null;
@@ -1396,7 +1396,7 @@ public class RestApiUtility extends ExtentReport{
 		ExtentReport.info("Getting Asset details using assetId : "+assetId);
 		
 		try {
-			assetJson = RestApiUtility.GetServices("asset",assetId);
+			assetJson = GetServices("asset",assetId);
 			if(assetJson.getStatusCode()==200) {
 				assetResponse = assetJson.getBody().asString();
 				ExtentReport.info("AssetId : "+assetId +" is present in the available Assets");
@@ -1418,7 +1418,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For retrieving the specific Vehicle
 	 * ******************************************************************************
 	*/
-	static public String GetVehicle(String createVehicleID) {
+	public String GetVehicle(String createVehicleID) {
 		Response vehicleJson = null;			
 		String vehicleId = null;
 		String vehicleResponse = null;
@@ -1431,7 +1431,7 @@ public class RestApiUtility extends ExtentReport{
 		}	
 		ExtentReport.info("Executing Get Request against Vehicle using vehicleId : "+vehicleId);
 		try {
-			vehicleJson = RestApiUtility.GetServices("vehicle",vehicleId);
+			vehicleJson = GetServices("vehicle",vehicleId);
 			if(vehicleJson.getStatusCode()==200) {
 				ExtentReport.info("Vehicle with vehicleId "+vehicleId +" is present in the available Vehicles");
 				ExtentReport.info("Vehicle with vehicleId "+vehicleId +" is present in the available Vehicles and its response body is : "+ vehicleJson.getBody().asString());			
@@ -1455,7 +1455,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For retrieving the specific Charging Station
 	 * ******************************************************************************
 	*/
-	static public String GetChargingStation(String createChargingStationID) {
+	 public String GetChargingStation(String createChargingStationID) {
 		Response ChargingStationJson = null;			
 		String ChargingStationId = null;
 		String ChargingStationResponse = null;
@@ -1470,7 +1470,7 @@ public class RestApiUtility extends ExtentReport{
 		ExtentReport.info("Executing Get Request against ChargingStation using chargingStationId : "+ChargingStationId);
 		
 		try {
-			ChargingStationJson = RestApiUtility.GetServices("chargingstation",ChargingStationId);
+			ChargingStationJson = GetServices("chargingstation",ChargingStationId);
 			if(ChargingStationJson.getStatusCode()==200) {
 				ExtentReport.info("Charging Station with ChargingStationId "+ChargingStationId +" is present in the available Charging Stations");
 				ExtentReport.info("Charging Station with ChargingStationId "+ChargingStationId +" is present in the available Charging Stations and its response body is : "+ ChargingStationJson.getBody().asString());			
@@ -1493,7 +1493,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For deleting the specific Asset using Asset Id
 	 * ******************************************************************************
 	*/
-	static public boolean DeleteAsset(String createAssetID) {
+	public boolean DeleteAsset(String createAssetID) {
 		
 		Response deleteAssetResponse = null;		
 		boolean result = false;
@@ -1509,7 +1509,7 @@ public class RestApiUtility extends ExtentReport{
 		ExtentReport.info("Deleting the Asset using assetId : "+assetId);
 		
 		try {
-			deleteAssetResponse = RestApiUtility.DeleteServices("asset",assetId);
+			deleteAssetResponse = DeleteServices("asset",assetId);
 			
 			if( deleteAssetResponse!=null && deleteAssetResponse.getStatusCode()==200) {
 				ExtentReport.info("The deleteted Asset id "+assetId+" status code is "+deleteAssetResponse.getStatusCode());
@@ -1536,7 +1536,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For deleting the specific Vehicle using vehicle Id
 	 * ******************************************************************************
 	*/
-	static public boolean DeleteVehicle(String createVehicleID) {
+	public boolean DeleteVehicle(String createVehicleID) {
 		
 		Response deleteVehicleResponse = null;		
 		boolean result = false;
@@ -1552,7 +1552,7 @@ public class RestApiUtility extends ExtentReport{
 		ExtentReport.info("Executing Delete Request against vehicle using vehicleId : "+vehicleId);
 		
 		try {
-			deleteVehicleResponse = RestApiUtility.DeleteServices("vehicle",vehicleId);
+			deleteVehicleResponse = DeleteServices("vehicle",vehicleId);
 			
 			if( deleteVehicleResponse!=null && deleteVehicleResponse.getStatusCode()==204) {
 				ExtentReport.info("The deleteted Vehicle id "+vehicleId+" status code is "+deleteVehicleResponse.getStatusCode());
@@ -1579,7 +1579,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For deleting the specific Charging Station using ChargingStation Id
 	 * ******************************************************************************
 	*/
-	static public boolean DeleteChargingStation(String createChargingStationID) {
+	public boolean DeleteChargingStation(String createChargingStationID) {
 		
 		Response deleteChargingStationResponse = null;		
 		boolean result = false;
@@ -1595,7 +1595,7 @@ public class RestApiUtility extends ExtentReport{
 		ExtentReport.info("Executing Delete Request against ChargingStation using ChargingStationId : "+ChargingStationId);
 		
 		try {
-			deleteChargingStationResponse = RestApiUtility.DeleteServices("chargingstation",ChargingStationId);
+			deleteChargingStationResponse = DeleteServices("chargingstation",ChargingStationId);
 			
 			if( deleteChargingStationResponse!=null && deleteChargingStationResponse.getStatusCode()==204) {
 				ExtentReport.info("The deleteted ChargingStation id "+ChargingStationId+" status code is "+deleteChargingStationResponse.getStatusCode());
@@ -1623,7 +1623,7 @@ public class RestApiUtility extends ExtentReport{
 	 * Purpose : For deleting the specific user using User Id
 	 * ******************************************************************************
 	*/
-	static public boolean DeleteUser(String createUserID) {
+	public boolean DeleteUser(String createUserID) {
 		
 		Response deleteUserResponse = null;		
 		boolean result = false;
@@ -1638,7 +1638,7 @@ public class RestApiUtility extends ExtentReport{
 		
 		ExtentReport.info("Executing Delete Request against User using userId : "+userId);
 		
-		deleteUserResponse = RestApiUtility.DeleteServices("user",userId);
+		deleteUserResponse = DeleteServices("user",userId);
 		
 		if( deleteUserResponse!=null && deleteUserResponse.getStatusCode()==204) {
 			ExtentReport.info("The deleteted user id "+userId+" status code is "+deleteUserResponse.getStatusCode());
