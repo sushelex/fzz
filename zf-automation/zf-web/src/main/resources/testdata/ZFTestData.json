@@ -141,7 +141,7 @@
 			"Area": "Kerala",
 			"AssetName": "MandatoryAutopopulatedMetadata",
 			"AssetType": "Bus",
-			"MetaDatalicensePlate":"licensePlate",
+			"MetaDatalicensePlate": "licensePlate",
 			"MetaDataPropulsionType": "prpulsionType",
 			"MetaDatavehicleType": "vecleType",
 			"MetaDatavin": "vin"
@@ -351,7 +351,7 @@
 			"Description": "Description for Single Gateway 1",
 			"MetaDatakey": "key1",
 			"MetaDatavalue": "value1",
-			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev12_cert.pem",
+			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev12_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageSuccessReason": "SUCCESS"
@@ -373,7 +373,7 @@
 			"Description": "Description for Single Gateway 2",
 			"MetaDatakey": "key4",
 			"MetaDatavalue": "value4",
-			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
+			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:a8 already exists",
@@ -396,7 +396,7 @@
 			"Description": "Description for Single Gateway 2",
 			"MetaDatakey": "key4",
 			"MetaDatavalue": "value4",
-			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
+			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageFailedReason": "Certificate is already in use !",
@@ -412,7 +412,7 @@
 			"CustomerName": "Honda",
 			"CustomerCountry": "India",
 			"CustomerArea": "Delhi",
-			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem",
+			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:a8 already exists",
@@ -432,14 +432,14 @@
 			"CustomerArea": "Delhi",
 			"BusinessUnit": "IOT",
 			"Operator": "Beta",
-			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem"
+			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem"
 		}
 	},
 	{
 		"AddMultipleGatewayNewRoot": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
+			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -447,8 +447,8 @@
 	{
 		"AddMultipleGatewayWithInvalid": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_WithoutGatewayName.xlsx",
+			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_WithoutGatewayName.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -456,8 +456,8 @@
 	{
 		"AddMultipleGatewayNewIntermediate": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Intermediate_New.xlsx",
+			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Intermediate_New.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -465,8 +465,8 @@
 	{
 		"addMultipleGatewayWithoutMandatoryFields": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
+			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -475,7 +475,7 @@
 		"AddMultipleGatewayExisting": {
 			"SelectEnrollmentGroup": "test123",
 			"CAfilename": "devaug29root",
-			"UploadGatewayDetails": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Existing.xlsx",
+			"UploadGatewayDetails": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Existing.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -492,6 +492,18 @@
 			"ToasterMessageEnabled": "Gateway Enabled",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageDisabled": "Gateway Disabled"
+		}
+	},
+	{
+		"AddSoftware": {
+			"SoftwareNameInvalid": "#232",
+			"SoftwareName": "Gateway1",
+			"UploadPackagePath": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Installable Packages\\mosquitto1.deb",
+			"UploadPackagePath1": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Installable Packages\\mosquitto1.deb",
+			"UploadInvalidPackagePath": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Installable Packages\\InvalidCertificate.txt",
+			"PackageName": "InvalidCertificate.txt",
+			"UploadErrorMsg": "Id is blank",
+			"UploadDeviceNotFoundError": "Error in IoT Hub IoT Hub not found! ErrorCode:DeviceNotFound;836691402412980 Tracking ID:9e8121117f4f44b3a2860d2264475ef7-G:5-TimeStamp:03/22/2019 11:52:07"
 		}
 	},
 	{
@@ -520,7 +532,7 @@
 	{
 		"VerifyDefaultGatewayStatus": {
 			"GatewayDefaultActual": "Gateway",
-	    "ShowSearchValue": "Pre-Commissioned, Commissioned"
+			"ShowSearchValue": "Pre-Commissioned, Commissioned"
 		}
 	},
 	{
@@ -628,31 +640,31 @@
 			"CreatedDateTime": "Created Date & Time",
 			"ClientStatus": "Client Status"
 		}
-	},{
-              "ClientDetails": {
-                     "clientName": "venkata",
-                     "email": "venkata@test.com",
-                     "street": "bridge street",
-                     "information": "ZF Automation",
-                     "streetNumber": "2512",
-                     "telephone": "12345678912345",
-                     "postCode": "9876",
-                     "webSite": "howtodo.com",
-                     "country": "USA",
-                     "fax": "12345678978999",
-                     "ToasterMsg": "Unauthorized user",
-                     "clientNameEmpty": "           ",
-                     "clientNameSpecialChar": "Client123#%%^",
-                     "clientNameWithAbove32Char": "Client Name with more than 32 characters",
-                     "clientNameErrorMsg": "The name contains unsupported characters. Please, enter valid name.",
-                     "clientEmptyEmail": "     ",
-                     "clientInvalidEmail": "!@#$%^&*()",
-                     "clientEmailErrorMsg": "The e-mail address is not valid. Please enter a valid e-mail address.",
-                     "clientTelephoneEmpty": "      ",
-                     "clientTelephoneSpecialChar": "#%%^"
-              }
-       },
-	
+	},
+	{
+		"ClientDetails": {
+			"clientName": "venkata",
+			"email": "venkata@test.com",
+			"street": "bridge street",
+			"information": "ZF Automation",
+			"streetNumber": "2512",
+			"telephone": "12345678912345",
+			"postCode": "9876",
+			"webSite": "howtodo.com",
+			"country": "USA",
+			"fax": "12345678978999",
+			"ToasterMsg": "Unauthorized user",
+			"clientNameEmpty": "           ",
+			"clientNameSpecialChar": "Client123#%%^",
+			"clientNameWithAbove32Char": "Client Name with more than 32 characters",
+			"clientNameErrorMsg": "The name contains unsupported characters. Please, enter valid name.",
+			"clientEmptyEmail": "     ",
+			"clientInvalidEmail": "!@#$%^&*()",
+			"clientEmailErrorMsg": "The e-mail address is not valid. Please enter a valid e-mail address.",
+			"clientTelephoneEmpty": "      ",
+			"clientTelephoneSpecialChar": "#%%^"
+		}
+	},
 	{
 		"ClientMoreDetails": {
 			"clientName": "Openmatics 1",
@@ -666,7 +678,7 @@
 	},
 	{
 		"EditSingleGateway": {
-		"EditGatewayName": "SingleGateway1",
+			"EditGatewayName": "SingleGateway1",
 			"GatewayName": "testA111",
 			"GatewayType": "Advantech",
 			"Model": "Version 2",
@@ -690,7 +702,7 @@
 			"MetaDatavalue5": "testBMV3",
 			"MetaDatakey6": "testMK3",
 			"MetaDatavalue6": "testBMV3",
-			"UploadCertificate": "D:\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev10_cert.pem",
+			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev10_cert.pem",
 			"ToasterMsgSuccess": "SUCCESS",
 			"ToasterMsgSuccesUpdated": "was updated successfully"
 		}
