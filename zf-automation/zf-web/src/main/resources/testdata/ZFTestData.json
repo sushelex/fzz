@@ -1,0 +1,744 @@
+[
+	{
+		"Tc01addUser": {
+			"Name": "Karuna",
+			"Email": "karu.testing@gmail.com",
+			"SureName": "karu",
+			"Role": "Administrator",
+			"CancelText": "You have edited data on this page, do you want to discard them?",
+			"ToasterMsgSuccess": "Success",
+			"ToasterMsgSuccessCreated": "was created successfully"
+		}
+	},
+	{
+		"Tc02EditUser": {
+			"Name": "Karuna",
+			"EditName": "Karuna111",
+			"EditEmail": "karu111.testing@gmail.com",
+			"EditSureName": "karu11",
+			"EditRole": "Administrator111",
+			"CancelText": "You have edited data on this page, do you want to discard them?",
+			"ToasterMsgSuccess": "Success",
+			"ToasterMsgSuccesUpdated": "was updated successfully"
+		}
+	},
+	{
+		"Tc03DeleteUser": {
+			"Name": "Karuna111",
+			"Noresultvalue": "No results found"
+		}
+	},
+	{
+		"TCO2AssetSearch": {
+			"AssetName": "MICHAL TEST"
+		}
+	},
+	{
+		"TCO3AssetAdvacnedSearch": {
+			"BasicAssestType": "BASIC_ASSET_TYPE",
+			"Brand": "TRW",
+			"Manufacturer": "Ford"
+		}
+	},
+	{
+		"TCO4clearAllFilter": {
+			"AssetName": "MICHAL TEST",
+			"BasicAssestType": "BASIC_ASSET_TYPE",
+			"Brand": "TRW",
+			"Manufacturer": "Ford"
+		}
+	},
+	{
+		"TCO5AssetSearchWithInvalidKey": {
+			"AssetName": "BMW",
+			"Noresultvalue": "No assets found."
+		}
+	},
+	{
+		"TCO6CreateAssetstWithAllFeilds": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "TEST12345",
+			"AssetType": "BASIC_ASSET_TYPE",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "test12345",
+			"SensorID": "123456789",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Tewst value for licensePlate",
+			"MetaDataPropulsionType": "Twt value for PrpulsionType",
+			"MetaDatavehicleType": "w value for vecleType",
+			"MetaDatavin": "0334567890",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Asset added successfully"
+		}
+	},
+	{
+		"createAssetstWithAllAutopopulatedMetadataKeys": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "TEST12345",
+			"AssetType": "Bus",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "test12345",
+			"SensorID": "123456789",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Tewst value for licensePlate",
+			"MetaDataPropulsionType": "Twt value for PrpulsionType",
+			"MetaDatavehicleType": "value for vecleType",
+			"MetaDatavin": "A03456790",
+			"MetaDatavehicleManufacturer": "value of Manufacturer ",
+			"MetaDatavehicleModel": " value of model",
+			"MetaDatavehicleProducer": "value of Producer",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Asset added successfully"
+		}
+	},
+	{
+		"createAssetstWithMandatoryAutopopulatedMetadataKeys": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "TEST12345",
+			"AssetType": "Bus",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "test12345",
+			"SensorID": "123456789",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Tewst value for licensePlate",
+			"MetaDataPropulsionType": "Twt value for PrpulsionType",
+			"MetaDatavehicleType": "value for vecleType",
+			"MetaDatavin": "B033456790",
+			"MetaDatavehicleManufacturer": "value of Manufacturer ",
+			"MetaDatavehicleModel": " value of model",
+			"MetaDatavehicleProducer": "value of Producer",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Asset added successfully"
+		}
+	},
+	{
+		"verifyVehicleAssetstWithMandatoryAutopopulatedMetadataKeys": {
+			"Country": "India",
+			"Area": "Kerala",
+			"AssetName": "MandatoryAutopopulatedMetadata",
+			"AssetType": "Bus",
+			"MetaDatalicensePlate":"licensePlate",
+			"MetaDataPropulsionType": "prpulsionType",
+			"MetaDatavehicleType": "vecleType",
+			"MetaDatavin": "vin"
+		}
+	},
+	{
+		"TCO7CreateAssetstWithActions": {
+			"Action": "activate",
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "TEST12345",
+			"AssetType": "Bus",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "test12345",
+			"SensorID": "123456789",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Test value for licensePlate",
+			"MetaDataPropulsionType": "Test value for PropulsionType",
+			"MetaDatavehicleType": "Test value for vehicleType",
+			"MetaDatavin": "123456780",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "SUCCESS"
+		}
+	},
+	{
+		"TCO8editExistAssetDetails": {
+			"AssetName": "Test12345",
+			"Country": "Czech Republic",
+			"Area": "Pilsen",
+			"LocationAddress": "location updated",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"UpdatedAssetName": "TEST12345678",
+			"AssetType": "Bus",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "test12345",
+			"SensorID": "123456789",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Test value for licensePlate",
+			"MetaDataPropulsionType": "Test value for PropulsionType",
+			"MetaDatavehicleType": "Test value for vehicleType",
+			"MetaDatavin": "123456789",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Asset updated successfully"
+		}
+	},
+	{
+		"TCO9EditAssetstActions": {
+			"Action": "deactivate",
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "Test12345",
+			"AssetType": "Bus",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "test12345",
+			"SensorID": "123456789",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Test value for licensePlate",
+			"MetaDataPropulsionType": "Test value for PropulsionType",
+			"MetaDatavehicleType": "Test value for vehicleType",
+			"MetaDatavin": "123567890",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "SUCCESS"
+		}
+	},
+	{
+		"TCO3OperatorHasNoAccess": {
+			"AssetName": "MICHAL TEST",
+			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
+		}
+	},
+	{
+		"CreateChildAssettWithAllFeilds": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "TEST12345",
+			"AssetType": "BASIC_ASSET_TYPE",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "TEST12345",
+			"SensorID": "12245678977",
+			"Description": "Description for Asset",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Asset added successfully"
+		}
+	},
+	{
+		"executeActionWithoutParamater": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "Action Without Paramater",
+			"AssetType": "BASIC_ASSET_TYPE",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "TEST12345",
+			"SensorID": "12245678977",
+			"Description": "Description for Asset",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Action updated"
+		}
+	},
+	{
+		"executeActionWithParamater": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "Action Without Paramater",
+			"AssetType": "BASIC_ASSET_TYPE",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "TEST12345",
+			"SensorID": "12245678977",
+			"Description": "Description for Asset",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Action updated"
+		}
+	},
+	{
+		"fieldValidationsMandatoryFieldVin": {
+			"Country": "India",
+			"Area": "Kerala",
+			"LocationAddress": "Test",
+			"LocationGeolocationLatitude": "Test",
+			"LocationGeolocationLongitude": "Test",
+			"Customer": "ZF",
+			"BusinessUnit": "Vehicle",
+			"AssetName": "TEST12345",
+			"AssetType": "Bus",
+			"Manufacturer": "Ford",
+			"Model": "ZF",
+			"Brand": "TRW",
+			"SerialNumber": "TEST12345",
+			"SensorID": "12245678977",
+			"Description": "Description for Asset",
+			"MetaDatalicensePlate": "Test value for licensePlate",
+			"MetaDataPropulsionType": "Test value for PropulsionType",
+			"MetaDatavehicleType": "Test value for vehicleType",
+			"MetaDatavin": "Below9",
+			"MetaDatavin1": "Above12digits",
+			"MetaDatavin2": "Validdata",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageFailedReason": "Field 'vin' doesn't have valid length (17 or 9-12)",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "Asset added successfully"
+		}
+	},
+	{
+		"createAssetWithoutMandatoryInput": {
+			"LocationAddress": "Mandatory Test",
+			"AssetName": "Mandatorydata",
+			"AssetType": "Bus",
+			"MetaDatalicensePlate": "Test value for licensePlate",
+			"MetaDataPropulsionType": "Test value for PropulsionType",
+			"MetaDatavehicleType": "Test value for vehicleType",
+			"MetaDatavin": "Validdata"
+		}
+	},
+	{
+		"addSingleGatewayWithAllValidInputs": {
+			"GatewayName": "SingleGateway1",
+			"GatewayType": "Actia",
+			"Model": "ECU-VK300",
+			"MACID": "b9:27:6b:dc:3c:q8",
+			"SerialNumber": "4CE0460D0DF55F",
+			"SIMNumber": "89148000000745800009",
+			"CustomerName": "Volvo",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"BusinessUnit": "IOT",
+			"Operator": "Beta",
+			"Description": "Description for Single Gateway 1",
+			"MetaDatakey": "key1",
+			"MetaDatavalue": "value1",
+			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev12_cert.pem",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageSuccessReason": "SUCCESS"
+		}
+	},
+	{
+		"addSingleGatewayWithMacIDAlreadyExists": {
+			"GatewayName": "Test2",
+			"GatewayType": "Advantech",
+			"Model": "Version 1",
+			"MACID": "b9:27:6b:dc:3c:a8",
+			"SerialNumber": "4E0460D0DFBCF",
+			"SIMNumber": "8914800000045800000",
+			"CustomerName": "Honda",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"BusinessUnit": "IOT",
+			"Operator": "Beta",
+			"Description": "Description for Single Gateway 2",
+			"MetaDatakey": "key4",
+			"MetaDatavalue": "value4",
+			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:a8 already exists",
+			"ToasterMessageSuccessReason": "SUCCESS"
+		}
+	},
+	{
+		"addSingleGatewayWithCertificateAlreadyExists": {
+			"GatewayName": "Test2",
+			"GatewayType": "Advantech",
+			"Model": "Version 1",
+			"MACID": "eb:b9:ee:ef:ab:wd",
+			"SerialNumber": "4E0460D0DFBCF",
+			"SIMNumber": "8914800000045800000",
+			"CustomerName": "Honda",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"BusinessUnit": "IOT",
+			"Operator": "Beta",
+			"Description": "Description for Single Gateway 2",
+			"MetaDatakey": "key4",
+			"MetaDatavalue": "value4",
+			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageFailedReason": "Certificate is already in use !",
+			"ToasterMessageSuccessReason": "SUCCESS"
+		}
+	},
+	{
+		"addSingleGatewayWithMandatoryFields": {
+			"GatewayName": "Test3",
+			"GatewayType": "Advantech",
+			"Model": "Version 2",
+			"MACID": "fb:b9:4s:ef:cb:dd",
+			"CustomerName": "Honda",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:a8 already exists",
+			"ToasterMessageSuccessReason": "SUCCESS"
+		}
+	},
+	{
+		"addSingleGatewayWithOutMandatoryFields": {
+			"GatewayName": "Test2",
+			"GatewayType": "Advantech",
+			"Model": "Version 1",
+			"MACID": "fb:b9:4c:ef:cb:dd",
+			"SerialNumber": "4CE0460D0DFECF",
+			"SIMNumber": "89148000000745890000",
+			"CustomerName": "Honda",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"BusinessUnit": "IOT",
+			"Operator": "Beta",
+			"UploadCertificate": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem"
+		}
+	},
+	{
+		"AddMultipleGatewayNewRoot": {
+			"CreateEnrollmentGroup": "Group1",
+			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS"
+		}
+	},
+	{
+		"AddMultipleGatewayWithInvalid": {
+			"CreateEnrollmentGroup": "Group1",
+			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_WithoutGatewayName.xlsx",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS"
+		}
+	},
+	{
+		"AddMultipleGatewayNewIntermediate": {
+			"CreateEnrollmentGroup": "Group1",
+			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Intermediate_New.xlsx",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS"
+		}
+	},
+	{
+		"addMultipleGatewayWithoutMandatoryFields": {
+			"CreateEnrollmentGroup": "Group1",
+			"UploadCA": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS"
+		}
+	},
+	{
+		"AddMultipleGatewayExisting": {
+			"SelectEnrollmentGroup": "test123",
+			"CAfilename": "devaug29root",
+			"UploadGatewayDetails": "E:\\ZFPROJECT\\LatestFramework\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Existing.xlsx",
+			"ToasterMessageFailed": "Failed",
+			"ToasterMessageSuccess": "SUCCESS"
+		}
+	},
+	{
+		"OperatorHasNoAccessToAddGateway": {
+			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
+		}
+	},
+	{
+		"DisableAndEnableGateway": {
+			"SearchItem": "SingleGateway1",
+			"ToasterMessageEnabled": "Gateway Enabled",
+			"ToasterMessageSuccess": "SUCCESS",
+			"ToasterMessageDisabled": "Gateway Disabled"
+		}
+	},
+	{
+		"validateDecommissionedGatewayStatus": {
+			"SearchValue": "Select",
+			"SearchValueAfterDecommisionselect": "Decommissioned"
+		}
+	},
+	{
+		"validateCommissionedGatewayStatus": {
+			"SearchValue": "Select",
+			"SearchValueAfterCommisionselect": "Commissioned"
+		}
+	},
+	{
+		"validatePreCommissionedGatewayStatus": {
+			"SearchValue": "Select",
+			"SearchValueAfterPrecommisionselect": "Pre-Commissioned"
+		}
+	},
+	{
+		"verifyClearSelectedOptionsInGatewayStatusSearchDropdown": {
+			"SearchValue": "Select"
+		}
+	},
+	{
+		"VerifyDefaultGatewayStatus": {
+			"GatewayDefaultActual": "Gateway",
+	    "ShowSearchValue": "Pre-Commissioned, Commissioned"
+		}
+	},
+	{
+		"verifySelectAllOptionInGatewayStatusSearchDropdown": {
+			"SearchValue1": "Select",
+			"SearchValueAfterSearch": "3 items selected"
+		}
+	},
+	{
+		"verifySearchOptionsSearchDropdown": {
+			"GatewayActual1": "Gateway",
+			"GatewayActual2": "Customer",
+			"GatewayActual3": "Type",
+			"GatewayActual4": "Country",
+			"GatewayActual5": "Area",
+			"GatewayActual6": "Status"
+		}
+	},
+	{
+		"verifyClearDatesFromDatePicker": {
+			"SearchValue1": "Select",
+			"SearchValueAfterSearch": "3 items selected"
+		}
+	},
+	{
+		"GatewayDetails": {
+			"GatewayDetails": "Gateway Details",
+			"Model": "Model",
+			"MACID": "MAC ID",
+			"SimNumber": "Sim Number",
+			"SerialNumber": "Serial Number",
+			"GatewayCertificate": "Gateway Certificate",
+			"EnrollmentGroup": "Enrollment Group",
+			"CustomerDetails": "Customer Details",
+			"BusinessUnit": "Business Unit",
+			"Operator": "Operator",
+			"AdditionalDetails": "Additional Details",
+			"Description": "Description",
+			"Metadata": "Metadata",
+			"GatewayLifecycle": "Gateway Lifecycle",
+			"PreCommissioned": "Pre-Commissioned",
+			"Commissioned": "Commissioned",
+			"Decommissioned": "Decommissioned"
+		}
+	},
+	{
+		"AssignAdministrator": {
+			"email": "venkata@test.com",
+			"email1": "venkata@mc.com"
+		}
+	},
+	{
+		"Fleet": {
+			"fleetname": "Sample",
+			"fleetnamenew": "Sam1",
+			"infotext": "Adding Vehicles",
+			"infotextnew": "Adding Vehicles1",
+			"vehicle": "CZC 3250",
+			"vehicle1": "CZC 3247",
+			"vehiclenew": "CZV 6232",
+			"vehiclenew1": "JD 6130R"
+		}
+	},
+	{
+		"ClientDetails": {
+			"clientName": "venkata",
+			"email": "venkata@test.com",
+			"street": "bridge street",
+			"streetNumber": "2512",
+			"telephone": "12345678912345",
+			"postCode": "9876",
+			"webSite": "howtodo.com",
+			"country": "USA",
+			"fax": "12345678978999",
+			"ToasterMsg": "Unauthorized user"
+		}
+	},
+	{
+		"GatewayHomePage": {
+			"Show": "Show",
+			"Precommissioned": "Pre-Commissioned, Commissioned",
+			"Search": "Search",
+			"From": "From",
+			"To": "To",
+			"Gateway": "From",
+			"AddGateway": "Add Gateway",
+			"GatewayName": "Gateway Name",
+			"Customer": "Customer",
+			"Type": "Type",
+			"Country": "Country",
+			"Area": "Area",
+			"LastUpdated": "Last Updated",
+			"Status": "Status",
+			"Connectivity": "Connectivity",
+			"MoreInfo": "More Info"
+		}
+	},
+	{
+		"ManageClientHeader": {
+			"title": "Manage Clients",
+			"Client": "Client",
+			"Area": "Area",
+			"Country": "Country",
+			"Telephone": "Telephone",
+			"CreatedDateTime": "Created Date & Time",
+			"ClientStatus": "Client Status"
+		}
+	},{
+              "ClientDetails": {
+                     "clientName": "venkata",
+                     "email": "venkata@test.com",
+                     "street": "bridge street",
+                     "information": "ZF Automation",
+                     "streetNumber": "2512",
+                     "telephone": "12345678912345",
+                     "postCode": "9876",
+                     "webSite": "howtodo.com",
+                     "country": "USA",
+                     "fax": "12345678978999",
+                     "ToasterMsg": "Unauthorized user",
+                     "clientNameEmpty": "           ",
+                     "clientNameSpecialChar": "Client123#%%^",
+                     "clientNameWithAbove32Char": "Client Name with more than 32 characters",
+                     "clientNameErrorMsg": "The name contains unsupported characters. Please, enter valid name.",
+                     "clientEmptyEmail": "     ",
+                     "clientInvalidEmail": "!@#$%^&*()",
+                     "clientEmailErrorMsg": "The e-mail address is not valid. Please enter a valid e-mail address.",
+                     "clientTelephoneEmpty": "      ",
+                     "clientTelephoneSpecialChar": "#%%^"
+              }
+       },
+	
+	{
+		"ClientMoreDetails": {
+			"clientName": "Openmatics 1",
+			"email": "assdsdsf@gmail.com",
+			"telephone": "+666 6666 6666 666",
+			"street": "123",
+			"streetNumber": "street11112",
+			"country": "Germany",
+			"fax": "12"
+		}
+	},
+	{
+		"EditSingleGateway": {
+		"EditGatewayName": "SingleGateway1",
+			"GatewayName": "testA111",
+			"GatewayType": "Advantech",
+			"Model": "Version 2",
+			"SerialNumber": "testA3",
+			"SIMNumber": "testA4",
+			"CustomerName": "testA5",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"BusinessUnit": "testB1",
+			"Operator": "testB2",
+			"Description": "testB3",
+			"MetaDatakey1": "testMK1",
+			"MetaDatavalue1": "testMV1",
+			"MetaDatakey2": "testMK2",
+			"MetaDatavalue2": "testMV2",
+			"MetaDatakey3": "testMK3",
+			"MetaDatavalue3": "testBMV3",
+			"MetaDatakey4": "testMK3",
+			"MetaDatavalue4": "testBMV3",
+			"MetaDatakey5": "testMK3",
+			"MetaDatavalue5": "testBMV3",
+			"MetaDatakey6": "testMK3",
+			"MetaDatavalue6": "testBMV3",
+			"UploadCertificate": "D:\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev10_cert.pem",
+			"ToasterMsgSuccess": "SUCCESS",
+			"ToasterMsgSuccesUpdated": "was updated successfully"
+		}
+	},
+	{
+		"ShowDropdownGateway": {
+			"GatewayName": "testA111",
+			"GatewayType": "Advantech",
+			"CustomerName": "Volvo",
+			"CustomerCountry": "India",
+			"CustomerArea": "Delhi",
+			"status": "Pre-Commissioned",
+			"Operator": "testB2"
+		}
+	},
+	{
+		"GatewayLifeCycle": {
+			"ShowGateway1": "Pre-Commissioned",
+			"ShowGateway2": "Commissioned",
+			"ShowGateway3": "Decommissioned",
+			"ShowGateway4": "Pre-Commissioned, Decommissioned",
+			"ShowGateway5": "Pre-Commissioned, Commissioned",
+			"ShowGateway6": "Commissioned, Decommissioned",
+			"ShowGateway7": "3 items selected",
+			"ShowGateway8": "Select"
+		}
+	},
+	{
+		"ColumnVerification": {
+			"GatewayColumn0": "Gateway Name",
+			"GatewayColumn1": "Customer",
+			"GatewayColumn2": "Type",
+			"GatewayColumn3": "Country",
+			"GatewayColumn4": "Area",
+			"GatewayColumn5": "Last Updated",
+			"GatewayColumn6": "Status",
+			"GatewayColumn7": "Connectivity",
+			"GatewayColumn8": "More Info"
+		}
+	},
+	{
+		"EditSingleGateway": {
+			"SortCategory1": "Gateway",
+			"SortCategory2": "Customer",
+			"SortCategory3": "Type",
+			"SortCategory4": "Country",
+			"SortCategory5": "Area",
+			"SortCategory6": "Status"
+		}
+	}
+]

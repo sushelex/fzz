@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [xmlsuite]">
+  <test thread-count="5" name="Single Gateway(failed)">
+    <classes>
+      <class name="zf.test.ZFGatewayHomeTest">
+        <methods>
+          <include name="Tc05VerifyGatewayColumn"/>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+          <include name="Tc02EditSingleGateway"/>
+        </methods>
+      </class> <!-- zf.test.ZFGatewayHomeTest -->
+    </classes>
+  </test> <!-- Single Gateway(failed) -->
+</suite> <!-- Failed suite [xmlsuite] -->

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="2" ignored="0" total="4" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="xmlsuite" duration-ms="561989" started-at="2019-03-26T06:30:15Z" finished-at="2019-03-26T06:39:37Z">
+    <groups>
+    </groups>
+    <test name="Single Gateway" duration-ms="561989" started-at="2019-03-26T06:30:15Z" finished-at="2019-03-26T06:39:37Z">
+      <class name="zf.test.ZFGatewayHomeTest">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="beforeMethod" is-config="true" duration-ms="15063" started-at="2019-03-26T06:30:16Z" finished-at="2019-03-26T06:30:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc02EditSingleGateway()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="Tc02EditSingleGateway()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="Tc02EditSingleGateway" duration-ms="209146" started-at="2019-03-26T06:30:31Z" finished-at="2019-03-26T06:34:00Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[TIMEOUT EXCEPTION element does not exist after waiting 90 seconds - sendkeys is not working]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: TIMEOUT EXCEPTION element does not exist after waiting 90 seconds - sendkeys is not working
+at org.testng.Assert.fail(Assert.java:96)
+at framework.ExtentReport.elementCatch(ExtentReport.java:254)
+at framework.ElementManager.elementSendKeys(ElementManager.java:122)
+at zf.pages.ZFGatewayHomePage.editSingleGateway(ZFGatewayHomePage.java:646)
+at zf.test.ZFGatewayHomeTest.Tc02EditSingleGateway(ZFGatewayHomeTest.java:152)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Tc02EditSingleGateway -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="afterMethod" is-config="true" duration-ms="1321" started-at="2019-03-26T06:34:00Z" finished-at="2019-03-26T06:34:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Tc02EditSingleGateway status=FAILURE method=ZFGatewayHomeTest.Tc02EditSingleGateway()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc02EditSingleGateway()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="beforeMethod" is-config="true" duration-ms="12238" started-at="2019-03-26T06:34:01Z" finished-at="2019-03-26T06:34:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc03DropdownGateway()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Tc03DropdownGateway()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="Tc03DropdownGateway" duration-ms="139423" started-at="2019-03-26T06:34:14Z" finished-at="2019-03-26T06:36:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Tc03DropdownGateway -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="afterMethod" is-config="true" duration-ms="716" started-at="2019-03-26T06:36:33Z" finished-at="2019-03-26T06:36:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Tc03DropdownGateway status=SUCCESS method=ZFGatewayHomeTest.Tc03DropdownGateway()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc03DropdownGateway()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="beforeMethod" is-config="true" duration-ms="13069" started-at="2019-03-26T06:36:34Z" finished-at="2019-03-26T06:36:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc04GatewaySortCatagory()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Tc04GatewaySortCatagory()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="Tc04GatewaySortCatagory" duration-ms="72801" started-at="2019-03-26T06:36:47Z" finished-at="2019-03-26T06:38:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Tc04GatewaySortCatagory -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="afterMethod" is-config="true" duration-ms="685" started-at="2019-03-26T06:38:00Z" finished-at="2019-03-26T06:38:00Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Tc04GatewaySortCatagory status=SUCCESS method=ZFGatewayHomeTest.Tc04GatewaySortCatagory()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc04GatewaySortCatagory()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="beforeMethod" is-config="true" duration-ms="13007" started-at="2019-03-26T06:38:00Z" finished-at="2019-03-26T06:38:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc05VerifyGatewayColumn()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="Tc05VerifyGatewayColumn()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="Tc05VerifyGatewayColumn" duration-ms="82296" started-at="2019-03-26T06:38:13Z" finished-at="2019-03-26T06:39:36Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[TIMEOUT EXCEPTION element does not exist after waiting 90 seconds - Pre-Commissioned, Commissioned]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: TIMEOUT EXCEPTION element does not exist after waiting 90 seconds - Pre-Commissioned, Commissioned
+at org.testng.Assert.fail(Assert.java:96)
+at framework.ExtentReport.elementCatch(ExtentReport.java:258)
+at framework.ElementManager.elementAvailability(ElementManager.java:521)
+at zf.pages.ZFGatewayHomePage.verifyGatewayColumn(ZFGatewayHomePage.java:752)
+at zf.test.ZFGatewayHomeTest.Tc05VerifyGatewayColumn(ZFGatewayHomeTest.java:173)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Tc05VerifyGatewayColumn -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255]" name="afterMethod" is-config="true" duration-ms="1299" started-at="2019-03-26T06:39:36Z" finished-at="2019-03-26T06:39:37Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Tc05VerifyGatewayColumn status=FAILURE method=ZFGatewayHomeTest.Tc05VerifyGatewayColumn()[pri:0, instance:zf.test.ZFGatewayHomeTest@4b9e255] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void zf.test.ZFGatewayHomeTest.Tc05VerifyGatewayColumn()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- zf.test.ZFGatewayHomeTest -->
+      <class name="framework.Hooks">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:framework.Hooks@4f51b3e0]" name="beforeTest" is-config="true" duration-ms="409" started-at="2019-03-26T06:30:15Z" finished-at="2019-03-26T06:30:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:framework.Hooks@4f51b3e0]" name="afterTest" is-config="true" duration-ms="491" started-at="2019-03-26T06:39:37Z" finished-at="2019-03-26T06:39:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- framework.Hooks -->
+    </test> <!-- Single Gateway -->
+  </suite> <!-- xmlsuite -->
+</testng-results>
