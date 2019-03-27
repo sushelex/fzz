@@ -44,7 +44,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithAllValidInputs");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,10000);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -87,7 +87,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithMacIDAlreadyExists");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,10000);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -132,7 +132,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithCertificateAlreadyExists");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,10000);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -175,7 +175,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithMandatoryFields");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,10000);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -240,11 +240,15 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 
 
 	public void verifyToastermessage(By ByType, String Jsondata) {
-		waitForMessage(ByType,9);
-		String toasterText = elementGetText(ByType);
-
+		try {
+		String toasterText = waitElementVisibleGetText(ByType,300);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
+	} catch (InterruptedException e) {
+		
+		TestLogger.appInfo(e.getMessage());
 	}
+	}
+	
 	public void nextButtonVisibility(By ByType,String message) {
 		try {
 

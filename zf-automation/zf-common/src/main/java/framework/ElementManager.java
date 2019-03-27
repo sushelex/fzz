@@ -690,9 +690,10 @@ public class ElementManager  extends ExtentReport{
 
 		try {
 
-			FluentWait<SearchContext> wait = new FluentWait(DriverManager.getDriverInstance()).withTimeout(timeoutSeconds, TimeUnit.SECONDS).ignoring(NotFoundException.class);
-			visible = wait.until(elementVisible(byType));
-			sleep(12000);
+			
+			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
+			
 		} catch (TimeoutException e) {
 			visible = false;
 		} 
@@ -704,35 +705,44 @@ public class ElementManager  extends ExtentReport{
 		return visible;
 
 	}
+	
+	public String waitElementVisibleGetText(By byType, long timeoutSeconds) throws InterruptedException {
+		String Text = null;
+		try {
+
+			
+			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(byType));
+			Text = elementGetText(byType);
+		} 
+		catch (Exception exceptionMessage) {
+			errormessage = "Element not found";
+		
+		elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+		}
+		return Text;
+
+	}
 
 	public boolean waitElementToBeVisibleSendValue(By byType, long timeoutSeconds,String value) throws InterruptedException {
 		boolean visible = false;
 
 		try {
-
-			FluentWait<SearchContext> wait = new FluentWait(DriverManager.getDriverInstance()).withTimeout(timeoutSeconds, TimeUnit.SECONDS).ignoring(NotFoundException.class);
-			visible = wait.until(elementVisible(byType));
-			Thread.sleep(12000);
+			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
 		} catch (TimeoutException e) {
 			visible = false;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			elementSendKey(byType, value);
+			elementSendKeys(byType, value);
 		}
 		return visible;
 
 	}
 
-	private static Function<SearchContext, Boolean> elementVisible(final By byType) {
-		return new Function<SearchContext, Boolean>() {
-			public Boolean apply(@Nonnull SearchContext context) {
-				return context != null ? context.findElement(byType).isDisplayed() : false;
-			}
-		};
-	}
-
+	
 	public boolean waitForMessage(By element, int waitDuration) {
 		try {
 

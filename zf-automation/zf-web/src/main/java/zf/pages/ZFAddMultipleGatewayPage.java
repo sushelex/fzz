@@ -34,7 +34,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 	public void validatUserInterface() {
 		try {
 		zfgatewayhomepage.clickAddGateway();
-		waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,10000);
+		waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
 		elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
 		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
@@ -59,7 +59,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 	public void validateLookAndFeelMultipleGateway() {
 		try {
 		zfgatewayhomepage.clickAddGateway();
-		waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,10000);
+		waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
 		elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
 		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
@@ -134,7 +134,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
 			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT);
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,10000);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
 			//verifyToastermessage("ToasterMessageSuccess");
 			verifyToastermessage("ToasterMessageFailed");
 		}catch(Exception e) {
@@ -176,7 +176,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 		try {
 			JsonReader.getJsonObject("addMultipleGatewayWithoutMandatoryFields");
 			zfgatewayhomepage.clickAddGateway();
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,10000);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 			
 			addMultipleGatewayWithoutGatewayDetails();
@@ -204,7 +204,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 
 		try {
 			refreashPage();
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,10000);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 			
 			elementClear(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
@@ -224,10 +224,10 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 		try {
 			refreashPage();
 			
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,10000);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 			
-			waitElementToBeVisibleSendValue(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,10000,jsonData.getJsonData("CreateEnrollmentGroup"));
+			waitElementToBeVisibleSendValue(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,300,jsonData.getJsonData("CreateEnrollmentGroup"));
 			
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
 			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
@@ -261,8 +261,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 	public void verifyToastermessage(String Jsondata) {
 		try {
 
-			waitForMessage(ADDMULTIPLEGATWAY_TOASTER_DT,9);
-			String toasterText = elementGetText(ADDMULTIPLEGATWAY_TOASTER_DT);
+			String toasterText = waitElementVisibleGetText(ADDMULTIPLEGATWAY_TOASTER_DT,300);
 			compareText(jsonData.getJsonData(Jsondata),toasterText);
 		}
 		catch(Exception e) {

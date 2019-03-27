@@ -163,8 +163,8 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void clickAddGateway() {
 
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
-			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,15000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
+			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
 			sleep(2500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -175,7 +175,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void verifyManageSoftwareInterface()
 	{
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
 			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
 			elementClick(GATEWAYSEARCH_BT);
@@ -198,7 +198,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
@@ -216,7 +216,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{		
 		JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
@@ -232,7 +232,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void verifyOperatorHasNoAccessToDecommissionGateway()
 	{
 		try {JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
-		waitElementVisibleClick(GATEWAY_ICON,5000);
+		waitElementVisibleClick(GATEWAY_ICON,300);
 		waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
 		waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
 		elementClick(GATEWAYSEARCH_BT);
@@ -255,7 +255,7 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {
 			JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 			elementClick(GATEWAY_ICON);
-			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,15000);
+			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
 			verifyToastermessage(GATEWAY_TOASTER_MSG,"ToasterMessageFailed");
 			elementClick(GATEWAY_ADDGATEWAY_BT);
 			verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
@@ -269,7 +269,7 @@ public class ZFGatewayHomePage extends ElementManager{
 
 		try {
 			JsonReader.getJsonObject("DisableAndEnableGateway");
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 
 			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("SearchItem"));
 			elementClick(GATEWAY_SEARCH_ICON);
@@ -279,10 +279,10 @@ public class ZFGatewayHomePage extends ElementManager{
 
 			if(elementDisplayed(GATEWAY_ENABLE_BT)) {
 				elementClick(GATEWAY_ENABLE_BT);
-				sleep(5000);
+				sleep(300);
 				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled");
 				elementClick(GATEWAY_DISABLE_BT);
-				sleep(5000);
+				sleep(300);
 				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled");
 
 			}else if(elementDisplayed(GATEWAY_DISABLE_BT)) {
@@ -327,7 +327,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("GatewayDetails");
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
@@ -365,7 +365,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{ 
 		try {
 		JsonReader.getJsonObject("VerifyDefaultGatewayStatus");	
-		waitElementVisibleClick(GATEWAY_ICON,5000);
+		waitElementVisibleClick(GATEWAY_ICON,300);
 //		compareText(elementGetText(GATEWAYDEFAULT),jsonData.getJsonData("GatewayDefaultActual"));
 		compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("ShowSearchValue"));
 	      }
@@ -377,7 +377,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void verifyCommissionedFilterSearch()
 	{
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
 			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
 			elementClick(GATEWAYSEARCH_BT);
@@ -391,7 +391,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		try {
 			JsonReader.getJsonObject("validatePreCommissionedGatewayStatus"); 
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementClick(GATEWAY_SEARCH_DD);
 			elementClick(GATEWAY_PRECOMMISION_CB);	
 			elementClick(GATEWAY_COMMISION_CB);	
@@ -400,7 +400,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			elementClick(GATEWAY_SEARCH_DD);
 			elementClick(GATEWAY_PRECOMMISION_CB);	
 			compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("SearchValueAfterPrecommisionselect"));
-			waitElementVisibleClick(GATEWAY_SEARCH_ICON, 5000);
+			waitElementVisibleClick(GATEWAY_SEARCH_ICON, 300);
 			sleep(3000);
 			validateCoumns(GATEWAY_STATUS_CM, "ShowSearchValueAfterPrecommisionselect");
 
@@ -415,7 +415,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		try {
 			JsonReader.getJsonObject("validateCommissionedGatewayStatus");
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
 			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
 			elementClick(GATEWAY_COMMISION_CB);	
@@ -435,14 +435,14 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		try {
 			JsonReader.getJsonObject("validateDecommissionedGatewayStatus");
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementClick(GATEWAY_SEARCH_DD);
 			elementClick(GATEWAY_PRECOMMISION_CB);	
 			elementClick(GATEWAY_COMMISION_CB);	
 			compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("SearchValue"));	
 			elementClick(GATEWAY_DECOMMISION_CB);
 			compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("SearchValueAfterDecommisionselect"));
-			waitElementVisibleClick(GATEWAY_SEARCH_ICON, 5000);
+			waitElementVisibleClick(GATEWAY_SEARCH_ICON, 300);
 			sleep(3000);
 			validateCoumns(GATEWAY_NOGATEWAY_TXT, "ShowSearchValueAfterDecommisionselect");
 
@@ -470,7 +470,7 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {				
 
 			JsonReader.getJsonObject("verifyClearSelectedOptionsInGatewayStatusSearchDropdown"); 
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementClick(GATEWAY_SEARCH_DD);
 			elementClick(GATEWAY_PRECOMMISION_CB);	
 			elementClick(GATEWAY_COMMISION_CB);		
@@ -490,7 +490,7 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {
 
 			JsonReader.getJsonObject("verifySelectAllOptionInGatewayStatusSearchDropdown"); 
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementClick(GATEWAY_SEARCH_DD);
 			elementClick(GATEWAY_PRECOMMISION_CB);	
 			elementClick(GATEWAY_COMMISION_CB);	
@@ -511,7 +511,7 @@ public class ZFGatewayHomePage extends ElementManager{
 
 	public void verifyClearDatesFromDatePicker(){
 		try {                             
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementClick(GATEWAY_FROMDATE);
 			 elementClick(GATEWAY_TESTDATE1);
 			elementClick(GATEWAY_TODATE);
@@ -528,8 +528,8 @@ public class ZFGatewayHomePage extends ElementManager{
 
 	public void verifySearchOptionsSearchDropdown(){
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
-			waitElementVisibleClick(GATEWAY_CATERGORY_DD,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
+			waitElementVisibleClick(GATEWAY_CATERGORY_DD,300);
 			JsonReader.getJsonObject("verifySearchOptionsSearchDropdown");
 			compareText(elementGetText(SORT_GATEWAY),jsonData.getJsonData("GatewayActual1"));
 			compareText(elementGetText(SORT_CUSTOMER),jsonData.getJsonData("GatewayActual2"));
@@ -631,7 +631,7 @@ public class ZFGatewayHomePage extends ElementManager{
 
 	public void verifySearchGatewayDateRange() {
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			
 			elementClick(GATEWAY_FROMDATE);
 			String fromDate = elementGetText(GATEWAY_TESTDATE1);
@@ -665,11 +665,11 @@ public class ZFGatewayHomePage extends ElementManager{
 			JsonReader.getJsonObject("EditSingleGateway");
 			clickEditGateway();
 			elementSendKeys(ADDSINGLEGATWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATWAY_TYPE_DD,10000);
+			waitElementVisibleClick(ADDSINGLEGATWAY_TYPE_DD,300);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
-			waitElementVisibleClick(ADDSINGLEGATWAYSERIALNUMBER_EB, 5000);
+			waitElementVisibleClick(ADDSINGLEGATWAYSERIALNUMBER_EB, 300);
 			elementSendKeys(ADDSINGLEGATWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber"));
 			elementSendKeys(ADDSINGLEGATWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
 			elementClick(ADDSINGLEGATWAY_NEXT_BT);
@@ -696,25 +696,25 @@ public class ZFGatewayHomePage extends ElementManager{
 			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB2,jsonData.getJsonData("MetaDatavalue1"));
 			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB3,jsonData.getJsonData("MetaDatakey1"));
 			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB3, jsonData.getJsonData("MetaDatavalue1"));
-			waitElementVisibleClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT, 5000);
+			waitElementVisibleClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT, 300);
 			elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage("ToasterMsgSuccess");
 			verifyToastermessage("ToasterMsgSuccesUpdated");
 
 			//Validating the edited values 
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("GatewayName"));
 			elementClick(GATEWAY_SEARCH_ICON);
 			if(compareValue(elementGetText(GATEWAYNAME), jsonData.getJsonData("GatewayName"))) {
-				waitElementVisibleClick(MORE_INFO,5000);
-				waitElementVisibleClick(EDIT_GATEWAY,5000);
+				waitElementVisibleClick(MORE_INFO,300);
+				waitElementVisibleClick(EDIT_GATEWAY,300);
 				testPassed("Edit Gateway functionality is validated"+jsonData.getJsonData("GatewayName"));
 			}else {
 				testFailed("Edit Gateway functionality is not validated"+jsonData.getJsonData("GatewayName"));
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 	}
 
@@ -750,7 +750,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				compareTextIgnoreCase(customerStatus.get(i), jsonData.getJsonData("status"));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 	}
 
@@ -765,16 +765,9 @@ public class ZFGatewayHomePage extends ElementManager{
 			beforeSort.forEach(x->{
 				afterSort.forEach(y -> {
 				if(x.equals(y) )
-					compareTextIgnoreCase(x,y);
-			
+					compareTextIgnoreCase(x,y);		
 				});
 				});
-//			for(int i=0;i<afterSort.size();i++) {
-//				
-//				compareText(beforeSort.get(i),afterSort.get(i));
-//				
-//			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -799,7 +792,7 @@ public class ZFGatewayHomePage extends ElementManager{
 						
 			elementAvailability(GATEWAY_SEARCH_EB,"GATEWAY_SEARCH_EB");
 			elementAvailability(GATEWAY_SEARCH_DD,"GATEWAY_SEARCH_DD");
-			elementClick(GATEWAY_SEARCH_DD);
+			waitElementVisibleClick(GATEWAY_SEARCH_DD,300);
 			elementAvailability(GATEWAY_DECOMMISION_CB,"GATEWAY_DECOMMISION_CB");
 			elementAvailability(GATEWAY_COMMISION_CB,"GATEWAY_COMMISION_CB");
 			elementAvailability(GATEWAY_PRECOMMISION_CB,"GATEWAY_PRECOMMISION_CB");
@@ -809,7 +802,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			elementAvailability(GATEWAY_SHOW_TXT,"GATEWAY_SHOW_TXT");
 				
 		} catch (Exception e) {
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 	}
 
@@ -845,7 +838,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			compareText(ActualTextComm2, jsonData.getJsonData("ShowGateway3"));
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 	}	
 
@@ -853,12 +846,12 @@ public class ZFGatewayHomePage extends ElementManager{
 	public ZFAddSingleGatewayPage clickEditGateway() {
 
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("EditGatewayName"));
 			elementClick(GATEWAY_SEARCH_ICON);
 			if(compareValue(elementGetText(GATEWAYNAME), jsonData.getJsonData("EditGatewayName"))) {
-				waitElementVisibleClick(MORE_INFO,5000);
-				waitElementVisibleClick(EDIT_GATEWAY,5000);
+				waitElementVisibleClick(MORE_INFO,300);
+				waitElementVisibleClick(EDIT_GATEWAY,300);
 			}else {
 				testFailed("Gateway search value is not displayed "+jsonData.getJsonData("EditGatewayName"));
 			}
@@ -874,15 +867,15 @@ public class ZFGatewayHomePage extends ElementManager{
 	public ZFAddSingleGatewayPage searchItemWithGatewayCategory(By byType, String testdata) {
 
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
-			waitElementVisibleClick(GATEWAY_CATERGORY_DD,15000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
+			waitElementVisibleClick(GATEWAY_CATERGORY_DD,3);
 			elementClick(byType);
 			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData(testdata));
-			waitElementVisibleClick(GATEWAY_SEARCH_ICON,5000);
+			waitElementVisibleClick(GATEWAY_SEARCH_ICON,300);
 			sleep(3000);
 		} catch (InterruptedException e) {
 
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 		return new ZFAddSingleGatewayPage();
 	}
@@ -892,14 +885,14 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		List<String> beforesort = null;
 		try {			
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			beforesort = elementsGetText(GATEWAY_GATEWAYNAMESORTED_LT);
-			waitElementVisibleClick(GATEWAY_GATEWAYNAMESORT_ICON,15000);
+			waitElementVisibleClick(GATEWAY_GATEWAYNAMESORT_ICON,300);
 			elementClick(GATEWAY_GATEWAYNAMESORT_ICON);
 
 		} catch (InterruptedException e) {
 
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 		return beforesort;
 	}
@@ -908,13 +901,13 @@ public class ZFGatewayHomePage extends ElementManager{
 	public ZFAddSingleGatewayPage clickGatewayLifeCycle() {
 
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			sleep(2500);
-			waitElementVisibleClick(GATEWAY_DROPDOWN,15000);
+			waitElementVisibleClick(GATEWAY_DROPDOWN,1300);
 
 		} catch (InterruptedException e) {
 
-			e.printStackTrace();
+			TestLogger.appInfo(e.getMessage());
 		}
 		return new ZFAddSingleGatewayPage();
 	}
@@ -923,9 +916,9 @@ public class ZFGatewayHomePage extends ElementManager{
 	public ZFAddSingleGatewayPage getColumnVerification() {
 
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,5000);
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			sleep(2500);
-			waitElementVisibleClick(GATEWAY_DROPDOWN,15000);
+			waitElementVisibleClick(GATEWAY_DROPDOWN,300);
 
 		} catch (InterruptedException e) {
 
@@ -940,9 +933,15 @@ public class ZFGatewayHomePage extends ElementManager{
 
 
 	public void verifyToastermessage(String Jsondata) {
-		waitForMessage(ADDSINGLEGATWAY_TOASTER_DT,9);
-		String toasterText = elementGetText(ADDSINGLEGATWAY_TOASTER_DT);
-		compareText(jsonData.getJsonData(Jsondata),toasterText);
+		String toasterText;
+		try {
+			toasterText = waitElementVisibleGetText(ADDSINGLEGATWAY_TOASTER_DT,300);
+			compareText(jsonData.getJsonData(Jsondata),toasterText);
+		} catch (InterruptedException e) {
+			
+			TestLogger.appInfo(e.getMessage());
+		}
+		
 	}
 
 

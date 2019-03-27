@@ -51,7 +51,7 @@ public class ZFAssetTest extends ZFAssetPage{
 	}
 
 	
-	//@Test
+	@Test
 	public void TC07CreateAssetstWithActions() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		CreateAssetstWithActions();
@@ -62,25 +62,25 @@ public class ZFAssetTest extends ZFAssetPage{
 		editExistAssetDetails();
 	}
 	
-//	@Test
+	@Test
 	public void TC09CreateChildAssettWithAllFeilds(){
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		createChildAssetWithAllFeilds();
 	}
 	
-//	@Test
+	@Test
 	public void TC10CreateAssetstWithAllAutopopulatedMetadataKeys(){
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		createAssetstWithAllAutopopulatedMetadataKeys();
 	}
 	
-//	@Test
+	@Test
 	public void TC11CreateAssetstWithMandatoryAutopopulatedMetadataKeys(){
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		createAssetstWithMandatoryAutopopulatedMetadataKeys();
 	}
 	
-//	@Test
+	@Test
 		public void TC12FieldValidationsMandatoryFieldVin(){
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 			fieldValidationsMandatoryFieldVin();
@@ -91,49 +91,49 @@ public class ZFAssetTest extends ZFAssetPage{
 		verifyVehicleAssetstWithMandatoryAutopopulatedMetadataKeys();
 		}
 		
-	//	@Test
+		@Test
 			public void TC14CreateAssetWithoutMandatoryInput(){
 			microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 			createAssetWithoutMandatoryInput();
 			}
 			
-		//@Test
-		public void TC14ExecuteActionWithoutParamater(){
+		@Test
+		public void TC15ExecuteActionWithoutParamater(){
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		executeActionWithoutParamater();
 		}
-	//	@Test
-		public void TC14ExecuteActionWithParamater(){
+		@Test
+		public void TC16ExecuteActionWithParamater(){
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		executeActionWithParamater();
 		}
 		@Test
-	public void TC09editAssetstActions() {
+	public void TC17EditAssetstActions() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		editAssetstActions();
 	}
 		@Test
-	public void TC10verifyAssetActionsUI() {
+	public void TC18VerifyAssetActionsUI() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		verifyAssetActionsUI();
 	}
 
-//	@Test
-	public void TC03OperatorHasNoAccessToCreateAsset()
+	@Test
+	public void TC19OperatorHasNoAccessToCreateAsset()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		operatorHasNoAccessToCreateAsset();
 	}
 	
-	//@Test
-	public void TC04UserWithNoPrivilegeCannotAccessAssetsPage()
+	@Test
+	public void TC20UserWithNoPrivilegeCannotAccessAssetsPage()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoPrivilegeUserName(),EnvironmentManager.getNoPrivilegePassword());
 		userWithNoPrivilegeCannotAccessAssetsPage();
 	}
 
-//	@Test
-	public void TC13SortAssetsInAssetsHomepage()
+	@Test
+	public void TC21SortAssetsInAssetsHomepage()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		SortAssetsInAssetsHomepage();

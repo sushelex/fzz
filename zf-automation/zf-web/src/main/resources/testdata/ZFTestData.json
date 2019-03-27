@@ -139,6 +139,7 @@
 		"verifyVehicleAssetstWithMandatoryAutopopulatedMetadataKeys": {
 			"Country": "India",
 			"Area": "Kerala",
+			"LocationAddress": "Test",
 			"AssetName": "MandatoryAutopopulatedMetadata",
 			"AssetType": "Bus",
 			"MetaDatalicensePlate": "licensePlate",

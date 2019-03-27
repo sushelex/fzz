@@ -61,10 +61,10 @@ public class ZFClientHomePage extends ElementManager{
 
 	public void manageCleitntsStaticValidation()
 	{
-		//			waitElementVisibleClick(MANAGECLIENTS_HEADER_ST, 10000);
+		//			waitElementVisibleClick(MANAGECLIENTS_HEADER_ST, 300);
 		JsonReader.getJsonObject("ManageClientHeader");
 		try {
-			waitElementVisibleClick(CLIENTS_BT, 10000);
+			waitElementVisibleClick(CLIENTS_BT, 300);
 
 			jsonData.getJsonData("title").equals(elementGetText(MANAGECLIENTHEADER));
 			sleep(5000);
@@ -92,9 +92,9 @@ public class ZFClientHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("ClientMoreDetails");
 		try {
-			waitElementVisibleClick(CLIENTS_BT, 10000);
-			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 20000);
-			waitElementVisibleClick(MOREDETAILS_BT, 2000);
+			waitElementVisibleClick(CLIENTS_BT, 300);
+			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 300);
+			waitElementVisibleClick(MOREDETAILS_BT, 300);
 			compareText(elementGetText(CLIENTNAME), jsonData.getJsonData("clientName"));
 			compareText(elementGetText(CLIENTEMAIL), jsonData.getJsonData("email"));
 			compareText(elementGetText(CLIENTTELEPHONE), jsonData.getJsonData("telephone"));
@@ -103,7 +103,7 @@ public class ZFClientHomePage extends ElementManager{
 			compareText(elementGetText(CLIENTCOUNTRY), jsonData.getJsonData("country"));
 			compareText(elementGetText(CLIENTFAX), jsonData.getJsonData("fax"));
 			compareText(elementGetText(CLIENTWEBSITE), jsonData.getJsonData("WebSite"));
-			waitElementVisibleClick(CANCEL_BT, 1000);
+			waitElementVisibleClick(CANCEL_BT, 300);
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
 		}
@@ -114,7 +114,7 @@ public class ZFClientHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("ManageClientHeader");
 		try {
-			waitElementVisibleClick(CLIENTS_BT, 10000);
+			waitElementVisibleClick(CLIENTS_BT, 300);
 			elementAvailability(ZFLOGO);
 			elementAvailability(ZFPAGEHEADER);
 			elementAvailability(ZFUSERIMAGE);
@@ -132,8 +132,8 @@ public class ZFClientHomePage extends ElementManager{
 		JsonReader.getJsonObject("ManageClientHeader");
 
 		try {
-			waitElementVisibleClick(CLIENTS_BT, 10000);
-			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 20000);
+			waitElementVisibleClick(CLIENTS_BT, 300);
+			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 300);
 			elementAvailability(ADDSUBCLIENTBUTTON);
 			elementAvailability(EDITCLIENT_BT);
 			elementAvailability(MOREDETAILS_BT);
@@ -169,9 +169,9 @@ public class ZFClientHomePage extends ElementManager{
 	}
 	public void navigateToClientPage() {
 		try {
-			waitElementVisibleClick(CLIENTS_BT, 10000);
-			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 20000);
-			waitElementVisibleClick(ADDSUBCLIENTBUTTON, 20000);
+			waitElementVisibleClick(CLIENTS_BT, 300);
+			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 300);
+			waitElementVisibleClick(ADDSUBCLIENTBUTTON, 300);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

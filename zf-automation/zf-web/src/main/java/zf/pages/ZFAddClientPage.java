@@ -54,7 +54,7 @@ public class ZFAddClientPage extends ElementManager {
 			elementSendKeys(ADDSUBCLIENT_CLIENTCOUNTRY_EB,jsonData.getJsonData("country"));
 			elementSendKeys(ADDSUBCLIENT_CLIENTFAX_EB,jsonData.getJsonData("fax"));
 			elementClick(CONTINUEBUTTONCLIENTDETAILSSECTION_BT);
-			waitElementToBeVisibleSendValue(EMAILINPUTASSIGNADMIN_EB, 10000, jsonData.getJsonData("email"));
+			waitElementToBeVisibleSendValue(EMAILINPUTASSIGNADMIN_EB, 300, jsonData.getJsonData("email"));
 			elementClick(INVITEBUTTON_BT);
 			elementClick(CONTINUEBUTTONASSIGNADMIN_BT);
 			compareText(elementGetText(PREVIEWCLIENTNAME), jsonData.getJsonData("clientName"));
@@ -76,7 +76,7 @@ public class ZFAddClientPage extends ElementManager {
 			JsonReader.getJsonObject("ClientDetails");
 			elementSendKeys(ADDSUBCLIENT_CLIENTNAME_EB,jsonData.getJsonData("clientName"));
 			elementClick(CONTINUEBUTTONCLIENTDETAILSSECTION_BT);
-			waitElementToBeVisibleSendValue(EMAILINPUTASSIGNADMIN_EB, 10000, jsonData.getJsonData("email"));
+			waitElementToBeVisibleSendValue(EMAILINPUTASSIGNADMIN_EB, 300, jsonData.getJsonData("email"));
 			elementClick(INVITEBUTTON_BT);
 			elementClick(CONTINUEBUTTONASSIGNADMIN_BT);
 			compareText(elementGetText(PREVIEWCLIENTNAME), jsonData.getJsonData("clientName"));
@@ -123,8 +123,12 @@ public class ZFAddClientPage extends ElementManager {
 	}
 
 	public void verifyToastermessage(String Jsondata) {
-		waitForMessage(CREATECLIENTCREATETOASTER,9);
-		String toasterText = elementGetText(CREATECLIENTCREATETOASTER);
+	try {
+		String toasterText = waitElementVisibleGetText(CREATECLIENTCREATETOASTER,300);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
+	} catch (InterruptedException e) {
+		
+		TestLogger.appInfo(e.getMessage());
+	}
 	}
 }

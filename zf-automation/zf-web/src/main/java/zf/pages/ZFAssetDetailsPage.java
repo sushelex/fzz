@@ -117,8 +117,8 @@ public class ZFAssetDetailsPage extends ElementManager{
 			zfAssetPage.createAssetstWithAllFeilds();
 			JsonReader.getJsonObject("TCO6CreateAssetstWithAllFeilds");
 	//		zfAssetPage.selectAssetDetails("TCO6CreateAssetstWithAllFeilds");
-			waitElementVisibleClick(ASSETSDETAILS_ADDEDASSET_BT,5000);
-			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,10000);
+			waitElementVisibleClick(ASSETSDETAILS_ADDEDASSET_BT,300);
+			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,300);
 			sleep(5000);
 			compareText(elementGetText(CREATE_ASSET_COUNTRY_DD),jsonData.getJsonData("Country"));
 			compareText(elementGetText(CREATE_ASSET_AREA_DD),jsonData.getJsonData("Area"));
@@ -140,8 +140,8 @@ public class ZFAssetDetailsPage extends ElementManager{
 	}
 	public void verifyToastermessage(By ByType, String Jsondata) {
 		try {
-		waitForMessage(ByType,2);
-		String toasterText = elementGetText(ByType);
+		
+		String toasterText = waitElementVisibleGetText(ByType,300);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
 	
 		}catch (Exception e) {

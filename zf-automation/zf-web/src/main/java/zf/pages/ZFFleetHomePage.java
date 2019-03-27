@@ -35,7 +35,7 @@ public class ZFFleetHomePage extends ElementManager {
 	 */
 	public void clikcOnFleetTab() throws InterruptedException
 	{
-		waitElementVisibleClick(fleetTab_BT,20000);
+		waitElementVisibleClick(fleetTab_BT,300);
 	}
 
 	/* 
@@ -44,7 +44,7 @@ public class ZFFleetHomePage extends ElementManager {
 
 	public void createNewFleet() throws InterruptedException
 	{
-		waitElementVisibleClick(createNewFleetButton_BT, 20000);
+		waitElementVisibleClick(createNewFleetButton_BT, 300);
 	}
 
 	/*
@@ -69,9 +69,9 @@ public class ZFFleetHomePage extends ElementManager {
 			 * For Assigning The Vehicles
 			 */
 			elementSendKeys(assignVehiclesSearch_EB, jsonReader.getJsonData("vehicle"));
-			waitElementVisibleClick(assignVehicleLoader_BT,10000);
+			waitElementVisibleClick(assignVehicleLoader_BT,300);
 			elementSendKeys(assignVehiclesSearch_EB, jsonReader.getJsonData("vehicle1"));
-			waitElementVisibleClick(assignVehicleLoader_BT,1000);
+			waitElementVisibleClick(assignVehicleLoader_BT,300);
 			elementClick(nextStep_BT);
 			/*
 			 * For Creating Fleet 
@@ -88,7 +88,7 @@ public class ZFFleetHomePage extends ElementManager {
 	{
 		try {
 			elementClick(filterExpandRow_BT);
-			waitElementToBeVisibleSendValue(filterSerach_EB, 10000, jsonReader.getJsonData("fleetname"));
+			waitElementToBeVisibleSendValue(filterSerach_EB, 300, jsonReader.getJsonData("fleetname"));
 
 			String elementtext=elementGetText(fleetElementList_LT);
 			if(elementtext.equals(jsonReader.getJsonData("fleetname")))
@@ -102,7 +102,7 @@ public class ZFFleetHomePage extends ElementManager {
 				elementClick(assignVehicleLoader_BT);
 
 				elementSendKeys(assignVehiclesSearch_EB, jsonReader.getJsonData("vehiclenew1"));
-				waitElementVisibleClick(assignVehicleLoader_BT,10000);
+				waitElementVisibleClick(assignVehicleLoader_BT,300);
 				elementClick(nextStep_BT);
 				elementClick(createFleet_BT);
 			}

@@ -17,6 +17,7 @@ public class MicrosoftLoginPage extends ElementManager{
 
 	public ZFGatewayHomePage microsoftLogin(String userName, String password) {
 		try {
+			
 			elementSendKeys(SIGNWITHEMAIL,userName);
 			elementClick(NEXTBUTTON);
 			elementSendKeys(SIGNWITHPASSWORD,passwordDecript(password));

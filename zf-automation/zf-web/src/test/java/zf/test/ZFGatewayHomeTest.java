@@ -24,125 +24,125 @@ public class ZFGatewayHomeTest extends ZFGatewayHomePage
 	}
 	
 	@Test
-	public void Tc01OperatorHasNoAccessToAddGateway() {
+	public void TC01OperatorHasNoAccessToAddGateway() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		operatorHasNoAccessToAddGateway();
 	}
 	@Test
-	public void Tc02OperatorNoAccessToEdit() {
+	public void TC02OperatorNoAccessToEdit() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		verifyOperatorHasNoAccessToEditGateway();
 	}
 	@Test
-	public void Tc03OperatorNoAccessToDisable() {
+	public void TC03OperatorNoAccessToDisable() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		verifyOperatorHasNoAccessToDisableGateway();
 	}
 	@Test
-	public void Tc04OperatorNoAccessToDecommission() {
+	public void TC04OperatorNoAccessToDecommission() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		verifyOperatorHasNoAccessToDecommissionGateway();
 	}
 
 @Test
-	public void Tc05ManageSoftwareInterface() {
+	public void TC05ManageSoftwareInterface() {
 			microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 			verifyManageSoftwareInterface();
 		}
-//	@Test
-	public void Tc06DisableAndEnableGateway() {
+	@Test
+	public void TC06DisableAndEnableGateway() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		disableAndEnableGateway();
 	}
 
-//	@Test
-	public void Tc07OperatorHasAccessToViewGateway()
+	@Test
+	public void TC07OperatorHasAccessToViewGateway()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		operatorHasAccessToViewGateway();
 	}
-//	@Test
-	public void Tc08UserInterfaceOfAddSoftware()
+	@Test
+	public void TC08UserInterfaceOfAddSoftware()
 	{
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		verifyUserInterfaceOfGatewayAddSoftware();
 	}
-//	@Test
-	public void Tc09UserWithNoPrivilegeCannotAccessGatewayPage()
+	@Test
+	public void TC09UserWithNoPrivilegeCannotAccessGatewayPage()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoPrivilegeUserName(),EnvironmentManager.getNoPrivilegePassword());
 		UserWithNoPrivilegeCannotAccessGatewayPage();
 	}
 	
 
-//	@Test
+	@Test
 	public void TC10ManageSoftwareUploadAndInstallInvalidSoftwareName()
 	{
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		ManageSoftwareUploadAndInstallInvalidSoftwareName();
 	}
 	
-//	@Test
+@Test
 	public void TC11ManageSoftwareUploadAndInstallInvalidSoftwarePackage()
 	{
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		ManageSoftwareUploadAndInstallInvalidSoftwarePackage();
 	}
 	
-	//@Test
+@Test
     public void TC12ManageSoftwareAddSoftwareUploadInstallValidUserInputs()
     {
            microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
            ManageSoftwareAddSoftwareUploadInstallValidUserInputs();
     }
 
-//	@Test
-	public void Tc09ValidateCommissionedGatewayStatus()
+	@Test
+	public void TC13ValidateCommissionedGatewayStatus()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		validateCommissionedGatewayStatus();
 	}
-//	@Test
-	public void Tc09ValidateDecommissionedGatewayStatus()
+	@Test
+	public void TC14ValidateDecommissionedGatewayStatus()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		validateDecommissionedGatewayStatus();
 	}
 
-//	@Test
-	public void Tc09ValidatePrecommissionedGatewayStatus()
+	@Test
+	public void TC15ValidatePrecommissionedGatewayStatus()
 	{		
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		validatePreCommissionedGatewayStatus();
 	}
 	 @Test
-		  public void Tc54verifyDefaultGatewayStatus()
+		  public void TC16verifyDefaultGatewayStatus()
 		  {
 			  microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 			  verifyDefaultGatewayStatus();
 		  }
 	
-	// @Test
-	  public void Tc54verifyClearSelectedOptionsInGatewayStatusSearchDropdown()
+	 @Test
+	  public void TC17VerifyClearSelectedOptionsInGatewayStatusSearchDropdown()
 	  {
 		  microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		  verifyClearSelectedOptionsInGatewayStatusSearchDropdown();
 	  }
-	// @Test
-	  public void Tc54VerifySelectAllOptionInGatewayStatusSearchDropdown()
+	 @Test
+	  public void TC18VerifySelectAllOptionInGatewayStatusSearchDropdown()
 	  {
 		  microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		  verifySelectAllOptionInGatewayStatusSearchDropdown();
 	  }
-	// @Test
-	  public void Tc54VerifyClearDatesFromDatePicker()
+	 @Test
+	  public void TC19VerifyClearDatesFromDatePicker()
 	  {
 		  microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		  verifyClearDatesFromDatePicker();
 	  }
 		
-	// @Test
-	  public void Tc54VerifySearchOptionsSearchDropdown()
+	 @Test
+	  public void TC20VerifySearchOptionsSearchDropdown()
 	  {
 		  microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		  verifySearchOptionsSearchDropdown();
@@ -150,44 +150,44 @@ public class ZFGatewayHomeTest extends ZFGatewayHomePage
 
 	 
 	  @Test
-		public void TC47verifySearchGatewayDateRange()
+		public void TC21verifySearchGatewayDateRange()
 		{
 		  microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		  zfaddsinglegateway.addSingleGatewayWithAllValidInputs();
 			verifySearchGatewayDateRange();
 		}
-	 /***** Tc02EditSingleGateway : editDetailsOfAnAlreadyAddedGateway *****/
+	 /***** TC02EditSingleGateway : editDetailsOfAnAlreadyAddedGateway *****/
      @Test
-     public void Tc02EditSingleGateway() {
+     public void TC22EditSingleGateway() {
     	 microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
     	// zfaddsinglegateway.addSingleGatewayWithAllValidInputs();
     	 editSingleGateway();
      }
      
-     /***** Tc03DropdownGateway : verifySearchUsingAParticularSearchCategoryFromDropdown *****/
+     /***** TC03DropdownGateway : verifySearchUsingAParticularSearchCategoryFromDropdown *****/
     @Test
-     public void Tc03DropdownGateway() {
+     public void TC23DropdownGateway() {
     	 microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
     	 showDropDownGateway();//need to write a script for this 
      }
      
-     /***** Tc04GatewaySortCatagory : verifySortUsingAParticularSortCategory *****/
+     /***** TC04GatewaySorTCatagory : verifySortUsingAParticularSorTCategory *****/
     @Test
-     public void Tc04GatewaySortCatagory() {
+     public void TC24GatewaySortCatagory() {
     	 microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
     	 getSortCategories();
      }
      
-     /***** Tc05VerifyGatewayColumn :  Validate the column names of gateway list section *****/
+     /***** TC05VerifyGatewayColumn :  Validate the column names of gateway list section *****/
      @Test
-     public void Tc05VerifyGatewayColumn() {
+     public void TC25VerifyGatewayColumn() {
     	 microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
         verifyGatewayColumn();
      }
      
-     /***** Tc06VerifyGatewayLifeCycle :  Validate the Gateway life cycle in the gateway landing page *****/
+     /***** TC06VerifyGatewayLifeCycle :  Validate the Gateway life cycle in the gateway landing page *****/
     // @Test(priority=6)
-     public void Tc06VerifyGatewayLifeCycle() {   	
+     public void TC26VerifyGatewayLifeCycle() {   	
     	 microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
     	 verifyGatewayLifeCycle();    	
      } 

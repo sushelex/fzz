@@ -35,9 +35,9 @@ public class ZFUserHomePage extends ElementManager{
 		try {
 			
 			JsonReader.getJsonObject("Tc01addUser");
-			waitElementVisibleClick(USER_ICON,10000);
-			waitElementVisibleClick(ADDUSER_ADDUSER_BT,10000);
-			waitElementToBeVisibleSendValue(ADDUSER_NAME_EB,10000, jsonData.getJsonData("Name"));
+			waitElementVisibleClick(USER_ICON,300);
+			waitElementVisibleClick(ADDUSER_ADDUSER_BT,300);
+			waitElementToBeVisibleSendValue(ADDUSER_NAME_EB,300, jsonData.getJsonData("Name"));
 			elementSendKeys(ADDUSER_EMAIL_EB, jsonData.getJsonData("Email"));
 			elementSendKeys(ADDUSER_SURNAME_EB, jsonData.getJsonData("SureName"));
 			elementSendKeys(ADDUSER_USERROLES_EB, jsonData.getJsonData("Role"));
@@ -56,12 +56,12 @@ public class ZFUserHomePage extends ElementManager{
 	public void editUser() {
 		try {
 			JsonReader.getJsonObject("Tc02EditUser");
-			waitElementVisibleClick(USER_ICON,10000);
-			waitElementVisibleClick(ADDUSER_FILTER_ST,10000);
+			waitElementVisibleClick(USER_ICON,300);
+			waitElementVisibleClick(ADDUSER_FILTER_ST,300);
 			elementSendKeys(ADDUSER_SEARCH_EB, jsonData.getJsonData("Name"));
 			elementClick(ADDUSER_SEARCHFIRSTVALUE_DT);
 			elementClick(ADDUSER_EDITUSER_BT);
-			waitElementToBeVisibleSendValue(ADDUSER_NAME_EB,10000, jsonData.getJsonData("EditName"));
+			waitElementToBeVisibleSendValue(ADDUSER_NAME_EB,300, jsonData.getJsonData("EditName"));
 			elementSendKeys(ADDUSER_EMAIL_EB, jsonData.getJsonData("EditEmail"));
 			elementSendKeys(ADDUSER_SURNAME_EB, jsonData.getJsonData("EditSureName"));
 			elementSendKeys(ADDUSER_USERROLES_EB, jsonData.getJsonData("EditRole"));
@@ -80,16 +80,16 @@ public class ZFUserHomePage extends ElementManager{
 	public void deleteUser() {
 		try {
 			JsonReader.getJsonObject("Tc03DeleteUser");
-			waitElementVisibleClick(USER_ICON,10000);
-			waitElementVisibleClick(ADDUSER_FILTER_ST,10000);
+			waitElementVisibleClick(USER_ICON,300);
+			waitElementVisibleClick(ADDUSER_FILTER_ST,300);
 			elementSendKeys(ADDUSER_SEARCH_EB, jsonData.getJsonData("Name"));
 			elementClick(ADDUSER_SEARCHFIRSTVALUE_DT);
-			waitElementVisibleClick(ADDUSER_DELETEUSER_BT,10000);
+			waitElementVisibleClick(ADDUSER_DELETEUSER_BT,300);
 			elementClick(ADDUSER_DELETEUSER_BT);
 			elementAvailability(ADDUSER_DELETEUSERPOPNO_BT);
 			elementClick(ADDUSER_DELETEUSERPOPYES_BT);
 			refreashPage();
-			waitElementVisibleClick(ADDUSER_FILTER_ST,10000);
+			waitElementVisibleClick(ADDUSER_FILTER_ST,300);
 			elementClick(ADDUSER_FILTER_ST);
 			elementSendKeys(ADDUSER_SEARCH1_EB, jsonData.getJsonData("Name"));
 			compareText(jsonData.getJsonData("Noresultvalue"), elementGetText(ADDUSER_NORESULTSFOUND_DT));
