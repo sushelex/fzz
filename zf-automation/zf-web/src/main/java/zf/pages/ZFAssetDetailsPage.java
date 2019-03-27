@@ -103,7 +103,7 @@ public class ZFAssetDetailsPage extends ElementManager{
 		
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
-		compareText(elementGetText(ASSETSDETAILS_NAME),jsonData.getJsonData("AssetName"));
+		compareTextIgnoreCase(elementGetText(ASSETSDETAILS_NAME),jsonData.getJsonData("AssetName"));
 		elementAvailability(ASSETSDETAILS_BASICDETAILSLABEL_TXT);
 		elementAvailability(ASSETSDETAILS_ASSETDETAILLABEL_TXT);
 	}catch(Exception e){

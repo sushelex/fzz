@@ -71,10 +71,10 @@
 			"SerialNumber": "test12345",
 			"SensorID": "123456789",
 			"Description": "Description for Asset",
-			"MetaDatalicensePlate": "Tewst value for licensePlate",
-			"MetaDataPropulsionType": "Twt value for PrpulsionType",
+			"MetaDatalicensePlate": "value for licensePlate",
+			"MetaDataPropulsionType": "value for PrpulsionType",
 			"MetaDatavehicleType": "w value for vecleType",
-			"MetaDatavin": "0334567890",
+			"MetaDatavin": "33456789",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageSuccessReason": "Asset added successfully"
 		}
@@ -96,10 +96,10 @@
 			"SerialNumber": "test12345",
 			"SensorID": "123456789",
 			"Description": "Description for Asset",
-			"MetaDatalicensePlate": "Tewst value for licensePlate",
-			"MetaDataPropulsionType": "Twt value for PrpulsionType",
+			"MetaDatalicensePlate": "value for licensePlate",
+			"MetaDataPropulsionType": "value for PrpulsionType",
 			"MetaDatavehicleType": "value for vecleType",
-			"MetaDatavin": "A03456790",
+			"MetaDatavin": "A0345679",
 			"MetaDatavehicleManufacturer": "value of Manufacturer ",
 			"MetaDatavehicleModel": " value of model",
 			"MetaDatavehicleProducer": "value of Producer",
@@ -127,7 +127,7 @@
 			"MetaDatalicensePlate": "Tewst value for licensePlate",
 			"MetaDataPropulsionType": "Twt value for PrpulsionType",
 			"MetaDatavehicleType": "value for vecleType",
-			"MetaDatavin": "B033456790",
+			"MetaDatavin": "33456790",
 			"MetaDatavehicleManufacturer": "value of Manufacturer ",
 			"MetaDatavehicleModel": " value of model",
 			"MetaDatavehicleProducer": "value of Producer",
@@ -169,7 +169,7 @@
 			"MetaDatalicensePlate": "Test value for licensePlate",
 			"MetaDataPropulsionType": "Test value for PropulsionType",
 			"MetaDatavehicleType": "Test value for vehicleType",
-			"MetaDatavin": "123456780",
+			"MetaDatavin": "12345678",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageSuccessReason": "SUCCESS"
 		}
@@ -195,7 +195,7 @@
 			"MetaDatalicensePlate": "Test value for licensePlate",
 			"MetaDataPropulsionType": "Test value for PropulsionType",
 			"MetaDatavehicleType": "Test value for vehicleType",
-			"MetaDatavin": "123456789",
+			"MetaDatavin": "23456789",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageSuccessReason": "Asset updated successfully"
 		}
@@ -221,7 +221,7 @@
 			"MetaDatalicensePlate": "Test value for licensePlate",
 			"MetaDataPropulsionType": "Test value for PropulsionType",
 			"MetaDatavehicleType": "Test value for vehicleType",
-			"MetaDatavin": "123567890",
+			"MetaDatavin": "13567890",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageSuccessReason": "SUCCESS"
 		}
@@ -341,8 +341,8 @@
 			"GatewayName": "SingleGateway1",
 			"GatewayType": "Actia",
 			"Model": "ECU-VK300",
-			"MACID": "b9:27:6b:dc:3c:q8",
-			"SerialNumber": "4CE0460D0DF55F",
+			"MACID": "b9:27:6b:dc:3c",
+			"SerialNumber": "4CE0460DDF55F",
 			"SIMNumber": "89148000000745800009",
 			"CustomerName": "Volvo",
 			"CustomerCountry": "India",
@@ -352,7 +352,7 @@
 			"Description": "Description for Single Gateway 1",
 			"MetaDatakey": "key1",
 			"MetaDatavalue": "value1",
-			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev12_cert.pem",
+			"UploadCertificate": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev12_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageSuccessReason": "SUCCESS"
@@ -363,9 +363,9 @@
 			"GatewayName": "Test2",
 			"GatewayType": "Advantech",
 			"Model": "Version 1",
-			"MACID": "b9:27:6b:dc:3c:a8",
+			"MACID": "b9:27:6b:dc:3c:q8",
 			"SerialNumber": "4E0460D0DFBCF",
-			"SIMNumber": "8914800000045800000",
+			"SIMNumber": "891480000045800000",
 			"CustomerName": "Honda",
 			"CustomerCountry": "India",
 			"CustomerArea": "Delhi",
@@ -374,10 +374,10 @@
 			"Description": "Description for Single Gateway 2",
 			"MetaDatakey": "key4",
 			"MetaDatavalue": "value4",
-			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
+			"UploadCertificate": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
-			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:a8 already exists",
+			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:q8 already exists",
 			"ToasterMessageSuccessReason": "SUCCESS"
 		}
 	},
@@ -387,7 +387,7 @@
 			"GatewayType": "Advantech",
 			"Model": "Version 1",
 			"MACID": "eb:b9:ee:ef:ab:wd",
-			"SerialNumber": "4E0460D0DFBCF",
+			"SerialNumber": "4E460D0DFBCF",
 			"SIMNumber": "8914800000045800000",
 			"CustomerName": "Honda",
 			"CustomerCountry": "India",
@@ -397,7 +397,7 @@
 			"Description": "Description for Single Gateway 2",
 			"MetaDatakey": "key4",
 			"MetaDatavalue": "value4",
-			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
+			"UploadCertificate": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev18_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
 			"ToasterMessageFailedReason": "Certificate is already in use !",
@@ -413,11 +413,11 @@
 			"CustomerName": "Honda",
 			"CustomerCountry": "India",
 			"CustomerArea": "Delhi",
-			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem",
+			"UploadCertificate": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS",
-			"ToasterMessageFailedReason": "Gateway with MacId b9:27:6b:dc:3c:a8 already exists",
-			"ToasterMessageSuccessReason": "SUCCESS"
+			"ToasterMessageFailedReason": "Certificate is already in use !",
+			"ToasterMessageSuccessReason": "Gateway added succesfully"
 		}
 	},
 	{
@@ -426,21 +426,21 @@
 			"GatewayType": "Advantech",
 			"Model": "Version 1",
 			"MACID": "fb:b9:4c:ef:cb:dd",
-			"SerialNumber": "4CE0460D0DFECF",
+			"SerialNumber": "4CE00D0DFECF",
 			"SIMNumber": "89148000000745890000",
 			"CustomerName": "Honda",
 			"CustomerCountry": "India",
 			"CustomerArea": "Delhi",
 			"BusinessUnit": "IOT",
 			"Operator": "Beta",
-			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem"
+			"UploadCertificate": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev11_cert.pem"
 		}
 	},
 	{
 		"AddMultipleGatewayNewRoot": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
+			"UploadCA": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -448,8 +448,8 @@
 	{
 		"AddMultipleGatewayWithInvalid": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_WithoutGatewayName.xlsx",
+			"UploadCA": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_WithoutGatewayName.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -457,8 +457,8 @@
 	{
 		"AddMultipleGatewayNewIntermediate": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Intermediate_New.xlsx",
+			"UploadCA": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Intermediate_New.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -466,17 +466,17 @@
 	{
 		"addMultipleGatewayWithoutMandatoryFields": {
 			"CreateEnrollmentGroup": "Group1",
-			"UploadCA": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
-			"UploadGatewayDeatils": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
+			"UploadCA": "\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev7_cert.pem",
+			"UploadGatewayDeatils": "\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Test_Provisioning_GatewayDetails_New.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
 	},
 	{
 		"AddMultipleGatewayExisting": {
-			"SelectEnrollmentGroup": "test123",
+			"SelectEnrollmentGroup": "sdsd",
 			"CAfilename": "devaug29root",
-			"UploadGatewayDetails": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Existing.xlsx",
+			"UploadGatewayDetails": "\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Existing.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"
 		}
@@ -497,11 +497,11 @@
 	},
 	{
 		"AddSoftware": {
-			"SoftwareNameInvalid": "#232",
-			"SoftwareName": "Gateway1",
-			"UploadPackagePath": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Installable Packages\\mosquitto1.deb",
-			"UploadPackagePath1": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Installable Packages\\mosquitto1.deb",
-			"UploadInvalidPackagePath": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Installable Packages\\InvalidCertificate.txt",
+			"SoftwareNameInvalid": "#2",
+			"SoftwareName": "Ga",
+			"UploadPackagePath": "\\src\\main\\resources\\testdata\\Installable Packages\\mosquitto1.deb",
+			"UploadPackagePath1": "\\src\\main\\resources\\testdata\\Installable Packages\\mosquitto1.deb",
+			"UploadInvalidPackagePath": "\\src\\main\\resources\\testdata\\Installable Packages\\InvalidCertificate.txt",
 			"PackageName": "InvalidCertificate.txt",
 			"UploadErrorMsg": "Id is blank",
 			"UploadDeviceNotFoundError": "Error in IoT Hub IoT Hub not found! ErrorCode:DeviceNotFound;836691402412980 Tracking ID:9e8121117f4f44b3a2860d2264475ef7-G:5-TimeStamp:03/22/2019 11:52:07"
@@ -597,20 +597,7 @@
 			"vehiclenew1": "JD 6130R"
 		}
 	},
-	{
-		"ClientDetails": {
-			"clientName": "venkata",
-			"email": "venkata@test.com",
-			"street": "bridge street",
-			"streetNumber": "2512",
-			"telephone": "12345678912345",
-			"postCode": "9876",
-			"webSite": "howtodo.com",
-			"country": "USA",
-			"fax": "12345678978999",
-			"ToasterMsg": "Unauthorized user"
-		}
-	},
+	
 	{
 		"GatewayHomePage": {
 			"Show": "Show",

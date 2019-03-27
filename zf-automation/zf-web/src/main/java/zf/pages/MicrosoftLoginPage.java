@@ -14,6 +14,7 @@ public class MicrosoftLoginPage extends ElementManager{
 	private static By SIGNWITHPASSWORD         =By.id("i0118");
 	private static By NEXTBUTTON               =By.id("idSIButton9");
 	private static By STAYSINGINBUTTON         =By.xpath("//input[@id='idBtn_Back']");
+	
 
 	public ZFGatewayHomePage microsoftLogin(String userName, String password) {
 		try {

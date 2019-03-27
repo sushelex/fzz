@@ -162,7 +162,7 @@ public class ZFGatewayHomePage extends ElementManager{
     
 	public void clickAddGateway() {
 
-		try {
+		try {sleep(3000);
 			waitElementVisibleClick(GATEWAY_ICON,300);
 			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
 			sleep(2500);

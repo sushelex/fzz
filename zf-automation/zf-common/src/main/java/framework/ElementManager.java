@@ -36,7 +36,7 @@ public class ElementManager  extends ExtentReport{
 	private Actions actionBuilder;
 	private String errormessage;
 	JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) DriverManager.getDriverInstance();
-
+	
 	/*
 	 * This method is used to interact with a web element by "Clicking on it"
 	 * using the Selenium WebDriver findElement(By). If the web element does not exist timeout exception
@@ -689,8 +689,6 @@ public class ElementManager  extends ExtentReport{
 		boolean visible = false;
 
 		try {
-
-			
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
 			
@@ -698,7 +696,26 @@ public class ElementManager  extends ExtentReport{
 			visible = false;
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			info(byType+"element is not displayed after 300 seconds ");
+		}finally {
+			elementClick(byType);
+		}
+		return visible;
+
+	}
+	
+	public boolean waitElementEnabledClick(By byType, long timeoutSeconds) throws InterruptedException {
+		boolean visible = false;
+
+		try {
+			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isEnabled();
+			
+		} catch (TimeoutException e) {
+			visible = false;
+		} 
+		catch (Exception e) {
+			info(byType+"element is not enabled after 300 seconds ");
 		}finally {
 			elementClick(byType);
 		}
@@ -854,10 +871,10 @@ public class ElementManager  extends ExtentReport{
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.delay(150);
 			robot.keyRelease(KeyEvent.VK_ENTER);
+			info("File uploaded sucessfully");
 		} catch (AWTException e) {
-			System.out.println("Exception while trying to upload file "+filePath);
-			e.printStackTrace();
-			System.out.println(e);
+			info("Exception while trying to upload file "+filePath);
+			TestLogger.fileInfo(e.getMessage());
 		}
 	}
 	public String updateXpath(String dropdownList,String dropdownValue ) {
@@ -987,5 +1004,6 @@ public class ElementManager  extends ExtentReport{
 		}
 		return elementText;			
 }
-
+	
+	
 }

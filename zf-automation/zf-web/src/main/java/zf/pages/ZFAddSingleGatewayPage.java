@@ -1,5 +1,7 @@
 package zf.pages;
 
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import framework.ElementManager;
 import framework.JsonReader;
@@ -48,11 +50,11 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
-			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID"));
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber"));
+			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID")+generateRandomNumber());
+			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
 			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
-			uploadFile(jsonData.getJsonData("UploadCertificate"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
@@ -82,7 +84,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 	public void addSingleGatewayWithMacIDAlreadyExists() {
 
 		try {
-			sleep(2000);
+			
 			zfgatewayhomepage.clickAddGateway();
 			JsonReader.getJsonObject("addSingleGatewayWithMacIDAlreadyExists");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
@@ -92,10 +94,10 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
 			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID"));
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber"));
+			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
 			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
-			uploadFile(jsonData.getJsonData("UploadCertificate"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
@@ -136,11 +138,11 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
-			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID"));
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber"));
+			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID")+generateRandomNumber());
+			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
 			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
-			uploadFile(jsonData.getJsonData("UploadCertificate"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
@@ -179,9 +181,9 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
-			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID"));
+			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID")+generateRandomNumber());
 			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
-			uploadFile(jsonData.getJsonData("UploadCertificate"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
@@ -194,8 +196,8 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 
 			//Additional
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed");
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageSuccess");
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageSuccessReason");
 		} catch (Exception e) {
 
 			TestLogger.appInfo(e.getMessage());
@@ -217,7 +219,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
 			nextButtonVisibility(ADDSINGLEGATEWAY_NEXT_BT, "without Certificate details");
 			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
-			uploadFile(jsonData.getJsonData("UploadCertificate"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
@@ -263,5 +265,10 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 		catch(Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
+	}
+	public int generateRandomNumber() {
+		Random rnd = new Random();
+		int randomNum = (int) (rnd.nextInt(15));
+		return randomNum;
 	}
 }

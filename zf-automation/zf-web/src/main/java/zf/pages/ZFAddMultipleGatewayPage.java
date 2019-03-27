@@ -30,56 +30,56 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 	private static  By ADDMULTIPLEGATEWAY_DOWNLOAD_TEMPLATE_BT              =By.xpath("//button[text()='Download Template']");
 	private static  By ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_TXT        =By.xpath("//label[text()='Select Enrollment Group']");
 	private static String ADDMULTIPLEGATEWAY_SELECT_ENROLLGROUP_LIST	    ="//span[text()='{}']";
-	
+
 	public void validatUserInterface() {
 		try {
-		zfgatewayhomepage.clickAddGateway();
-		waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
-		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_INTERMEDIATE_RB );
-		elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT );
-		elementAvailability(ADDMULTIPLEGATEWAY_DOWNLOAD_TEMPLATE_BT );
-		elementAvailability(ADDMULTIPLEGATEWAY_SUBMIT_BT );
-		elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_EXISTING_RB);
-		elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_DD );
-		elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_TXT );
-		
-	}catch(Exception e) {
-		TestLogger.appInfo(e.getMessage());
-	}}
-	
+			zfgatewayhomepage.clickAddGateway();
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
+			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_INTERMEDIATE_RB );
+			elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT );
+			elementAvailability(ADDMULTIPLEGATEWAY_DOWNLOAD_TEMPLATE_BT );
+			elementAvailability(ADDMULTIPLEGATEWAY_SUBMIT_BT );
+			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_EXISTING_RB);
+			elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_DD );
+			elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_TXT );
+
+		}catch(Exception e) {
+			TestLogger.appInfo(e.getMessage());
+		}}
+
 	public void validateLookAndFeelMultipleGateway() {
 		try {
-		zfgatewayhomepage.clickAddGateway();
-		waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
-		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_TXT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_INTERMEDIATE_RB );
-		elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-		elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT );
-		elementAvailability(ADDMULTIPLEGATEWAY_DOWNLOAD_TEMPLATE_BT );
-		elementAvailability(ADDMULTIPLEGATEWAY_SUBMIT_BT );
-		elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_EXISTING_RB);
-		elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_DD );
-		elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_TXT );
-		
-	}catch(Exception e) {
-		TestLogger.appInfo(e.getMessage());
-	}}
+			zfgatewayhomepage.clickAddGateway();
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
+			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_TXT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_CA_INTERMEDIATE_RB );
+			elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
+			elementAvailability(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT );
+			elementAvailability(ADDMULTIPLEGATEWAY_DOWNLOAD_TEMPLATE_BT );
+			elementAvailability(ADDMULTIPLEGATEWAY_SUBMIT_BT );
+			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_EXISTING_RB);
+			elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_DD );
+			elementAvailability(ADDMULTIPLEGATEWAY_SELECT_ENROLLMENTGROUP_TXT );
+
+		}catch(Exception e) {
+			TestLogger.appInfo(e.getMessage());
+		}}
 	public void addMultipleGatewayNewRoot() {
 		try {
 			zfgatewayhomepage.clickAddGateway();
@@ -89,54 +89,53 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			elementSendKeys(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,jsonData.getJsonData("CreateEnrollmentGroup"));
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-			uploadFile(jsonData.getJsonData("UploadCA"));
-			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
-			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT);
-
-			verifyToastermessage("ToasterMessageFailed");
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT,300);
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
+			waitElementEnabledClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
+			verifyToastermessage("ToasterMessageSuccess");
 		}catch(Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
 	}
-	
-	
+
+
 	public void addMultipleGatewayWithInvalid() {
 		try {
+			JsonReader.getJsonObject("AddMultipleGatewayWithInvalid");
 			zfgatewayhomepage.clickAddGateway();
 			sleep(3000);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_RB);
-			JsonReader.getJsonObject("AddMultipleGatewayWithInvalid");
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 			elementSendKeys(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,jsonData.getJsonData("CreateEnrollmentGroup"));
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-			uploadFile(jsonData.getJsonData("UploadCA"));
-			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
-			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT);
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT,300);
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
+			waitElementEnabledClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
 
-			verifyToastermessage("ToasterMessageFailed");
+			verifyToastermessage("ToasterMessageSuccess");
 		}catch(Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
 	}
 	public void addMultipleGatewayNewIntermediate() {
 		try {
+			JsonReader.getJsonObject("AddMultipleGatewayNewIntermediate");
 			zfgatewayhomepage.clickAddGateway();
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_RB);
-			JsonReader.getJsonObject("AddMultipleGatewayNewIntermediate");
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 			elementSendKeys(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,jsonData.getJsonData("CreateEnrollmentGroup"));
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_UPLOAD_CA_INTERMEDIATE_RB);
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-			uploadFile(jsonData.getJsonData("UploadCA"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
-			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT);
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
+			waitElementEnabledClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
 			//verifyToastermessage("ToasterMessageSuccess");
-			verifyToastermessage("ToasterMessageFailed");
+			verifyToastermessage("ToasterMessageSuccess");
 		}catch(Exception e) {
 
 		}
@@ -153,14 +152,14 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			elementClick(By.xpath(dynamicXpath(ADDMULTIPLEGATEWAY_SELECT_ENROLLGROUP_LIST,"SelectEnrollmentGroup")));
 			if(compareValue(elementGetText(ADDMULTIPLEGATEWAY_CA_FILENAME_TXT),jsonData.getJsonData("CAfilename"))){
 				elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-				uploadFile(jsonData.getJsonData("UploadGatewayDetails"));
-				elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT);
+				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDetails"));
+				waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
 				verifyToastermessage("ToasterMessageSuccess");
-				elementClick(ADDMULTIPLEGATEWAY_SUBMIT_BT);
+				waitElementVisibleClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
 				verifyToastermessage("ToasterMessageSuccess");
 
 			}else {
-				//testFailed("CA file name get from webpage:"+elementGetText(ADDMULTIPLEGATEWAY_CAFILENAME)+"is not same as given"+jsonData.getJsonData("CAfilename"));
+				testFailed("CA file name get from webpage is not same as given"+jsonData.getJsonData("CAfilename"));
 			}
 
 		}catch(Exception e) {
@@ -178,7 +177,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			zfgatewayhomepage.clickAddGateway();
 			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
-			
+
 			addMultipleGatewayWithoutGatewayDetails();
 			addMultipleGatewayWithoutCertificate();
 			addMultipleGatewayWithoutEnrollmentGroupName();
@@ -193,7 +192,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 		try {					
 			elementSendKeys(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,jsonData.getJsonData("CreateEnrollmentGroup"));
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-			uploadFile(jsonData.getJsonData("UploadCA"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
 			submitButtonVisibility("when certificate and Group is added without gateway details");
 
 		}catch(Exception e) {
@@ -206,12 +205,12 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			refreashPage();
 			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
-			
+
 			elementClear(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
-			uploadFile(jsonData.getJsonData("UploadCA"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
 			submitButtonVisibility("when Gateway details and Group is added without certificate");
 
 		}catch(Exception e) {
@@ -223,14 +222,14 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 
 		try {
 			refreashPage();
-			
+
 			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
-			
+
 			waitElementToBeVisibleSendValue(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,300,jsonData.getJsonData("CreateEnrollmentGroup"));
-			
+
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
-			uploadFile(jsonData.getJsonData("UploadGatewayDeatils"));
+			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
 			submitButtonVisibility("when Gateway details and certificate are added without Group name");
 
 		}catch(Exception e) {
@@ -242,12 +241,12 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 
 			if(elementGetValue(ADDMULTIPLEGATEWAY_SUBMIT_BT,"disabled")!=null) {
 				testPassed("SUBMIT button is disabled "+message);
-				
+
 			}
 			else {
 				testFailed("Message failed");
 			}
-			}
+		}
 		catch(Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}

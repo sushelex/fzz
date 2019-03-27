@@ -756,7 +756,7 @@ public class ZFAssetPage extends ElementManager{
 
 	public int generateRandomNumber() {
 		Random rnd = new Random();
-		int randomNum = (int) (rnd.nextInt(15));
+		int randomNum = (int) (rnd.nextInt(9999));
 		return randomNum;
 	}
 
@@ -784,8 +784,8 @@ public class ZFAssetPage extends ElementManager{
 			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
 			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,300, jsonValue);
 			waitElementVisibleClick(ASSETS_SEARCH_BT,300);
-			sleep(300);
-			if(elementGetText(ASSETS_LIST_FIRST_VALUE).equalsIgnoreCase(jsonValue)){
+			sleep(3000);
+			if(waitElementVisibleGetText(ASSETS_LIST_FIRST_VALUE,300).equalsIgnoreCase(jsonValue)){
 				sleep(1000);
 				waitElementVisibleClick(ASSETS_LIST_FIRST_EXPANDARROW_BT,300);
 				sleep(1000);
