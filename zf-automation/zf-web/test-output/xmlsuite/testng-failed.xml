@@ -3,15 +3,66 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [xmlsuite]">
   <test thread-count="5" name="Single Gateway(failed)">
     <classes>
+      <class name="zf.test.ZFGatewayHomeTest">
+        <methods>
+          <include name="TC21verifySearchGatewayDateRange"/>
+          <include name="TC22EditSingleGateway"/>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+          <include name="TC01OperatorHasNoAccessToAddGateway"/>
+        </methods>
+      </class> <!-- zf.test.ZFGatewayHomeTest -->
+      <class name="zf.test.ZFAssetTest">
+        <methods>
+          <include name="TC14CreateAssetWithoutMandatoryInput"/>
+          <include name="TC08editExistAssetDetails"/>
+          <include name="beforeMethod"/>
+          <include name="TC07CreateAssetstWithActions"/>
+          <include name="TC03assetAdvancedSearch"/>
+          <include name="TC18VerifyAssetActionsUI"/>
+          <include name="afterMethod"/>
+          <include name="TC15ExecuteActionWithoutParamater"/>
+          <include name="TC12FieldValidationsMandatoryFieldVin"/>
+          <include name="TC09CreateChildAssettWithAllFeilds"/>
+          <include name="TC21SortAssetsInAssetsHomepage"/>
+          <include name="TC13VerifyVehicleAssetstWithMandatoryAutopopulatedMetadataKeys"/>
+          <include name="TC17EditAssetstActions"/>
+          <include name="TC10CreateAssetstWithAllAutopopulatedMetadataKeys"/>
+        </methods>
+      </class> <!-- zf.test.ZFAssetTest -->
+      <class name="zf.test.ZFClientHomeTest">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="TC02UserInterfaceOfMoreDetails"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- zf.test.ZFClientHomeTest -->
       <class name="zf.test.ZFAddMultipleGatewayTest">
         <methods>
           <include name="afterMethod"/>
           <include name="Tc03AddMultipleGatewayWithNewEnrollmentGroupWithIntermediateUploadCertificate"/>
           <include name="Tc01AddMultipleGatewayWithNewEnrollmentGroupWithRootUploadCertificate"/>
-          <include name="Tc05AddMultipleGatewayWithInvalidDetails"/>
           <include name="beforeMethod"/>
+          <include name="Tc04AddMultipleGatewayWithNewEnrollmentGroupWithoutMandatoryFields"/>
         </methods>
       </class> <!-- zf.test.ZFAddMultipleGatewayTest -->
+      <class name="zf.test.ZFAssetDetailsTest">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="TC02OperatorHasNoAccessToCreateChildAssets"/>
+          <include name="afterMethod"/>
+          <include name="TC05ViewExistingAssetDetails"/>
+        </methods>
+      </class> <!-- zf.test.ZFAssetDetailsTest -->
+      <class name="zf.test.ZFAddSingleGatewayTest">
+        <methods>
+          <include name="Tc01AddSingleGatewayWithAllValidInputs"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+          <include name="Tc04AddSingleGatewayWithMandatoryFields"/>
+          <include name="Tc05AddSingleGatewayWithoutMandatoryInputs"/>
+        </methods>
+      </class> <!-- zf.test.ZFAddSingleGatewayTest -->
     </classes>
   </test> <!-- Single Gateway(failed) -->
 </suite> <!-- Failed suite [xmlsuite] -->

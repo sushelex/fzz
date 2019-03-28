@@ -316,9 +316,9 @@
 			"MetaDatalicensePlate": "Test value for licensePlate",
 			"MetaDataPropulsionType": "Test value for PropulsionType",
 			"MetaDatavehicleType": "Test value for vehicleType",
-			"MetaDatavin": "Below9",
+			"MetaDatavin": "Belo",
 			"MetaDatavin1": "Above12digits",
-			"MetaDatavin2": "Validdata",
+			"MetaDatavin2": "Validdat",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageFailedReason": "Field 'vin' doesn't have valid length (17 or 9-12)",
 			"ToasterMessageSuccess": "SUCCESS",
@@ -475,7 +475,7 @@
 	{
 		"AddMultipleGatewayExisting": {
 			"SelectEnrollmentGroup": "sdsd",
-			"CAfilename": "devaug29root",
+			"CAfilename": "devaug29intermediate",
 			"UploadGatewayDetails": "\\src\\main\\resources\\testdata\\MultipleGatewaySpreadsheets\\Bulk_Provisioning_GatewayDetails_Existing.xlsx",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageSuccess": "SUCCESS"

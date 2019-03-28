@@ -3,13 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="zf.test.ZFGatewayHomeTest">
+      <class name="zf.test.ZFAddMultipleGatewayTest">
         <methods>
-          <include name="Tc05VerifyGatewayColumn"/>
-          <include name="beforeMethod"/>
           <include name="afterMethod"/>
+          <include name="Tc03AddMultipleGatewayWithNewEnrollmentGroupWithIntermediateUploadCertificate"/>
+          <include name="Tc01AddMultipleGatewayWithNewEnrollmentGroupWithRootUploadCertificate"/>
+          <include name="beforeMethod"/>
         </methods>
-      </class> <!-- zf.test.ZFGatewayHomeTest -->
+      </class> <!-- zf.test.ZFAddMultipleGatewayTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

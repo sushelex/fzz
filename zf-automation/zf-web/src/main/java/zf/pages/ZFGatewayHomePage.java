@@ -36,6 +36,9 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static By GATEWAY_PRECOMMISION_CB	                    =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Pre-Commissioned')]");
 	private static By GATEWAY_COMMISION_CB	                    =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Commissioned')]");
 	private static By GATEWAY_DECOMMISION_CB	                    =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Decommissioned')]");
+	private static By GATEWAY_PRECOMMISION_TXT	                    =By.xpath("//label[text()='Pre-Commissioned']");
+	private static By GATEWAY_COMMISION_TXT	                    =By.xpath("//label[text()='Commissioned']");
+	private static By GATEWAY_DECOMMISION_TXT	                    =By.xpath("//label[text()='Decommissioned']");
 	private static By GATEWAYEDIT_BT		                    =By.xpath("//div[@class='expanded-details-wrapper fw open']//button[@type='button'][contains(text(),'Edit')]");
 	private static By GATEWAYOPERATORTOASTMESSAGE               =By.xpath("//div[@class='ng-star-inserted']");
 	private static By GATEWAYOPERATORDISABLE_BT	                =By.xpath("//div[@class='expanded-details-wrapper fw open']//button[@type='button'][contains(text(),'Disable')]");
@@ -147,25 +150,25 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static By GATEWAY_AREACOLUMN_TXT		                   			=By.xpath("//div[@class='fl fh col-heading cell ellipses customerName']");
 	private static By GATEWAY_STATUSCOLUMN_TXT		                   			=By.xpath("//div[@class='fl fh col-heading cell ellipses status']");
 	private static By GATEWAY_COUNTRYCOLUMN_TXT		                   			=By.xpath("//div[@class='fl fh col-heading cell ellipses country']");
-	
+
 	private static By GATEWAY_FROMDATE 												=By.xpath("//input[@placeholder=\"From\"]");
-    private static By GATEWAY_TODATE 												=By.xpath("//input[@placeholder=\"To\"]");
-    private static By GATEWAY_CLEARDATE 											=By.xpath("//div[@class=\"fr close-btn sprite\"]");
-    private static By GATEWAY_TESTDATE1												=By.xpath("//div[contains(@class,'datepicker')][1]//td[contains(@class,'ui-datepicker-today')]/preceding-sibling::td[1]/a");
-    private static By GATEWAY_TESTDATE2												=By.xpath("//div[contains(@class,'datepicker')][1]//td[contains(@class,'ui-datepicker-today')]");
-    private static By GATEWAY_LASTUPDATED_DT								=By.xpath( "(//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"])[1]");
-    
-    
-  //  private static By GATEWAY_NOGATEWAY_TXT								    =By.xpath("//div[text()=\" No gateways. \"]");
- //   private static By GATEWAY_STATUS_CM										=By.xpath("//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"]");
-    private static By GATEWAY_ALL_RECS										=By.xpath("//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"]");
-    
+	private static By GATEWAY_TODATE 												=By.xpath("//input[@placeholder=\"To\"]");
+	private static By GATEWAY_CLEARDATE 											=By.xpath("//div[@class=\"fr close-btn sprite\"]");
+	private static By GATEWAY_TESTDATE1												=By.xpath("//div[contains(@class,'datepicker')][1]//td[contains(@class,'ui-datepicker-today')]/preceding-sibling::td[1]/a");
+	private static By GATEWAY_TESTDATE2												=By.xpath("//div[contains(@class,'datepicker')][1]//td[contains(@class,'ui-datepicker-today')]");
+	private static By GATEWAY_LASTUPDATED_DT								=By.xpath( "(//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"])[1]");
+
+
+	//  private static By GATEWAY_NOGATEWAY_TXT								    =By.xpath("//div[text()=\" No gateways. \"]");
+	//   private static By GATEWAY_STATUS_CM										=By.xpath("//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"]");
+	private static By GATEWAY_ALL_RECS										=By.xpath("//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"]");
+
 	public void clickAddGateway() {
 
 		try {sleep(3000);
-			waitElementVisibleClick(GATEWAY_ICON,300);
-			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
-			sleep(2500);
+		waitElementVisibleClick(GATEWAY_ICON,300);
+		waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
+		sleep(2500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -327,7 +330,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("GatewayDetails");
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,300);
+			verifyCommissionedFilterSearch();
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
@@ -350,7 +353,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				compareText(elementGetText(GATEWAYLIFECYCLE_DECOMMISSIONED_LABEL), jsonData.getJsonData("Decommissioned"));
 
 			}
-		}catch (InterruptedException e) {
+		}catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}		
 
@@ -364,15 +367,15 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void verifyDefaultGatewayStatus()
 	{ 
 		try {
-		JsonReader.getJsonObject("VerifyDefaultGatewayStatus");	
-		waitElementVisibleClick(GATEWAY_ICON,300);
-//		compareText(elementGetText(GATEWAYDEFAULT),jsonData.getJsonData("GatewayDefaultActual"));
-		compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("ShowSearchValue"));
-	      }
-	catch (InterruptedException e) {
-		TestLogger.appInfo(e.getMessage());
+			JsonReader.getJsonObject("VerifyDefaultGatewayStatus");	
+			waitElementVisibleClick(GATEWAY_ICON,300);
+			//		compareText(elementGetText(GATEWAYDEFAULT),jsonData.getJsonData("GatewayDefaultActual"));
+			compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("ShowSearchValue"));
+		}
+		catch (InterruptedException e) {
+			TestLogger.appInfo(e.getMessage());
+		}
 	}
-}
 
 	public void verifyCommissionedFilterSearch()
 	{
@@ -513,9 +516,9 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {                             
 			waitElementVisibleClick(GATEWAY_ICON,300);
 			elementClick(GATEWAY_FROMDATE);
-			 elementClick(GATEWAY_TESTDATE1);
+			elementClick(GATEWAY_TESTDATE1);
 			elementClick(GATEWAY_TODATE);
-			  elementClick(GATEWAY_TESTDATE2);
+			elementClick(GATEWAY_TESTDATE2);
 			elementClick(CLEARDATE);  
 		}
 		catch (InterruptedException e) {
@@ -556,7 +559,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
 				elementSendKey(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
-				uploadFile(jsonData.getJsonData("UploadPackagePath"));
+				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
 				elementClick(ADDSOFTWARE_UPLOADINSTALL_BT);
 				verifyToastermessage(ADDSOFTWARE_TOASTER,"UploadErrorMsg");
 			}
@@ -580,7 +583,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
 				elementSendKey(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
-				uploadFile(jsonData.getJsonData("UploadInvalidPackagePath"));
+				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadInvalidPackagePath"));
 				if(elementGetText(ADDSOFTWARE_UPLOADPACKAGE_BOX).contentEquals(jsonData.getJsonData("PackageName")))
 				{
 					TestLogger.appInfo("Uploaded Files is Valid");
@@ -609,7 +612,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
 				elementSendKey(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareName"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
-				uploadFile(jsonData.getJsonData("UploadPackagePath"));
+				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
 				elementClick(ADDSOFTWARE_UPLOADINSTALL_BT);
 				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,jsonData.getJsonData("UploadDeviceNotFoundError"));
 			}
@@ -632,23 +635,23 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void verifySearchGatewayDateRange() {
 		try {
 			waitElementVisibleClick(GATEWAY_ICON,300);
-			
+
 			elementClick(GATEWAY_FROMDATE);
 			String fromDate = elementGetText(GATEWAY_TESTDATE1);
 			elementClick(GATEWAY_TESTDATE1);
-			
+
 			elementClick(GATEWAY_TODATE);
 			String ToDate = elementGetText(GATEWAY_TESTDATE2);
 			elementClick(GATEWAY_TESTDATE2);
-			
+
 			elementClick(GATEWAY_SEARCH_ICON);
-			
+
 			String lastupdatevalue = elementGetText(GATEWAY_LASTUPDATED_DT);
 			String lastupdatedate = lastupdatevalue.substring(2, 4);
-			
+
 			if(fromDate.equals(lastupdatedate) ||  (ToDate.equals(lastupdatedate))) {
 				testPassed("Expected date value from  "+fromDate +" and "+ToDate+"      Actual date value is : "+lastupdatevalue);
-				}
+			}
 			else {
 				testFailed("Expected date value from  "+fromDate +" and "+ToDate+"      Actual date value is : "+lastupdatevalue);
 			}
@@ -689,29 +692,22 @@ public class ZFGatewayHomePage extends ElementManager{
 			//Additional
 			//elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_ED);
 			elementSendKey(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
-			elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_ICON);
-			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB1,jsonData.getJsonData("MetaDatakey1"));
-			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB1,jsonData.getJsonData("MetaDatavalue1"));
-			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB2,jsonData.getJsonData("MetaDatakey1"));
-			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB2,jsonData.getJsonData("MetaDatavalue1"));
-			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB3,jsonData.getJsonData("MetaDatakey1"));
-			elementSendKeys(ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB3, jsonData.getJsonData("MetaDatavalue1"));
-			waitElementVisibleClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT, 300);
+			
 			elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage("ToasterMsgSuccess");
 			verifyToastermessage("ToasterMsgSuccesUpdated");
 
 			//Validating the edited values 
-			waitElementVisibleClick(GATEWAY_ICON,300);
-			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("GatewayName"));
-			elementClick(GATEWAY_SEARCH_ICON);
-			if(compareValue(elementGetText(GATEWAYNAME), jsonData.getJsonData("GatewayName"))) {
-				waitElementVisibleClick(MORE_INFO,300);
-				waitElementVisibleClick(EDIT_GATEWAY,300);
-				testPassed("Edit Gateway functionality is validated"+jsonData.getJsonData("GatewayName"));
-			}else {
-				testFailed("Edit Gateway functionality is not validated"+jsonData.getJsonData("GatewayName"));
-			}
+//			waitElementVisibleClick(GATEWAY_ICON,300);
+//			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("GatewayName"));
+//			elementClick(GATEWAY_SEARCH_ICON);
+//			if(compareValue(elementGetText(GATEWAYNAME), jsonData.getJsonData("GatewayName"))) {
+//				waitElementVisibleClick(MORE_INFO,300);
+//				waitElementVisibleClick(EDIT_GATEWAY,300);
+//				testPassed("Edit Gateway functionality is validated"+jsonData.getJsonData("GatewayName"));
+//			}else {
+//				testFailed("Edit Gateway functionality is not validated"+jsonData.getJsonData("GatewayName"));
+//			}
 
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -764,10 +760,10 @@ public class ZFGatewayHomePage extends ElementManager{
 			Collections.sort(beforeSort);
 			beforeSort.forEach(x->{
 				afterSort.forEach(y -> {
-				if(x.equals(y) )
-					compareTextIgnoreCase(x,y);		
+					if(x.equals(y) )
+						compareTextIgnoreCase(x,y);		
 				});
-				});
+			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -779,28 +775,29 @@ public class ZFGatewayHomePage extends ElementManager{
 
 		try {
 			JsonReader.getJsonObject("ColumnVerification");
-			
-			getColumnVerification();
+
+			waitElementVisibleClick(GATEWAY_ICON,300);
 			List<String> ColumnName = elementsGetText(GATEWAY_ALL_COLUMN);
 			List<String> expected=new ArrayList<String>();
 			for(int i=0;i<ColumnName.size();i++) {
-			String listvaue = jsonData.getJsonData("GatewayColumn"+i);
-			expected.add(listvaue);
-			compareTextIgnoreCase(ColumnName.get(i),expected.get(i));
-			
+				String listvaue = jsonData.getJsonData("GatewayColumn"+i);
+				expected.add(listvaue);
+				compareTextIgnoreCase(ColumnName.get(i),expected.get(i));
+
 			}
-						
+
 			elementAvailability(GATEWAY_SEARCH_EB,"GATEWAY_SEARCH_EB");
 			elementAvailability(GATEWAY_SEARCH_DD,"GATEWAY_SEARCH_DD");
 			waitElementVisibleClick(GATEWAY_SEARCH_DD,300);
-			elementAvailability(GATEWAY_DECOMMISION_CB,"GATEWAY_DECOMMISION_CB");
-			elementAvailability(GATEWAY_COMMISION_CB,"GATEWAY_COMMISION_CB");
-			elementAvailability(GATEWAY_PRECOMMISION_CB,"GATEWAY_PRECOMMISION_CB");
+			elementAvailability(GATEWAY_DECOMMISION_TXT,"GATEWAY_DECOMMISION_TXT");
+			elementAvailability(GATEWAY_COMMISION_TXT,"GATEWAY_COMMISION_TXT");
+			elementAvailability(GATEWAY_PRECOMMISION_TXT,"GATEWAY_PRECOMMISION_TXT");
 			elementAvailability(GATEWAYSEARCH_BT,"GATEWAYSEARCH_BT");
-			elementAvailability(GATEWAY_CATERGORY_DD);
+			elementAvailability(CLEARDATE,"CLEARDATE");  
+			elementAvailability(GATEWAY_CATERGORY_DD,"GATEWAY_CATERGORY_DD");
 			elementAvailability(GATEWAY_ADDGATEWAY_BT,"GATEWAY_ADDGATEWAY_BT");
 			elementAvailability(GATEWAY_SHOW_TXT,"GATEWAY_SHOW_TXT");
-				
+
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
@@ -938,10 +935,10 @@ public class ZFGatewayHomePage extends ElementManager{
 			toasterText = waitElementVisibleGetText(ADDSINGLEGATWAY_TOASTER_DT,300);
 			compareText(jsonData.getJsonData(Jsondata),toasterText);
 		} catch (InterruptedException e) {
-			
+
 			TestLogger.appInfo(e.getMessage());
 		}
-		
+
 	}
 
 

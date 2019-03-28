@@ -6,11 +6,14 @@
 	<test name="Single Gateway">
 		<classes>
 			<class name="framework.Hooks" />
-			<class name="zf.test.ZFAddSingleGatewayTest" />
-			<class name="zf.test.ZFAddMultipleGatewayTest" />
-			<class name="zf.test.ZFAssetTest" />
-			<class name="zf.test.ZFClientHomeTest" />
-
+			 <class name="zf.test.ZFAddSingleGatewayTest" /> 
+			 <class name="zf.test.ZFAddMultipleGatewayTest" />
+				<class name="zf.test.ZFAssetDetailsTest" /> 
+				<class name="zf.test.ZFAssetTest" />
+				<class name="zf.test.ZFClientHomeTest" /> 
+				<class name="zf.test.ZFAddClientTest" />
+				 			<class name="zf.test.ZFGatewayHomeTest" />
+			
 		</classes>
 	</test>
 </suite>

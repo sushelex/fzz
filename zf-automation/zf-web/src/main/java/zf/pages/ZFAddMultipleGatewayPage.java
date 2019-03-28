@@ -90,7 +90,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT,100);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
 			waitElementEnabledClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
 			verifyToastermessage("ToasterMessageSuccess");
@@ -111,11 +111,11 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_UPLOAD_CA_ROOT_RB);
 			elementClick(ADDMULTIPLEGATEWAY_UPLOADCA_ROOT_CERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT,100);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
 			waitElementEnabledClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
 
-			verifyToastermessage("ToasterMessageSuccess");
+			verifyToastermessage("ToasterMessageFailed");
 		}catch(Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
@@ -132,7 +132,8 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCA"));
 			elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDeatils"));
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,100);
+			verifyToastermessage("ToasterMessageSuccess");
 			waitElementEnabledClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
 			//verifyToastermessage("ToasterMessageSuccess");
 			verifyToastermessage("ToasterMessageSuccess");
@@ -153,9 +154,9 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 			if(compareValue(elementGetText(ADDMULTIPLEGATEWAY_CA_FILENAME_TXT),jsonData.getJsonData("CAfilename"))){
 				elementClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_DETAILS_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadGatewayDetails"));
-				waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,300);
+				waitElementVisibleClick(ADDMULTIPLEGATEWAY_UPLOAD_GATEWAY_BT,100);
 				verifyToastermessage("ToasterMessageSuccess");
-				waitElementVisibleClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
+				waitElementEnabledClick(ADDMULTIPLEGATEWAY_SUBMIT_BT,300);
 				verifyToastermessage("ToasterMessageSuccess");
 
 			}else {

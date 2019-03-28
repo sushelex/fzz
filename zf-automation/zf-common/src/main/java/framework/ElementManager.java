@@ -691,7 +691,7 @@ public class ElementManager  extends ExtentReport{
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
-			
+			sleep(3000);
 		} catch (TimeoutException e) {
 			visible = false;
 		} 
