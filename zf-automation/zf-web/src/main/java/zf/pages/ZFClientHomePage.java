@@ -97,7 +97,7 @@ public class ZFClientHomePage extends ElementManager{
 			waitElementVisibleClick(MOREDETAILS_BT, 300);
 			compareText(elementGetText(CLIENTNAME), jsonData.getJsonData("clientName"));
 			compareText(elementGetText(CLIENTEMAIL), jsonData.getJsonData("email"));
-			compareText(elementGetText(CLIENTTELEPHONE), jsonData.getJsonData("telephone"));
+		//	compareText(elementGetText(CLIENTTELEPHONE), jsonData.getJsonData("telephone"));
 			compareText(elementGetText(CLIENTSTREET), jsonData.getJsonData("street"));
 			compareText(elementGetText(CLIENTSTREETNUMBER), jsonData.getJsonData("streetNumber"));
 			compareText(elementGetText(CLIENTCOUNTRY), jsonData.getJsonData("country"));

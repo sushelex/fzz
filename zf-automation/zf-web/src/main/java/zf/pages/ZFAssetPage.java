@@ -110,7 +110,7 @@ public class ZFAssetPage extends ElementManager{
 	private static By LOADER_SYMBOL									 =By.xpath("//div[contains(@class,'overlay-wrapper')]/div[contains(@class,'loader')]");
 
 	private static By ASSET_LICENSEPLATE_KEY_EB						 =By.xpath("//input[@class='no-drop cell key_0 ng-untouched ng-pristine ng-valid ng-star-inserted']");
-	private static By ASSET_PROPULSIONTYPE_KEY_EB					 =By.xpath("//input[@class='no-drop cell key_1 ng-pristine ng-valid ng-star-inserted ng-touched']");
+	private static By ASSET_PROPULSIONTYPE_KEY_EB					 =By.xpath("//input[@class='no-drop cell key_1 ng-untouched ng-pristine ng-valid ng-star-inserted']");
 	private static By ASSET_VEHICLE_KEY_EB							 =By.xpath("//input[@class='no-drop cell key_2 ng-untouched ng-pristine ng-valid ng-star-inserted']");
 	private static By ASSET_VIN_KEY_EB								 =By.xpath("//input[@class='no-drop cell key_3 ng-untouched ng-pristine ng-valid ng-star-inserted']");
 	private static By ASSET_AREA_EB									 =By.xpath("//input[@name='area']");
@@ -826,7 +826,9 @@ public class ZFAssetPage extends ElementManager{
 	{
 		try {
 			JsonReader.getJsonObject("OperatorHasNoAccess");
-			clickCreateAssets();
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
+			sleep(5000);
+			elementClick(ASSETS_CREATEASSET_BT);
 			verifyToastermessage("ToasterMessageFailedReason");
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -839,6 +841,7 @@ public class ZFAssetPage extends ElementManager{
 	{
 
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
+		
 		verifyToastermessage("ToasterMessageFailedReason");
 	
 	}

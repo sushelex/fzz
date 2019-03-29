@@ -24,12 +24,15 @@ public class MicrosoftLoginPage extends ElementManager{
 			elementSendKeys(SIGNWITHPASSWORD,passwordDecript(password));
 			elementClick(NEXTBUTTON);
 			elementClick(STAYSINGINBUTTON);
-		
 			sleep(6000);
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
 		return new ZFGatewayHomePage();
+	}
+	public void validatePageTitle() {
+		String titile = getTitile();
+		TestLogger.appInfo("Page title : "+titile);
 	}
 }
 

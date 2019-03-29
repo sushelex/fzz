@@ -97,8 +97,8 @@
 			"SensorID": "123456789",
 			"Description": "Description for Asset",
 			"MetaDatalicensePlate": "value for licensePlate",
-			"MetaDataPropulsionType": "value for PrpulsionType",
-			"MetaDatavehicleType": "value for vecleType",
+			"MetaDataPropulsionType": "value for PropulsionType",
+			"MetaDatavehicleType": "value for vehicleType",
 			"MetaDatavin": "A0345679",
 			"MetaDatavehicleManufacturer": "value of Manufacturer ",
 			"MetaDatavehicleModel": " value of model",
@@ -125,8 +125,8 @@
 			"SensorID": "123456789",
 			"Description": "Description for Asset",
 			"MetaDatalicensePlate": "Tewst value for licensePlate",
-			"MetaDataPropulsionType": "Twt value for PrpulsionType",
-			"MetaDatavehicleType": "value for vecleType",
+			"MetaDataPropulsionType": "Twt value for PropulsionType",
+			"MetaDatavehicleType": "value for vehicleType",
 			"MetaDatavin": "33456790",
 			"MetaDatavehicleManufacturer": "value of Manufacturer ",
 			"MetaDatavehicleModel": " value of model",
@@ -143,8 +143,8 @@
 			"AssetName": "MandatoryAutopopulatedMetadata",
 			"AssetType": "Bus",
 			"MetaDatalicensePlate": "licensePlate",
-			"MetaDataPropulsionType": "prpulsionType",
-			"MetaDatavehicleType": "vecleType",
+			"MetaDataPropulsionType": "propulsionType",
+			"MetaDatavehicleType": "vehicleType",
 			"MetaDatavin": "vin"
 		}
 	},
@@ -171,7 +171,7 @@
 			"MetaDatavehicleType": "Test value for vehicleType",
 			"MetaDatavin": "12345678",
 			"ToasterMessageSuccess": "SUCCESS",
-			"ToasterMessageSuccessReason": "SUCCESS"
+			"ToasterMessageSuccessReason": "Asset added successfully"
 		}
 	},
 	{
@@ -223,7 +223,7 @@
 			"MetaDatavehicleType": "Test value for vehicleType",
 			"MetaDatavin": "13567890",
 			"ToasterMessageSuccess": "SUCCESS",
-			"ToasterMessageSuccessReason": "SUCCESS"
+			"ToasterMessageSuccessReason": "Asset added successfully"
 		}
 	},
 	{
@@ -317,7 +317,7 @@
 			"MetaDataPropulsionType": "Test value for PropulsionType",
 			"MetaDatavehicleType": "Test value for vehicleType",
 			"MetaDatavin": "Belo",
-			"MetaDatavin1": "Above12digits",
+			"MetaDatavin1": "Above12digit",
 			"MetaDatavin2": "Validdat",
 			"ToasterMessageFailed": "Failed",
 			"ToasterMessageFailedReason": "Field 'vin' doesn't have valid length (17 or 9-12)",
@@ -691,8 +691,8 @@
 			"MetaDatakey6": "testMK3",
 			"MetaDatavalue6": "testBMV3",
 			"UploadCertificate": "C:\\ZF\\ZF_Latestcode\\zf_testing\\zf-automation\\zf-web\\src\\main\\resources\\testdata\\Certificates\\Single\\devtestdev10_cert.pem",
-			"ToasterMsgSuccess": "SUCCESS",
-			"ToasterMsgSuccesUpdated": "was updated successfully"
+			"ToasterMsgSuccess": "SUCCESS"
+			
 		}
 	},
 	{

@@ -165,7 +165,8 @@ public class ZFGatewayHomePage extends ElementManager{
 
 	public void clickAddGateway() {
 
-		try {sleep(3000);
+		try {
+			sleep(3000);
 		waitElementVisibleClick(GATEWAY_ICON,300);
 		waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
 		sleep(2500);
@@ -258,8 +259,10 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {
 			JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 			elementClick(GATEWAY_ICON);
+			sleep(3000);
 			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
 			verifyToastermessage(GATEWAY_TOASTER_MSG,"ToasterMessageFailed");
+			sleep(2000);
 			elementClick(GATEWAY_ADDGATEWAY_BT);
 			verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 
@@ -692,10 +695,9 @@ public class ZFGatewayHomePage extends ElementManager{
 			//Additional
 			//elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_ED);
 			elementSendKey(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
-			
 			elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage("ToasterMsgSuccess");
-			verifyToastermessage("ToasterMsgSuccesUpdated");
+	
 
 			//Validating the edited values 
 //			waitElementVisibleClick(GATEWAY_ICON,300);
