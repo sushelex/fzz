@@ -27,7 +27,8 @@ public class ExtentReport extends CaptureScreenshot {
 	private static ExtentReports extent;
 	private static ExtentHtmlReporter htmlReporter;
 	private static  ExtentTest reporter;
-	static String timeStamp = EnvironmentManager.getReportPath()+getTimeStamp();
+	public static String startTime=getTimeStamp();
+	static String timeStamp = EnvironmentManager.getReportPath()+startTime; 
 	static CaptureScreenshot captureScreenshot=new CaptureScreenshot();
 
 	/**
@@ -47,7 +48,7 @@ public class ExtentReport extends CaptureScreenshot {
 		}
 		return path;
 	}
-	
+
 
 	/**
 	 * This Method is used for generating report with below configuration
@@ -56,7 +57,7 @@ public class ExtentReport extends CaptureScreenshot {
 	public static Object screenCapture(String longdetails, String imagepath) throws IOException {
 		reporter.log(Status.INFO,longdetails, MediaEntityBuilder.createScreenCaptureFromPath(imagepath).build());
 		return reporter;
-		
+
 	}
 
 
@@ -66,8 +67,8 @@ public class ExtentReport extends CaptureScreenshot {
 	 */
 	public static void configureReport(){
 
-try {
-			
+		try {
+
 			htmlReporter=new ExtentHtmlReporter(loadReportFolder()+getTimeStamp()+EnvironmentManager.getDotHtml());
 			extent = new ExtentReports();
 			extent.attachReporter(htmlReporter);
@@ -113,7 +114,7 @@ try {
 				reporter.error(result.getThrowable());
 
 				takeScreenShot(methodName);
-				
+
 
 			}else if(result.getStatus() == ITestResult.SUCCESS){
 				reporter.log(Status.PASS, methodName+" PASSED");
@@ -218,7 +219,7 @@ try {
 	 */
 	public static void testPassed(String message){
 		try {
-			
+
 			reporter.info(message);
 			takeScreenShot(message);
 		}
@@ -240,46 +241,46 @@ try {
 		Date dateObject = new Date();
 		return simpleDateFormat.format(dateObject);
 	}
-	
-	
+
+
 	public void elementCatch(WebElement element, long explicittime, Exception message, String error) {
 		try {
 			takeScreenShot(error);
-		
-		reporter.info("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "+ message.getMessage());
 
-		if (element != null) {
-			if (element.getText().isEmpty()) {
-				TestLogger.elementIdentifierFail("ErrorMessage: Web element " + element + " is not working");
-				Assert.fail("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "
-						+ error);
+			reporter.info("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "+ message.getMessage());
+
+			if (element != null) {
+				if (element.getText().isEmpty()) {
+					TestLogger.elementIdentifierFail("ErrorMessage: Web element " + element + " is not working");
+					Assert.fail("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "
+							+ error);
+				} else {
+					TestLogger.elementIdentifierFail("ErrorMessage: Web element " + element.getText() + " is not working");
+					Assert.fail("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "
+							+ element.getText());
+				}
+
 			} else {
-				TestLogger.elementIdentifierFail("ErrorMessage: Web element " + element.getText() + " is not working");
-				Assert.fail("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "
-						+ element.getText());
+				TestLogger.elementIdentifierFail(
+						"ErrorMessage: " + error + "\n" + "Exception Message: " + message.getMessage());
+				Assert.fail(
+						"TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - " + error);
 			}
 
-		} else {
-			TestLogger.elementIdentifierFail(
-					"ErrorMessage: " + error + "\n" + "Exception Message: " + message.getMessage());
-			Assert.fail(
-					"TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - " + error);
-		}
+		} catch (IOException e) {
+			TestLogger.appInfo(e.getMessage());
+		}}
 
-	} catch (IOException e) {
-		TestLogger.appInfo(e.getMessage());
-	}}
-	
-	
+
 	public static String  zipAutomationReport() {
 		String path = "\\"+timeStamp.replace("./","")+".zip";
 		try {
-			
+
 			FileZip appZip = new FileZip();
 			appZip.generateFileList(new File(System.getProperty("user.dir")+timeStamp.replace("./", "\\")));
 			appZip.zipIt(timeStamp.replace("./","")+".zip",System.getProperty("user.dir")+timeStamp.replace("./", "\\"));
 			return System.getProperty("user.dir")+path;
-			
+
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
