@@ -1,48 +1,85 @@
 package framework;
 
-import java.util.Properties;    
+import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;    
-import javax.mail.internet.*;    
-class Mailer{  
-    public static void send(String from,String password,String sub,String msg){  
-          //Get properties object    
+import javax.mail.internet.*;
+import javax.mail.internet.MimeMultipart;
+
+public class SendMailSSL{  
+	
+	
+    public  void AutomationReport(String fileName){  
+    	
           Properties props = new Properties();    
           props.put("mail.smtp.host", "smtp.gmail.com");    
           props.put("mail.smtp.socketFactory.port", "465");    
           props.put("mail.smtp.socketFactory.class",    
                     "javax.net.ssl.SSLSocketFactory");    
           props.put("mail.smtp.auth", "true");    
-          props.put("mail.smtp.port", "465");    
-          //get Session   
+          props.put("mail.smtp.port", "888");    
+          
           Session session = Session.getDefaultInstance(props,    
            new javax.mail.Authenticator() {    
            protected PasswordAuthentication getPasswordAuthentication() {    
-           return new PasswordAuthentication(from,password);  
+           return new PasswordAuthentication("mkaru1437@gmail.com","Karuna@88");
            }    
           });    
           //compose message    
           try {    
            MimeMessage message = new MimeMessage(session);    
-//           message.addRecipient(Message.RecipientType.TO,new InternetAddress("s.karunanithi@sasken.com"));    
-//           message.addRecipient(Message.RecipientType.TO,new InternetAddress("divyalakshmi.govindan@sasken.com"));  
-//           message.addRecipient(Message.RecipientType.TO,new InternetAddress("venkata.yadavalli@sasken.com"));  
-           message.addRecipient(Message.RecipientType.TO,new InternetAddress("vikas.desai@sasken.com"));  
-           message.addRecipient(Message.RecipientType.TO,new InternetAddress("shrinath.inamdar@sasken.com"));  
-           
+           message.addRecipient(Message.RecipientType.TO,new InternetAddress("s.karunanithi@sasken.com"));    
+           message.addRecipient(Message.RecipientType.TO,new InternetAddress("divyalakshmi.govindan@sasken.com"));  
+           message.addRecipient(Message.RecipientType.TO,new InternetAddress("venkata.yadavalli@sasken.com"));  
+           message.addRecipient(Message.RecipientType.TO,new InternetAddress("mkaru1437@gmail.com")); 
+           message.addRecipient(Message.RecipientType.TO,new InternetAddress("karu.testing@gmail.com")); 
+           message.addRecipient(Message.RecipientType.TO,new InternetAddress(" shaik.ansari@sasken.com")); 
 
-           message.setSubject(sub);     
-           message.setText(msg);    
+//           message.addRecipient(Message.RecipientType.TO,new InternetAddress("vikas.desai@sasken.com"));  
+//           message.addRecipient(Message.RecipientType.TO,new InternetAddress("shrinath.inamdar@sasken.com"));  
+          
+           message.setSubject("Automatation Report generated after execution");     
+           Multipart multipart = new MimeMultipart();
+           MimeBodyPart messageBodyPart = new MimeBodyPart();
+           String text = "Hi All,";
+           String html = text+"<br><br>"+"Execution Summary Report"+"<br><br>"+"Execution Start Time : 05:30"+"<br>"+"Execution  End Time : 08:00"+"<br>"+"Suite : Regression"+"<br><br>"+"Note : PFA"+"<br><br>"+"Thanks <br> AutomationTeam";
+           MimeBodyPart textPart = new MimeBodyPart();
+           textPart.setText( text, "utf-8" );
+           MimeBodyPart htmlPart = new MimeBodyPart();
+           htmlPart.setContent( html, "text/html; charset=utf-8" );
+           
+           multipart.addBodyPart( htmlPart );
+           message.setContent( multipart );
+
+           // Unexpected output.
+           System.out.println( "HTML = text/html : " + htmlPart.isMimeType( "text/html" ) );
+           System.out.println( "HTML Content Type: " + htmlPart.getContentType() );
+
+           // Required magic (violates principle of least astonishment).
+           message.saveChanges();
+
+           // Output now correct.    
+           System.out.println( "TEXT = text/plain: " + textPart.isMimeType( "text/plain" ) );
+           System.out.println( "HTML = text/html : " + htmlPart.isMimeType( "text/html" ) );
+           System.out.println( "HTML Content Type: " + htmlPart.getContentType() );
+           System.out.println( "HTML Data Handler: " + htmlPart.getDataHandler().getContentType() );
+           String filename = fileName;
+           DataSource source = new FileDataSource(filename);
+           messageBodyPart.setDataHandler(new DataHandler(source));
+           messageBodyPart.setFileName(filename);
+           multipart.addBodyPart(messageBodyPart);
+           message.setContent(multipart);
+           
+          
            //send message  
            Transport.send(message);    
-           System.out.println("message sent successfully");    
-          } catch (MessagingException e) {System.out.println(e.getMessage());}    
+           System.out.println("Automation Report Email sent successfully");    
+          } catch (MessagingException e) {
+        	  System.out.println(e.getMessage());}    
              
     }  
+    
 }  
-public class SendMailSSL{    
- public static void main(String[] args) {    
-     //from,password,to,subject,message  
-	 Mailer.send("mkaru1437@gmail.com","Karuna@88","Autoamtion Email from Sasken Tech","Able to recive the mail..");  
-     //change from, password and to  
- }    
-}    

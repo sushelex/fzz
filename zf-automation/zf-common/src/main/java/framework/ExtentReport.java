@@ -269,5 +269,21 @@ try {
 	} catch (IOException e) {
 		TestLogger.appInfo(e.getMessage());
 	}}
+	
+	
+	public static String  zipAutomationReport() {
+		String path = "\\"+timeStamp.replace("./","")+".zip";
+		try {
+			
+			FileZip appZip = new FileZip();
+			appZip.generateFileList(new File(System.getProperty("user.dir")+timeStamp.replace("./", "\\")));
+			appZip.zipIt(timeStamp.replace("./","")+".zip",System.getProperty("user.dir")+timeStamp.replace("./", "\\"));
+			return System.getProperty("user.dir")+path;
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return path;
+	}
 }
 
