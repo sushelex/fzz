@@ -658,6 +658,7 @@ public class ElementManager  extends ExtentReport{
 	}
 
 	public String getTitile() {
+		TestLogger.appInfo(DriverManager.getDriverInstance().getTitle());
 		return DriverManager.getDriverInstance().getTitle();
 	}
 
@@ -690,6 +691,7 @@ public class ElementManager  extends ExtentReport{
 
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			sleep(5000);
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
 			
 		} catch (TimeoutException e) {

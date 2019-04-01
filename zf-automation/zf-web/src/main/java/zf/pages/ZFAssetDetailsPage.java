@@ -72,6 +72,7 @@ public class ZFAssetDetailsPage extends ElementManager{
 		try {
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
+		sleep(5000);
 		elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
 		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed");
 		elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
