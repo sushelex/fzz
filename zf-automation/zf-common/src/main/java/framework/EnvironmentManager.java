@@ -29,6 +29,13 @@ public class EnvironmentManager {
 	public static String getEmailUrl() {
 		return properties.getProperty("URL");
 	}
+	/**
+	 * This method returns the Email URL value
+	 * 
+	 */
+	public static String getNewUrl() {
+		return properties.getProperty("URL1");
+	}
 	
 	/**
 	 * This method returns the Browser value
@@ -92,6 +99,20 @@ public class EnvironmentManager {
 	 */
 	public static String getNoPrivilegePassword() { 
 		return properties.getProperty("NOPRIVILEGEUSERPASSWORD");
+	}
+	/*
+	 * This method returns the NoPrivilege Username value
+	 */
+
+	public static String getPrivilegeWithThresholdUserName() {
+		return properties.getProperty("PRIVILEGEWITHTHRESHOILDACCESSUSERNAME");
+	}
+
+	/*
+	 * This method returns the NoPrivilege User Password value
+	 */
+	public static String getPrivilegeWithThresholdPassword() { 
+		return properties.getProperty("PRIVILEGEWITHTHRESHOILDACCESSPASSWORD");
 	}
 	/*
 	 * This method returns the Sender email id value

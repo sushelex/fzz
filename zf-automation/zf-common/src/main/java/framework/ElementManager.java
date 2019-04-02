@@ -1007,5 +1007,8 @@ public class ElementManager  extends ExtentReport{
 		return elementText;			
 }
 	
+	public void navigateToUrl() {
+		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getNewUrl());
+	}
 	
 }
