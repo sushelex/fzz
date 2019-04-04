@@ -533,7 +533,7 @@ public class ZFAssetPage extends ElementManager{
 			createAssetstWithAllFeilds();
 			JsonReader.getJsonObject("executeActionWithoutParamater");
 			selectAssetDetails("executeActionWithoutParamater");
-			elementClick(ASSETS_ACTION_BT);
+			waitElementVisibleClick(ASSETS_ACTION_BT,300);
 			elementClick(ASSETS_ACTION_EDIT_BT);
 			elementClick(ASSETS_ACTION_RESETALL_BT);
 			waitElementVisibleClick(ASSETS_ACTION_APPLY_BT,300);
@@ -704,7 +704,7 @@ public class ZFAssetPage extends ElementManager{
 			elementClick(ASSETSDETAILS_ADDEDASSET_BT);
 			waitElementVisibleClick(ASSETSDETAILS_ADDCHILDASSET_BT,300);
 			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
-			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
+			waitElementVisibleClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")),300);
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
 			elementClickRadioButton(CREATE_ASSET_LOCATION_ADDRESS_RB);

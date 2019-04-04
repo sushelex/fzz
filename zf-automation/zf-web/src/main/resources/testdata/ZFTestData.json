@@ -744,5 +744,40 @@
 			"Openmatic1": "Openmatics 1",
 			"Openmatic2": "Openmatics 2"
 		}
+	},{
+		"privilegeToChangeThresholds": {
+			"ToasterMsgSuccess": "Success",
+			"ToasterMsgSuccessReason": "Thresholds Settings were updated successfully"
+		}
+	},
+		{
+		"noPrivilegeToEditUser": {
+			"Name": "tamil",
+			"ToasterMsgFailed": "Access denied",
+			"ToasterMsgSuccessReason": "Unsufficient privileges. Try to get privileges by your local administrator. If problem persists, contact our support.' is identified successfully"
+		}
+	},
+		{
+		"noPrivilegeToEditUserRole": {
+			"Name": "tamil",
+			"UserRole": "test",
+			"ToasterMsgFailed": "Access denied",
+			"ToasterMsgSuccessReason": "Unsufficient privileges. Try to get privileges by your local administrator. If problem persists, contact our support.' is identified successfully"
+		}
+	},
+		{
+		"noPrivilegeToChangeThresholds": {
+			"Name": "tamil",
+			"UserRole": "test",
+			"ToasterMsgFailed": "Access denied",
+			"ToasterMsgSuccessReason": "Unsufficient privileges. Try to get privileges by your local administrator. If problem persists, contact our support.' is identified successfully"
+		}
+	},
+	{
+		"noPrivilegeToEditAssets": {
+			"AssetName": "MICHAL TEST",
+			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
+		}
 	}
 ]

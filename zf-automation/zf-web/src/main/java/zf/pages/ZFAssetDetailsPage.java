@@ -56,13 +56,11 @@ public class ZFAssetDetailsPage extends ElementManager{
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
 		elementClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed");
-		elementClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		
 		elementClick(ASSETSDETAILS_ASSETDETAILS_EDIT_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed");
-		elementClick(ASSETSDETAILS_ASSETDETAILS_EDIT_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+
 	}catch(Exception e){
 		TestLogger.appInfo(e.getMessage());
 	}
@@ -74,9 +72,9 @@ public class ZFAssetDetailsPage extends ElementManager{
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
 		sleep(5000);
 		elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed");
-		elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		//elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
+		//verifyToastermessage(ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 		
 	}catch(Exception e){
 		TestLogger.appInfo(e.getMessage());
@@ -89,9 +87,8 @@ public class ZFAssetDetailsPage extends ElementManager{
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
 		elementClick(ASSETSDETAILS_ACTIONS_BT);
 		elementClick(ASSETSDETAILS_ACTIONS_EDIT_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed");
-		elementClick(ASSETSDETAILS_ACTIONS_EDIT_BT);
-		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+	
 		
 	}catch(Exception e){
 		TestLogger.appInfo(e.getMessage());
@@ -139,12 +136,13 @@ public class ZFAssetDetailsPage extends ElementManager{
 			TestLogger.appInfo(e.getMessage());
 		}
 	}
-	public void verifyToastermessage(By ByType, String Jsondata) {
+	public void verifyToastermessage(By ByType, String Jsondata,By ByType1, String Jsondata1) {
 		try {
 		
 		String toasterText = waitElementVisibleGetText(ByType,300);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
-	
+		String toasterText1 = waitElementVisibleGetText(ByType1,300);
+		compareText(jsonData.getJsonData(Jsondata1),toasterText1);
 		}catch (Exception e) {
 		TestLogger.appInfo(e.getMessage());
 	}}

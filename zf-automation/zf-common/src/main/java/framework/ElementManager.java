@@ -691,7 +691,7 @@ public class ElementManager  extends ExtentReport{
 
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
-			sleep(5000);
+			sleep(6000);
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
 			
 		} catch (TimeoutException e) {
@@ -1008,7 +1008,7 @@ public class ElementManager  extends ExtentReport{
 }
 	
 	public void navigateToUrl() {
-		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getNewUrl());
+		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getPortalUrl());
 	}
 	
 }

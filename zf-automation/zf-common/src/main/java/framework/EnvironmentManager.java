@@ -33,8 +33,8 @@ public class EnvironmentManager {
 	 * This method returns the Email URL value
 	 * 
 	 */
-	public static String getNewUrl() {
-		return properties.getProperty("URL1");
+	public static String getPortalUrl() {
+		return properties.getProperty("PORTALURL");
 	}
 	
 	/**
@@ -127,6 +127,22 @@ public class EnvironmentManager {
 	 */
 	public static String getPrivilegeMultiClientsPassword() { 
 		return properties.getProperty("NOPRIVILEGEUSERPASSWORD");
+	}
+	
+	
+	/*
+	 * This method returns the NoPrivilege Username value
+	 */
+
+	public static String getNoUseEditPrivilegeUserName() {
+		return properties.getProperty("NOUSEREDITPRIVILEGEUSERNAME");
+	}
+
+	/*
+	 * This method returns the NoPrivilege User Password value
+	 */
+	public static String getNoUseEditPrivilegePassword() { 
+		return properties.getProperty("NOUSEREDITPRIVILEGEPASSWORD");
 	}
 	/*
 	 * This method returns the Sender email id value

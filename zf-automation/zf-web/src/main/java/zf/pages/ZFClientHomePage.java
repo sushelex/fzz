@@ -170,6 +170,7 @@ public class ZFClientHomePage extends ElementManager{
 	public void navigateToClientPage() {
 		try {
 			waitElementVisibleClick(CLIENTS_BT, 300);
+			sleep(3000);
 			waitElementVisibleClick(CLIENTDETAILEXPANDARROW, 300);
 			waitElementVisibleClick(ADDSUBCLIENTBUTTON, 300);
 		} catch (InterruptedException e) {

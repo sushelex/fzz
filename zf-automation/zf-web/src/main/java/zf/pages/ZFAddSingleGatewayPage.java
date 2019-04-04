@@ -268,7 +268,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 	}
 	public int generateRandomNumber() {
 		Random rnd = new Random();
-		int randomNum = (int) (rnd.nextInt(15));
+		int randomNum = (int) (rnd.nextInt(999));
 		return randomNum;
 	}
 }
