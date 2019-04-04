@@ -10,23 +10,23 @@ public class ZFFleetHomePage extends ElementManager {
 
 	JsonReader jsonReader=new JsonReader();
 
-	private static By fleetTab_BT                                                                      = By.xpath("//a[@title='Fleets']");
-	private static By createNewFleetButton_BT                        = By.xpath("//button[@class='button create-btn button-secondary']");
-	private static By basicDataFleetName_EB                                             = By.xpath("//input[@name='newFleetName']");
-	private static By basicDataInfoText_EB                                   = By.xpath("//textarea[@name='newFleetDescription']");
-	//            private static By basicDataCancel_BT                       = By.xpath("//button[contains(text(),'Cancel')]");
-	private static By nextStep_BT                                                                     = By.xpath("//button[@class='button button-primary ng-binding ng-scope']");
-	private static By assignVehiclesSearch_EB                            = By.xpath("//input[contains(@placeholder,'Search for vehicle of')]");
-	private static By assignVehicleLoader_BT                              = By.xpath("//div[@class='drag-item item-available-fleet vehicle-icon ng-scope']//img[@class='change-btn']");
-	private static By createFleet_BT                                                                = By.xpath("//button[@type='submit']");
-	private static By filterExpandRow_BT                                      = By.xpath("//div[@class='toogle-btn is-folded']");
-	private static By filterSerach_EB                                                                = By.xpath("//input[@placeholder='Search']");
-	private static By fleetElementList_LT                                       = By.xpath("//span[@class='name ng-binding']");
-	private static By fleetEditData_BT                                                             = By.xpath("//button[@class='button button-primary edit-button ng-binding']");
-	private static By newFleetName_EB                                                        = By.xpath("//input[@name='newFleetName']");
-	private static By newFleetDescription_EB                             = By.xpath("//textarea[@name='newFleetDescription']");
-	private static By deleteFleet_BT                                                                = By.xpath("//button[@class='button button-primary ng-binding']");
-	private static By clickYes_BT                                                                        = By.xpath("//button[contains(text(),'Yes')]");
+	private static By FLEETTAB_BT                                    = By.xpath("//a[@title='Fleets']");
+	private static By CREATENEWFLEETBUTTON_BT                        = By.xpath("//button[@class='button create-btn button-secondary']");
+	private static By BASICDATAFLEETNAME_EB                          = By.xpath("//input[@name='newFleetName']");
+	private static By BASICDATAINFOTEXT_EB                           = By.xpath("//textarea[@name='newFleetDescription']");
+	//	private static By BASICDATACANCEL_BT                             = By.xpath("//button[contains(text(),'Cancel')]");
+	private static By NEXTSTEP_BT                                    = By.xpath("//button[@class='button button-primary ng-binding ng-scope']");
+	private static By ASSIGNVEHICLESSEARCH_EB                        = By.xpath("//input[contains(@placeholder,'Search for vehicle of')]");
+	private static By ASSIGNVEHICLELOADER_BT                         = By.xpath("//div[@class='drag-item item-available-fleet vehicle-icon ng-scope']//img[@class='change-btn']");
+	private static By CREATEFLEET_BT                                 = By.xpath("//button[@type='submit']");
+	private static By FILTEREXPANDROW_BT                             = By.xpath("//div[@class='toogle-btn is-folded']");
+	private static By FILTERSERACH_EB                                = By.xpath("//input[@placeholder='Search']");
+	private static By FLEETELEMENTLIST_LT                            = By.xpath("//span[@class='name ng-binding']");
+	private static By FLEETEDITDATA_BT                               = By.xpath("//button[@class='button button-primary edit-button ng-binding']");
+	private static By NEWFLEETNAME_EB                                = By.xpath("//input[@name='newFleetName']");
+	private static By NEWFLEETDESCRIPTION_EB                         = By.xpath("//textarea[@name='newFleetDescription']");
+	private static By DELETEFLEET_BT                                 = By.xpath("//button[@class='button button-primary ng-binding']");
+	private static By CLICKYES_BT                                    = By.xpath("//button[contains(text(),'Yes')]");
 
 
 
@@ -35,7 +35,7 @@ public class ZFFleetHomePage extends ElementManager {
 	 */
 	public void clikcOnFleetTab() throws InterruptedException
 	{
-		waitElementVisibleClick(fleetTab_BT,300);
+		waitElementVisibleClick(FLEETTAB_BT,300);
 	}
 
 	/* 
@@ -44,7 +44,7 @@ public class ZFFleetHomePage extends ElementManager {
 
 	public void createNewFleet() throws InterruptedException
 	{
-		waitElementVisibleClick(createNewFleetButton_BT, 300);
+		waitElementVisibleClick(CREATENEWFLEETBUTTON_BT, 300);
 	}
 
 	/*
@@ -61,22 +61,22 @@ public class ZFFleetHomePage extends ElementManager {
 			/*
 			 *  Fleet Basic Data
 			 */
-			elementSendKeys(basicDataFleetName_EB, jsonReader.getJsonData("fleetname"));
-			elementSendKeys(basicDataInfoText_EB, jsonReader.getJsonData("infotext"));
-			elementClick(nextStep_BT);
+			elementSendKeys(BASICDATAFLEETNAME_EB, jsonReader.getJsonData("fleetname"));
+			elementSendKeys(BASICDATAINFOTEXT_EB, jsonReader.getJsonData("infotext"));
+			elementClick(NEXTSTEP_BT);
 
 			/*
 			 * For Assigning The Vehicles
 			 */
-			elementSendKeys(assignVehiclesSearch_EB, jsonReader.getJsonData("vehicle"));
-			waitElementVisibleClick(assignVehicleLoader_BT,300);
-			elementSendKeys(assignVehiclesSearch_EB, jsonReader.getJsonData("vehicle1"));
-			waitElementVisibleClick(assignVehicleLoader_BT,300);
-			elementClick(nextStep_BT);
+			elementSendKeys(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehicle"));
+			waitElementVisibleClick(ASSIGNVEHICLELOADER_BT,300);
+			elementSendKeys(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehicle1"));
+			waitElementVisibleClick(ASSIGNVEHICLELOADER_BT,300);
+			elementClick(NEXTSTEP_BT);
 			/*
 			 * For Creating Fleet 
 			 */
-			elementClick(createFleet_BT);
+			elementClick(CREATEFLEET_BT);
 
 		}catch(Exception e)
 		{
@@ -87,24 +87,24 @@ public class ZFFleetHomePage extends ElementManager {
 	public void editNewFleet()
 	{
 		try {
-			elementClick(filterExpandRow_BT);
-			waitElementToBeVisibleSendValue(filterSerach_EB, 300, jsonReader.getJsonData("fleetname"));
+			elementClick(FILTEREXPANDROW_BT);
+			waitElementToBeVisibleSendValue(FILTERSERACH_EB, 300, jsonReader.getJsonData("fleetname"));
 
-			String elementtext=elementGetText(fleetElementList_LT);
+			String elementtext=elementGetText(FLEETELEMENTLIST_LT);
 			if(elementtext.equals(jsonReader.getJsonData("fleetname")))
 			{
-				elementClick(fleetElementList_LT);
-				elementClick(fleetEditData_BT);
-				elementSendKeys(newFleetName_EB, jsonReader.getJsonData("fleetnamenew"));
-				elementSendKeys(newFleetDescription_EB, jsonReader.getJsonData("infotextnew"));
-				elementClick(nextStep_BT);
-				elementSendKey(assignVehiclesSearch_EB, jsonReader.getJsonData("vehiclenew"));
-				elementClick(assignVehicleLoader_BT);
+				elementClick(FLEETELEMENTLIST_LT);
+				elementClick(FLEETEDITDATA_BT);
+				elementSendKeys(NEWFLEETNAME_EB, jsonReader.getJsonData("fleetnamenew"));
+				elementSendKeys(NEWFLEETDESCRIPTION_EB, jsonReader.getJsonData("infotextnew"));
+				elementClick(NEXTSTEP_BT);
+				elementSendKey(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehiclenew"));
+				elementClick(ASSIGNVEHICLELOADER_BT);
 
-				elementSendKeys(assignVehiclesSearch_EB, jsonReader.getJsonData("vehiclenew1"));
-				waitElementVisibleClick(assignVehicleLoader_BT,300);
-				elementClick(nextStep_BT);
-				elementClick(createFleet_BT);
+				elementSendKeys(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehiclenew1"));
+				waitElementVisibleClick(ASSIGNVEHICLELOADER_BT,300);
+				elementClick(NEXTSTEP_BT);
+				elementClick(CREATEFLEET_BT);
 			}
 		}catch(Exception e) {
 
@@ -116,13 +116,13 @@ public class ZFFleetHomePage extends ElementManager {
 	public void deleteFleet()
 	{
 
-		elementClick(filterExpandRow_BT);
-		elementSendKeys(filterSerach_EB, jsonReader.getJsonData("fleetnamenew"));
-		String elementtext=elementGetText(fleetElementList_LT);
+		elementClick(FILTEREXPANDROW_BT);
+		elementSendKeys(FILTERSERACH_EB, jsonReader.getJsonData("fleetnamenew"));
+		String elementtext=elementGetText(FLEETELEMENTLIST_LT);
 		if(elementtext.equals(jsonReader.getJsonData("fleetnamenew")))
 		{
-			elementClick(deleteFleet_BT);
-			elementClick(clickYes_BT);
+			elementClick(DELETEFLEET_BT);
+			elementClick(CLICKYES_BT);
 		}
 	}
 

@@ -114,6 +114,20 @@ public class EnvironmentManager {
 	public static String getPrivilegeWithThresholdPassword() { 
 		return properties.getProperty("PRIVILEGEWITHTHRESHOILDACCESSPASSWORD");
 	}
+	
+	/*
+	 * This method returns the Privilege Username which has 2 clients value
+	 */
+
+	public static String getPrivilegeMultiClientsUserName() {
+		return properties.getProperty("PRIVILEGEMULTICLIENTSUSERNAME");
+	}
+	/*
+	 * This method returns the NoPrivilege User Password which has 2 clients value
+	 */
+	public static String getPrivilegeMultiClientsPassword() { 
+		return properties.getProperty("NOPRIVILEGEUSERPASSWORD");
+	}
 	/*
 	 * This method returns the Sender email id value
 	 */
