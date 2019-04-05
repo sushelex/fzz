@@ -9,13 +9,12 @@ import org.testng.annotations.Test;
 
 import framework.DriverManager;
 import framework.EnvironmentManager;
-import zf.iris.pages.ZFDashboardPage;
-import zf.iris.pages.ZFUserHomePage;
+import zf.iris.pages.ZFRBACPage;
+
 import zf.pages.MicrosoftLoginPage;
 
-public class RBAC extends ZFDashboardPage{
+public class RBAC extends ZFRBACPage{
 	MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
-	ZFUserHomePage zfuserhomepage=new ZFUserHomePage();
 	
 	@BeforeMethod
 	public void beforeMethod(Method testName) {
@@ -33,19 +32,19 @@ public class RBAC extends ZFDashboardPage{
 //	@Test
 	public void Tc01NoPrivilegeToEditUser()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoUseEditPrivilegeUserName(),EnvironmentManager.getNoUseEditPrivilegePassword());
-		zfuserhomepage.noPrivilegeToEditUser();
+		noPrivilegeToEditUser();
 	}
 	
 //	@Test
 	public void Tc02NoPrivilegeToEditUserRole()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoUseEditPrivilegeUserName(),EnvironmentManager.getNoUseEditPrivilegePassword());
-		zfuserhomepage.noPrivilegeToEditUser();
+		noPrivilegeToEditUser();
 	}
 	
 	@Test
 	public void Tc02NoPrivilegeToChangeThresholds()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
-		zfuserhomepage.editUserWithNoRole();
+		editUserWithNoRole();
 		DriverManager.closeAllBrowser();
 		DriverManager.getDriver(EnvironmentManager.getBrowserName());
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoPrivilegeUserName(),EnvironmentManager.getNoPrivilegePassword());
@@ -53,11 +52,10 @@ public class RBAC extends ZFDashboardPage{
 	}
 	
 	
-
 	@Test
 	public void Tc03NoPrivilegeToEditAssets()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
-		zfuserhomepage.noPrivilegeToEditAssets();
+		noPrivilegeToEditAssets();
 	}
 	@AfterMethod
 	public void afterMethod(ITestResult result,Method testName)

@@ -36,6 +36,13 @@ public class EnvironmentManager {
 	public static String getPortalUrl() {
 		return properties.getProperty("PORTALURL");
 	}
+	/**
+	 * This method returns the Email URL value
+	 * 
+	 */
+	public static String getOtherClientUrl() {
+		return properties.getProperty("OTHERCLIENTURL");
+	}
 	
 	/**
 	 * This method returns the Browser value

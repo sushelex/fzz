@@ -1011,4 +1011,27 @@ public class ElementManager  extends ExtentReport{
 		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getPortalUrl());
 	}
 	
+	
+	public boolean waitElementToBeVisible(By byType, long timeoutSeconds)  {
+		boolean visible = false;
+
+		try {
+			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
+		} catch (TimeoutException e) {
+			visible = false;
+		} 
+		catch (Exception e) {
+			TestLogger.appInfo("element is not visible");
+		}finally {
+		
+		}
+		return visible;
+
+	}
+
+	
+	public void navigateToOtherClientUrl() {
+		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getOtherClientUrl());
+	}
 }

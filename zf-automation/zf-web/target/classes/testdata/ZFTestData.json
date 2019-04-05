@@ -744,6 +744,12 @@
 			"Openmatic1": "Openmatics 1",
 			"Openmatic2": "Openmatics 2"
 		}
+	},
+	{
+		"Vehicles": {
+			"Vehicle": "3xcvalue for licenseplate key",
+			"VehicleToasterMessage": "Vehicle was updated successfully"
+		}
 	},{
 		"privilegeToChangeThresholds": {
 			"ToasterMsgSuccess": "Success",
@@ -776,6 +782,13 @@
 	{
 		"noPrivilegeToEditAssets": {
 			"AssetName": "MICHAL TEST",
+			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
+		}
+	},
+	{
+		"checkDashboardOfUserwithOneClientAccess": {
+			
 			"ToasterMessageFailed": "Access Denied",
 			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
 		}
