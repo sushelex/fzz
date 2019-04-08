@@ -7,6 +7,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import javax.annotation.Nonnull;
@@ -251,47 +252,37 @@ public class ElementManager  extends ExtentReport{
 	 * @param check
 	 *            Is used to check or un-check the check box
 	 */
-	public void elementSetCheckbox(String elementName, By byType, boolean check) {
+	public void elementSetCheckbox( By byType) {
 		try {
 			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
-			if (wait.until(ExpectedConditions.elementToBeClickable(byType)) != null) {
 				element = DriverManager.getDriverInstance().findElement(byType);
-				if (element.isSelected()) {
-					if (!check) {
+				if (!element.isSelected()) {
 						element.click();
-						if (elementName.isEmpty()) {
-							TestLogger.elementCheckBoxIdentifier(
-									"'" + element.getText() + "'" + "checkbox is identified and checkbox un-checked");
-						} else {
-							TestLogger.elementCheckBoxIdentifier(
-									"'" + elementName + "'" + "checkbox is identified and checkbox un-checked");
-						}
+						ExtentReport.info("Checkbox is selected "+byType.toString());
 					}
 
-				} else {
-
-					if (check) {
-						element.click();
-						if (elementName.isEmpty()) {
-							TestLogger.elementCheckBoxIdentifier(
-									"'" + element.getText() + "'" + "checkbox is identified and checkbox checked");
-						} else {
-							TestLogger.elementCheckBoxIdentifier(
-									"'" + elementName + "'" + "checkbox is identified and checkbox checked");
-						}
-					}
-				}
-			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Check box is not checked";
-			} else {
-				errormessage = "Element not found";
-			}
 			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
+	
+	public void checkActiveVehicleCheckbox( By byType) {
+		try {
+			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
+				element = DriverManager.getDriverInstance().findElement(byType);
+				if (element.isSelected()) {
+						element.click();
+						ExtentReport.info("Checkbox is selected "+byType.toString());
+					}else {
+						ExtentReport.info("Checkbox is Already selected "+byType.toString());
+					}
+
+				
+		} catch (Exception exceptionMessage) {
+			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+		}
+	}
 	/*
 	 * This method is used to interact with a web element by "Capturing text"
 	 * using the Selenium WebDriver findElement(By), WebDriverWait & GetText. If
@@ -444,7 +435,7 @@ public class ElementManager  extends ExtentReport{
 
 		boolean elementIdentifier = false;
 		try {
-			
+			sleep(3000);
 			if(DriverManager.getDriverInstance().findElement(byType).isDisplayed())
 			{
 				elementIdentifier = true;
@@ -691,7 +682,7 @@ public class ElementManager  extends ExtentReport{
 
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
-			sleep(6000);
+			sleep(timeoutSeconds+0);
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
 			
 		} catch (TimeoutException e) {
@@ -1033,5 +1024,17 @@ public class ElementManager  extends ExtentReport{
 	
 	public void navigateToOtherClientUrl() {
 		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getOtherClientUrl());
+	}
+	
+	public void switchToWindow() {
+		Set<String> allWindowHandles = DriverManager.getDriverInstance().getWindowHandles(); 
+		String parentWindowHandle = DriverManager.getDriverInstance().getWindowHandle();
+		for( String allWindows : allWindowHandles) 
+		{
+			if(!allWindows.equals(parentWindowHandle)) 
+			{	
+				DriverManager.getDriverInstance().switchTo().window(allWindows);
+			}
+			}
 	}
 }

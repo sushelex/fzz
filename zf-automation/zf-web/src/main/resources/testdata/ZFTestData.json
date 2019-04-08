@@ -750,5 +750,57 @@
 			"Vehicle": "3xcvalue for licenseplate key",
 			"VehicleToasterMessage": "Vehicle was updated successfully"
 		}
+	},{
+		"privilegeToChangeThresholds": {
+			"ToasterMsgSuccess": "Success",
+			"ToasterMsgSuccessReason": "Thresholds Settings were updated successfully"
+		}
+	},
+		{
+		"noPrivilegeToEditUser": {
+			"Name": "tamil",
+			"ToasterMsgFailed": "Access denied",
+			"ToasterMsgSuccessReason": "Unsufficient privileges. Try to get privileges by your local administrator. If problem persists, contact our support.' is identified successfully"
+		}
+	},
+		{
+		"noPrivilegeToEditUserRole": {
+			"Name": "tamil",
+			"UserRole": "test",
+			"ToasterMsgFailed": "Access denied",
+			"ToasterMsgSuccessReason": "Unsufficient privileges. Try to get privileges by your local administrator. If problem persists, contact our support.' is identified successfully"
+		}
+	},
+		{
+		"noPrivilegeToChangeThresholds": {
+			"Name": "tamil",
+			"UserRole": "test",
+			"ToasterMsgFailed": "Access denied",
+			"ToasterMsgSuccessReason": "Unsufficient privileges. Try to get privileges by your local administrator. If problem persists, contact our support.' is identified successfully"
+		}
+	},
+	{
+		"noPrivilegeToEditAssets": {
+			"AssetName": "MICHAL TEST",
+			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
+		}
+	},
+	{
+		"checkDashboardOfUserwithOneClientAccess": {
+			
+			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
+		}
+	},{
+		"mainteneceEditSavechange": {
+			"Maintenance_interval_time": "4",
+			"Maintenance_interval_km": "30",
+			"Oil_change_interval_time":"5",
+			"Oil_change_interval_km":"30",
+			"Inspection_interval_time":"5",
+			"Save_maintenance_success":"Save maintenance info success"						
+		}
 	}
+	
 ]

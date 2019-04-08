@@ -10,16 +10,14 @@ import zf.pages.ZFAssetPage;
 public class ZFRBACPage extends ElementManager {
 	JsonReader jsonData=new JsonReader();
 	ZFAssetPage zfAssetPage=new ZFAssetPage();
-	private static By DASHBOARD_ICON                     =By.xpath("//div[text()='DASHBOARD']");
+	private static By PORTAL_DASHBOARD_ICON                     =By.xpath("//div[text()='DASHBOARD']");
 	private static By SETTINGS_ICON                      =By.xpath("//div[text()='Settings']");
 	private static By SETTING_THRESHOILD_TXT             =By.xpath("//span[text()='Thresholds']");
 	private static By THRESHOILDSETTING_SAVECHANGES_BT   =By.xpath("(//button[@class='button button-primary ng-scope'])[2]");
 	private static By THRESHOILDSETTING_TOASTER_MSG		 =By.xpath("//div[text()='Success']");
 	private static By THRESHOILDSETTING_TOASTER_MSG_TXT  =By.xpath("//div[text()='Thresholds Settings were updated successfully']");
 	private static By THRESHOILD_SETTING_PB              =By.xpath("(//div[@class='noUi-connects'])[2]");
-	
-
-	private static  By USER_ICON   	 	                 =By.xpath("//a[@title='Users']");
+		private static  By USER_ICON   	 	                 =By.xpath("//a[@title='Users']");
 	private static  By USER_FILTER_ST  				 =By.xpath("//span[@class='filter-label ng-binding']");
 	private static  By USER_SEARCH_EB  				 =By.xpath("//input[@class='filter-input ng-pristine ng-untouched ng-valid ng-empty']");
 	private static  By USER_SEARCHFIRSTVALUE_DT  	 =By.xpath("(//div[@class='item-content'])[1]");
@@ -42,7 +40,7 @@ public class ZFRBACPage extends ElementManager {
 		try {
 			JsonReader.getJsonObject("privilegeToChangeThresholds");
 			navigateToUrl();
-		waitElementVisibleClick(DASHBOARD_ICON,300);
+		waitElementVisibleClick(PORTAL_DASHBOARD_ICON,300);
 		waitElementVisibleClick(SETTINGS_ICON,300);
 		waitElementVisibleClick(SETTING_THRESHOILD_TXT,300);		
 		waitElementVisibleClick(THRESHOILD_SETTING_PB,300);
@@ -119,7 +117,7 @@ public class ZFRBACPage extends ElementManager {
 		try {
 			JsonReader.getJsonObject("noPrivilegeToChangeThresholds");
 			navigateToUrl();
-		waitElementVisibleClick(DASHBOARD_ICON,300);
+		waitElementVisibleClick(PORTAL_DASHBOARD_ICON,300);
 		waitElementVisibleClick(SETTINGS_ICON,300);
 		if(!(elementDisplayed(SETTING_THRESHOILD_TXT))){
 			testPassed("User has no permission to change threshold");

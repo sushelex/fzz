@@ -25,7 +25,7 @@ public class AccessOtherClients extends ElementManager{
 	
 	
 	public void checkDashboardOfUserwithOneClientAccess() {
-		//JsonReader.getJsonObject("checkDashboardOfUserwithOneClientAccess");
+	
 		navigateToUrl();
 		sleep(9000);
 		if(waitElementToBeVisible(PORTAL_DASHBOARD_BT,300)) {
