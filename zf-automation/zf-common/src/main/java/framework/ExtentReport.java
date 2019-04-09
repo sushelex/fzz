@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -112,10 +113,7 @@ public class ExtentReport extends CaptureScreenshot {
 			if(result.getStatus() == ITestResult.FAILURE) {
 				reporter.log(Status.FAIL, " Test case Failed due to below issues:");
 				reporter.error(result.getThrowable());
-
 				takeScreenShot(methodName);
-
-
 			}else if(result.getStatus() == ITestResult.SUCCESS){
 				reporter.log(Status.PASS, methodName+" PASSED");
 			}
@@ -205,8 +203,8 @@ public class ExtentReport extends CaptureScreenshot {
 	 */
 	public static void testFailed(String message){
 		try {
-			reporter.log(Status.FAIL, " Test case Failed due to below issues:");
-			takeScreenShot(message);
+			reporter.log(Status.FAIL, message);
+			takeScreenShot(getTimeStamp());
 		}
 		catch(Exception e){
 			TestLogger.errorMessage(e.getMessage());
@@ -243,33 +241,13 @@ public class ExtentReport extends CaptureScreenshot {
 	}
 
 
-	public void elementCatch(WebElement element, long explicittime, Exception message, String error) {
-		try {
-			takeScreenShot(error);
-
-			reporter.info("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "+ message.getMessage());
-
-			if (element != null) {
-				if (element.getText().isEmpty()) {
-					TestLogger.elementIdentifierFail("ErrorMessage: Web element " + element + " is not working");
-					Assert.fail("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "
-							+ error);
-				} else {
-					TestLogger.elementIdentifierFail("ErrorMessage: Web element " + element.getText() + " is not working");
-					Assert.fail("TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - "
-							+ element.getText());
-				}
-
-			} else {
-				TestLogger.elementIdentifierFail(
-						"ErrorMessage: " + error + "\n" + "Exception Message: " + message.getMessage());
-				Assert.fail(
-						"TIMEOUT EXCEPTION element does not exist after waiting " + explicittime + " seconds - " + error);
-			}
-
-		} catch (IOException e) {
-			TestLogger.appInfo(e.getMessage());
-		}}
+	public void elementCatch(By byType, long explicittime, Exception message, String error) {
+		//			takeScreenShot(error+getTimeStamp());
+		TestLogger.elementIdentifierFail("ErrorMessage: Web element " + byType + " is not working");
+		Assert.fail("ErrorMessage: Web element "+ byType + + explicittime + "is not working"
+				+ error);
+		testFailed("ErrorMessage: Web element " + byType + " is not working");
+	}
 
 
 	public static String  zipAutomationReport() {

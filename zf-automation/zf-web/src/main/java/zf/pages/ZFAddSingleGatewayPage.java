@@ -12,7 +12,6 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 	ZFGatewayHomePage zfgatewayhomepage=new ZFGatewayHomePage();
 
 	private static  By SINGLEGATEWAY_RB										=By.xpath("(//div[contains(@class,'ui-radiobutton-box ui-widget ui-state-default')])[1]");
-	//private static  By MULTIPLEGATEWAY_RB								 	=By.xpath("(//div[contains(@class,'ui-radiobutton-box ui-widget ui-state-default')])[2]");
 	private static  By ADDSINGLEGATEWAY_GATEWAYNAME_EB						=By.xpath("//input[@name='gatewayName']");
 	private static  By ADDSINGLEGATEWAY_TYPE_DD								=By.xpath("//p-dropdown[@optionlabel='gatewayType']");
 	private static  By ADDSINGLEGATEWAY_MODEL_DD							=By.xpath("//p-dropdown[@optionlabel='gatewayModel']");
@@ -46,7 +45,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithAllValidInputs");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -68,10 +67,10 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
 
 			//Additional
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_ICON);
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageSuccess");
 		
@@ -89,7 +88,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithMacIDAlreadyExists");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -111,10 +110,10 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
 
 			//Additional
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_ICON);
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed");
 			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
@@ -134,7 +133,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithCertificateAlreadyExists");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
@@ -156,10 +155,10 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
 
 			//Additional
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_ICON);
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
-			elementSendKey(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
+			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed");
 			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
@@ -177,7 +176,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			JsonReader.getJsonObject("addSingleGatewayWithMandatoryFields");
 			elementClickRadioButton(SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
-			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,300);
+			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
 			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));

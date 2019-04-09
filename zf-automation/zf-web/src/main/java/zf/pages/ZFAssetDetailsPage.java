@@ -37,25 +37,12 @@ public class ZFAssetDetailsPage extends ElementManager{
 	private static  By CREATE_ASSET_MANUFACTURER_DD                  =By.xpath("//p-dropdown[@name='manufacturer']");
 	private static  By CREATE_ASSET_MODEL_DD   	 	                 =By.xpath("//p-dropdown[@name='model']");
 	private static  By CREATE_ASSET_BRAND_DD                         =By.xpath("//p-dropdown[@name='brand']");
-	private static  By CREATE_ASSET_SERIALNUMBER_EB                  =By.xpath("//input[@name='serialNo']");
-	private static  By CREATE_ASSET_SENSORID_EB                      =By.xpath("//input[@name='sensorId']");
-	private static  By CREATE_ASSET_MAPTOGATEWAY_EB                  =By.xpath("//input[@name='mappedGateway']");
-	private static  By CREATE_ASSET_DETAILS_NEXT_BT                  =By.xpath("(//button[@class='zf-button primary fr'])[2]");
-	private static  By CREATE_ASSET_MAPTOGATEWAY_BT                  =By.xpath("//button[@class='zf-button primary map-gateway-btn']");
-	private static  By CREATE_ASSET_MAPTOGATEWAY_FIRSTRAW_LT         =By.xpath("//div[@class='main-details fw']");
-	private static  By CREATE_ASSET_MAPTOGATEWAY_MAP_BT              =By.xpath("//button[@class='zf-button fr map-btn ng-star-inserted']");
-	private static  By CREATE_ASSET_DESCRIPTION_EB                   =By.xpath("//textarea[@name='description']");
-	private static  By CREATE_ASSET_SUBMIT_BT                        =By.xpath("(//button[@class='zf-button primary fr'])[3]");
-	private static  By CREATE_ASSET_LICENSEPLATE_VALUE_EB            =By.xpath("//input[@class='fw value_0 ng-untouched ng-pristine ng-star-inserted ng-invalid']");
-	private static  By CREATE_ASSET_PROPULSIONTYPE_VALUE_EB          =By.xpath("//input[@class='fw value_1 ng-untouched ng-pristine ng-star-inserted ng-invalid']");
-	private static  By CREATE_ASSET_VEHICLETYPE_VALUE_EB             =By.xpath("//input[@class='fw value_2 ng-untouched ng-pristine ng-star-inserted ng-invalid']");
-	private static  By CREATE_ASSET_VIN_VALUE_EB                     =By.xpath("//input[@class='fw value_3 ng-untouched ng-pristine ng-star-inserted ng-invalid']");
-	
+
 	public void OperatorHasNoAccessToEditAssetDetails() {
 		try {
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
-		elementClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT);
+		waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,300);
 		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 		
 		elementClick(ASSETSDETAILS_ASSETDETAILS_EDIT_BT);
@@ -70,8 +57,7 @@ public class ZFAssetDetailsPage extends ElementManager{
 		try {
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
 		zfAssetPage.selectAssetDetails("TCO3OperatorHasNoAccess");
-		sleep(5000);
-		elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
+		waitElementVisibleClick(ASSETSDETAILS_ADDCHILDASSET_BT,600);
 		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 		//elementClick(ASSETSDETAILS_ADDCHILDASSET_BT);
 		//verifyToastermessage(ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
@@ -115,8 +101,8 @@ public class ZFAssetDetailsPage extends ElementManager{
 			zfAssetPage.createAssetstWithAllFeilds();
 			JsonReader.getJsonObject("TCO6CreateAssetstWithAllFeilds");
 	//		zfAssetPage.selectAssetDetails("TCO6CreateAssetstWithAllFeilds");
-			waitElementVisibleClick(ASSETSDETAILS_ADDEDASSET_BT,300);
-			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,300);
+			waitElementVisibleClick(ASSETSDETAILS_ADDEDASSET_BT,600);
+			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,600);
 			sleep(5000);
 			compareText(elementGetText(CREATE_ASSET_COUNTRY_DD),jsonData.getJsonData("Country"));
 			compareText(elementGetText(CREATE_ASSET_AREA_DD),jsonData.getJsonData("Area"));
@@ -139,9 +125,9 @@ public class ZFAssetDetailsPage extends ElementManager{
 	public void verifyToastermessage(By ByType, String Jsondata,By ByType1, String Jsondata1) {
 		try {
 		
-		String toasterText = waitElementVisibleGetText(ByType,300);
+		String toasterText = waitElementVisibleGetText(ByType,600);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
-		String toasterText1 = waitElementVisibleGetText(ByType1,300);
+		String toasterText1 = waitElementVisibleGetText(ByType1,600);
 		compareText(jsonData.getJsonData(Jsondata1),toasterText1);
 		}catch (Exception e) {
 		TestLogger.appInfo(e.getMessage());

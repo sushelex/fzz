@@ -89,16 +89,16 @@ public class ZFAssetPage extends ElementManager{
 	private static By ASSETS_ACTION_BT                               =By.xpath("//button[@class='zf-button primary action ng-star-inserted']");
 	private static By ASSETS_ACTION_EDIT_BT                          =By.xpath("//div[@class='edit-icon sprite fl']");
 
-	private static By ASSETS_ACTION_RESETALL_BT                          =By.xpath("//button[@class='zf-button fl']");
-	private static By ASSETS_ACTION_APPLY_BT                          =By.xpath("//button[@class='zf-button fr']");
+	private static By ASSETS_ACTION_RESETALL_BT                      =By.xpath("//button[@class='zf-button fl']");
+	private static By ASSETS_ACTION_APPLY_BT                         =By.xpath("//button[@class='zf-button fr']");
 	private static By CREATE_ASSET_SETACTIONS_BT               		 =By.xpath("//button[text()=\" Set Actions \"]");
 	private static By CREATE_ASSET_SETACTIONS_DEACTIVATE_CB          =By.xpath("(//div[@class='ui-chkbox-box ui-widget ui-corner-all ui-state-default'])[1]");
 	private static By CREATE_ASSET_SETACTIONS_ACTIVATE_CB            =By.xpath("(//div[@class='ui-chkbox-box ui-widget ui-corner-all ui-state-default'])[2]");
 	private static By CREATE_ASSET_SETACTIONS_APPLY_BT           	 =By.xpath("//button[text()=\"Apply\"]");
 	private static  By ASSET_OPERATOR_TOASTERMESSAGE				 =By.xpath("//div[@class='ng-star-inserted']");
 	private static String DROPDOWNLIST							     ="//span[text()='{}']";
-	private static By ASSETSDETAILS_ADDCHILDASSET_BT                    =By.xpath("//i[@class='fa fa-plus']");
-	private static By ASSETSDETAILS_ADDEDASSET_BT                      =By.xpath( "//span[@class='ui-treenode-icon default root ng-star-inserted']");
+	private static By ASSETSDETAILS_ADDCHILDASSET_BT                 =By.xpath("//i[@class='fa fa-plus']");
+	private static By ASSETSDETAILS_ADDEDASSET_BT                    =By.xpath( "//span[@class='ui-treenode-icon default root ng-star-inserted']");
 	private static By ASSET_SORT_BY_DD								 =By.xpath("//p-dropdown[@optionlabel='category']/div[contains(@class,'ui-dropdown')]");
 	private static By ASSET_AREA								     =By.xpath("//p-dropdown/descendant::span[text()='Area']");
 	private static By ASSET_BRAND								     =By.xpath("//p-dropdown/descendant::span[text()='Brand']");
@@ -118,9 +118,9 @@ public class ZFAssetPage extends ElementManager{
 	public void clickCreateAssets() {
 
 		try {
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,500); 
 			sleep(10000);
-			waitElementVisibleClick(ASSETS_CREATEASSET_BT,300);
+			waitElementVisibleClick(ASSETS_CREATEASSET_BT,800);
 			sleep(5000);
 		} catch (InterruptedException e) {
 			TestLogger.fileInfo(e.getMessage());
@@ -133,8 +133,8 @@ public class ZFAssetPage extends ElementManager{
 		try {
 
 			//TestRail#C48965 - Verify the UI of Search section in Asset landing Page"
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
-			sleep(3000);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,600); 
+			
 			//TestRail#C48954 - Navigate to Assets Page
 			elementAvailability(ASSETS_ZFLOGO_IMG);
 
@@ -164,9 +164,9 @@ public class ZFAssetPage extends ElementManager{
 	public void assetSearch() {
 		try {
 			JsonReader.getJsonObject("TCO2AssetSearch");
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
-			sleep(10000);
-			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,300, jsonData.getJsonData("AssetName"));
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,600); 
+		
+			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,800, jsonData.getJsonData("AssetName"));
 			elementClick(ASSETS_COUNTRY_DD);
 			elementClick(ASSETS_CZECHREPUBLIC_CB);
 			elementClick(ASSETS_AREA_DD);
@@ -187,9 +187,9 @@ public class ZFAssetPage extends ElementManager{
 	public void assetAdvancedSearch() {
 		try {
 			JsonReader.getJsonObject("TCO3AssetAdvacnedSearch");
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300);
-			sleep(5000);
-			waitElementVisibleClick(ASSETS_ADVANCEDSEARCH_BT,300);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,500);
+			
+			waitElementVisibleClick(ASSETS_ADVANCEDSEARCH_BT,800);
 			elementClick(ADVANCEDSEARCHPOPUP_ASSETTYPE_DD);
 			elementClick(ADVANCEDSEARCHPOPUP_BASICASSETTYPEVALUE_ST);
 			elementClick(ADVANCEDSEARCHPOPUP_BRAND_DD);
@@ -214,10 +214,10 @@ public class ZFAssetPage extends ElementManager{
 	public void clearAllFilter() {
 		try {
 			JsonReader.getJsonObject("TCO4clearAllFilter");
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
-			sleep(5000);
-			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,300, jsonData.getJsonData("AssetName"));
-			elementClick(ASSETS_COUNTRY_DD);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,600); 
+	
+			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,800, jsonData.getJsonData("AssetName"));
+			waitElementVisibleClick(ASSETS_COUNTRY_DD,500);
 			elementClick(ASSETS_CZECHREPUBLIC_CB);
 			elementClick(ASSETS_AREA_DD);
 			elementClick(ASSETS_BRNO_CB);
@@ -225,7 +225,7 @@ public class ZFAssetPage extends ElementManager{
 			elementClick(ASSETS_ZF_CB);
 			elementClick(ASSETS_BUSSINESSUNIT_DD);
 			elementClick(ASSETS_FACTORY_CB);
-			waitElementVisibleClick(ASSETS_ADVANCEDSEARCH_BT,300);
+			waitElementVisibleClick(ASSETS_ADVANCEDSEARCH_BT,500);
 			elementClick(ADVANCEDSEARCHPOPUP_ASSETTYPE_DD);
 			elementClick(ADVANCEDSEARCHPOPUP_BASICASSETTYPEVALUE_ST);
 			elementClick(ADVANCEDSEARCHPOPUP_BRAND_DD);
@@ -253,10 +253,10 @@ public class ZFAssetPage extends ElementManager{
 	public void assetSearchWithInvalidKey() {
 		try {
 			JsonReader.getJsonObject("TCO5AssetSearchWithInvalidKey");
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
-			sleep(3000);
-			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,300, jsonData.getJsonData("AssetName"));
-			elementClick(ASSETS_COUNTRY_DD);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,600); 
+			
+			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,600, jsonData.getJsonData("AssetName"));
+			waitElementVisibleClick(ASSETS_COUNTRY_DD,300);
 			elementClick(ASSETS_CZECHREPUBLIC_CB);
 			elementClick(ASSETS_AREA_DD);
 			elementClick(ASSETS_BRNO_CB);
@@ -264,7 +264,7 @@ public class ZFAssetPage extends ElementManager{
 			elementClick(ASSETS_ZF_CB);
 			elementClick(ASSETS_BUSSINESSUNIT_DD);
 			elementClick(ASSETS_FACTORY_CB);
-			elementClick(ASSETS_SEARCH_BT);
+			waitElementVisibleClick(ASSETS_SEARCH_BT,600);
 			compareText(jsonData.getJsonData("Noresultvalue"), elementGetText(ASSETS_NOASSETSFOUND_DT));
 
 		}catch(Exception e) {
@@ -291,7 +291,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("TCO6CreateAssetstWithAllFeilds");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,600); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
@@ -336,7 +336,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("createAssetstWithAllAutopopulatedMetadataKeys");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,600); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
@@ -383,7 +383,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("createAssetstWithMandatoryAutopopulatedMetadataKeys");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,600); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
@@ -409,7 +409,7 @@ public class ZFAssetPage extends ElementManager{
 
 			elementClick(CREATE_ASSET_DETAILS_NEXT_BT);
 
-			waitElementToBeVisibleSendValue(CREATE_ASSET_DESCRIPTION_EB,300,(jsonData.getJsonData("Description")+generateRandomNumber()));
+			waitElementToBeVisibleSendValue(CREATE_ASSET_DESCRIPTION_EB,500,(jsonData.getJsonData("Description")+generateRandomNumber()));
 			elementSendKeys(CREATE_ASSET_LICENSEPLATE_VALUE_EB,(jsonData.getJsonData("MetaDatalicensePlate")+generateRandomNumber()));
 			elementSendKeys(CREATE_ASSET_PROPULSIONTYPE_VALUE_EB,(jsonData.getJsonData("MetaDataPropulsionType")+generateRandomNumber()));
 			elementSendKeys(CREATE_ASSET_VEHICLETYPE_VALUE_EB,(jsonData.getJsonData("MetaDatavehicleType")+generateRandomNumber()));
@@ -429,14 +429,14 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("verifyVehicleAssetstWithMandatoryAutopopulatedMetadataKeys");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,600); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
 			elementClickRadioButton(CREATE_ASSET_LOCATION_ADDRESS_RB);
 			elementSendKeys(CREATE_ASSET_LOCATION_DESCRIPTION_EB,jsonData.getJsonData("LocationAddress"));
 			elementClick(CREATE_ASSET_NEXT_BT);
-			waitElementVisibleClick(CREATE_ASSET_ASSETTYPE_DD,300);
+			waitElementVisibleClick(CREATE_ASSET_ASSETTYPE_DD,500);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"AssetType")));
 		
 			
@@ -457,7 +457,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("fieldValidationsMandatoryFieldVin");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,500); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
@@ -533,10 +533,10 @@ public class ZFAssetPage extends ElementManager{
 			createAssetstWithAllFeilds();
 			JsonReader.getJsonObject("executeActionWithoutParamater");
 			selectAssetDetails("executeActionWithoutParamater");
-			waitElementVisibleClick(ASSETS_ACTION_BT,300);
+			waitElementVisibleClick(ASSETS_ACTION_BT,500);
 			elementClick(ASSETS_ACTION_EDIT_BT);
 			elementClick(ASSETS_ACTION_RESETALL_BT);
-			waitElementVisibleClick(ASSETS_ACTION_APPLY_BT,300);
+			waitElementVisibleClick(ASSETS_ACTION_APPLY_BT,500);
 			verifyToastermessage(CREATE_ASSET_TOASTER_MSG,"ToasterMessageSuccess",CREATE_ASSET_TOASTER_MSG_TXT,"ToasterMessageSuccessReason");
 
 
@@ -553,7 +553,7 @@ public class ZFAssetPage extends ElementManager{
 			elementClick(ASSETS_ACTION_EDIT_BT);
 			elementClick(ASSETS_ACTION_RESETALL_BT);
 			elementClick(CREATE_ASSET_SETACTIONS_ACTIVATE_CB);
-			waitElementVisibleClick(ASSETS_ACTION_APPLY_BT,300);
+			waitElementVisibleClick(ASSETS_ACTION_APPLY_BT,500);
 			verifyToastermessage(CREATE_ASSET_TOASTER_MSG,"ToasterMessageSuccess",CREATE_ASSET_TOASTER_MSG_TXT,"ToasterMessageSuccessReason");
 
 
@@ -581,7 +581,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("TCO7CreateAssetstWithActions");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,500); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
@@ -612,7 +612,7 @@ public class ZFAssetPage extends ElementManager{
 			elementClick(CREATE_ASSET_MAPTOGATEWAY_MAP_BT);
 			elementClick(CREATE_ASSET_DETAILS_NEXT_BT);
 
-			waitElementToBeVisibleSendValue(CREATE_ASSET_DESCRIPTION_EB,300,jsonData.getJsonData("Description"));
+			waitElementToBeVisibleSendValue(CREATE_ASSET_DESCRIPTION_EB,500,jsonData.getJsonData("Description"));
 			elementSendKeys(CREATE_ASSET_LICENSEPLATE_VALUE_EB,jsonData.getJsonData("MetaDatalicensePlate")+generateRandomNumber());
 			elementSendKeys(CREATE_ASSET_PROPULSIONTYPE_VALUE_EB,jsonData.getJsonData("MetaDataPropulsionType")+generateRandomNumber());
 			elementSendKeys(CREATE_ASSET_VEHICLETYPE_VALUE_EB,jsonData.getJsonData("MetaDatavehicleType")+generateRandomNumber());
@@ -630,7 +630,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			clickCreateAssets();
 			JsonReader.getJsonObject("TCO9EditAssetstActions");
-			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,600); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
@@ -679,7 +679,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			JsonReader.getJsonObject("TCO8editExistAssetDetails");
 			selectAssetDetails("editExistAssetDetails");
-			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,300);
+			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,600);
 			elementClick(CREATE_ASSET_COUNTRY_DD); 
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")));
 			elementClick(CREATE_ASSET_AREA_DD);
@@ -700,11 +700,10 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			createAssetstWithAllFeilds();
 			JsonReader.getJsonObject("CreateChildAssettWithAllFeilds");
-			//	selectAssetDetails("CreateChildAssettWithAllFeilds");
 			elementClick(ASSETSDETAILS_ADDEDASSET_BT);
-			waitElementVisibleClick(ASSETSDETAILS_ADDCHILDASSET_BT,300);
+			waitElementVisibleClick(ASSETSDETAILS_ADDCHILDASSET_BT,600);
 			waitElementVisibleClick(CREATE_ASSET_COUNTRY_DD,300); 
-			waitElementVisibleClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")),300);
+			waitElementVisibleClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Country")),500);
 			elementClick(CREATE_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(DROPDOWNLIST,"Area")));
 			elementClickRadioButton(CREATE_ASSET_LOCATION_ADDRESS_RB);
@@ -770,7 +769,7 @@ public class ZFAssetPage extends ElementManager{
 	public void verifyToastermessage(By ByType1, String Jsondata1,By ByType2, String Jsondata2) {
 		try {
 			
-			String toasterMessage = waitElementVisibleGetText(ByType1,300);
+			String toasterMessage = waitElementVisibleGetText(ByType1,500);
 			compareText(jsonData.getJsonData(Jsondata1),toasterMessage);
 			String toasterMessageText = elementGetText(ByType2);
 			compareText(jsonData.getJsonData(Jsondata2),toasterMessageText);
@@ -787,13 +786,13 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			JsonReader.getJsonObject(jsonObject);
 			String jsonValue = jsonData.getJsonData("AssetName");
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
-			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,300, jsonValue);
-			waitElementVisibleClick(ASSETS_SEARCH_BT,300);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,600); 
+			waitElementToBeVisibleSendValue(ASSETS_SEARCH_EB,500, jsonValue);
+			waitElementVisibleClick(ASSETS_SEARCH_BT,500);
 			sleep(3000);
-			if(waitElementVisibleGetText(ASSETS_LIST_FIRST_VALUE,300).equalsIgnoreCase(jsonValue)){
+			if(waitElementVisibleGetText(ASSETS_LIST_FIRST_VALUE,500).equalsIgnoreCase(jsonValue)){
 				sleep(1000);
-				waitElementVisibleClick(ASSETS_LIST_FIRST_EXPANDARROW_BT,300);
+				waitElementVisibleClick(ASSETS_LIST_FIRST_EXPANDARROW_BT,600);
 				sleep(1000);
 			}else {
 				testFailed(jsonData.getJsonData("AssetName")+" is not displayed in search result");
@@ -810,9 +809,9 @@ public class ZFAssetPage extends ElementManager{
 
 			if(jsonObject.equalsIgnoreCase("activate")) {
 
-				waitElementVisibleClick(CREATE_ASSET_SETACTIONS_DEACTIVATE_CB,300);
+				waitElementVisibleClick(CREATE_ASSET_SETACTIONS_DEACTIVATE_CB,600);
 			}else {
-				waitElementVisibleClick(CREATE_ASSET_SETACTIONS_ACTIVATE_CB,300);
+				waitElementVisibleClick(CREATE_ASSET_SETACTIONS_ACTIVATE_CB,600);
 			}
 			elementClick(CREATE_ASSET_SETACTIONS_APPLY_BT);
 
@@ -826,9 +825,8 @@ public class ZFAssetPage extends ElementManager{
 	{
 		try {
 			JsonReader.getJsonObject("OperatorHasNoAccess");
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300); 
-			sleep(5000);
-			elementClick(ASSETS_CREATEASSET_BT);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,800); 
+			waitElementVisibleClick(ASSETS_CREATEASSET_BT,300);
 			verifyToastermessage("ToasterMessageFailedReason");
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -849,7 +847,7 @@ public class ZFAssetPage extends ElementManager{
 	public void SortAssetsInAssetsHomepage()
 	{
 		try {
-			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,300);
+			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,700);
 			//elementAvailability(LOADER_SYMBOL);
 			sleep(5000);
 			assetSortingDropDownNavigation(ASSET_BRAND);

@@ -1,6 +1,6 @@
 package zf.pages;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -14,10 +14,10 @@ import framework.TestLogger;
 public class ZFGatewayHomePage extends ElementManager{
 
 	JsonReader jsonData=new JsonReader();
-	private static By GATEWAY_ADDGATEWAY_BT                         =By.xpath("//button[contains(text(),'Add Gateway')]");
-	private static By GATEWAY_ICON                                  =By.xpath("//a[@title='Gateway']");
-	private static By GATEWAY_TOASTER_MSG		   	            	=By.xpath("//div[@class='toast-title']");
-	private static By GATEWAY_TOASTER_MSG_TXT		        	=By.xpath("//div[@class='ng-star-inserted']");
+	private static By GATEWAY_ADDGATEWAY_BT                             =By.xpath("//button[contains(text(),'Add Gateway')]");
+	private static By GATEWAY_ICON                                      =By.xpath("//a[@title='Gateway']");
+	private static By GATEWAY_TOASTER_MSG		   	                	=By.xpath("//div[@class='toast-title']");
+	private static By GATEWAY_TOASTER_MSG_TXT		          	     =By.xpath("//div[@class='ng-star-inserted']");
 	private static By GATEWAY_SEARCH_EB		                	=By.xpath("//input[@class='fh fl ng-untouched ng-pristine ng-valid']");
 	private static By GATEWAY_SEARCH_ICON		            	=By.xpath("//div[@class='search-icon sprite']");
 	private static By GATEWAY_TABLE		                    	=By.xpath("//div[@class='gateway-dtls-table zf-table fw ng-star-inserted']");
@@ -26,26 +26,25 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static By GATEWAY_DISABLE_BT                    	=By.xpath("//button[@class='zf-button fl disable ng-star-inserted']");
 	private static By GATEWAY_STATUS_CM                     	=By.xpath("//div[@class='fl fh col-heading cell ellipses status']");
 	private static By GATEWAYGENERICROW		                    =By.xpath("//div[@class='fw gateway ng-star-inserted']");
-	private static By GATEWAY_SEARCH_DD                    =By.xpath("//label[contains(@class,'ui-multiselect-label ui-corner-all')]");
+	private static By GATEWAY_SEARCH_DD                         =By.xpath("//label[contains(@class,'ui-multiselect-label ui-corner-all')]");
 	private static By GATEWAYSEARCH_BT		                    =By.xpath("//div[contains(@class,'search-icon sprite')]");
 	private static By GATEWAYSEARCHSELECTIONCHECK               =By.xpath("//div[@class='ng-tns-c14-4 ui-multiselect ui-widget ui-state-default ui-corner-all']//div[@title='Commissioned']");
 	private static By GATEWAYMOREINFO	                    	=By.xpath("//div[contains(@class,'expander sprite')]");
 	private static By GATEWAYNAME			                    =By.xpath("(//div[@class='fl fh col-heading cell ellipses gatewayName']//span[1])");
 	private static By GATEWATMANAGESOFTWARE_BT	                =By.xpath("//button[contains(text(),'Manage Software')]");
 	private static By GATEWAYMANAGESOFTWARENAME                 =By.xpath("//div[@class='gateway-name fl ']//span[1]");
-	private static By GATEWAY_PRECOMMISION_CB	                    =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Pre-Commissioned')]");
+	private static By GATEWAY_PRECOMMISION_CB	                =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Pre-Commissioned')]");
 	private static By GATEWAY_COMMISION_CB	                    =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Commissioned')]");
-	private static By GATEWAY_DECOMMISION_CB	                    =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Decommissioned')]");
-	private static By GATEWAY_PRECOMMISION_TXT	                    =By.xpath("//label[text()='Pre-Commissioned']");
+	private static By GATEWAY_DECOMMISION_CB	                =By.xpath("//label[@class='ng-tns-c14-4 ng-star-inserted'][(text()='Decommissioned')]");
+	private static By GATEWAY_PRECOMMISION_TXT	                =By.xpath("//label[text()='Pre-Commissioned']");
 	private static By GATEWAY_COMMISION_TXT	                    =By.xpath("//label[text()='Commissioned']");
-	private static By GATEWAY_DECOMMISION_TXT	                    =By.xpath("//label[text()='Decommissioned']");
+	private static By GATEWAY_DECOMMISION_TXT	                =By.xpath("//label[text()='Decommissioned']");
 	private static By GATEWAYEDIT_BT		                    =By.xpath("//div[@class='expanded-details-wrapper fw open']//button[@type='button'][contains(text(),'Edit')]");
 	private static By GATEWAYOPERATORTOASTMESSAGE               =By.xpath("//div[@class='ng-star-inserted']");
 	private static By GATEWAYOPERATORDISABLE_BT	                =By.xpath("//div[@class='expanded-details-wrapper fw open']//button[@type='button'][contains(text(),'Disable')]");
 	private static By GATEWAYOPERATORDECOMISSION_BT             =By.xpath("//div[@class='expanded-details-wrapper fw open']//button[@type='button'][contains(text(),'Decommission')]");
 	private static By GATEWAY_NOGATEWAY_TXT                     =By.xpath("//div[text()=' No gateways. ']");
 	private static By GATEWAYADDSOFTWARE_BT				       =By.xpath("//button[@type='button']");
-	private static By GATEWAYINSTALLEDSOTWARELIST 		=By.xpath("//div[contains(@class,'software-details-table')]");
 	private static By LABELSOFTWARENAME					=By.xpath("(//span[@class='fw'][contains(text(),'Software Name')])");
 	private static By LABELVERSION						=By.xpath("(//span[@class='fw'][contains(text(),'Version')])");
 	private static By LABELUPLOADPACKAGE				=By.xpath("(//span[@class='fw'][contains(text(),'Upload Package')])");
@@ -83,44 +82,19 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static  By ADDSINGLEGATWAY_OPERATOR_EB							=By.xpath("//input[@name='operator']");
 	private static  By ADDSINGLEGATWAY_CUSTOMERDETAIL_NEXT_BT				=By.xpath("//button[@class='zf-button next fr primary' and text()='Next']");
 	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_EB		=By.xpath("//textarea[@name='description']");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_ICON		=By.xpath("//div[@class='add-icon']");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB1    =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB1  =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[1]/td[2]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB2    =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[2]/td[1]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB2  =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[2]/td[2]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB3    =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[3]/td[1]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB3  =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[3]/td[2]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB4    =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[4]/td[1]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB4  =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[4]/td[2]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB5    =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[5]/td[1]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB5  =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[5]/td[2]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_KEY_EB6    =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[6]/td[1]/input");
-	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_METADATA_VALUE_EB6  =By.xpath("//single-gateway-details/div/form[3]/div[1]/div[2]/table/tbody/tr[6]/td[2]/input");
 	private static  By ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT			=By.xpath("//button[text()='Finish']");
 	private static  By ADDSINGLEGATWAY_TOASTER_DT							=By.xpath("//div[@class='toast-title']");
 	private static String TYPEDROPDOWNLIST									="//span[text()='{}']";
 	private static By SHOW_GATEWAY_PRECOMM									=By.xpath("//li[1]/label[contains(text(),'Pre-Commissioned')]");
 	private static By SHOW_GATEWAY_COMM										=By.xpath("//li[2]/label[contains(text(),'Commissioned')]");
 	private static By SHOW_GATEWAY_DECOMM									=By.xpath("//li[3]/label[contains(text(),'Decommissioned')]");
-	private static By SHOW_ALL												=By.xpath("//app-gateways-list/div/div[1]/div[3]/div[3]/p-multiselect/div/div[4]/div[1]/div[1]/div[2]");
-	private static By STATUS_COMM    										=By.xpath("//app-gateways-list/div/div[2]/div[2]/div[2]/div[1]/div[1]/div[7]/span");
 	private static By VERIFY_GATEWAY_CATAGORIES    							=By.xpath("//app-gateways-list/div/div[1]/div[3]/div[3]/p-multiselect/div/div[2]/label");
-	private static By STATUS_C0LUMN											=By.xpath("//span[contains(text(),'Status')]");
 	private static By SORT_GATEWAY											=By.xpath("//li[1]/span[contains(text(),'Gateway')]");
 	private static By SORT_CUSTOMER											=By.xpath("//li[2]/span[contains(text(),'Customer')]");
 	private static By SORT_TYPE												=By.xpath("//li[3]/span[contains(text(),'Type')]");
 	private static By SORT_COUNTRY											=By.xpath("//li[4]/span[contains(text(),'Country')]");
 	private static By SORT_AREA												=By.xpath("//li[5]/span[contains(text(),'Area')]");
 	private static By SORT_STATUS											=By.xpath("//li[6]/span[contains(text(),'Status')]");
-	private static String COLUMN_GATEWAY_NAME								="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Gateway N')]";
-	private static String COLUMN_CUSTOMER									="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Customer')]";
-	private static String COLUMN_TYPE										="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Type')]";
-	private static String COLUMN_COUNTRY									="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Country')]";
-	private static String COLUMN_AREA										="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Area')]";
-	private static String COLUMN_LAST_UPDATED								="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Last Updated')]";
-	private static String COLUMN_STATUS										="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Status')]";
-	private static String COLUMN_CONNECTIVITY								="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'Connectivity')]";
-	private static String COLUMN_MORE_INFO									="//app-gateways-list/div/div[2]/div[2]/div[1]/div/span[contains(text(), 'More Info')]";
 	private static By GATEWAY_ALL_COLUMN									=By.xpath("//app-gateways-list/div/div[2]/div[2]/div[1]/div/span");
 	private  static By MORE_INFO			                                =By.xpath("(//div[@class='main-details fw'])[1]/div[@class='fl fh col-heading cell ellipses more']");
 	private  static By EDIT_GATEWAY			                                =By.xpath("//app-gateways-list/div/div[2]/div[2]/div[2]/div[1]/div[2]/div/div[5]/button[3]");
@@ -137,13 +111,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static By GATEWAY_STATUS_DD			                   			=By.xpath("//label[@class='ui-multiselect-label ui-corner-all']");
 	private static By GATEWAYMANAGESOFTWARE_BT	               				=By.xpath("//button[contains(text(),'Manage Software')]");
 	private static By CLICK_ON_SEARCH_BUTTON			   					=By.xpath("//gateway/app-gateways-list/div/div[1]/div[1]/div");
-	private static By STATUS_COLUMN_COMM_VERIFICATION   					=By.xpath("//app-gateways-list/div//span[contains(text(), 'Status')] ");
-	private static By VERIFICATION_STATUS_TYPE								=By.xpath("//app-gateways-list/div/div[2]/div[2]/div[2]/div/div[1]/div[7]/span");
-	private static By VERIFICATION_DECOMM_DATA								=By.xpath("//app-gateways-list/div/div[2]/div[2]");
-	private static By CLICK_DROPDOWN_SORT									=By.xpath("//app-gateways-list/div/div[1]/div[2]/div[2]/p-dropdown/div/div[3]");
-	private static By TODATE 												=By.xpath("//input[@placeholder=\"To\"]"); 
 	private static By CLEARDATE 											=By.xpath("//div[@class=\"fr close-btn sprite\"]"); 
-	private static By FROMDATE 												=By.xpath("//input[@placeholder=\"From\"]");  
 	private static By GATEWAY_SHOW_TXT		                   			=By.xpath("//div[@class='fl fh info']");
 	private static By GATEWAY_CUSTOMERCOLUMN_TXT		                   			=By.xpath("//div[@class='fl fh col-heading cell ellipses customerName']");
 	private static By GATEWAY_TYPECOLUMN_TXT		                   			=By.xpath("//div[@class='fl fh col-heading cell ellipses gatewayType']");
@@ -153,15 +121,11 @@ public class ZFGatewayHomePage extends ElementManager{
 
 	private static By GATEWAY_FROMDATE 												=By.xpath("//input[@placeholder=\"From\"]");
 	private static By GATEWAY_TODATE 												=By.xpath("//input[@placeholder=\"To\"]");
-	private static By GATEWAY_CLEARDATE 											=By.xpath("//div[@class=\"fr close-btn sprite\"]");
 	private static By GATEWAY_TESTDATE1												=By.xpath("//div[contains(@class,'datepicker')][1]//td[contains(@class,'ui-datepicker-today')]/preceding-sibling::td[1]/a");
 	private static By GATEWAY_TESTDATE2												=By.xpath("//div[contains(@class,'datepicker')][1]//td[contains(@class,'ui-datepicker-today')]");
 	private static By GATEWAY_LASTUPDATED_DT								=By.xpath( "(//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"])[1]");
 
 
-	//  private static By GATEWAY_NOGATEWAY_TXT								    =By.xpath("//div[text()=\" No gateways. \"]");
-	//   private static By GATEWAY_STATUS_CM										=By.xpath("//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"]");
-	private static By GATEWAY_ALL_RECS										=By.xpath("//div[@class=\"fl fh col-heading cell ellipses lastUpdatedTime\"]");
 
 	public void clickAddGateway() {
 
@@ -560,7 +524,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				elementClick(GATEWAYMOREINFO);
 				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,2000);
 				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
-				elementSendKey(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
+				elementSendKeyWithActions(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
 				elementClick(ADDSOFTWARE_UPLOADINSTALL_BT);
@@ -584,7 +548,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				elementClick(GATEWAYMOREINFO);
 				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,2000);
 				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
-				elementSendKey(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
+				elementSendKeyWithActions(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadInvalidPackagePath"));
 				if(elementGetText(ADDSOFTWARE_UPLOADPACKAGE_BOX).contentEquals(jsonData.getJsonData("PackageName")))
@@ -613,7 +577,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				elementClick(GATEWAYMOREINFO);
 				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,2000);
 				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
-				elementSendKey(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareName"));
+				elementSendKeyWithActions(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareName"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
 				elementClick(ADDSOFTWARE_UPLOADINSTALL_BT);
@@ -627,9 +591,7 @@ public class ZFGatewayHomePage extends ElementManager{
 
 	public void verifyToastermessage(By ByType, String Jsondata) {
 		try {
-			waitForMessage(ByType,2);
-			String toasterText = elementGetText(ByType);
-			compareText(jsonData.getJsonData(Jsondata),toasterText);
+			compareText(jsonData.getJsonData(Jsondata),waitElementVisibleGetText(ByType,300));
 
 		}catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -694,7 +656,7 @@ public class ZFGatewayHomePage extends ElementManager{
 
 			//Additional
 			//elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_ED);
-			elementSendKey(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
+			elementSendKeyWithActions(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
 			elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_FINISH_BT);
 			verifyToastermessage("ToasterMsgSuccess");
 	

@@ -34,7 +34,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 	public void validatUserInterface() {
 		try {
 			zfgatewayhomepage.clickAddGateway();
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,500);
 			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
 			elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
 			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
@@ -59,7 +59,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 	public void validateLookAndFeelMultipleGateway() {
 		try {
 			zfgatewayhomepage.clickAddGateway();
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,500);
 			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_TXT);
 			elementAvailability(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_TXT);
 			elementAvailability(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
@@ -204,7 +204,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 
 		try {
 			refreashPage();
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,500);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 
 			elementClear(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB);
@@ -224,7 +224,7 @@ public class ZFAddMultipleGatewayPage extends ElementManager {
 		try {
 			refreashPage();
 
-			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,300);
+			waitElementVisibleClick(ADDMULTIPLEGATEWAY_RB,500);
 			elementClickRadioButton(ADDMULTIPLEGATEWAY_ENROLLMENTGROUP_NEW_RB);
 
 			waitElementToBeVisibleSendValue(ADDMULTIPLEGATEWAY_CREATE_ENROLLMENTGROUP_EB,300,jsonData.getJsonData("CreateEnrollmentGroup"));

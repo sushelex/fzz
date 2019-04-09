@@ -37,7 +37,7 @@ public class ElementManager  extends ExtentReport{
 	private Actions actionBuilder;
 	private String errormessage;
 	JavascriptExecutor javaScriptExecutor = (JavascriptExecutor) DriverManager.getDriverInstance();
-	
+
 	/*
 	 * This method is used to interact with a web element by "Clicking on it"
 	 * using the Selenium WebDriver findElement(By). If the web element does not exist timeout exception
@@ -55,13 +55,16 @@ public class ElementManager  extends ExtentReport{
 			element = DriverManager.getDriverInstance().findElement(byType);
 			TestLogger.elementClickIdentifier(element.getText());
 			sleep(1000);
+			if(!element.getText().equals("")) {
+				ExtentReport.info("Web element = '" + element.getText() + "' is identified ");
+			}else {
+				ExtentReport.info("Element "+byType.toString()+" is identified");
+			}
 			element.click();
-			ExtentReport.info("Element "+byType.toString()+"is clicked");
 			sleep(2000);
 		} catch (Exception exceptionMessage) {
-			errormessage = "Element not found";
-			
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -83,12 +86,17 @@ public class ElementManager  extends ExtentReport{
 				element = DriverManager.getDriverInstance().findElement(byType);
 				if (element.isDisplayed() && element.isEnabled()) {
 					TestLogger.elementClickIdentifier(element.getText());
+					if(!element.getText().equals("")) {
+						ExtentReport.info("Web element = '" + element.getText() + "' is identified and clicked");
+					}else {
+						ExtentReport.info("Element "+byType.toString()+"is clicked");
+					}
 					element.click();
 				}
 			}
 		} catch (Exception exceptionMessage) {
-			errormessage = "Element not found";
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -106,21 +114,16 @@ public class ElementManager  extends ExtentReport{
 	 */
 	public void elementSendKeys(By byType, String value) {
 		try {	sleep(2000);	
-			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
-			element = DriverManager.getDriverInstance().findElement(byType);
-				
-			element.clear();
-			element.sendKeys(value);
-			ExtentReport.info(value+" is not entered for element "+byType.toString());
-			sleep(1000);	
+		wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
+		element = DriverManager.getDriverInstance().findElement(byType);
+
+		element.clear();
+		element.sendKeys(value);
+		ExtentReport.info(value+" is entered for element "+byType.toString());
+		sleep(1000);	
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "sendkeys is not working";
-			} else {
-				errormessage = "Element not found";
-			}
-		
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+				errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -157,19 +160,15 @@ public class ElementManager  extends ExtentReport{
 				}
 			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Mouseover is not working";
-			} else {
-				errormessage = "Element not found";
-			}
-
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+				errormessage = "Mouse over is not working for web element "+byType.toString();
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
 	/*
 	 * This method will help you to scroll vertically till end of the web-page
-	*/
+	 */
 
 	public void elementScrollVertical() {
 		try {
@@ -178,7 +177,6 @@ public class ElementManager  extends ExtentReport{
 			js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		} catch (Exception exceptionMessage) {
 			errormessage = "Vertical scroll is not working";
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 
 		}
 	}
@@ -206,9 +204,9 @@ public class ElementManager  extends ExtentReport{
 			if (element != null) {
 				errormessage ="Scroll is not working";
 			} else {
-				errormessage = "Element not found";
+				errormessage = "Web element "+byType.toString()+" is not identified";
 			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return webelelementvisible;
 	}
@@ -217,7 +215,7 @@ public class ElementManager  extends ExtentReport{
 	 * This method will help you to scroll to a particular element in the
 	 * web-page
 	 * 
-	* @param xcoordinate
+	 * @param xcoordinate
 	 *            Is the variable is the number at x-axis, it moves
 	 * @param ycordinate
 	 *            Is the variable is the number at y-axis, it moves
@@ -235,7 +233,6 @@ public class ElementManager  extends ExtentReport{
 			}
 		} catch (Exception exceptionMessage) {
 			errormessage = "Scroll not working from one position to another";
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 
 	}
@@ -255,32 +252,34 @@ public class ElementManager  extends ExtentReport{
 	public void elementSetCheckbox( By byType) {
 		try {
 			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
-				element = DriverManager.getDriverInstance().findElement(byType);
-				if (!element.isSelected()) {
-						element.click();
-						ExtentReport.info("Checkbox is selected "+byType.toString());
-					}
+			element = DriverManager.getDriverInstance().findElement(byType);
+			if (!element.isSelected()) {
+				element.click();
+				ExtentReport.info("Checkbox is selected "+byType.toString());
+			}
 
 		} catch (Exception exceptionMessage) {
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Checkbox is not selected";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
-	
+
 	public void checkActiveVehicleCheckbox( By byType) {
 		try {
 			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
-				element = DriverManager.getDriverInstance().findElement(byType);
-				if (element.isSelected()) {
-						element.click();
-						ExtentReport.info("Checkbox is selected "+byType.toString());
-					}else {
-						ExtentReport.info("Checkbox is Already selected "+byType.toString());
-					}
+			element = DriverManager.getDriverInstance().findElement(byType);
+			if (element.isSelected()) {
+				element.click();
+				ExtentReport.info("Checkbox is selected "+byType.toString());
+			}else {
+				ExtentReport.info("Checkbox is Already selected "+byType.toString());
+			}
 
-				
+
 		} catch (Exception exceptionMessage) {
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Checkbox is not selected";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 	/*
@@ -304,17 +303,16 @@ public class ElementManager  extends ExtentReport{
 			if (wait.until(ExpectedConditions.elementToBeClickable(byType)) != null) {
 				element = DriverManager.getDriverInstance().findElement(byType);
 				if (element.isDisplayed() && element.isEnabled()) {
-					TestLogger.elementIdentifier(element.getText());
 					returnText = element.getText();
+					TestLogger.elementIdentifier(element.getText());
+					ExtentReport.info("Web element = " + element.getText() + " is identified successfully");
 				}
 			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
+		
 				errormessage = "Text is not present for the element";
-			} else {
-				errormessage ="element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return returnText;
 	}
@@ -341,16 +339,12 @@ public class ElementManager  extends ExtentReport{
 			if (wait.until(ExpectedConditions.visibilityOfElementLocated(byType)) != null) {
 				element = DriverManager.getDriverInstance().findElement(byType);
 				attribute = element.getAttribute(value);
-				
+				ExtentReport.info("Web element = " + attribute + " is identified successfully");
 
 			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
 				errormessage= "Element value is not retriving";
-			} else {
-				errormessage =  "Element is not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return attribute;
 	}
@@ -368,7 +362,7 @@ public class ElementManager  extends ExtentReport{
 	 * @param optionValue
 	 *            Is the string variable being passed that will be entered/typed
 	 *            into a field
-	*/
+	 */
 	public void elementSelect(By byType, String optionValue) {
 
 		try {
@@ -382,9 +376,9 @@ public class ElementManager  extends ExtentReport{
 			if (element != null) {
 				errormessage = "Element select is not working";
 			} else {
-				errormessage = "Element not found";
+				errormessage = "Web element select for "+byType.toString()+" is not working";
 			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -411,12 +405,10 @@ public class ElementManager  extends ExtentReport{
 				new Select(element).selectByVisibleText(optionValue);
 			} 
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Element select not working";
-			} else {
-				errormessage = "Element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+				errormessage = "Web element "+byType.toString()+" is not identified";
+			
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -439,20 +431,18 @@ public class ElementManager  extends ExtentReport{
 			if(DriverManager.getDriverInstance().findElement(byType).isDisplayed())
 			{
 				elementIdentifier = true;
-				ExtentReport.info("Element is diaplayed "+byType.toString());
-				TestLogger.testMessage( byType.toString()+" is present");
+				ExtentReport.info("Element "+byType.toString()+" is displayed");
+				TestLogger.testMessage("Element "+byType.toString()+" is displayed");
 			} 
 
 		} catch (Exception exceptionMessage) {
 			errormessage="Element is not displayed";
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
-			
-		}finally{
-			ExtentReport.info("Element is not diaplayed "+byType.toString());
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 			return elementIdentifier;
 		}
+		return elementIdentifier;
 	}
-	
+
 	/*
 	 * This method is return boolean value based on the value to availability
 	 * and fields using the Selenium WebDriver findElement(By). If the web element does not exist it will faile the test case.
@@ -472,18 +462,22 @@ public class ElementManager  extends ExtentReport{
 			if(DriverManager.getDriverInstance().findElement(byType).isDisplayed())
 			{
 				elementIdentifier = true;
-				ExtentReport.info("Element is diaplayed "+byType.toString());
-				TestLogger.testMessage( byType.toString()+" is present");
+				if(!element.getText().equals("")) {
+					ExtentReport.info("Web element = '" + element.getText() + "' is displayed");
+				}else {
+					ExtentReport.info("Element "+byType.toString()+"is diaplayed");
+				}
+				TestLogger.testMessage( byType.toString()+" is displayed");
 			} 
 		} catch (Exception exceptionMessage) {
 			errormessage="Element is not displayed";
 			ExtentReport.testFailed("Element is not diaplayed "+byType.toString());
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
-			
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+
 		}
 		return elementIdentifier;
 	}
-	
+
 	/*
 	 * This method is return boolean value based on the value to availability
 	 * and fields using the Selenium WebDriver findElement(By). If the web element does not exist it will faile the test case.
@@ -509,8 +503,8 @@ public class ElementManager  extends ExtentReport{
 		} catch (Exception exceptionMessage) {
 			errormessage="Element is not displayed";
 			ExtentReport.testFailed("Element is not diaplayed "+byType.toString());
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
-			
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+
 		}
 		return elementIdentifier;
 	}
@@ -533,17 +527,21 @@ public class ElementManager  extends ExtentReport{
 			if (wait.until(ExpectedConditions.elementToBeClickable(byType)) != null) {
 				element = DriverManager.getDriverInstance().findElement(byType);
 				if (element.isDisplayed() && element.isEnabled()) {
-					TestLogger.elementClickIdentifier(element.getText());
+
 					element.submit();
+					TestLogger.elementClickIdentifier(element.getText());
+					if(!element.getText().equals("")) {
+						ExtentReport.info("Web element = '" + element.getText() + "' is identified and clicked");
+					}else {
+						ExtentReport.info("Web element "+byType.toString()+"is clicked");
+					}
 				}
 			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Submit button is not clicked";
-			} else {
-				errormessage = "Element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+				errormessage = "Web element "+byType.toString()+" is not clicked";
+			
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -559,12 +557,10 @@ public class ElementManager  extends ExtentReport{
 			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
 			element = DriverManager.getDriverInstance().findElement(byType);
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage ="Element is not returning";
-			} else {
-				errormessage = "Element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+				errormessage = "Web element "+byType.toString()+" is not returning.";
+			
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return element;
 	}
@@ -586,12 +582,10 @@ public class ElementManager  extends ExtentReport{
 				new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime())
 				.until(ExpectedConditions.invisibilityOfElementLocated(byType));
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Progress bar is not working";
-			} else {
-				errormessage = "Element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+				errormessage = "Web element "+byType.toString()+" is not identified";
+		
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
@@ -627,20 +621,19 @@ public class ElementManager  extends ExtentReport{
 					}				
 				}}
 		}catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Drag and drop is not working";
-			} else {
+			
 				errormessage = "source or target element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+		
+			elementCatch(byType1, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
-	
+
 
 	public void linkClick(String Link) {
 		try {
 			DriverManager.getDriverInstance().findElement(By.linkText(Link));
+
 		}
 
 		catch(Exception e) {
@@ -650,6 +643,8 @@ public class ElementManager  extends ExtentReport{
 
 	public String getTitile() {
 		TestLogger.appInfo(DriverManager.getDriverInstance().getTitle());
+		ExtentReport.info("Web page title = '" + DriverManager.getDriverInstance().getTitle() + " is identified ");
+
 		return DriverManager.getDriverInstance().getTitle();
 	}
 
@@ -659,32 +654,25 @@ public class ElementManager  extends ExtentReport{
 		sleep(2000);
 	}
 
-
-
-	public void waituntillelement(By byType) {
-
-		try {
-			String text= null;
-			for(int i=1;i<=i+1;i++) {
-
-				DriverManager.getDriverInstance().findElement(byType).wait();
-				break;
-			}
-
-
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+	
+	public long returnlong(long timeoutSeconds) {
+		String s1=Long.toString(timeoutSeconds);   
+        String s2=Long.toString(0);
+        String s3=s1+s2;
+        long time=Long.valueOf(s3).longValue();
+		return time; 
 	}
 
 	public boolean waitElementVisibleClick(By byType, long timeoutSeconds) throws InterruptedException {
 		boolean visible = false;
+		
+		
 
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
-			sleep(timeoutSeconds+0);
+			sleep(returnlong(timeoutSeconds));
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
-			
+
 		} catch (TimeoutException e) {
 			visible = false;
 		} 
@@ -696,14 +684,15 @@ public class ElementManager  extends ExtentReport{
 		return visible;
 
 	}
-	
+
 	public boolean waitElementEnabledClick(By byType, long timeoutSeconds) throws InterruptedException {
 		boolean visible = false;
 
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			sleep(returnlong(timeoutSeconds));
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isEnabled();
-			
+
 		} catch (TimeoutException e) {
 			visible = false;
 		} 
@@ -715,20 +704,22 @@ public class ElementManager  extends ExtentReport{
 		return visible;
 
 	}
-	
+
 	public String waitElementVisibleGetText(By byType, long timeoutSeconds) throws InterruptedException {
 		String Text = null;
 		try {
 
-			
+
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(byType));
+			sleep(returnlong(timeoutSeconds));
 			Text = elementGetText(byType);
+			ExtentReport.info("Web element = '" + Text + "' is identified");
 		} 
 		catch (Exception exceptionMessage) {
-			errormessage = "Element not found";
-		
-		elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Web element "+byType.toString()+" is not identified";
+
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return Text;
 
@@ -739,6 +730,7 @@ public class ElementManager  extends ExtentReport{
 
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
+			sleep(returnlong(timeoutSeconds));
 			visible = wait.until(ExpectedConditions.visibilityOfElementLocated(byType)).isDisplayed();
 		} catch (TimeoutException e) {
 			visible = false;
@@ -750,39 +742,6 @@ public class ElementManager  extends ExtentReport{
 		}
 		return visible;
 
-	}
-
-	
-	public boolean waitForMessage(By element, int waitDuration) {
-		try {
-
-			WebDriverWait wait = new WebDriverWait(DriverManager.getDriverInstance(),200);
-			int time = waitDuration;
-			long startTime = System.currentTimeMillis();
-			while ((System.currentTimeMillis() - startTime) <= time) {
-				try {
-					if (null != element) {
-						wait.until(ExpectedConditions.elementToBeClickable(element));
-						wait.until(ExpectedConditions.visibilityOf((WebElement) element));
-						wait.ignoring(NoSuchElementException.class);
-						wait.ignoring(WebDriverException.class);
-						return true;
-					}
-				} catch (Exception e1) {
-					try {
-						Thread.sleep(500);
-					} catch (Exception e2) {
-
-					}
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("Element not found in specified duration ");
-			e.printStackTrace();
-			System.out.println(e);
-			return false;
-		}
-		return false;
 	}
 
 	/**
@@ -811,20 +770,19 @@ public class ElementManager  extends ExtentReport{
 			}
 			else {
 				element.click();
+				ExtentReport.info("Radio button "+byType.toString()+"is selected");
 				sleep(2000);
 				TestLogger.appInfo("radio button is identified and selected ");
+
 			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "Radio button is not selected";
-			} else {
-				errormessage = "Element not found";
-			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			
+				errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
 
-	public void elementSendKey(By byType, String value) {
+	public void elementSendKeyWithActions(By byType, String value) {
 		try {
 			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
 			if (wait.until(ExpectedConditions.elementToBeClickable(byType)) != null) {
@@ -832,17 +790,13 @@ public class ElementManager  extends ExtentReport{
 				Actions builder = new Actions(DriverManager.getDriverInstance());
 				Actions seriesOfAction = builder.moveToElement(element).click().sendKeys(element, value);
 				seriesOfAction.perform(); 
+				ExtentReport.info(value+" is entered in "+byType.toString());
 				Thread.sleep(2000);
 
 			}
 		} catch (Exception exceptionMessage) {
-			if (element != null) {
-				errormessage = "sendkeys is not working ";
-			} else {
-				errormessage = "Element not found";
-			}
-
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+				errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 
 	}
@@ -892,7 +846,7 @@ public class ElementManager  extends ExtentReport{
 			return false;
 		}
 	}
-	
+
 	public boolean compareValueWithIgonrecase(String Expected, String Actual) {
 
 		if(Expected.equalsIgnoreCase(Actual)) {
@@ -912,24 +866,24 @@ public class ElementManager  extends ExtentReport{
 		}
 		return decodeBase64;
 	}
-	
+
 	public void elementClear(By byType) {
 		try {
 			wait = new WebDriverWait(DriverManager.getDriverInstance(), EnvironmentManager.getDelayTime());
 			element = DriverManager.getDriverInstance().findElement(byType);
 			sleep(1000);	
 			element.clear();
-			
+
 		} catch (Exception exceptionMessage) {
 			if (element != null) {
 				errormessage = "Text clear is not working ";
 			} else {
-				errormessage = "Element not found";
+				errormessage = "Web element "+byType.toString()+" is not identified";
 			}
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 	}
-	
+
 	/**
 	 * This method is used get the total number of web elements with same bytype
 	 * using the Selenium WebDriver findElements(By). If the web element does not exist timeout exception
@@ -946,41 +900,41 @@ public class ElementManager  extends ExtentReport{
 			size = DriverManager.getDriverInstance().findElements(byType).size();
 			sleep(1000);
 		} catch (Exception exceptionMessage) {
-			errormessage = "Element not found";
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return size;
-}
+	}
 	public List<WebElement> elementListReturn(By byType) {
 		List<WebElement> findElements = null;
 		try {
 			findElements = DriverManager.getDriverInstance().findElements(byType);
 			sleep(1000);
 		} catch (Exception exceptionMessage) {
-			errormessage = "Elements not found";
-			elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
+			errormessage = "Web element "+byType.toString()+" is not identified";
+			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 		}
 		return findElements;
-}
+	}
 
 	public String getElementValue(WebElement element, String value) {
 		String attribute = null;
 		try {
 			attribute = element.getAttribute(value);
-			
-	} catch (Exception exceptionMessage) {
-		if (element != null) {
-			errormessage= "Element value is not retriving";
-		} else {
-			errormessage =  "Element is not found";
-		}
-		elementCatch(element, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
-	}
-	return attribute;
 
-}
+		} catch (Exception exceptionMessage) {
+			if (element != null) {
+				errormessage= "Element value is not retriving";
+			} else {
+				errormessage =  "Element is not found";
+			}
+			info(exceptionMessage.toString());
+		}
+		return attribute;
+
+	}
 	public List<String> elementsGetText(By byType) {
-		
+
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -993,16 +947,16 @@ public class ElementManager  extends ExtentReport{
 		{
 			String s1=element.get(i).getText().trim().toLowerCase();
 			elementText.add(s1);
-			
+
 		}
 		return elementText;			
-}
-	
+	}
+
 	public void navigateToUrl() {
 		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getPortalUrl());
 	}
-	
-	
+
+
 	public boolean waitElementToBeVisible(By byType, long timeoutSeconds)  {
 		boolean visible = false;
 
@@ -1015,18 +969,19 @@ public class ElementManager  extends ExtentReport{
 		catch (Exception e) {
 			TestLogger.appInfo("element is not visible");
 		}finally {
-		
+
 		}
 		return visible;
 
 	}
 
-	
+
 	public void navigateToOtherClientUrl() {
 		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getOtherClientUrl());
 	}
-	
+
 	public void switchToWindow() {
+		try {
 		Set<String> allWindowHandles = DriverManager.getDriverInstance().getWindowHandles(); 
 		String parentWindowHandle = DriverManager.getDriverInstance().getWindowHandle();
 		for( String allWindows : allWindowHandles) 
@@ -1035,6 +990,8 @@ public class ElementManager  extends ExtentReport{
 			{	
 				DriverManager.getDriverInstance().switchTo().window(allWindows);
 			}
-			}
+		}}catch(Exception e) {
+			TestLogger.appInfo("Switch window is not working");
+		}
 	}
 }

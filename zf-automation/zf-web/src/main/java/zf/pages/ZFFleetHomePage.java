@@ -98,7 +98,7 @@ public class ZFFleetHomePage extends ElementManager {
 				elementSendKeys(NEWFLEETNAME_EB, jsonReader.getJsonData("fleetnamenew"));
 				elementSendKeys(NEWFLEETDESCRIPTION_EB, jsonReader.getJsonData("infotextnew"));
 				elementClick(NEXTSTEP_BT);
-				elementSendKey(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehiclenew"));
+				elementSendKeyWithActions(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehiclenew"));
 				elementClick(ASSIGNVEHICLELOADER_BT);
 
 				elementSendKeys(ASSIGNVEHICLESSEARCH_EB, jsonReader.getJsonData("vehiclenew1"));

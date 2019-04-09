@@ -13,24 +13,24 @@ public class MicrosoftLoginPage extends ElementManager{
 	private static By SIGNWITHEMAIL            =By.xpath("//input[@type='email']");
 	private static By SIGNWITHPASSWORD         =By.id("i0118");
 	private static By NEXTBUTTON               =By.id("idSIButton9");
-	private static By STAYSINGINBUTTON         =By.xpath("//input[@id='idBtn_Back']");
+	private static By STAYSINGINBUTTON         =By.xpath("//input[@id='idBtn_Back");
 
 
-	public ZFGatewayHomePage microsoftLogin(String userName, String password) {
+	public void microsoftLogin(String userName, String password) {
 		try {
 
 			elementSendKeys(SIGNWITHEMAIL,userName);
 			elementClick(NEXTBUTTON);
 			if(elementDisplayed(SIGNWITHPASSWORD)) {
-				elementSendKeys(SIGNWITHPASSWORD,passwordDecript(password));
-				elementClick(NEXTBUTTON);
+				elementSendKeyWithActions(SIGNWITHPASSWORD,passwordDecript(password));
+				waitElementVisibleClick(NEXTBUTTON,100);
 				elementClick(STAYSINGINBUTTON);
 			}
 			sleep(6000);
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
-		return new ZFGatewayHomePage();
+		//	return new ZFGatewayHomePage();
 	}
 	public void validatePageTitle() {
 		String titile = getTitile();

@@ -99,18 +99,28 @@ public class ZFUserHomePage extends ElementManager{
 
 	}
 	public void verifyUserUpdated() {
-		waitForMessage(ADDUSER_TOASTER_DT,10);
-		String Sucessmsg = elementGetText(ADDUSER_TOASTER_DT);
+		String Sucessmsg;
+		try {
+			Sucessmsg = waitElementVisibleGetText(ADDUSER_TOASTER_DT,300);
+		
 		String[] Sucess= Sucessmsg.split("User");
 		compareText(jsonData.getJsonData("ToasterMsgSuccess"), Sucess[0].replaceAll("\\s+",""));
 		compareText(jsonData.getJsonData("ToasterMsgSuccesUpdated"), Sucess[1]);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void verifyUserCreated() {
-		waitForMessage(ADDUSER_TOASTER_DT,10);
-		String Sucessmsg = elementGetText(ADDUSER_TOASTER_DT);
+		String Sucessmsg;
+		try {
+			Sucessmsg = waitElementVisibleGetText(ADDUSER_TOASTER_DT,300);
+		
 		String[] Sucess= Sucessmsg.split("User");
 		compareText(jsonData.getJsonData("ToasterMsgSuccess"), Sucess[0].replaceAll("\\s+",""));
 		compareText(jsonData.getJsonData("ToasterMsgSuccessCreated"), Sucess[1]);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

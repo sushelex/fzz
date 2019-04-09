@@ -9,12 +9,11 @@ import org.testng.annotations.Test;
 
 import framework.DriverManager;
 import framework.EnvironmentManager;
-import zf.iris.pages.AccessOtherClients;
+import zf.iris.pages.RealTimeDataPage;
 import zf.pages.MicrosoftLoginPage;
 
-public class AccessOtherClientsTest extends AccessOtherClients {
+public class RealTimeDataTest extends RealTimeDataPage {
 
-	
 MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 	
 	@BeforeMethod
@@ -23,24 +22,29 @@ MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 		DriverManager.getDriver(EnvironmentManager.getBrowserName());
 	}
 
+
 	@Test
-	public void Tc01CheckDashboardOfUserwithOneClientAccess()  {
-		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
-		checkDashboardOfUserwithOneClientAccess();
-	}
-	
-//	@Test
-	public void Tc02CheckDashboardOfAnotherClientAndUserWithNoAccess()  {
-		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
-		CheckDashboardOfAnotherClientAndUserWithNoAccess();
-		
-	
+	public void TcDashboard()  {
+		microsoftlogin.microsoftLogin(EnvironmentManager.getPrivilegeWithThresholdUserName(),EnvironmentManager.getPrivilegeWithThresholdPassword());
+		verifyActiveVehiclesDisplay();
 	}
 
+	@Test
+	public void TcclickEditVehicleAndEdit()  {
+		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword()); 
+		clickEditVehicleAndEdit();
+	}
+	@Test
+	public void TCVehicleSpeedCheck()
+	{
+		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword()); 
+		vehicleSpeedCheck();
+	}
 	@AfterMethod
 	public void afterMethod(ITestResult result,Method testName)
 	{
 		getResult(result,testName.getName());
 		DriverManager.closeAllBrowser();
 	}
+
 }

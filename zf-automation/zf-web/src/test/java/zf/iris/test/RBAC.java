@@ -22,26 +22,26 @@ public class RBAC extends ZFRBACPage{
 		DriverManager.getDriver(EnvironmentManager.getBrowserName());
 	}
 
-//	@Test
+	@Test
 	public void Tc01PrivilegeToChangeThresholds()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getPrivilegeWithThresholdUserName(),EnvironmentManager.getPrivilegeWithThresholdPassword());
 		privilegeToChangeThresholds();
 	}
 		
 
-//	@Test
+	//@Test
 	public void Tc01NoPrivilegeToEditUser()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoUseEditPrivilegeUserName(),EnvironmentManager.getNoUseEditPrivilegePassword());
 		noPrivilegeToEditUser();
 	}
 	
-//	@Test
+	//@Test
 	public void Tc02NoPrivilegeToEditUserRole()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getNoUseEditPrivilegeUserName(),EnvironmentManager.getNoUseEditPrivilegePassword());
 		noPrivilegeToEditUser();
 	}
 	
-	@Test
+	//@Test
 	public void Tc02NoPrivilegeToChangeThresholds()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 		editUserWithNoRole();
@@ -52,7 +52,7 @@ public class RBAC extends ZFRBACPage{
 	}
 	
 	
-	@Test
+//	@Test
 	public void Tc03NoPrivilegeToEditAssets()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		noPrivilegeToEditAssets();
