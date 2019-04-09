@@ -9,32 +9,24 @@ import org.testng.annotations.Test;
 
 import framework.DriverManager;
 import framework.EnvironmentManager;
-import zf.iris.pages.LandingPageAndMenuPage;
+import zf.iris.pages.AssetCreateNewAssetPage;
 import zf.pages.MicrosoftLoginPage;
 
-public class LandingPageAndMenuTest extends LandingPageAndMenuPage{
-
+public class AssetCreateNewAssetTest extends AssetCreateNewAssetPage{
+	
 	MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 
 	@BeforeMethod
 	public void beforeMethod(Method testName) {
 		startTest(testName.getName());
 		DriverManager.getDriver(EnvironmentManager.getBrowserName());
-		
-	}
-	
-	@Test
-	public void TC01LoginWithMoreThanOneClient()
-	{
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
-		LoginWithMoreThanOneClient();
 	}
 	
 	@Test
-	public void TC02BothClientsGlobalMenu()
+	public void TC01AssetCreateNewAsset()
 	{
-		microsoftlogin.microsoftLogin(EnvironmentManager.getPrivilegeMultiClientsUserName(),EnvironmentManager.getPrivilegeMultiClientsPassword());
-		BothClientsGlobalMenu();
+		AssetCreateNewAsset();
 	}
 	
 	@AfterMethod

@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
 
 import framework.DriverManager;
 import framework.EnvironmentManager;
-import zf.iris.pages.BackofficeCreateFleetAndAddSomeVehiclesPage;
+import zf.iris.pages.BackofficePage;
 import zf.pages.MicrosoftLoginPage;
 
-public class BackofficeCreateFleetAndAddSomeVehiclesTest extends BackofficeCreateFleetAndAddSomeVehiclesPage{
+public class BackofficeTest extends BackofficePage{
 	MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 
 	@BeforeMethod
@@ -21,13 +21,28 @@ public class BackofficeCreateFleetAndAddSomeVehiclesTest extends BackofficeCreat
 		DriverManager.getDriver(EnvironmentManager.getBrowserName());
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 	}
-	
+
 	@Test
 	public void TC01CreateFleetAndAddSomeVehicle()
 	{
 		CreateFleetAndAddSomeVehicle();
 	}
-	
+	@Test
+	public void TC02BackofficeCreateNewUser()
+	{
+		BackofficeCreateNewUser();
+	}
+	@Test
+	public void TC03BackofficeEditVechileTypeInSomeVehicle()
+	{
+		BackofficeEditVechileTypeInSomeVehicle();
+	}
+	@Test
+	public void TC04BackofficeEditSomeRole()
+	{
+		BackofficeEditSomeRole();
+	}
+
 	@AfterMethod
 	public void afterMethod(ITestResult result,Method testName)
 	{

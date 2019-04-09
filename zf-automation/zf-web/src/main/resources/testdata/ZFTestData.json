@@ -789,7 +789,7 @@
 	{
 		"checkDashboardOfUserwithOneClientAccess": {
 			
-			"ToasterMessageFailed": "Access Denied",
+			"ToasterMessageFailed": "Access denied",
 			"ToasterMessageFailedReason": "User does not have the privilege to access this functionality."
 		}
 	},{
