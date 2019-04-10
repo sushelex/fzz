@@ -121,7 +121,7 @@ public class ZFAssetPage extends ElementManager{
 			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,500); 
 			sleep(10000);
 			waitElementVisibleClick(ASSETS_CREATEASSET_BT,800);
-			sleep(5000);
+			sleep(10000);
 		} catch (InterruptedException e) {
 			TestLogger.fileInfo(e.getMessage());
 		}
@@ -849,7 +849,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			waitElementVisibleClick(HOMEPAGE_ASSETS_lK,700);
 			//elementAvailability(LOADER_SYMBOL);
-			sleep(5000);
+			sleep(10000);
 			assetSortingDropDownNavigation(ASSET_BRAND);
 			assetSortingDropDownNavigation(ASSET_BUSINESS_UNIT);
 			assetSortingDropDownNavigation(ASSET_COUNTRY);
@@ -863,11 +863,14 @@ public class ZFAssetPage extends ElementManager{
 	}
 	public void assetSortingDropDownNavigation(By Dropdownvalue)
 	{
-		elementClick(ASSET_SORT_BY_DD);
-		elementClick(Dropdownvalue);
-		elementAvailability(LOADER_SYMBOL);
+		try {
 
-
+			waitElementVisibleClick(ASSET_SORT_BY_DD,300);
+			waitElementVisibleClick(Dropdownvalue,100);
+			sleep(10000);
+		} catch (Exception e) {
+			TestLogger.appInfo(e.getMessage());
+		}
 	}
 	public void verifyToastermessage(String Jsondata) {
 		

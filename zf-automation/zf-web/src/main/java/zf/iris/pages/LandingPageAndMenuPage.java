@@ -38,7 +38,7 @@ public class LandingPageAndMenuPage extends ElementManager{
 	private static By TRIPS_ICON							=By.xpath("(//div[contains(text(),'Trips')])[2]");
 	private static By ASSEST_ICON							=By.xpath("//a[@title='Assets']");
 	private static By HELP_ICON								=By.xpath("//i[@class='menu-icon om-icon-help ng-star-inserted']");
-
+	private static By HOME_ASSET_ICON						=By.xpath("//i[@class='menu-icon om-icon-menu-home ng-star-inserted']");
 
 	public void LoginWithMoreThanOneClient()
 	{
@@ -46,6 +46,7 @@ public class LandingPageAndMenuPage extends ElementManager{
 		navigateToUrl();
 		sleep(10000);
 		waitElementToBeVisible(OPENMATIC_APPS,300);
+		waitElementToBeVisible(PORTAL_DASHBOARD_BT, 300);
 		if(compareValue(elementGetText(OPENMATIC_APPS), jsonData.getJsonData("Openmatic1"))){
 			elementAvailability(PORTAL_DASHBOARD_BT);
 			elementAvailability(PORTAL_DETAGTIVE_BT);
@@ -116,13 +117,13 @@ public class LandingPageAndMenuPage extends ElementManager{
 			waitElementToBeVisible(ASSEST_ICON,300);
 			elementClick(HOME_ICON1);
 
-			waitElementVisibleClick(PORTAL_BACKOFFICE_BT, 300);
-			waitElementToBeVisible(ASSEST_ICON,300);
-			elementClick(HOME_ICON);
-
-			waitElementVisibleClick(PORTAL_HELP_BT, 300);
-			waitElementToBeVisible(HELP_ICON,300);
-			elementClick(HOME_ICON);
+//			waitElementVisibleClick(PORTAL_BACKOFFICE_BT, 300);
+//			waitElementToBeVisible(ASSEST_ICON,300);
+//			elementClick(HOME_ICON);
+//
+//			waitElementVisibleClick(PORTAL_HELP_BT, 300);
+//			waitElementToBeVisible(HELP_ICON,300);
+//			elementClick(HOME_ICON);
 
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());

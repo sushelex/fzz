@@ -462,9 +462,7 @@ public class ElementManager  extends ExtentReport{
 			if(DriverManager.getDriverInstance().findElement(byType).isDisplayed())
 			{
 				elementIdentifier = true;
-				
-					ExtentReport.info("Element "+byType.toString()+"is diaplayed");
-				
+				ExtentReport.info("Element "+byType.toString()+"is diaplayed");
 				TestLogger.testMessage( byType.toString()+" is displayed");
 			} 
 		} catch (Exception exceptionMessage) {
