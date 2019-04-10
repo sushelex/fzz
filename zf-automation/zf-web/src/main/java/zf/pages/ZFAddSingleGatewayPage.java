@@ -72,7 +72,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageSuccess");
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageSuccess",ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageSuccessReason");
 		
 		} catch (Exception e) {
 
@@ -115,8 +115,8 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed");
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed",ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+			
 		} catch (Exception e) {
 
 			TestLogger.appInfo(e.getMessage());
@@ -160,8 +160,8 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_KEY_EB,jsonData.getJsonData("MetaDatakey"));
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_METADATA_VALUE_EB,jsonData.getJsonData("MetaDatavalue"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed");
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageFailed",ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+			
 		} catch (Exception e) {
 
 			TestLogger.appInfo(e.getMessage());
@@ -195,8 +195,8 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 
 			//Additional
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageSuccess");
-			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageSuccessReason");
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_MSG,"ToasterMessageSuccess",ADDSINGLEGATEWAY_TOASTER_MSG_TXT,"ToasterMessageSuccessReason");
+			
 		} catch (Exception e) {
 
 			TestLogger.appInfo(e.getMessage());
@@ -229,7 +229,6 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 
 
 		} catch (Exception e) {
-
 			TestLogger.appInfo(e.getMessage());
 		}
 	}
@@ -240,22 +239,21 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 	}
 
 
-	public void verifyToastermessage(By ByType, String Jsondata) {
+	public void verifyToastermessage(By ByType, String Jsondata,By ByType1, String Jsondata1) {
 		try {
-		String toasterText = waitElementVisibleGetText(ByType,300);
+		String toasterText = waitElementVisibleGetText(ByType,250);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
+		String toasterText1 = elementGetText(ByType1);
+		compareText(jsonData.getJsonData(Jsondata1),toasterText1);
 	} catch (InterruptedException e) {
-		
-		TestLogger.appInfo(e.getMessage());
+				TestLogger.appInfo(e.getMessage());
 	}
 	}
 	
 	public void nextButtonVisibility(By ByType,String message) {
 		try {
-
 			if(elementGetValue(ByType,"disabled")!=null) {
 				testPassed("SUBMIT button is disabled "+message);
-
 			}
 			else {
 				testFailed("Message failed");

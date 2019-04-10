@@ -439,8 +439,8 @@ public class ElementManager  extends ExtentReport{
 			errormessage="Element is not displayed";
 			elementCatch(byType, EnvironmentManager.getDelayTime(), exceptionMessage, errormessage);
 			return elementIdentifier;
-		}
-		return elementIdentifier;
+		}finally {
+		return elementIdentifier;}
 	}
 
 	/*
@@ -462,11 +462,9 @@ public class ElementManager  extends ExtentReport{
 			if(DriverManager.getDriverInstance().findElement(byType).isDisplayed())
 			{
 				elementIdentifier = true;
-				if(!element.getText().equals("")) {
-					ExtentReport.info("Web element = '" + element.getText() + "' is displayed");
-				}else {
+				
 					ExtentReport.info("Element "+byType.toString()+"is diaplayed");
-				}
+				
 				TestLogger.testMessage( byType.toString()+" is displayed");
 			} 
 		} catch (Exception exceptionMessage) {
@@ -762,7 +760,7 @@ public class ElementManager  extends ExtentReport{
 
 	public void elementClickRadioButton(By byType) {
 		try {
-			sleep(1000);
+			sleep(3000);
 			element = DriverManager.getDriverInstance().findElement(byType);
 			if (element.isSelected()) {
 

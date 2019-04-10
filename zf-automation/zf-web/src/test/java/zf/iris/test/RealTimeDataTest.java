@@ -23,7 +23,7 @@ MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 	}
 
 
-	@Test
+//	@Test
 	public void TcDashboard()  {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getPrivilegeWithThresholdUserName(),EnvironmentManager.getPrivilegeWithThresholdPassword());
 		verifyActiveVehiclesDisplay();
@@ -34,7 +34,7 @@ MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword()); 
 		clickEditVehicleAndEdit();
 	}
-	@Test
+//	@Test
 	public void TCVehicleSpeedCheck()
 	{
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword()); 

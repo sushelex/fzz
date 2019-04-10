@@ -769,7 +769,7 @@ public class ZFAssetPage extends ElementManager{
 	public void verifyToastermessage(By ByType1, String Jsondata1,By ByType2, String Jsondata2) {
 		try {
 			
-			String toasterMessage = waitElementVisibleGetText(ByType1,500);
+			String toasterMessage = waitElementVisibleGetText(ByType1,300);
 			compareText(jsonData.getJsonData(Jsondata1),toasterMessage);
 			String toasterMessageText = elementGetText(ByType2);
 			compareText(jsonData.getJsonData(Jsondata2),toasterMessageText);

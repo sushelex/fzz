@@ -244,9 +244,9 @@ public class ExtentReport extends CaptureScreenshot {
 	public void elementCatch(By byType, long explicittime, Exception message, String error) {
 		//			takeScreenShot(error+getTimeStamp());
 		TestLogger.elementIdentifierFail("ErrorMessage: Web element " + byType + " is not working");
-		Assert.fail("ErrorMessage: Web element "+ byType + + explicittime + "is not working"
+		Assert.fail("ErrorMessage: Web element "+ byType +"  is not present after waiting for " + explicittime +" seconds."
 				+ error);
-		testFailed("ErrorMessage: Web element " + byType + " is not working");
+		testFailed("ErrorMessage: Web element " + byType + " is not working. ");
 	}
 
 

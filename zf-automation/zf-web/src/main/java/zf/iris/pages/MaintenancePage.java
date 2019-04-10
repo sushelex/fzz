@@ -6,7 +6,7 @@ import framework.ElementManager;
 import framework.JsonReader;
 import framework.TestLogger;
 
-public class MaintanancePage extends ElementManager{
+public class MaintenancePage extends ElementManager{
 	JsonReader jsonData=new JsonReader();
 	private static By MAINTENANCE_ICON                   =By.xpath("//div[text()='MAINTENANCE']");
 	private static By FIRST_DEFAULT_FLEET_VEHICLE        =By.xpath("(//div[@class='vehicle-row flex-wrapper'])[1]");

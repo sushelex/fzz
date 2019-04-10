@@ -58,11 +58,11 @@ public class RealTimeDataPage extends ElementManager{
 			switchToWindow();
 			waitElementVisibleClick(VEHICLE_SETTINGS_TAB,300);
 			waitElementVisibleClick(EDIT_DATA_BT,300);
-			if(elementAvailability(EDITVEHICLES_SAVE_BT)) {
+			if(elementDisplayed(EDITVEHICLES_SAVE_BT)) {
 				info("Save button is disabled before editing ");
 				waitElementVisibleClick(VEHICLETYPE_DROPDOWN,300);
 				waitElementVisibleClick(VEHICLETYPE_DROPDOWN_OPTION2,300);
-				if(!elementAvailability(EDITVEHICLES_SAVE_BT)) {
+				if(!elementDisplayed(EDITVEHICLES_SAVE_BT)) {
 					testPassed("Save button is enabled after editing the value ");
 				}
 			}else {
@@ -105,7 +105,7 @@ public class RealTimeDataPage extends ElementManager{
 		try {
 		
 		String toasterText = waitElementVisibleGetText(ByType,300);
-		String toasterText1 = waitElementVisibleGetText(ByType1,300);
+		String toasterText1 = elementGetText(ByType1);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
 		compareText(jsonData.getJsonData(Jsondata1),toasterText1);
 		}catch (Exception e) {

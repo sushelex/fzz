@@ -130,10 +130,10 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void clickAddGateway() {
 
 		try {
-			sleep(3000);
-		waitElementVisibleClick(GATEWAY_ICON,300);
-		waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
-		sleep(2500);
+			
+		waitElementVisibleClick(GATEWAY_ICON,900);
+		waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,800);
+		sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -144,8 +144,8 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		try {
 			waitElementVisibleClick(GATEWAY_ICON,300);
-			waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
-			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
+			waitElementVisibleClick(GATEWAY_SEARCH_DD,500);
+			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,800);
 			elementClick(GATEWAYSEARCH_BT);
 			if(elementAvailability(GATEWAYSEARCHSELECTIONCHECK))
 			{
@@ -153,7 +153,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				{
 					String gatewaytext=elementGetText(GATEWAYNAME);
 					elementClick(GATEWAYMOREINFO);
-					waitElementVisibleClick(GATEWATMANAGESOFTWARE_BT,2000);
+					waitElementVisibleClick(GATEWATMANAGESOFTWARE_BT,200);
 					compareText(elementGetText(GATEWAYMANAGESOFTWARENAME),"Gateway : "+gatewaytext);
 				}
 			}
@@ -166,12 +166,13 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 		try {
-			waitElementVisibleClick(GATEWAY_ICON,300);
+			waitElementVisibleClick(GATEWAY_ICON,500);
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
+				sleep(2000);
 				elementClick(GATEWAYMOREINFO);
 				elementClick(GATEWAYEDIT_BT);
-				verifyToastermessage(GATEWAYOPERATORTOASTMESSAGE,"ToadterOperatorMessage");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 
 			}
 		} catch (InterruptedException e) {
@@ -189,7 +190,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				elementClick(GATEWAYMOREINFO);
 				elementClick(GATEWAYOPERATORDISABLE_BT);
-				verifyToastermessage(GATEWAYOPERATORTOASTMESSAGE,"ToadterOperatorMessage");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 			}
 		}catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -201,8 +202,8 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		try {JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 		waitElementVisibleClick(GATEWAY_ICON,300);
-		waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
-		waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
+		waitElementVisibleClick(GATEWAY_SEARCH_DD,200);
+		waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,200);
 		elementClick(GATEWAYSEARCH_BT);
 		if(elementAvailability(GATEWAYSEARCHSELECTIONCHECK))
 		{
@@ -210,7 +211,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				elementClick(GATEWAYMOREINFO);
 				elementClick(GATEWAYOPERATORDECOMISSION_BT);
-				verifyToastermessage(GATEWAYOPERATORTOASTMESSAGE,"ToadterOperatorMessage");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 			}
 		}
 		} catch (InterruptedException e) {		
@@ -222,9 +223,9 @@ public class ZFGatewayHomePage extends ElementManager{
 
 		try {
 			JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
-			elementClick(GATEWAY_ICON);
-			sleep(3000);
-			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,1300);
+			waitElementVisibleClick(GATEWAY_ICON,500);
+			
+			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,800);
 			verifyToastermessage(GATEWAY_TOASTER_MSG,"ToasterMessageFailed");
 			sleep(2000);
 			elementClick(GATEWAY_ADDGATEWAY_BT);
@@ -239,20 +240,20 @@ public class ZFGatewayHomePage extends ElementManager{
 
 		try {
 			JsonReader.getJsonObject("DisableAndEnableGateway");
-			waitElementVisibleClick(GATEWAY_ICON,300);
+			waitElementVisibleClick(GATEWAY_ICON,500);
 
 			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("SearchItem"));
 			elementClick(GATEWAY_SEARCH_ICON);
 			elementAvailability(GATEWAY_TABLE);
 
-			elementClick(GATEWAY_TABLE_MOREINFO_DD);
+			waitElementVisibleClick(GATEWAY_TABLE_MOREINFO_DD,300);
 
 			if(elementDisplayed(GATEWAY_ENABLE_BT)) {
 				elementClick(GATEWAY_ENABLE_BT);
-				sleep(300);
+			
 				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled");
 				elementClick(GATEWAY_DISABLE_BT);
-				sleep(300);
+				
 				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled");
 
 			}else if(elementDisplayed(GATEWAY_DISABLE_BT)) {
@@ -348,8 +349,8 @@ public class ZFGatewayHomePage extends ElementManager{
 	{
 		try {
 			waitElementVisibleClick(GATEWAY_ICON,300);
-			waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
-			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
+			waitElementVisibleClick(GATEWAY_SEARCH_DD,200);
+			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,200);
 			elementClick(GATEWAYSEARCH_BT);
 			sleep(3000);
 		} catch (InterruptedException e) {
@@ -386,8 +387,8 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {
 			JsonReader.getJsonObject("validateCommissionedGatewayStatus");
 			waitElementVisibleClick(GATEWAY_ICON,300);
-			waitElementVisibleClick(GATEWAY_SEARCH_DD,2000);
-			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,1000);
+			waitElementVisibleClick(GATEWAY_SEARCH_DD,300);
+			waitElementVisibleClick(GATEWAY_PRECOMMISION_CB,200);
 			elementClick(GATEWAY_COMMISION_CB);	
 			elementClick(GATEWAY_SEARCH_DD);
 			compareText(elementGetText(GATEWAY_STATUS_DD),jsonData.getJsonData("SearchValue"));	
@@ -522,8 +523,8 @@ public class ZFGatewayHomePage extends ElementManager{
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
-				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,2000);
-				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
+				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,200);
+				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,300);
 				elementSendKeyWithActions(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
@@ -546,8 +547,8 @@ public class ZFGatewayHomePage extends ElementManager{
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
-				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,2000);
-				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
+				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,200);
+				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,300);
 				elementSendKeyWithActions(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareNameInvalid"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadInvalidPackagePath"));
@@ -575,8 +576,8 @@ public class ZFGatewayHomePage extends ElementManager{
 			if(elementCount(GATEWAYGENERICROW)>0)
 			{
 				elementClick(GATEWAYMOREINFO);
-				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,2000);
-				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,3000);
+				waitElementVisibleClick(GATEWAYMANAGESOFTWARE_BT,200);
+				waitElementVisibleClick(GATEWAYADDSOFTWARE_BT,300);
 				elementSendKeyWithActions(ADDSOFTWARE_SOFTWARENAME_EB, jsonData.getJsonData("SoftwareName"));
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
@@ -864,7 +865,7 @@ public class ZFGatewayHomePage extends ElementManager{
 		try {
 			waitElementVisibleClick(GATEWAY_ICON,300);
 			sleep(2500);
-			waitElementVisibleClick(GATEWAY_DROPDOWN,1300);
+			waitElementVisibleClick(GATEWAY_DROPDOWN,500);
 
 		} catch (InterruptedException e) {
 

@@ -9,12 +9,10 @@ import org.testng.annotations.Test;
 
 import framework.DriverManager;
 import framework.EnvironmentManager;
-import zf.iris.pages.AccessOtherClients;
+import zf.iris.pages.MaintenancePage;
 import zf.pages.MicrosoftLoginPage;
 
-public class AccessOtherClientsTest extends AccessOtherClients {
-
-	
+public class MaintenanceTest extends MaintenancePage{
 MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 	
 	@BeforeMethod
@@ -24,23 +22,18 @@ MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
 	}
 
 	@Test
-	public void Tc01CheckDashboardOfUserwithOneClientAccess()  {
-		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
-		checkDashboardOfUserwithOneClientAccess();
-	}
-	
-	@Test
-	public void Tc02CheckDashboardOfAnotherClientAndUserWithNoAccess()  {
-		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
-		CheckDashboardOfAnotherClientAndUserWithNoAccess();
-		
-	
+	public void TcverifyMainteneceEditSavechange()  {
+		microsoftlogin.microsoftLogin(EnvironmentManager.getPrivilegeWithThresholdUserName(),EnvironmentManager.getPrivilegeWithThresholdPassword());
+		verifyMainteneceEditSavechange();
 	}
 
+
+	
 	@AfterMethod
 	public void afterMethod(ITestResult result,Method testName)
 	{
 		getResult(result,testName.getName());
 		DriverManager.closeAllBrowser();
 	}
+
 }

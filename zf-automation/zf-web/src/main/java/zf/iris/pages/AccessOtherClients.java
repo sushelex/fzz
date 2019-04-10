@@ -14,7 +14,7 @@ public class AccessOtherClients extends ElementManager{
 	private static  By PORTAL_TRIPS_BT              	 =By.xpath("//div[text()='TRIPS']");
 	private static  By PORTAL_WINTERSERVICE_BT              	 =By.xpath("//div[text()='WINTERSERVICE']");
 	private static  By PORTAL_ZF_ESYNC_BT              	 =By.xpath("//div[text()='TRIPS']");
-	private static  By PORTAL_ASSET_DEVICE_MANAGEMENT_BT              	 =By.xpath("//div[text()='WINTERSERVICE']");
+	private static  By PORTAL_ASSET_DEVICE_MANAGEMENT_BT              	 =By.xpath("//div[text()='ASSET & DEVICE MANAGEMENT']");
 	
 	private static  By PORTAL_BACKOFFICE_BT              	 =By.xpath("//div[text()='BACKOFFICE']");
 	private static  By PORTAL_HELP_BT              	 =By.xpath("//div[text()='HELP']");
