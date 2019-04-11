@@ -13,10 +13,10 @@ public class ZFRBACPage extends ElementManager {
 	private static By PORTAL_DASHBOARD_ICON                     =By.xpath("//div[text()='DASHBOARD']");
 	private static By SETTINGS_ICON                             =By.xpath("//div[text()='Settings']");
 	private static By SETTING_THRESHOILD_LK                     =By.xpath("//span[text()='Thresholds']");
-	private static By THRESHOILDSETTING_SAVECHANGES_BT          =By.xpath("(//button[@class='button button-primary ng-scope'])[2]");
-	private static By THRESHOILDSETTING_TOASTER_MSG		        =By.xpath("//div[text()='Success']");
-	private static By THRESHOILDSETTING_TOASTER_MSG_TXT         =By.xpath("//div[text()='Thresholds Settings were updated successfully']");
-	private static By THRESHOILD_SETTING_PB                     =By.xpath("(//div[@class='noUi-connects'])[2]");
+	private static By SETTING_THRESHOILD_SAVECHANGES_BT          =By.xpath("(//button[@class='button button-primary ng-scope'])[2]");
+	private static By SETTING_THRESHOILD_TOASTER_MSG		        =By.xpath("//div[text()='Success']");
+	private static By SETTING_THRESHOILD_TOASTER_MSG_TXT         =By.xpath("//div[text()='Thresholds Settings were updated successfully']");
+	private static By SETTING_THRESHOILD_PB                     =By.xpath("(//div[@class='noUi-connects'])[2]");
 	private static  By USER_ICON   	 	                        =By.xpath("//a[@title='Users']");
 	private static  By USER_FILTER_ST  				            =By.xpath("//span[@class='filter-label ng-binding']");
 	private static  By USER_SEARCH_EB  				            =By.xpath("//input[@class='filter-input ng-pristine ng-untouched ng-valid ng-empty']");
@@ -29,23 +29,23 @@ public class ZFRBACPage extends ElementManager {
 	private static  By USER_ROLE_EB              	            =By.xpath("//div[@title='User roles']");
 
 	private static  By USER_ROLE_DELETE_EB                      =By.xpath("//span[@class='close ui-select-match-close']");
-	private static By USER_SAVE_DISABLE_BT              	    =By.xpath("(//button[@disabled='disabled'])[2]");
+	private static By USER_SAVE_DISABLE_BT             	        =By.xpath("(//button[@disabled='disabled'])[2]");
 	private static By ASSETSDETAILS_BASICDETAILS_EDIT_BT        =By.xpath("(//div[@class='fl edit-icon sprite'])[1]");
 	private static By ASSETSDETAILS_TOASTER_MSG		   	      	=By.xpath("//div[@class='toast-title']");
 	private static By ASSETSDETAILS_TOASTER_MSG_TXT		       	=By.xpath("//div[@class='ng-star-inserted']");
 	private static By ASSETSDETAILS_ASSETDETAILS_EDIT_BT        =By.xpath("(//div[@class='fl edit-icon sprite'])[2]");
-	private static By THRESHOILDSETTING_DISABLE_SAVE_BT          =By.xpath("//button[@disabled='disabled']");
+	private static By SETTING_THRESHOLD_DISABLE_SAVE_BT          =By.xpath("//button[@disabled='disabled']");
 	
 	public void privilegeToChangeThresholds() {
 		try {
 			JsonReader.getJsonObject("privilegeToChangeThresholds");
-			navigateToUrl();
+			navigateToPortalUrl();
 		waitElementVisibleClick(PORTAL_DASHBOARD_ICON,300);
 		waitElementVisibleClick(SETTINGS_ICON,300);
 		waitElementVisibleClick(SETTING_THRESHOILD_LK,300);		
-		if(elementAvailability(THRESHOILDSETTING_DISABLE_SAVE_BT)) {
-		waitElementVisibleClick(THRESHOILD_SETTING_PB,500);
-		if(elementDisplayed(THRESHOILDSETTING_SAVECHANGES_BT)) {
+		if(elementAvailability(SETTING_THRESHOLD_DISABLE_SAVE_BT)) {
+		waitElementVisibleClick(SETTING_THRESHOILD_PB,500);
+		if(elementDisplayed(SETTING_THRESHOILD_SAVECHANGES_BT)) {
 			testPassed("Save button is enabled after editing ");
 		
 		}else {
@@ -113,12 +113,15 @@ public class ZFRBACPage extends ElementManager {
 		zfAssetPage.selectAssetDetails("noPrivilegeToEditAssets");
 		elementClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT);
 		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
-	
-		}
+		
+		elementClick(ASSETSDETAILS_ASSETDETAILS_EDIT_BT);
+		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+
+	}
 	public void noPrivilegeToChangeThresholds() {
 		try {
 			JsonReader.getJsonObject("noPrivilegeToChangeThresholds");
-			navigateToUrl();
+			navigateToPortalUrl();
 		waitElementVisibleClick(PORTAL_DASHBOARD_ICON,300);
 		waitElementVisibleClick(SETTINGS_ICON,300);
 		if(!(elementDisplayed(SETTING_THRESHOILD_LK))){
@@ -133,7 +136,7 @@ public class ZFRBACPage extends ElementManager {
 	public void verifyToastermessage(By ByType, String Jsondata,By ByType1, String Jsondata1) {
 		try {
 		
-		String toasterText = waitElementVisibleGetText(ByType,100);
+		String toasterText = waitElementVisibleGetText(ByType,200);
 		String toasterText1 = elementGetText(ByType1);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
 		compareText(jsonData.getJsonData(Jsondata1),toasterText1);

@@ -462,7 +462,9 @@ public class ElementManager  extends ExtentReport{
 			if(DriverManager.getDriverInstance().findElement(byType).isDisplayed())
 			{
 				elementIdentifier = true;
-				ExtentReport.info("Element "+byType.toString()+"is diaplayed");
+				
+					ExtentReport.info("Element "+byType.toString()+"is diaplayed");
+				
 				TestLogger.testMessage( byType.toString()+" is displayed");
 			} 
 		} catch (Exception exceptionMessage) {
@@ -662,8 +664,6 @@ public class ElementManager  extends ExtentReport{
 	public boolean waitElementVisibleClick(By byType, long timeoutSeconds) throws InterruptedException {
 		boolean visible = false;
 		
-		
-
 		try {
 			WebDriverWait wait=new WebDriverWait(DriverManager.getDriverInstance(),timeoutSeconds);
 			sleep(returnlong(timeoutSeconds));
@@ -710,7 +710,7 @@ public class ElementManager  extends ExtentReport{
 			wait.until(ExpectedConditions.visibilityOfElementLocated(byType));
 			sleep(returnlong(timeoutSeconds));
 			Text = elementGetText(byType);
-			ExtentReport.info("Web element = '" + Text + "' is identified");
+		
 		} 
 		catch (Exception exceptionMessage) {
 			errormessage = "Web element "+byType.toString()+" is not identified";
@@ -948,7 +948,7 @@ public class ElementManager  extends ExtentReport{
 		return elementText;			
 	}
 
-	public void navigateToUrl() {
+	public void navigateToPortalUrl() {
 		DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getPortalUrl());
 	}
 

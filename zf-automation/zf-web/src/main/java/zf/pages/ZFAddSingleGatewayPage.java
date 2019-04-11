@@ -11,14 +11,14 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 	JsonReader jsonData=new JsonReader();
 	ZFGatewayHomePage zfgatewayhomepage=new ZFGatewayHomePage();
 
-	private static  By SINGLEGATEWAY_RB										=By.xpath("(//div[contains(@class,'ui-radiobutton-box ui-widget ui-state-default')])[1]");
+	private static  By ADDSINGLEGATEWAY_SINGLEGATEWAY_RB				        =By.xpath("(//div[contains(@class,'ui-radiobutton-box ui-widget ui-state-default')])[1]");
 	private static  By ADDSINGLEGATEWAY_GATEWAYNAME_EB						=By.xpath("//input[@name='gatewayName']");
 	private static  By ADDSINGLEGATEWAY_TYPE_DD								=By.xpath("//p-dropdown[@optionlabel='gatewayType']");
-	private static  By ADDSINGLEGATEWAY_MODEL_DD							=By.xpath("//p-dropdown[@optionlabel='gatewayModel']");
-	private static  By ADDSINGLEGATEWAY_MACID_EB							=By.xpath("//input[@name='gatewayMacId']");
-	private static  By ADDSINGLEGATEWAYSERIALNUMBER_EB						=By.xpath("//input[@name='gatewaysNo']");
-	private static  By ADDSINGLEGATEWAY_SIMNUMBER_EB						=By.xpath("//input[@name='gatewaysimNo']");
-	private static  By ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE			=By.id("file-input");
+	private static  By ADDSINGLEGATEWAY_MODEL_DD							    =By.xpath("//p-dropdown[@optionlabel='gatewayModel']");
+	private static  By ADDSINGLEGATEWAY_MACID_EB							    =By.xpath("//input[@name='gatewayMacId']");
+	private static  By ADDSINGLEGATEWAY_SERIALNUMBER_EB						=By.xpath("//input[@name='gatewaysNo']");
+	private static  By ADDSINGLEGATEWAY_SIMNUMBER_EB						    =By.xpath("//input[@name='gatewaysimNo']");
+	private static  By ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE_BT			=By.id("file-input");
 	private static  By ADDSINGLEGATEWAY_NEXT_BT								=By.xpath("//button[@class='zf-button next fr primary ng-star-inserted' and text()='Next']");
 	private static  By ADDSINGLEGATEWAY_CUSTOMERNAME_EB						=By.xpath("//input[@name='customer']");
 	private static  By ADDSINGLEGATEWAY_CUSTOMERCOUNTRY_DD					=By.xpath("//p-dropdown[@name='selectCountry']");
@@ -33,7 +33,7 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 	private static  By ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT			=By.xpath("//button[text()='Finish']");
 	private static  By ADDSINGLEGATEWAY_TOASTER_MSG							=By.xpath("//div[@class='toast-title']");
 	private static  By ADDSINGLEGATEWAY_TOASTER_MSG_TXT						=By.xpath("//div[@class='ng-star-inserted']");
-	private static String TYPEDROPDOWNLIST									="//span[text()='{}']";
+	private static String addSingleGateway_typedropdownList		         ="//span[text()='{}']";
 
 
 	
@@ -43,25 +43,25 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			sleep(2000);
 			zfgatewayhomepage.clickAddGateway();
 			JsonReader.getJsonObject("addSingleGatewayWithAllValidInputs");
-			elementClickRadioButton(SINGLEGATEWAY_RB);
+			elementClickRadioButton(ADDSINGLEGATEWAY_SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
 			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"Model")));
 			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID")+generateRandomNumber());
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
+			elementSendKeys(ADDSINGLEGATEWAY_SERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
-			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
+			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
 			elementSendKeys(ADDSINGLEGATEWAY_CUSTOMERNAME_EB,jsonData.getJsonData("CustomerName"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERCOUNTRY_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerCountry")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerCountry")));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERAREA_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerArea")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerArea")));
 			elementSendKeys(ADDSINGLEGATEWAY_BUSINESSUNIT_EB,jsonData.getJsonData("BusinessUnit"));
 			elementSendKeys(ADDSINGLEGATEWAY_OPERATOR_EB,jsonData.getJsonData("Operator"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
@@ -86,25 +86,25 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			
 			zfgatewayhomepage.clickAddGateway();
 			JsonReader.getJsonObject("addSingleGatewayWithMacIDAlreadyExists");
-			elementClickRadioButton(SINGLEGATEWAY_RB);
+			elementClickRadioButton(ADDSINGLEGATEWAY_SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
 			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"Model")));
 			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID"));
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
+			elementSendKeys(ADDSINGLEGATEWAY_SERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
-			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
+			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
 			elementSendKeys(ADDSINGLEGATEWAY_CUSTOMERNAME_EB,jsonData.getJsonData("CustomerName"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERCOUNTRY_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerCountry")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerCountry")));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERAREA_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerArea")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerArea")));
 			elementSendKeys(ADDSINGLEGATEWAY_BUSINESSUNIT_EB,jsonData.getJsonData("BusinessUnit"));
 			elementSendKeys(ADDSINGLEGATEWAY_OPERATOR_EB,jsonData.getJsonData("Operator"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
@@ -131,25 +131,25 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			sleep(2000);
 			zfgatewayhomepage.clickAddGateway();
 			JsonReader.getJsonObject("addSingleGatewayWithCertificateAlreadyExists");
-			elementClickRadioButton(SINGLEGATEWAY_RB);
+			elementClickRadioButton(ADDSINGLEGATEWAY_SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
 			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"Model")));
 			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID")+generateRandomNumber());
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
+			elementSendKeys(ADDSINGLEGATEWAY_SERIALNUMBER_EB,jsonData.getJsonData("SerialNumber")+generateRandomNumber());
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
-			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
+			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
 			elementSendKeys(ADDSINGLEGATEWAY_CUSTOMERNAME_EB,jsonData.getJsonData("CustomerName"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERCOUNTRY_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerCountry")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerCountry")));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERAREA_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerArea")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerArea")));
 			elementSendKeys(ADDSINGLEGATEWAY_BUSINESSUNIT_EB,jsonData.getJsonData("BusinessUnit"));
 			elementSendKeys(ADDSINGLEGATEWAY_OPERATOR_EB,jsonData.getJsonData("Operator"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
@@ -174,23 +174,23 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			sleep(2000);
 			zfgatewayhomepage.clickAddGateway();
 			JsonReader.getJsonObject("addSingleGatewayWithMandatoryFields");
-			elementClickRadioButton(SINGLEGATEWAY_RB);
+			elementClickRadioButton(ADDSINGLEGATEWAY_SINGLEGATEWAY_RB);
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
 			waitElementVisibleClick(ADDSINGLEGATEWAY_TYPE_DD,500);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"GatewayType")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"GatewayType")));
 			elementClick(ADDSINGLEGATEWAY_MODEL_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"Model")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"Model")));
 			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID")+generateRandomNumber());
-			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
+			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 
 			//Enter Client Details
 			elementSendKeys(ADDSINGLEGATEWAY_CUSTOMERNAME_EB,jsonData.getJsonData("CustomerName"));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERCOUNTRY_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerCountry")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerCountry")));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERAREA_DD);
-			elementClick(By.xpath(dynamicXpath(TYPEDROPDOWNLIST,"CustomerArea")));
+			elementClick(By.xpath(dynamicXpath(addSingleGateway_typedropdownList,"CustomerArea")));
 			elementClick(ADDSINGLEGATEWAY_CUSTOMERDETAIL_NEXT_BT);
 
 			//Additional
@@ -208,16 +208,16 @@ public class ZFAddSingleGatewayPage extends ElementManager{
 			sleep(2000);
 			zfgatewayhomepage.clickAddGateway();
 			JsonReader.getJsonObject("addSingleGatewayWithOutMandatoryFields");
-			elementClickRadioButton(SINGLEGATEWAY_RB);
+			elementClickRadioButton(ADDSINGLEGATEWAY_SINGLEGATEWAY_RB);
 			//	elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
 			nextButtonVisibility(ADDSINGLEGATEWAY_NEXT_BT, "without GatewayName , MAC ID and Certificate details");
 			elementSendKeys(ADDSINGLEGATEWAY_GATEWAYNAME_EB,jsonData.getJsonData("GatewayName"));
 			nextButtonVisibility(ADDSINGLEGATEWAY_NEXT_BT, "without MAC ID and Certificate details");
 			elementSendKeys(ADDSINGLEGATEWAY_MACID_EB,jsonData.getJsonData("MACID"));
-			elementSendKeys(ADDSINGLEGATEWAYSERIALNUMBER_EB,jsonData.getJsonData("SerialNumber"));
+			elementSendKeys(ADDSINGLEGATEWAY_SERIALNUMBER_EB,jsonData.getJsonData("SerialNumber"));
 			elementSendKeys(ADDSINGLEGATEWAY_SIMNUMBER_EB,jsonData.getJsonData("SIMNumber"));
 			nextButtonVisibility(ADDSINGLEGATEWAY_NEXT_BT, "without Certificate details");
-			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE);
+			elementClick(ADDSINGLEGATEWAY_UPLOADGATEWAYCERTIFICATE_BT);
 			uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadCertificate"));
 			elementClick(ADDSINGLEGATEWAY_NEXT_BT);
 

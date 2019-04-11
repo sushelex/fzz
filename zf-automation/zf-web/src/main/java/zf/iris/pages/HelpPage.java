@@ -8,31 +8,31 @@ import framework.TestLogger;
 
 public class HelpPage extends ElementManager{
 	JsonReader jsonData=new JsonReader();
-	 private static By HELP_TAB							=By.xpath("//div[text()='HELP']");	
-		private static By HELP_ABOUT_OPENMATICS_TAB			=By.xpath("//span[text()='About OPENMATICS']");
-		private static By HELP_DASHBOARD_TAB                =By.xpath("//div/span[text()='Dashboard']");
-		private static By HELP_BACK_BT			            =By.xpath("//b[text()='BACK']");
-		private static By HELP_INTELIGENT_CONNECTIVITY_TXT	=By.xpath("(//p[@class='ng-star-inserted'])[1]");
-		private static By HELP_OPEN_NEW_WORLD               =By.xpath("(//p[@class='ng-star-inserted'])[2]");
-		private static By HELP_DB_VEHICLELIST_FILTER =By.xpath("//div/b[text()='Vehicle List and Filter']");
-		private static By HELP_DB_VEHICLELIST_TXT           =By.xpath("//div[@class='collapse show ng-star-inserted']");	
-		private static By HELP_BACKOFFICE_TAB				=By.xpath("//div/span[text()='Backoffice']");
-		private static By HELP_BACKOFFICE_FLEET             =By.xpath("//div/b[text()='Fleets']");
-		private static By HELP_BACKOFFICE_FLEET_TXT_P1         =By.xpath("//div[@class='card-body']/p[1]");	
-		private static By HELP_BACKOFFICE_FLEET_TXT_P2         =By.xpath("//div[@class='card-body']/p[2]");	
-		private static By HELP_BACKOFFICE_FLEET_TXT_P3         =By.xpath("//div[@class='card-body']/p[3]");	
-		private static By HELP_BACKOFFICE_FLEET_TXT_P4         =By.xpath("//div[@class='card-body']/p[4]");	
-		private static By HELP_BACKOFFICE_FLEET_TXT_P5         =By.xpath("//div[@class='card-body']/p[5]");		
-		private static By HELP_BACKOFFICE_CREATE_FLEET       =By.xpath("//div/b[text()='Creating a Fleet']");
-		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP1       =By.xpath("//div[@class='card-body']/p[1]");
-		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP2       =By.xpath("//div[@class='card-body']/p[2]");
-		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP3       =By.xpath("//div[@class='card-body']/p[3]");
-		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP4       =By.xpath("//div[@class='card-body']/p[4]");
-		private static By HELP_BACKOFFICE_EDIT_FLEET         =By.xpath("//div/b[text()='Editing / Deleting a Fleet']");
+	 private static By HELP_TAB							      =By.xpath("//div[text()='HELP']");	
+		private static By HELP_ABOUT_OPENMATICS_TAB		      =By.xpath("//span[text()='About OPENMATICS']");
+		private static By HELP_DASHBOARD_TAB                  =By.xpath("//div/span[text()='Dashboard']");
+		private static By HELP_BACK_BT			              =By.xpath("//b[text()='BACK']");
+		private static By HELP_INTELIGENT_CONNECTIVITY_TXT	  =By.xpath("(//p[@class='ng-star-inserted'])[1]");
+		private static By HELP_OPEN_NEW_WORLD                 =By.xpath("(//p[@class='ng-star-inserted'])[2]");
+		private static By HELP_DB_VEHICLELIST_FILTER          =By.xpath("//div/b[text()='Vehicle List and Filter']");
+		private static By HELP_DB_VEHICLELIST_TXT             =By.xpath("//div[@class='collapse show ng-star-inserted']");	
+		private static By HELP_BACKOFFICE_TAB			      =By.xpath("//div/span[text()='Backoffice']");
+		private static By HELP_BACKOFFICE_FLEET               =By.xpath("//div/b[text()='Fleets']");
+		private static By HELP_BACKOFFICE_FLEET_TXT_P1        =By.xpath("//div[@class='card-body']/p[1]");	
+		private static By HELP_BACKOFFICE_FLEET_TXT_P2        =By.xpath("//div[@class='card-body']/p[2]");	
+		private static By HELP_BACKOFFICE_FLEET_TXT_P3        =By.xpath("//div[@class='card-body']/p[3]");	
+		private static By HELP_BACKOFFICE_FLEET_TXT_P4        =By.xpath("//div[@class='card-body']/p[4]");	
+		private static By HELP_BACKOFFICE_FLEET_TXT_P5        =By.xpath("//div[@class='card-body']/p[5]");		
+		private static By HELP_BACKOFFICE_CREATE_FLEET        =By.xpath("//div/b[text()='Creating a Fleet']");
+		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP1   =By.xpath("//div[@class='card-body']/p[1]");
+		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP2   =By.xpath("//div[@class='card-body']/p[2]");
+		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP3   =By.xpath("//div[@class='card-body']/p[3]");
+		private static By HELP_BACKOFFICE_CREATEFLEET_TXTP4   =By.xpath("//div[@class='card-body']/p[4]");
+		private static By HELP_BACKOFFICE_EDIT_FLEET          =By.xpath("//div/b[text()='Editing / Deleting a Fleet']");
 		//VEHICLE MANAGEMENT
-		private static By HELP_VEHICLE_MANAGEMENT_TAB		=By.xpath("//div/span[text()='Vehicle Management']");
-		private static By HELP_VEHICLE_MANAGEMENT_VEHICLE		=By.xpath("//div/b[text()='Vehicles']");
-		private static By HELP_VEHICLE_MANAGEMENT_VEHICLE_TXT		=By.xpath("//div[@class='collapse show ng-star-inserted']");	
+		private static By HELP_VEHICLE_MANAGEMENT_TAB		  =By.xpath("//div/span[text()='Vehicle Management']");
+		private static By HELP_VEHICLE_MANAGEMENT_VEHICLE	  =By.xpath("//div/b[text()='Vehicles']");
+		private static By HELP_VEHICLE_MANAGEMENT_VEHICLE_TXT	=By.xpath("//div[@class='collapse show ng-star-inserted']");	
 		private static By HELP_VEHICLE_MANAGEMENT_EDIT_VH	=By.xpath("//div/b[text()='Editing vehicles']");
 		private static By HELP_GETTXT	=By.xpath("//div[@class='collapse show ng-star-inserted']");	
 		//Help user management
@@ -98,7 +98,7 @@ public class HelpPage extends ElementManager{
 	{
 		try {
 			JsonReader.getJsonObject("clickHelpAndVerifyTabs");
-			navigateToUrl();
+			navigateToPortalUrl();
 			waitElementVisibleClick(HELP_TAB,300);
 			waitElementVisibleClick(HELP_ABOUT_OPENMATICS_TAB,300);
 			compareText(jsonData.getJsonData("IntelligentConnectivityExpMsg"),elementGetText(HELP_INTELIGENT_CONNECTIVITY_TXT));			

@@ -7,6 +7,7 @@ import framework.JsonReader;
 
 public class ZFUserHomePage extends ElementManager{
 	JsonReader jsonData=new JsonReader();
+	
 	private static  By ADDUSER_ADDUSER_BT                =By.xpath("//button[@class='button create-btn button-secondary']");
 	private static  By ADDUSER_NAME_EB             		 =By.xpath("(//input[@type='text'])[2]");
 	private static  By ADDUSER_EMAIL_EB    				 =By.xpath("(//input[@type='text'])[4]");

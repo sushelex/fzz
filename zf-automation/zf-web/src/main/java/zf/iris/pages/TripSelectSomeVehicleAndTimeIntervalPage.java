@@ -16,7 +16,7 @@ public class TripSelectSomeVehicleAndTimeIntervalPage extends ElementManager{
 	public void SelectSomeVehicleAndTimeInterval() {
 
 		try {
-			navigateToUrl();
+			navigateToPortalUrl();
 			waitElementVisibleClick(TRIP_ICON, 500);
 			waitElementVisibleClick(TRIP_SELECTION_DB,300);
 			elementClick(TRIP_ALLFLEET_SELECT);

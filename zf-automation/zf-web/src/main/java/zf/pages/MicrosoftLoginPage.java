@@ -8,34 +8,35 @@ import framework.JsonReader;
 import framework.TestLogger;
 
 public class MicrosoftLoginPage extends ElementManager{
+	JsonReader jsonData=new JsonReader();
 	JsonReader jsonReader=new JsonReader();
 
 
-	private static By MICROSOFTLOGINPAGE_EMAILUSERNAME_EB       =By.xpath("//input[@type='email']");	
-	private static By MICROSOFTLOGINPAGE_EMAILPASSWORD_EB       =By.id("i0118");
-	private static By MICROSOFTLOGINPAGE_NEXT_BT                =By.id("idSIButton9");
-	private static By MICROSOFTLOGINPAGE_STAYSIGNIN_BT          =By.xpath("//input[@id='idBtn_Back']");
+	private static By MICROSOFTLOGIN_EMAILUSERNAME_EB         =By.xpath("//input[@type='email']");	
+	private static By MICROSOFTLOGIN_EMAILPASSWORD_EB         =By.id("i0118");
+	private static By MICROSOFTLOGIN_NEXT_BT                  =By.id("idSIButton9");
+	private static By MICROSOFTLOGIN_STAYSIGNIN_BT            =By.xpath("//input[@id='idBtn_Back']");
 
 
 	public void microsoftLogin(String userName, String password) {
 		try {
 
-			elementSendKeys(MICROSOFTLOGINPAGE_EMAILUSERNAME_EB,userName);
-			elementClick(MICROSOFTLOGINPAGE_NEXT_BT);
-			if(elementDisplayed(MICROSOFTLOGINPAGE_EMAILPASSWORD_EB)) {
-				elementSendKeyWithActions(MICROSOFTLOGINPAGE_EMAILPASSWORD_EB,passwordDecript(password));
-				waitElementVisibleClick(MICROSOFTLOGINPAGE_NEXT_BT,100);
-				elementClick(MICROSOFTLOGINPAGE_STAYSIGNIN_BT);
+			elementSendKeys(MICROSOFTLOGIN_EMAILUSERNAME_EB,userName);
+			elementClick(MICROSOFTLOGIN_NEXT_BT);
+			if(elementDisplayed(MICROSOFTLOGIN_EMAILPASSWORD_EB)) {
+				elementSendKeyWithActions(MICROSOFTLOGIN_EMAILPASSWORD_EB,passwordDecript(password));
+				waitElementVisibleClick(MICROSOFTLOGIN_NEXT_BT,100);
+				elementClick(MICROSOFTLOGIN_STAYSIGNIN_BT);
 			}
 			sleep(6000);
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
 		}
-		//	return new ZFGatewayHomePage();
 	}
 	public void validatePageTitle() {
+		JsonReader.getJsonObject("validatePageTitle");
 		String title = getTitile();
-		compareText("test", title);
+		compareText(jsonData.getJsonData("GatewayPageTitle"), title);
 		TestLogger.appInfo("Page title : "+title);
 	}
 }

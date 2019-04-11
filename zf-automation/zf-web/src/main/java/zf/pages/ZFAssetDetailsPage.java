@@ -21,22 +21,16 @@ public class ZFAssetDetailsPage extends ElementManager{
 	private static By ASSETSDETAILS_BASICDETAILSLABEL_TXT			=By.xpath("//span[contains(text(),'Basic Details')]");
 	private static By ASSETSDETAILS_ASSETDETAILLABEL_TXT			=By.xpath("(//span[@class='fl'][contains(text(),'Asset Details')])");
 	private static By ASSETSDETAILS_NAME							=By.xpath("//span[@class='ui-treenode-label ui-corner-all ui-state-highlight']");
-
-	private static By ASSETSDETAILS_ADDEDASSET_BT                      =By.xpath( "//span[@class='ui-treenode-icon default root ng-star-inserted']");
-	
-	
-	private static  By CREATE_ASSET_COUNTRY_DD   	 	             =By.xpath("//p-dropdown[@name='country']");
-	private static  By CREATE_ASSET_AREA_DD   	 	                 =By.xpath("//p-dropdown[@name='area']");
-	private static  By CREATE_ASSET_LOCATION_ADDRESS_RB   	 	     =By.xpath("(//span[contains(@class,'ui-radiobutton-icon ui-clickable')])[1]");
-	private static  By CREATE_ASSET_LOCATION_DESCRIPTION_EB          =By.xpath("//textarea[@name='address']");
-	private static  By CREATE_ASSET_CUSTOMER_DD   	 	             =By.xpath("//p-dropdown[@name='customer']");
-	private static  By CREATE_ASSET_BUSINESSUNIT_DD                  =By.xpath("//p-dropdown[@name='business']");
-	private static  By CREATE_ASSET_NEXT_BT                          =By.xpath("(//button[@class='zf-button primary fr'])[1]");
-	private static  By CREATE_ASSET_ASSETNAME_EB   	 	             =By.xpath("//input[@name='name']");
-	private static  By CREATE_ASSET_ASSETTYPE_DD                     =By.xpath("//p-dropdown[@name='type']");
-	private static  By CREATE_ASSET_MANUFACTURER_DD                  =By.xpath("//p-dropdown[@name='manufacturer']");
-	private static  By CREATE_ASSET_MODEL_DD   	 	                 =By.xpath("//p-dropdown[@name='model']");
-	private static  By CREATE_ASSET_BRAND_DD                         =By.xpath("//p-dropdown[@name='brand']");
+	private static By ASSETSDETAILS_ADDEDASSET_BT                   =By.xpath( "//span[@class='ui-treenode-icon default root ng-star-inserted']");
+	private static  By CREATE_ASSET_COUNTRY_DD   	 	            =By.xpath("//p-dropdown[@name='country']");
+	private static  By CREATE_ASSET_AREA_DD   	 	                =By.xpath("//p-dropdown[@name='area']");
+	private static  By CREATE_ASSET_CUSTOMER_DD   	 	            =By.xpath("//p-dropdown[@name='customer']");
+	private static  By CREATE_ASSET_BUSINESSUNIT_DD                 =By.xpath("//p-dropdown[@name='business']");
+	private static  By CREATE_ASSET_NEXT_BT                         =By.xpath("(//button[@class='zf-button primary fr'])[1]");
+	private static  By CREATE_ASSET_ASSETTYPE_DD                    =By.xpath("//p-dropdown[@name='type']");
+	private static  By CREATE_ASSET_MANUFACTURER_DD                 =By.xpath("//p-dropdown[@name='manufacturer']");
+	private static  By CREATE_ASSET_MODEL_DD   	 	                =By.xpath("//p-dropdown[@name='model']");
+	private static  By CREATE_ASSET_BRAND_DD                        =By.xpath("//p-dropdown[@name='brand']");
 
 	public void OperatorHasNoAccessToEditAssetDetails() {
 		try {

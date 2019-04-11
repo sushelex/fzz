@@ -857,6 +857,11 @@
 			"User_Management_creatingUser_txt1":"Create new users for the current Client by entering the name, surname and e-mail address. The introduction e-mail with login information then arrives to the entered e-mail address.",
 			"User_Management_creatingUser_txt2":"Coming soon:possibility to create users also for sub-clients and enhancing the user information with options like telephone number, position, etc."
 		}
+	},{
+		"validatePageTitle": {
+			"GatewayPageTitle": "ZF IoT PLATFORM"
+									
+		}
 	}
 	
 ]

@@ -8,20 +8,22 @@ public class ZFAddClientPage extends ElementManager {
 
 	JsonReader jsonData=new JsonReader();
 
-	String COMMONXPATH										= "//input[@name='{}']";
-	private static By CONTINUEBUTTONCLIENTDETAILSSECTION_BT = By.xpath("//div[@class='tab1-content']//span[contains(text(),'Continue')]");
-	private static By INVITEBUTTON_BT						= By.xpath("//div[@role='dialog']/descendant::div[@class='tab2-content']/descendant::button[contains(text(),'Invite')]");
-	private static By CONTINUEBUTTONASSIGNADMIN_BT			= By.xpath("//div[@class='tab2-content']//span[contains(text(),'Continue')]");
-	private static By EMAILINPUTASSIGNADMIN_EB 				= By.xpath("//input[@placeholder='Enter E-mail ID']");
-	private static By CREATEBUTTONPREVIEWSECTION_BT 		= By.xpath("//div[@role='dialog']/descendant::div[@class='tab3-content']/descendant::button/descendant::span[contains(text(),'Create')]");
-	private static By PREVIEWCLIENTNAME						= By.xpath("//p[@class='bold-text']");
-	private static By PREVIEWCLIENTEMAIL					= By.xpath("(//div[@class='content-wrapper'])[1]/div[@class='content']/p[2]");
-	private static By PREVIEWCLIENTTELEPHONE				= By.xpath("(//div[@class='content-wrapper'])[1]/div[@class='content']/p[3]");
-	private static By PREVIEWCLIENTSTREETNUMBER				= By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[1]");
-	private static By PREVIEWCLIENTSTREET					= By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[2]");
-	private static By PREVIEWCLIENTCOUNTRY					= By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[3]");
-	private static By PREVIEWCLIENTPOSTCODE					= By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[4]");
-	private static By CREATECLIENTCREATETOASTER				= By.xpath("//div[text()='Unauthorized user']");
+	String COMMONXPATH								                = "//input[@name='{}']";
+	private static By CLIENTS_CONTINUEBUTTONCLIENTDETAILSSECTION_BT =By.xpath("//div[@class='tab1-content']//span[contains(text(),'Continue')]");
+	private static By CLIENTS_ASSIGNADMININVITEBUTTON_BT			=By.xpath("//div[@role='dialog']/descendant::div[@class='tab2-content']/descendant::button[contains(text(),'Invite')]");
+	private static By CLIENTS_CONTINUEBUTTONASSIGNADMIN_BT			=By.xpath("//div[@class='tab2-content']//span[contains(text(),'Continue')]");
+	
+	private static By CLIENTS_EMAILINPUTASSIGNADMIN_TB 				=By.xpath("//input[@placeholder='Enter E-mail ID']");
+	private static By CLIENTS_CREATEBUTTONPREVIEWSECTION_BT 		=By.xpath("//div[@role='dialog']/descendant::div[@class='tab3-content']/descendant::button/descendant::span[contains(text(),'Create')]");
+	private static By CLIENTS_PREVIEWCLIENTNAME_TB					=By.xpath("//p[@class='bold-text']");
+	private static By CLIENTS_PREVIEWCLIENTEMAIL_TB					=By.xpath("(//div[@class='content-wrapper'])[1]/div[@class='content']/p[2]");
+	//private static By CLIENTS_PREVIEWCLIENTTELEPHONE				=By.xpath("(//div[@class='content-wrapper'])[1]/div[@class='content']/p[3]");
+	private static By CLIENTS_PREVIEWCLIENTSTREET_TBNUMBER_TB		=By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[1]");
+	private static By CLIENTS_PREVIEWCLIENTSTREET_TB				=By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[2]");
+	private static By CLIENTS_PREVIEWCLIENTCOUNTRY_TB				=By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[3]");
+	private static By CLIENTS_PREVIEWCLIENTPOSTCODE_TB				=By.xpath("(//div[@class='content-wrapper'])[2]/div[@class='content']/p[4]");
+	private static By CLIENTS_CREATECLIENTCREATETOASTER				=By.xpath("//div[text()='Unauthorized user']");
+	
 	private static By ADDSUBCLIENT_CLIENTNAME_EB			= By.xpath("//input[@name='clientName']");
 	private static By ADDSUBCLIENT_CLIENTEMAIL_EB			= By.xpath("//input[@name='clientEmail']");
 	private static By ADDSUBCLIENT_CLIENTSTREET_EB			= By.xpath("//input[@name='clientStreet']");
@@ -53,17 +55,17 @@ public class ZFAddClientPage extends ElementManager {
 			elementSendKeys(ADDSUBCLIENT_CLIENTWEBSITE_EB,jsonData.getJsonData("webSite"));
 			elementSendKeys(ADDSUBCLIENT_CLIENTCOUNTRY_EB,jsonData.getJsonData("country"));
 			elementSendKeys(ADDSUBCLIENT_CLIENTFAX_EB,jsonData.getJsonData("fax"));
-			elementClick(CONTINUEBUTTONCLIENTDETAILSSECTION_BT);
-			waitElementToBeVisibleSendValue(EMAILINPUTASSIGNADMIN_EB, 300, jsonData.getJsonData("email"));
-			elementClick(INVITEBUTTON_BT);
-			elementClick(CONTINUEBUTTONASSIGNADMIN_BT);
-			compareText(elementGetText(PREVIEWCLIENTNAME), jsonData.getJsonData("clientName"));
-			compareText(elementGetText(PREVIEWCLIENTEMAIL), jsonData.getJsonData("email"));
-			compareText(elementGetText(PREVIEWCLIENTSTREETNUMBER), jsonData.getJsonData("streetNumber"));
-			compareText(elementGetText(PREVIEWCLIENTSTREET), jsonData.getJsonData("street"));
-			compareText(elementGetText(PREVIEWCLIENTCOUNTRY), jsonData.getJsonData("country"));
-			compareText(elementGetText(PREVIEWCLIENTPOSTCODE), jsonData.getJsonData("postCode"));
-			elementClick(CREATEBUTTONPREVIEWSECTION_BT);
+			elementClick(CLIENTS_CONTINUEBUTTONCLIENTDETAILSSECTION_BT);
+			waitElementToBeVisibleSendValue(CLIENTS_EMAILINPUTASSIGNADMIN_TB, 300, jsonData.getJsonData("email"));
+			elementClick(CLIENTS_ASSIGNADMININVITEBUTTON_BT);
+			elementClick(CLIENTS_CONTINUEBUTTONASSIGNADMIN_BT);
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTNAME_TB), jsonData.getJsonData("clientName"));
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTEMAIL_TB), jsonData.getJsonData("email"));
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTSTREET_TBNUMBER_TB), jsonData.getJsonData("streetNumber"));
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTSTREET_TB), jsonData.getJsonData("street"));
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTCOUNTRY_TB), jsonData.getJsonData("country"));
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTPOSTCODE_TB), jsonData.getJsonData("postCode"));
+			elementClick(CLIENTS_CREATEBUTTONPREVIEWSECTION_BT);
 			verifyToastermessage(jsonData.getJsonData("ToasterMsg"));
 		}catch(Exception e) {
 			TestLogger.fileInfo(e.getMessage());
@@ -75,12 +77,12 @@ public class ZFAddClientPage extends ElementManager {
 		try {
 			JsonReader.getJsonObject("ClientDetails");
 			waitElementToBeVisibleSendValue(ADDSUBCLIENT_CLIENTNAME_EB,300,jsonData.getJsonData("clientName"));
-			elementClick(CONTINUEBUTTONCLIENTDETAILSSECTION_BT);
-			waitElementToBeVisibleSendValue(EMAILINPUTASSIGNADMIN_EB, 300, jsonData.getJsonData("email"));
-			elementClick(INVITEBUTTON_BT);
-			elementClick(CONTINUEBUTTONASSIGNADMIN_BT);
-			compareText(elementGetText(PREVIEWCLIENTNAME), jsonData.getJsonData("clientName"));
-			elementClick(CREATEBUTTONPREVIEWSECTION_BT);
+			elementClick(CLIENTS_CONTINUEBUTTONCLIENTDETAILSSECTION_BT);
+			waitElementToBeVisibleSendValue(CLIENTS_EMAILINPUTASSIGNADMIN_TB, 300, jsonData.getJsonData("email"));
+			elementClick(CLIENTS_ASSIGNADMININVITEBUTTON_BT);
+			elementClick(CLIENTS_CONTINUEBUTTONASSIGNADMIN_BT);
+			compareText(elementGetText(CLIENTS_PREVIEWCLIENTNAME_TB), jsonData.getJsonData("clientName"));
+			elementClick(CLIENTS_CREATEBUTTONPREVIEWSECTION_BT);
 			verifyToastermessage(jsonData.getJsonData("ToasterMsg"));
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -124,7 +126,7 @@ public class ZFAddClientPage extends ElementManager {
 
 	public void verifyToastermessage(String Jsondata) {
 		try {
-			String toasterText = waitElementVisibleGetText(CREATECLIENTCREATETOASTER,300);
+			String toasterText = waitElementVisibleGetText(CLIENTS_CREATECLIENTCREATETOASTER,300);
 			compareText(jsonData.getJsonData(Jsondata),toasterText);
 		} catch (InterruptedException e) {
 
