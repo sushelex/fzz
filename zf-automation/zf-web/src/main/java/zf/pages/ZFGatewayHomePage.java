@@ -19,7 +19,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static By GATEWAY_ICON                              =By.xpath("//a[@title='Gateway']");
 	private static By GATEWAY_TOASTER_MSG		   	            =By.xpath("//div[@class='toast-title']");
 	private static By GATEWAY_TOASTER_MSG_TXT		          	=By.xpath("//div[@class='ng-star-inserted']");
-	private static By GATEWAY_SEARCH_EB		                	=By.xpath("//input[@class='fh fl ng-untouched ng-pristine ng-valid']");
+	private static By GATEWAY_SEARCH_EB		                	=By.xpath("//input[@placeholder='Search']");
 	private static By GATEWAY_SEARCH_ICON		            	=By.xpath("//div[@class='search-icon sprite']");
 	private static By GATEWAY_TABLE		                    	=By.xpath("//div[@class='gateway-dtls-table zf-table fw ng-star-inserted']");
 	private static By GATEWAY_TABLE_MOREINFO_DD                	=By.xpath("(//div[@class='main-details fw'])[1]/div[@class='fl fh col-heading cell ellipses more']");
@@ -120,7 +120,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	private static By GATEWAY_SHOW_TXT		                   			=By.xpath("//div[@class='fl fh info']");
 	private static By GATEWAY_CUSTOMERCOLUMN_TXT		                =By.xpath("//div[@class='fl fh col-heading cell ellipses customerName']");
 	private static By GATEWAY_TYPECOLUMN_TXT		                   	=By.xpath("//div[@class='fl fh col-heading cell ellipses gatewayType']");
-	private static By GATEWAY_AREACOLUMN_TXT		                   	=By.xpath("//div[@class='fl fh col-heading cell ellipses customerName']");
+	private static By GATEWAY_AREACOLUMN_TXT		                   	=By.xpath("//div[@class='fl fh col-heading cell ellipses area']");
 	private static By GATEWAY_STATUSCOLUMN_TXT		                   	=By.xpath("//div[@class='fl fh col-heading cell ellipses status']");
 	private static By GATEWAY_COUNTRYCOLUMN_TXT		                   	=By.xpath("//div[@class='fl fh col-heading cell ellipses country']");
 	private static By GATEWAY_FROMDATE_TB 								=By.xpath("//input[@placeholder=\"From\"]");
@@ -171,7 +171,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				elementClick(GATEWAY_MOREINFO_ROWS);
 				elementClick(GATEWAY_EDIT_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",200);
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",50);
 			}
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -188,7 +188,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				waitElementVisibleClick(GATEWAY_MOREINFO_ROWS,200);
 				elementClick(GATEWAY_OPERATORDISABLE_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",300);
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",50);
 			}
 		}catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -208,7 +208,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				elementClick(GATEWAY_MOREINFO_ROWS);
 				elementClick(GATEWAY_OPERATORDECOMISSION_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",200);
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",50);
 			}
 		}
 		} catch (InterruptedException e) {		
@@ -226,7 +226,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			verifyToastermessage(GATEWAY_TOASTER_MSG,"ToasterMessageFailed",200);
 			sleep(2000);
 			elementClick(GATEWAY_ADDGATEWAY_BT);
-			verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",100);
+			verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",50);
 
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -247,10 +247,10 @@ public class ZFGatewayHomePage extends ElementManager{
 			if(elementDisplayed(GATEWAY_ENABLE_BT)) {
 				waitElementVisibleClick(GATEWAY_ENABLE_BT,300);
 				
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled",200);
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled",100);
 				waitElementVisibleClick(GATEWAY_DISABLE_BT,200);
 				
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled",200);
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled",100);
 
 			}else if(elementDisplayed(GATEWAY_DISABLE_BT)) {
 				elementClick(GATEWAY_DISABLE_BT);

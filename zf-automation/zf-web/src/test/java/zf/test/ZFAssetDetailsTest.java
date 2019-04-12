@@ -36,7 +36,7 @@ public class ZFAssetDetailsTest extends ZFAssetDetailsPage {
 	}
 	
 	@Test
-	public void TC03OperatorHasNoAccessToCreateChildAssets() {
+	public void TC03OperatorHasNoAccessToEditActions() {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getOperatorUserName(),EnvironmentManager.getOperatorPassword());
 		OperatorHasNoAccessToEditActions();
 	}

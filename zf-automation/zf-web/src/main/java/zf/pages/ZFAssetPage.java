@@ -119,7 +119,7 @@ public class ZFAssetPage extends ElementManager{
 
 		try {
 			waitElementVisibleClick(ASSETS_HOMEPAGE_lK,500); 
-			sleep(10000);
+			sleep(15000);
 			waitElementVisibleClick(ASSETS_CREATEASSET_BT,800);
 			sleep(5000);
 		} catch (InterruptedException e) {
@@ -680,6 +680,7 @@ public class ZFAssetPage extends ElementManager{
 			JsonReader.getJsonObject("TCO8editExistAssetDetails");
 			selectAssetDetails("editExistAssetDetails");
 			waitElementVisibleClick(ASSETS_ASSETSDETAILS_BASICDETAILS_EDIT_BT,600);
+			sleep(6000);
 			elementClick(ASSETS_CREATEASSETS_ASSET_COUNTRY_DD); 
 			elementClick(By.xpath(dynamicXpath(ASSETS_DROPDOWNLIST,"Country")));
 			elementClick(ASSETS_CREATEASSETS_ASSET_AREA_DD);
@@ -769,7 +770,7 @@ public class ZFAssetPage extends ElementManager{
 	public void verifyToastermessage(By ByType1, String Jsondata1,By ByType2, String Jsondata2) {
 		try {
 			
-			String toasterMessage = waitElementVisibleGetText(ByType1,500);
+			String toasterMessage = waitElementVisibleGetText(ByType1,50);
 			compareText(jsonData.getJsonData(Jsondata1),toasterMessage);
 			String toasterMessageText = elementGetText(ByType2);
 			compareText(jsonData.getJsonData(Jsondata2),toasterMessageText);
@@ -823,10 +824,10 @@ public class ZFAssetPage extends ElementManager{
 
 	public void operatorHasNoAccessToCreateAsset()
 	{
+		JsonReader.getJsonObject("OperatorHasNoAccessToAddGateway");
 		try {
-			JsonReader.getJsonObject("OperatorHasNoAccess");
-			waitElementVisibleClick(ASSETS_HOMEPAGE_lK,800); 
-			waitElementVisibleClick(ASSETS_CREATEASSET_BT,300);
+			waitElementVisibleClick(ASSETS_HOMEPAGE_lK,500); 
+			waitElementVisibleClick(ASSETS_CREATEASSET_BT,1000);
 			verifyToastermessage("ToasterMessageFailedReason");
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -849,7 +850,7 @@ public class ZFAssetPage extends ElementManager{
 		try {
 			waitElementVisibleClick(ASSETS_HOMEPAGE_lK,700);
 			//elementAvailability(LOADER_SYMBOL);
-			sleep(5000);
+			sleep(10000);
 			assetSortingDropDownNavigation(ASSETS_ASSET_BRAND_DD);
 			assetSortingDropDownNavigation(ASSETS_ASSET_BUSINESSUNIT_DD);
 			assetSortingDropDownNavigation(ASSETS_ASSET_COUNTRY_DD);
@@ -863,18 +864,20 @@ public class ZFAssetPage extends ElementManager{
 	}
 	public void assetSortingDropDownNavigation(By Dropdownvalue)
 	{
-		elementClick(ASSETS_ASSETSORTBY_DD);
-		elementClick(Dropdownvalue);
-		elementAvailability(LOADER_SYMBOL);
-
-
+		try {
+			waitElementVisibleClick(ASSETS_ASSETSORTBY_DD,300);
+			waitElementVisibleClick(Dropdownvalue,100);
+			sleep(10000);
+		} catch (Exception e) {
+			TestLogger.appInfo(e.getMessage());
+		}
 	}
 	public void verifyToastermessage(String Jsondata) {
 		
 		String toasterText;
 		try {
-			toasterText = waitElementVisibleGetText(ASSETS_ASSETOPERATOR_TOASTERMESSAGE,300);
-			compareText(jsonData.getJsonData(Jsondata),toasterText);
+			toasterText = waitElementVisibleGetText(ASSETS_ASSETOPERATOR_TOASTERMESSAGE,100);
+			compareText(toasterText,jsonData.getJsonData(Jsondata));
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
 		}

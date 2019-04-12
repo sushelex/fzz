@@ -16,15 +16,15 @@ public class ZFClientHomePage extends ElementManager{
 	private static By CLIENTS_CLIENTDETAILEXPANDARROW_DD    =By.xpath("(//div[@class='client-table-row-wrapper']/div[contains(@class,'client-table-row')]/div[contains(@class,'row no-gutter')]/div[contains(@class,'width-4')]/div/span[contains(@class,'arrow')])[1]");
 	private static By CLIENTS_ADDSUBCLIENT_BT          		=By.xpath("//div[@class='fw table-row-additioanl-details open']/descendant::span[contains(text(),'Add Sub-Client')]/parent::button");
 	private static By CLIENTS_MOREDETAILS_BT			  	=By.xpath("//div[@class='fw table-row-additioanl-details open']/descendant::span[contains(text(),'More Details')]/parent::button");
-	
+
 	private static By CLIENTS_CLIENTROWGENERIC_ROW			 =By.xpath("//div[@class='client-table-row-wrapper']/div[contains(@class,'client-table-row')]");
 	private static By CLIENTS_CLIENT_COL				     =By.xpath("//div[@class='title-client']");
-	private static By CLIENTS_AREA_COL					 	 =By.xpath("//div[contains(text(),'CLIENTS_AREA_COL')]");
-	private static By CLIENTS_COUNTRY_COL				 	 =By.xpath("//div[contains(text(),'CLIENTS_COUNTRY_COL')]");
-	private static By CLIENTS_TELEPHONE_COL					 =By.xpath("//div[contains(text(),'CLIENTS_TELEPHONE_COL')]");
+	private static By CLIENTS_AREA_COL					 	 =By.xpath("//div[contains(text(),'Area')]");
+	private static By CLIENTS_COUNTRY_COL				 	 =By.xpath("//div[contains(text(),'Country')]");
+	private static By CLIENTS_TELEPHONE_COL					 =By.xpath("//div[contains(text(),'Telephone')]");
 	private static By CLIENTS_CREATEDDATETIME_COL	  	     =By.xpath("//div[contains(text(),'Created Date & Time')]");
 	private static By CLIENTS_CLIENTSTATUS_COL  	  		 =By.xpath("//div[contains(text(),'Client Status')]");
-	
+
 	private static By CLIENTS_CLIENTNAME_TXT				= By.xpath("(//more-details-popup/descendant::div[@class='content-wrapper']/div[@class='content']/p)[1]");
 	private static By CLIENTS_CLIENTEMAIL_TXT				= By.xpath("(//more-details-popup/descendant::div[@class='content-wrapper']/div[@class='content']/p)[2]");
 	//private static By CLIENTCLIENTS_TELEPHONE_COL = By.xpath("(//more-details-popup/descendant::div[@class='content-wrapper']/div[@class='content']/p)[3]");
@@ -62,26 +62,19 @@ public class ZFClientHomePage extends ElementManager{
 	public void manageCleitntsStaticValidation()
 	{
 		//			waitElementVisibleClick(MANAGECLIENTS_HEADER_ST, 300);
-		JsonReader.getJsonObject("CLIENTS_MANAGECLIENTHEADER");
+		JsonReader.getJsonObject("ManageClientHeader");
 		try {
 			waitElementVisibleClick(CLIENTS_ICON, 300);
-
-			jsonData.getJsonData("title").equals(elementGetText(CLIENTS_MANAGECLIENTHEADER));
-			sleep(5000);
+			waitElementToBeVisible(CLIENTS_CLIENT_COL,300);
+			compareValue(jsonData.getJsonData("title"),elementGetText(CLIENTS_MANAGECLIENTHEADER));
 			if(elementCount(CLIENTS_CLIENTROWGENERIC_ROW)>0)
 			{
-				//				elementAvailability(CLIENT); // TODO Replace the new element availability function
-				//				elementAvailability(CLIENTS_COUNTRY_COL);
-				//				elementAvailability(CLIENTS_AREA_COL);
-				//				elementAvailability(CLIENTS_TELEPHONE_COL);
-				//				elementAvailability(CLIENTS_CREATEDDATETIME_COL);
-				//				elementAvailability(CLIENTS_CLIENTSTATUS_COL);
-				compareText(elementGetText(CLIENTS_CLIENT_COL),jsonData.getJsonData("Client"));
-				compareText(elementGetText(CLIENTS_AREA_COL),jsonData.getJsonData("CLIENTS_AREA_COL"));
-				compareText(elementGetText(CLIENTS_COUNTRY_COL),jsonData.getJsonData("CLIENTS_COUNTRY_COL"));
-				compareText(elementGetText(CLIENTS_TELEPHONE_COL),jsonData.getJsonData("CLIENTS_TELEPHONE_COL"));
-				compareText(elementGetText(CLIENTS_CREATEDDATETIME_COL),jsonData.getJsonData("CLIENTS_CREATEDDATETIME_COL"));
-				compareText(elementGetText(CLIENTS_CLIENTSTATUS_COL),jsonData.getJsonData("CLIENTS_CLIENTSTATUS_COL"));
+				compareValue(elementGetText(CLIENTS_CLIENT_COL),jsonData.getJsonData("Client"));
+				compareValue(elementGetText(CLIENTS_AREA_COL),jsonData.getJsonData("Area"));
+				compareValue(elementGetText(CLIENTS_COUNTRY_COL),jsonData.getJsonData("Country"));
+				compareValue(elementGetText(CLIENTS_TELEPHONE_COL),jsonData.getJsonData("Telephone"));
+				compareValue(elementGetText(CLIENTS_CREATEDDATETIME_COL),jsonData.getJsonData("CreatedDateTime"));
+				compareValue(elementGetText(CLIENTS_CLIENTSTATUS_COL),jsonData.getJsonData("ClientStatus"));
 			}
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -97,7 +90,7 @@ public class ZFClientHomePage extends ElementManager{
 			waitElementVisibleClick(CLIENTS_MOREDETAILS_BT, 300);
 			compareText(elementGetText(CLIENTS_CLIENTNAME_TXT), jsonData.getJsonData("clientName"));
 			compareText(elementGetText(CLIENTS_CLIENTEMAIL_TXT), jsonData.getJsonData("email"));
-		//	compareText(elementGetText(CLIENTCLIENTS_TELEPHONE_COL), jsonData.getJsonData("CLIENTS_TELEPHONE_COL"));
+			//	compareText(elementGetText(CLIENTCLIENTS_TELEPHONE_COL), jsonData.getJsonData("CLIENTS_TELEPHONE_COL"));
 			compareText(elementGetText(CLIENTS_CLIENTSTREET_TXT), jsonData.getJsonData("street"));
 			compareText(elementGetText(CLIENTS_CLIENTSTREET_TXTNUMBER), jsonData.getJsonData("streetNumber"));
 			compareText(elementGetText(CLIENTS_CLIENTCOUNTRY_TXT), jsonData.getJsonData("CLIENTS_COUNTRY_COL"));
@@ -148,7 +141,7 @@ public class ZFClientHomePage extends ElementManager{
 			TestLogger.appInfo(e.getMessage());
 		}
 	}
-	
+
 	public void verifyCreateNewSubClientValidation()
 	{
 		navigateToClientPage();
@@ -160,7 +153,7 @@ public class ZFClientHomePage extends ElementManager{
 		navigateToClientPage();
 		AddSub.createNewSubClientEmailValidation();
 	}
-	
+
 	public void verifyCreateNewSubClientWithWrongTelephoneFormat()
 	{
 		navigateToClientPage();

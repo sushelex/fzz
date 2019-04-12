@@ -119,7 +119,7 @@ public class ZFAssetDetailsPage extends ElementManager{
 	public void verifyToastermessage(By ByType, String Jsondata,By ByType1, String Jsondata1) {
 		try {
 		
-		String toasterText = waitElementVisibleGetText(ByType,600);
+		String toasterText = waitElementVisibleGetText(ByType,50);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
 		String toasterText1 = elementGetText(ByType1);
 		compareText(jsonData.getJsonData(Jsondata1),toasterText1);
