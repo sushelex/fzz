@@ -121,7 +121,7 @@ public class ZFAssetDetailsPage extends ElementManager{
 		
 		String toasterText = waitElementVisibleGetText(ByType,600);
 		compareText(jsonData.getJsonData(Jsondata),toasterText);
-		String toasterText1 = waitElementVisibleGetText(ByType1,600);
+		String toasterText1 = elementGetText(ByType1);
 		compareText(jsonData.getJsonData(Jsondata1),toasterText1);
 		}catch (Exception e) {
 		TestLogger.appInfo(e.getMessage());

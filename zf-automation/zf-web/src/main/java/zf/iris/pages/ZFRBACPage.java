@@ -109,14 +109,20 @@ public class ZFRBACPage extends ElementManager {
 	}
 
 	public void noPrivilegeToEditAssets() {
-		JsonReader.getJsonObject("noPrivilegeToEditAssets");
+		
+		try {JsonReader.getJsonObject("noPrivilegeToEditAssets");
 		zfAssetPage.selectAssetDetails("noPrivilegeToEditAssets");
-		elementClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT);
+		
+			waitElementVisibleClick(ASSETSDETAILS_BASICDETAILS_EDIT_BT,300);
+		
 		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
 		
 		elementClick(ASSETSDETAILS_ASSETDETAILS_EDIT_BT);
 		verifyToastermessage(ASSETSDETAILS_TOASTER_MSG,"ToasterMessageFailed",ASSETSDETAILS_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
-
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void noPrivilegeToChangeThresholds() {
 		try {

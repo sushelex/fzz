@@ -57,8 +57,8 @@ public class BackofficePage extends ElementManager {
 	{
 		JsonReader.getJsonObject("Fleet");
 		try {
-			waitElementVisibleClick(FLEETS_ICON,500);
-			sleep(5000);
+			waitElementVisibleClick(FLEETS_ICON,600);
+			sleep(7000);
 			waitElementToBeVisible(VEHICLES_OPENMATICS_TITLE_LABLE,300);
 			waitElementVisibleClick(FLEETS_CREATENEWFLEET_BT, 500);
 
@@ -83,8 +83,8 @@ public class BackofficePage extends ElementManager {
 			/* Verify that Fleet is visible and has the vehicle*/
 
 			waitElementVisibleClick(FLEETS_FILTEREXPANDROW_BT,500);
-			waitElementToBeVisibleSendValue(FLEETS_FILTERSEARCH_EB,300,FleetName);
-			String elementtext=elementGetText(FLEETS_FLEETELEMENTLIST_LT);
+			waitElementToBeVisibleSendValue(FLEETS_FILTERSEARCH_EB,600,FleetName);
+			String elementtext=waitElementVisibleGetText(FLEETS_FLEETELEMENTLIST_LT,300);
 			compareValue(elementtext, jsonData.getJsonData("fleetnamenew"));
 
 		} catch (Exception e) {
@@ -96,9 +96,9 @@ public class BackofficePage extends ElementManager {
 	{
 		JsonReader.getJsonObject("Tc01addUser");
 		try {
-			waitElementVisibleClick(USER_ICON,300);
-			waitElementVisibleClick(USERS_ADDUSER_BT,300);
-			waitElementToBeVisibleSendValue(USERS_ADDUSER_NAME_EB,300, jsonData.getJsonData("Name"));
+			waitElementVisibleClick(USER_ICON,600);
+			waitElementVisibleClick(USERS_ADDUSER_BT,700);
+			waitElementToBeVisibleSendValue(USERS_ADDUSER_NAME_EB,500, jsonData.getJsonData("Name"));
 			elementSendKeys(USERS_ADDUSER_EMAIL_EB, jsonData.getJsonData("Email"));
 			elementSendKeys(USERS_ADDUSER_SURNAME_EB, jsonData.getJsonData("SureName"));
 			elementSendKeys(USERS_ADDUSER_USERROLES_EB, jsonData.getJsonData("Role"));
@@ -125,11 +125,11 @@ public class BackofficePage extends ElementManager {
 	public void BackofficeEditSomeRole() {
 		JsonReader.getJsonObject("Tc02EditUser");
 		try {
-			waitElementVisibleClick(USER_ICON,300);
-			waitElementVisibleClick(USERS_ADDUSER_FILTER_ST,500);
-			elementSendKeys(USERS_ADDUSER_SEARCH_EB, jsonData.getJsonData("Name"));
-			elementClick(USERS_ADDUSER_SEARCHFIRSTVALUE_DT);
-			elementClick(USERS_ADDUSER_EDITUSER_BT);
+			waitElementVisibleClick(USER_ICON,600);
+			waitElementVisibleClick(USERS_ADDUSER_FILTER_ST,600);
+			waitElementToBeVisibleSendValue(USERS_ADDUSER_SEARCH_EB,300,jsonData.getJsonData("Name"));
+			waitElementVisibleClick(USERS_ADDUSER_SEARCHFIRSTVALUE_DT,300);
+			waitElementVisibleClick(USERS_ADDUSER_EDITUSER_BT,300);
 			elementSendKeys(USERS_ADDUSER_USERROLES_EB, jsonData.getJsonData("EditRole"));
 			elementClick(USERS_ADDUSER_SAVE_BT);
 

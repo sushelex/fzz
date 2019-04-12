@@ -171,7 +171,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				elementClick(GATEWAY_MOREINFO_ROWS);
 				elementClick(GATEWAY_EDIT_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",200);
 			}
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -186,9 +186,9 @@ public class ZFGatewayHomePage extends ElementManager{
 			waitElementVisibleClick(GATEWAY_ICON,300);
 			if(elementCount(GATEWAY_GENERICROW)>0)
 			{
-				elementClick(GATEWAY_MOREINFO_ROWS);
+				waitElementVisibleClick(GATEWAY_MOREINFO_ROWS,200);
 				elementClick(GATEWAY_OPERATORDISABLE_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",300);
 			}
 		}catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
@@ -208,7 +208,7 @@ public class ZFGatewayHomePage extends ElementManager{
 			{
 				elementClick(GATEWAY_MOREINFO_ROWS);
 				elementClick(GATEWAY_OPERATORDECOMISSION_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",200);
 			}
 		}
 		} catch (InterruptedException e) {		
@@ -223,10 +223,10 @@ public class ZFGatewayHomePage extends ElementManager{
 			waitElementVisibleClick(GATEWAY_ICON,500);
 		
 			waitElementVisibleClick(GATEWAY_ADDGATEWAY_BT,800);
-			verifyToastermessage(GATEWAY_TOASTER_MSG,"ToasterMessageFailed");
+			verifyToastermessage(GATEWAY_TOASTER_MSG,"ToasterMessageFailed",200);
 			sleep(2000);
 			elementClick(GATEWAY_ADDGATEWAY_BT);
-			verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+			verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",100);
 
 		} catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -247,18 +247,18 @@ public class ZFGatewayHomePage extends ElementManager{
 			if(elementDisplayed(GATEWAY_ENABLE_BT)) {
 				waitElementVisibleClick(GATEWAY_ENABLE_BT,300);
 				
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled",200);
 				waitElementVisibleClick(GATEWAY_DISABLE_BT,200);
 				
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled",200);
 
 			}else if(elementDisplayed(GATEWAY_DISABLE_BT)) {
 				elementClick(GATEWAY_DISABLE_BT);
 				sleep(3000);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageDisabled",100);
 				elementClick(GATEWAY_ENABLE_BT);
 				sleep(3000);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled");
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageEnabled",100);
 			}else {
 
 				testFailed("Enable /Disable button is not displayed");
@@ -324,7 +324,7 @@ public class ZFGatewayHomePage extends ElementManager{
 	public void UserWithNoPrivilegeCannotAccessGatewayPage()
 	{
 		JsonReader.getJsonObject("TCO3OperatorHasNoAccess");
-		verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason");
+		verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,"ToasterMessageFailedReason",200);
 	}
 	public void verifyDefaultGatewayStatus()
 	{ 
@@ -515,7 +515,7 @@ public class ZFGatewayHomePage extends ElementManager{
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
 				elementClick(ADDSOFTWARE_UPLOADINSTALL_BT);
-				verifyToastermessage(ADDSOFTWARE_TOASTER,"UploadErrorMsg");
+				verifyToastermessage(ADDSOFTWARE_TOASTER,"UploadErrorMsg",300);
 			}
 
 		} catch (InterruptedException e) {
@@ -566,16 +566,16 @@ public class ZFGatewayHomePage extends ElementManager{
 				elementClick(ADDSOFTWARE_UPLOADICON_BT);
 				uploadFile(System.getProperty("user.dir")+jsonData.getJsonData("UploadPackagePath"));
 				elementClick(ADDSOFTWARE_UPLOADINSTALL_BT);
-				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,jsonData.getJsonData("UploadDeviceNotFoundError"));
+				verifyToastermessage(GATEWAY_TOASTER_MSG_TXT,jsonData.getJsonData("UploadDeviceNotFoundError"),300);
 			}
 		}catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
 		}
 	}
 
-	public void verifyToastermessage(By ByType, String Jsondata) {
+	public void verifyToastermessage(By ByType, String Jsondata,long timeoutSeconds) {
 		try {
-			compareText(jsonData.getJsonData(Jsondata),waitElementVisibleGetText(ByType,300));
+			compareText(jsonData.getJsonData(Jsondata),waitElementVisibleGetText(ByType,timeoutSeconds));
 
 		}catch (Exception e) {
 			TestLogger.appInfo(e.getMessage());
@@ -638,8 +638,8 @@ public class ZFGatewayHomePage extends ElementManager{
 			//elementClick(ADDSINGLEGATWAY_ADDITIONALDETAIL_DESCRIPTION_ED);
 			elementSendKeyWithActions(ADDSINGLEGATEWAY_ADDITIONALDETAIL_DESCRIPTION_EB,jsonData.getJsonData("Description"));
 			elementClick(ADDSINGLEGATEWAY_ADDITIONALDETAIL_FINISH_BT);
-			verifyToastermessage("ToasterMsgSuccess");
-
+	
+			verifyToastermessage(ADDSINGLEGATEWAY_TOASTER_DT,"ToasterMsgSuccess",200);
 			//Validating the edited values 
 //			waitElementVisibleClick(GATEWAY_ICON,300);
 //			elementSendKeys(GATEWAY_SEARCH_EB,jsonData.getJsonData("GatewayName"));
@@ -858,14 +858,5 @@ public class ZFGatewayHomePage extends ElementManager{
 	public	String dynamicXpath(String xpath, String Jsonvalue) {
 		return updateXpath(xpath,jsonData.getJsonData(Jsonvalue));
 	}
-	public void verifyToastermessage(String Jsondata) {
-		String toasterText;
-		try {
-			toasterText = waitElementVisibleGetText(ADDSINGLEGATEWAY_TOASTER_DT,300);
-			compareText(jsonData.getJsonData(Jsondata),toasterText);
-		} catch (InterruptedException e) {
 
-			TestLogger.appInfo(e.getMessage());
-		}
-	}
 }

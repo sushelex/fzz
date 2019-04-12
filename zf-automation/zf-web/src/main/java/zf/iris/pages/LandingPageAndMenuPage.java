@@ -27,7 +27,7 @@ public class LandingPageAndMenuPage extends ElementManager{
 	private static By PORTAL_TRIPS_BT              	     =By.xpath("//div[text()='TRIPS']");
 	private static By PORTAL_WINTERSERVICE_BT            =By.xpath("//div[text()='WINTERSERVICE']");
 	private static By PORTAL_ZF_ESYNC_BT              	 =By.xpath("//div[text()='TRIPS']");
-	private static By PORTAL_ASSET_DEVICE_MANAGEMENT_BT  =By.xpath("//div[text()='WINTERSERVICE']");
+	private static By PORTAL_ASSET_DEVICE_MANAGEMENT_BT  =By.xpath("//div[text()='ASSET & DEVICE MANAGEMENT']");
 	private static By PORTAL_BACKOFFICE_BT               =By.xpath("//div[text()='BACKOFFICE']");
 	private static By PORTAL_HELP_BT              	     =By.xpath("//div[text()='HELP']");
 	private static By PORTAL_NONAME_BT              	 =By.xpath("(//div[@class='app-box-container'])[11]");
@@ -99,7 +99,7 @@ public class LandingPageAndMenuPage extends ElementManager{
 	private void openmaticAppsGlobalMenuVerification()
 	{
 		try {
-			waitElementVisibleClick(PORTAL_DASHBOARD_BT,500);
+			waitElementVisibleClick(PORTAL_DASHBOARD_BT,800);
 			waitElementToBeVisible(DASHBOARD_ICON,300);
 			waitElementVisibleClick(HOME_ICON,300);
 

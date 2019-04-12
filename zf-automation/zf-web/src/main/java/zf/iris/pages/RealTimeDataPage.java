@@ -26,6 +26,7 @@ public class RealTimeDataPage extends ElementManager{
 	private static By DASHBOARD_VEHICLEDETAILSARROW_ROW2		=By.xpath("(//div[@class='active-icon'])[2]");
 	private static By DASHBOARD_VEHICLE_SPEED_METER		=By.xpath("(//*[@id='text'])[1]");
 	private static By DASHBOARD__ACTIVE_VEHICLES					 =By.xpath("//div[text()='Active vehicles']");
+	
 	public void verifyActiveVehiclesDisplay()
 	{
 		try {
@@ -62,7 +63,7 @@ public class RealTimeDataPage extends ElementManager{
 				info("Save button is disabled before editing ");
 				waitElementVisibleClick(DASHBOARD_VEHICLESETTINGS_VEHICLETYPE_DD,300);
 				waitElementVisibleClick(DASHBOARD_VEHICLESETTINGS_VEHICLETYPE_DD2,300);
-				if(!elementAvailability(DASHBOARD__EDITVEHICLES_SAVE_BT)) {
+				if(!elementDisplayed(DASHBOARD__EDITVEHICLES_SAVE_BT)) {
 					testPassed("Save button is enabled after editing the value ");
 				}
 			}else {
