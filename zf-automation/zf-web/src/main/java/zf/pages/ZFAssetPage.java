@@ -703,7 +703,7 @@ public class ZFAssetPage extends ElementManager{
 			JsonReader.getJsonObject("CreateChildAssettWithAllFeilds");
 			elementClick(ASSETS_ASSETSDETAILS_ADDEDASSET_BT);
 			waitElementVisibleClick(ASSETS_ASSETSDETAILS_ADDCHILDASSET_BT,600);
-			waitElementVisibleClick(ASSETS_CREATEASSETS_ASSET_COUNTRY_DD,300); 
+			waitElementVisibleClick(ASSETS_CREATEASSETS_ASSET_COUNTRY_DD,800); 
 			waitElementVisibleClick(By.xpath(dynamicXpath(ASSETS_DROPDOWNLIST,"Country")),500);
 			elementClick(ASSETS_CREATEASSETS_ASSET_AREA_DD);
 			elementClick(By.xpath(dynamicXpath(ASSETS_DROPDOWNLIST,"Area")));

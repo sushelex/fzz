@@ -91,10 +91,10 @@ public class RealTimeDataPage extends ElementManager{
 			System.out.println("VehicleDataAfter : "+ vehicleDataAfter);
 			if(vehicleDataBefore.equals(vehicleDataAfter))
 			{
-			testFailed("");
+			testFailed("Vehicle Data is Not Updating");
 		
 		}else {
-			testPassed("");
+			testPassed("Vehicle Data is Updating");
 		}
 			}
 		catch (Exception e) {

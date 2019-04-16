@@ -15,47 +15,47 @@ import zf.pages.MicrosoftLoginPage;
 public class ZFAddSingleGatewayTest extends ZFAddSingleGatewayPage{
 
 	MicrosoftLoginPage microsoftlogin=new MicrosoftLoginPage();
-	
+
 	@BeforeMethod
 	public void beforeMethod(Method testName) {
 		startTest(testName.getName());
 		DriverManager.getDriver(EnvironmentManager.getBrowserName());
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 	}
-	   @Test
-		public void Tc01AddSingleGatewayWithAllValidInputs() {
+	@Test(enabled=false)
+	public void Tc01AddSingleGatewayWithAllValidInputs() {
 
-		   addSingleGatewayWithAllValidInputs();
+		addSingleGatewayWithAllValidInputs();
 
-		}
-	 
-	   @Test
+	}
+
+	@Test
 	public void Tc02AddSingleGatewayWithMacIDAlreadyExists() {
 
-		   addSingleGatewayWithMacIDAlreadyExists();
+		addSingleGatewayWithMacIDAlreadyExists();
 
 	}
- 
-	   @Test
+
+	@Test
 	public void Tc03AddSingleGatewayWithCertificateAlreadyExists() {
 
-		   addSingleGatewayWithCertificateAlreadyExists();
+		addSingleGatewayWithCertificateAlreadyExists();
 
 	}
-	
-	@Test
+
+	@Test(enabled=false)
 	public void Tc04AddSingleGatewayWithMandatoryFields() {
 
 		addSingleGatewayWithMandatoryFields();
 	}
-	
+
 	@Test
 	public void Tc05AddSingleGatewayWithoutMandatoryInputs() {
 
 		addSingleGatewayWithOutMandatoryFields();
 	}
-	
-	
+
+
 	@AfterMethod
 	public void afterMethod(ITestResult result,Method testName)
 	{

@@ -20,7 +20,7 @@ public class ZFAddMultipleGatewayTest extends ZFAddMultipleGatewayPage {
 		microsoftlogin.microsoftLogin(EnvironmentManager.getAdminUserName(),EnvironmentManager.getAdminPassword());
 	}
 
-		@Test
+	@Test(enabled=false)
 	public void Tc01AddMultipleGatewayWithNewEnrollmentGroupWithRootUploadCertificate() {
 			addMultipleGatewayNewRoot();
 	}
@@ -29,7 +29,7 @@ public class ZFAddMultipleGatewayTest extends ZFAddMultipleGatewayPage {
 	public void Tc02AddMultipleGatewayWithExistingEnrollmentGroup() {
 		addMultipleGatewayExisting();
 	}
-	@Test
+	@Test(enabled=false)
 	public void Tc03AddMultipleGatewayWithNewEnrollmentGroupWithIntermediateUploadCertificate() {
 		addMultipleGatewayNewIntermediate();
 

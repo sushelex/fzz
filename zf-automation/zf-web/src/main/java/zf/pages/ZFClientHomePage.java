@@ -64,7 +64,7 @@ public class ZFClientHomePage extends ElementManager{
 		//			waitElementVisibleClick(MANAGECLIENTS_HEADER_ST, 300);
 		JsonReader.getJsonObject("ManageClientHeader");
 		try {
-			waitElementVisibleClick(CLIENTS_ICON, 300);
+			waitElementVisibleClick(CLIENTS_ICON,300);
 			waitElementToBeVisible(CLIENTS_CLIENT_COL,300);
 			compareValue(jsonData.getJsonData("title"),elementGetText(CLIENTS_MANAGECLIENTHEADER));
 			if(elementCount(CLIENTS_CLIENTROWGENERIC_ROW)>0)
@@ -85,17 +85,17 @@ public class ZFClientHomePage extends ElementManager{
 	{
 		JsonReader.getJsonObject("ClientMoreDetails");
 		try {
-			waitElementVisibleClick(CLIENTS_ICON, 300);
-			waitElementVisibleClick(CLIENTS_CLIENTDETAILEXPANDARROW_DD, 300);
-			waitElementVisibleClick(CLIENTS_MOREDETAILS_BT, 300);
+			waitElementVisibleClick(CLIENTS_ICON,300);
+			waitElementVisibleClick(CLIENTS_CLIENTDETAILEXPANDARROW_DD,300);
+			waitElementVisibleClick(CLIENTS_MOREDETAILS_BT,300);
 			compareText(elementGetText(CLIENTS_CLIENTNAME_TXT), jsonData.getJsonData("clientName"));
 			compareText(elementGetText(CLIENTS_CLIENTEMAIL_TXT), jsonData.getJsonData("email"));
 			//	compareText(elementGetText(CLIENTCLIENTS_TELEPHONE_COL), jsonData.getJsonData("CLIENTS_TELEPHONE_COL"));
-			compareText(elementGetText(CLIENTS_CLIENTSTREET_TXT), jsonData.getJsonData("street"));
-			compareText(elementGetText(CLIENTS_CLIENTSTREET_TXTNUMBER), jsonData.getJsonData("streetNumber"));
-			compareText(elementGetText(CLIENTS_CLIENTCOUNTRY_TXT), jsonData.getJsonData("CLIENTS_COUNTRY_COL"));
-			compareText(elementGetText(CLIENTS_CLIENTFAX_TXT), jsonData.getJsonData("fax"));
-			compareText(elementGetText(CLIENTS_CLIENTWEBSITE_TXT), jsonData.getJsonData("WebSite"));
+			compareValue(elementGetText(CLIENTS_CLIENTSTREET_TXT), jsonData.getJsonData("street"));
+			compareValue(elementGetText(CLIENTS_CLIENTSTREET_TXTNUMBER), jsonData.getJsonData("streetNumber"));
+			compareValue(elementGetText(CLIENTS_CLIENTCOUNTRY_TXT), jsonData.getJsonData("CLIENTS_COUNTRY_COL"));
+			compareValue(elementGetText(CLIENTS_CLIENTFAX_TXT), jsonData.getJsonData("fax"));
+			compareValue(elementGetText(CLIENTS_CLIENTWEBSITE_TXT), jsonData.getJsonData("WebSite"));
 			waitElementVisibleClick(CLIENTS_CANCEL_BT, 300);
 		} catch (InterruptedException e) {
 			TestLogger.appInfo(e.getMessage());
