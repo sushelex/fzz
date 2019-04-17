@@ -1,4 +1,4 @@
-[
+ [
 	{
 		"_comment": "************************************* Api Automaiton ********************************************************",
 		"TcSqlServer": {
@@ -50,7 +50,11 @@
 			"vivaldi_management_add_id": "9e02f802-a6c2-46e6-89c1-1fdbed73485e",
 			"vivaldi_management_add_scret": "YWIwMTQxY2MtMTNmYi00MGI2LTk5YmYtNzEwNDJmMTM4NmZj",
 			"winter_add_id": "a6dd2618-8980-4cbc-a3aa-7bc641e7c044",
-			"winter_add_secret": "NDU5MjU2NjctNmY4MC00MDQ0LTg1ZWItZjlhYzRhYzI1YTQz"
+			"winter_add_secret": "NDU5MjU2NjctNmY4MC00MDQ0LTg1ZWItZjlhYzRhYzI1YTQz",
+			"REGISTRATION_URL":"global/service-catalog-service/servicecatalog",
+            "REGISTRATION":"registration/register",
+            "REJECTREGISTRATION":"registration/reject/{request id}"
+			
 		}
 	},
 	{
@@ -255,6 +259,68 @@
 			"clientIdList": [
 				"75fc0d39-21a7-4687-acd6-906ecb1aca10"
 			]
+		}
+	},
+	{
+		"RegistrationRequestWithAlreadyUsedEmail": {
+			"registrationNumber": "null",
+			"adminEmail": "admin1@test.com",
+			"requeststatus": "",
+			"requestedOn": "null",
+			"clientInfoModel": {
+				"clientInfoId": "null",
+				"clientName": "Test client ",
+				"street": " street ",
+				"streetNumber": "123",
+				"city": " Kochi ",
+				"state": " kerala",
+				"zip": "123456",
+				"country": "India",
+				"phone": "1234567890",
+				"fax": "123",
+				"web": "test.com",
+				"email": "testShaik2@test.com",
+				"logoImageBase64": ""
+			},
+			"divisionId": 1
+		}
+	},
+	{
+		"AcceptRegistrationRequest": {
+			"action": "SUCCESS",
+			"message": "SUCCESS",
+			"id_ext": "null"
+		}
+	},
+	{
+		"CreatingRegistrationData": {
+			"registrationNumber": "null",
+			"adminEmail": "admin1@test.com",
+			"requeststatus": "null",
+			"requestedOn": "null",
+			"clientInfoModel": {
+				"clientInfoId": "null",
+				"clientName": "Test client ",
+				"street": " street ",
+				"streetNumber": "123",
+				"city": " Kochi ",
+				"state": " kerala",
+				"zip": "123456",
+				"country": "India",
+				"phone": "1234567890",
+				"fax": "123",
+				"web": "test.com",
+				"email": "testShaik2@test.com",
+				"logoImageBase64": ""
+			},
+			"divisionId": 1
+		}
+	},
+	{
+		"RejectRegistrationData": {
+			"action": "SUCCESS",
+			"message": "SUCCESS",
+			"id_ext": "null"
 		}
 	}
 ]

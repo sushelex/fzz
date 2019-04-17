@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import org.testng.Assert;
+
 import net.minidev.json.JSONObject;
 import framework.EnvironmentManager;
 import framework.JsonReader;
@@ -18,29 +21,29 @@ import framework.ExtentReport;
 public class RestApiUtility extends ExtentReport{
 	public JsonReader jsonData=new JsonReader();
 	public static JsonReader jsonObj = null;
-	
+
 	public RestApiUtility (){
 		jsonObj = new JsonReader();
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 	}
-		
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getAssettoken 
 	 * Parameters : authorizationURL (service authorization url) ,serviceName(service name)
 	 * Purpose : To get the Authorization token of the Asset service
 	 * ******************************************************************************
-	*/	
-	
-	
-	
- public String getAssettoken(String authorizationURL,String serviceName) {		
-				
+	 */	
+
+
+
+	public String getAssettoken(String authorizationURL,String serviceName) {		
+
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile().trim());
-		
+
 		try {
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of AssetAuthorization Token ");
@@ -56,33 +59,33 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while populating form parameters of AssetAuthorization Token "+e.getMessage());
 		}
 		return strToken;
-		
+
 	}
-	
-	
-	
-	 public String getVehicletoken(String authorizationURL,String serviceName) {
-		
+
+
+
+	public String getVehicletoken(String authorizationURL,String serviceName) {
+
 		return getAssettoken(authorizationURL,serviceName);
-		
+
 	}
-	
-	 public String getChargingStationtoken(String authorizationURL,String serviceName) {
-		
+
+	public String getChargingStationtoken(String authorizationURL,String serviceName) {
+
 		return getAssettoken(authorizationURL,serviceName);
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getCreateServicetoken 
 	 * Parameters : authorizationURL (service authorization url) ,serviceName(service name)
 	 * Purpose : To get the Authorization token of the CreateService
 	 * ******************************************************************************
-	*/	
-	
+	 */	
+
 	public String getCreateServicetoken(String authorizationURL,String serviceName) {		
-		
+
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
@@ -100,22 +103,22 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
 		}
 		return strToken;
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getClientServicetoken 
 	 * Parameters : authorizationURL (service authorization url) ,serviceName(service name)
 	 * Purpose : To get the Authorization token of the ClientService
 	 * ******************************************************************************
-	*/
+	 */
 	public String getClientServicetoken(String authorizationURL,String serviceName) {		
-		
+
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		
+
 		try {
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of ClientService Authorization Token ");
@@ -130,25 +133,25 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
 		}
 		return strToken;
-		
+
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getDevicetoken 
 	 * Parameters : authorizationURL (service authorization url) ,serviceName(service name)
 	 * Purpose : To get the Authorization token of the Device service
 	 * ******************************************************************************
-	*/
-	
+	 */
+
 	public String getDevicetoken(String authorizationURL,String serviceName) {
-		
+
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		try {
-		
+
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of DeviceAuthorization Token ");
 			form.put("auth_url", authorizationURL);
@@ -163,20 +166,20 @@ public class RestApiUtility extends ExtentReport{
 		}
 		return strToken;		
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getClienttoken 
 	 * Parameters : authorizationURL (service authorization url) ,serviceName(service name)
 	 * Purpose : To get the Authorization token of the Client service
 	 * ******************************************************************************
-	*/
-	
+	 */
+
 	public String getClienttoken(String authorizationURL,String serviceName) {	
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		
+
 		try {
 			form = new HashMap<String,String>();
 			TestLogger.appInfo(" Populating form parameters of ClientAuthorization Token ");
@@ -191,18 +194,18 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
 		}
 		return strToken;
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getUsertoken 
 	 * Parameters : authorizationURL (service authorization url) ,serviceName(service name)
 	 * Purpose : To get the Authorization token of the User service
 	 * ******************************************************************************
-	*/	
+	 */	
 	public String getUsertoken(String authorizationURL,String serviceName) {		
-		
+
 		String strToken = null;
 		Map<String,String> form = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
@@ -220,16 +223,16 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while populating form parameters of UserAuthorization Token "+e.getMessage());
 		}
 		return strToken;
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : setFormParameters 
 	 * Parameters : httpRequest (RequestSpecification instance) ,form(form key value pairs)
 	 * Purpose : Setting the form parameters required for token generation
 	 * ******************************************************************************
-	*/
+	 */
 	static public RequestSpecification setFormParameters(RequestSpecification httpRequest,Map<String,String> form) {
 		try {
 			TestLogger.appInfo(" Populating form parameters of form ");
@@ -241,18 +244,18 @@ public class RestApiUtility extends ExtentReport{
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of form parameters of Token "+e.getMessage());
 		}
-		
+
 		return httpRequest;
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getToken 
 	 * Parameters : form (form key, value pairs ) ,serviceName(service name)
 	 * Purpose : Creating the token of specified service by using form key value pairs
 	 * ******************************************************************************
-	*/
-	
+	 */
+
 	static public String getToken(Map<String,String> form,String servicename) {
 		Response response = null;
 		String access_token = null;
@@ -260,7 +263,7 @@ public class RestApiUtility extends ExtentReport{
 		try {
 			RestAssured.baseURI = form.get("auth_url");
 			httpRequest = RestAssured.given();
-			
+
 			switch(servicename) {
 			case "device":
 				setFormParameters(httpRequest,form);
@@ -292,42 +295,42 @@ public class RestApiUtility extends ExtentReport{
 			case "servicedescriptorservice":
 				setFormParameters(httpRequest,form);
 				break;
-			
+
 			}
-		
+
 			response = httpRequest.request(Method.POST);	
 			TestLogger.appInfo(" The response of "+servicename+" getToken is : "+response.body().asString());
-			
+
 			access_token = response.jsonPath().getJsonObject("access_token");	
 			TestLogger.appInfo(" The generated access token for "+servicename+" is : "+access_token);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating access token for service "+servicename+" : "+e.getMessage());
 		}
 		return access_token;
-		
+
 	}	
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getAuthorizationToken 
 	 * Parameters : serviceName(service name)
 	 * Purpose : Creating the Authorization token of specified service 
 	 * ******************************************************************************
-	*/
+	 */
 	public String getAuthorizationToken(String serviceName) {
 		String base_url = null;
 		String aad_tenant = null;
 		String tauri_authorization_url = null;
 		String token = null; 
-		
+
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("LOGIN_MICROSOFT");
 		aad_tenant = jsonData.getJsonData("AAD_TENANT");
 		tauri_authorization_url = "https://"+base_url+"/"+aad_tenant+"/oauth2/token";
-		
+
 		try {
-		
-		
+
+
 			switch(serviceName) {
 			case "asset":			
 				token = getAssettoken(tauri_authorization_url,serviceName);
@@ -359,66 +362,66 @@ public class RestApiUtility extends ExtentReport{
 			case "servicedescriptorservice":
 				token = getClientServicetoken(tauri_authorization_url,serviceName);
 				break;
-		}
+			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating Authorization access token for service "+serviceName+" : "+e.getMessage());
 		}
-		
+
 		//return token.jsonPath().getJsonObject("access_token");
 		return token;
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : Get 
 	 * Parameters : url(the complete url of the resource), token(the authorization token generated)
 	 * Purpose : Getting the Jsonpath of the Get Requests Response 
 	 * ******************************************************************************
-	*/
+	 */
 	static public Response Get(String url,String token) {
-		
+
 		Response jsonResponse = null;
 		RequestSpecification httpRequest = null;
 		Response getResponse = null;
 		try {
-		
+
 			RestAssured.baseURI = url;
 			httpRequest = RestAssured.given();
-			
+
 			//***************************************************************************
 			httpRequest.header("authorization", "Bearer "+token);
 			getResponse = httpRequest.request(Method.GET);
 			//jsonPath = getResponse.jsonPath();
 			jsonResponse = getResponse;
 			TestLogger.appInfo("The generated JsonPath for Get Request is : "+token);
-			
+
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating JSONPath for Get request : "+e.getMessage());
 		}
-		
+
 		return jsonResponse;
-			
-		
+
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateAsset 
 	 * Parameters : payloadTemplate(The Json structure of the asset payload),payLoadValues(Data Values for the payloadTemplate)
 	 * Purpose : Creating the Payload for Asset Create Post request
 	 * ******************************************************************************
-	*/	
-	
+	 */	
+
 	@SuppressWarnings("static-access")
 	static public JSONObject CreateAsset(String payloadTemplate,String payLoadValues)	{
-		
+
 		JSONObject CreateAssetTemplate = null;
 		JSONObject CreateAssetData = null;
 		List<String> temp = null;
 		String updatedListVal = null;
-		
-		
+
+
 		try {
 			//JsonReader.getJsonObject("Tc01addUser");
 			CreateAssetTemplate = JsonReader.getJsonObject(payloadTemplate);		
@@ -426,32 +429,32 @@ public class RestApiUtility extends ExtentReport{
 			CreateAssetTemplate.put("name",CreateAssetData.get("name").toString() + getRandomNumber());
 			CreateAssetTemplate.put("description",CreateAssetData.get("description").toString() + getRandomNumber());		
 			temp = (List<String>) CreateAssetTemplate.get("clientIdList");
-			
+
 			updatedListVal = (String) CreateAssetData.get("clientIdList");
-			
+
 			temp.set(0, updatedListVal);
 			CreateAssetTemplate.put("clientIdList",temp );	
-			
+
 			TestLogger.appInfo("The Generated Payload for Post Asset Create request is : "+CreateAssetTemplate.toJSONString());
-		
+
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating Payload for Post Asset Create request : "+e.getMessage());
 		}
 		return CreateAssetTemplate;
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateUser 
 	 * Parameters : payloadTemplate(The Json structure of the User payload),payLoadValues(Data Values for the payloadTemplate)
 	 * Purpose : Creating the Payload for User Create Post request
 	 * ******************************************************************************
-	*/
-	
-	
+	 */
+
+
 	static public JSONObject CreateUser(String payloadTemplate,String payLoadValues)	{
-		
+
 		JSONObject CreateUserTemplate = null;
 		JSONObject CreateUserData = null;
 		try {
@@ -464,19 +467,19 @@ public class RestApiUtility extends ExtentReport{
 		}
 		return CreateUserTemplate;
 	}	
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateDevice 
 	 * Parameters : payloadTemplate(The Json structure of the device payload),payLoadValues(Data Values for the payloadTemplate)
 	 * Purpose : Creating the Payload for User Create Post request
 	 * ******************************************************************************
-	*/
-	
-	
+	 */
+
+
 	static public JSONObject CreateDevice(String payloadTemplate,String payloadValues)	{
-		
+
 		JSONObject CreateDeviceTemplate = null;
 		JSONObject CreateDeviceData = null;
 		try {
@@ -490,18 +493,18 @@ public class RestApiUtility extends ExtentReport{
 		}
 		return CreateDeviceTemplate;
 	}
-	
 
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateService 
 	 * Parameters : payloadTemplate(The Json structure of the CreateService payload),payLoadValues(Data Values for the payloadTemplate)
 	 * Purpose : Creating the Payload for CreateService Post request
 	 * ******************************************************************************
-	*/
+	 */
 	static public JSONObject CreateService(String payloadTemplate,String payloadValues)	{
-		
+
 		JSONObject CreateServiceTemplate = null;
 		JSONObject CreateServiceData = null;
 		try {
@@ -514,15 +517,15 @@ public class RestApiUtility extends ExtentReport{
 		}
 		return CreateServiceTemplate;
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getRandomNumber 
 	 * Parameters : None
 	 * Purpose : Generating Random Number
 	 * ******************************************************************************
-	*/
+	 */
 	static public long getRandomNumber() {
 		Random r = new Random();
 		int low = 10000;
@@ -530,38 +533,38 @@ public class RestApiUtility extends ExtentReport{
 		int result = r.nextInt(high-low) + low;
 		TestLogger.appInfo("The Generated Payload for Post User Create request is : "+result);
 		return result;
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : getRandomNumber 
 	 * Parameters : low(lowest number),high(maximum number)
 	 * Purpose : Generating Random Number
 	 * ******************************************************************************
-	*/
+	 */
 	static public long getRandomNumber(int low,int high) {
 		Random r = new Random();
 		int result = r.nextInt(high-low) + low;
 		TestLogger.appInfo("The Generated Payload for Post User Create request is : "+result);
 		return result;
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : Post 
 	 * Parameters : url(The complete URL of the service),Token(generated Authorization Token),ServiceName(name of the service),payloadTemplate(Structure of the json payload),payloadValues(values of the JsonObject keys)
 	 * Purpose : generating a post request for specified service using generated token
 	 * ******************************************************************************
-	*/
+	 */
 	static public Response Post(String url,String token,String servicename,String payloadTemplate, String payloadValues) {
-		
+
 		RequestSpecification httpRequest = null;
 		JSONObject JsonService = null;
 		Response getResponse = null;
 		Response postresponse = null;
-		
+
 		try {
 			RestAssured.baseURI = url;
 			httpRequest = RestAssured.given();
@@ -580,7 +583,7 @@ public class RestApiUtility extends ExtentReport{
 			case "device":
 				JsonService = CreateDevice(payloadTemplate,payloadValues);
 				break;	
-				
+
 			}		
 			//*****************************************************************************
 			httpRequest.header("authorization", "Bearer "+token);
@@ -594,31 +597,30 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while generating Post request for Service "+servicename+" : "+e.getMessage());
 		}
 		return postresponse;
-		
-		
+
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : Post 
 	 * Parameters : url(The complete URL of the service),Token(generated Authorization Token),ServiceName(name of the service),payloadValues(Key,value pairs of payload)
 	 * Purpose : generating a post request for specified service 
 	 * ******************************************************************************
-	*/
+	 */
 	static public Response Post(String url,String token,String servicename, JSONObject payloadValues) {
-		
+
 		RequestSpecification httpRequest = null;
 		JSONObject JsonService = null;
 		Response getResponse = null;
-		Response postresponse = null;
-		
+
 		try {
 			RestAssured.baseURI = url;
 			httpRequest = RestAssured.given();
 			JsonService = new JSONObject();
 			//*****************************************************************************
 			switch(servicename) {
-			
+
 			case "device":
 				JsonService = (payloadValues);
 				break;	
@@ -640,41 +642,42 @@ public class RestApiUtility extends ExtentReport{
 			case "chargingstation":
 				JsonService = (payloadValues);
 				break;
+			case "registration":
+				JsonService = (payloadValues);
+				break;	
 			}		
 			//*****************************************************************************
 			httpRequest.header("authorization", "Bearer "+token);
 			httpRequest.header("Content-Type", "application/json");		
 			httpRequest.body(JsonService.toJSONString());	
-			
-			ExtentReport.info("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "+ JsonService.toJSONString());
+
+			ExtentReport.info("Payload used to create "+ JsonService.toJSONString());
 			getResponse = httpRequest.request(Method.POST);
-			//postresponse = getResponse.body().asString();	
-			postresponse = getResponse;
-			TestLogger.appInfo("The response for post request for th service "+ servicename  +" : "+postresponse);
+			ExtentReport.testPassed("The response for post request for th service "+ servicename  +" : "+getResponse);
 		}catch(Exception e) {
-			TestLogger.errorMessage("An exception has occured while generating Post request for Service "+servicename+" : "+e.getMessage());
+			Assert.fail("An exception has occured while generating Post request for Service "+servicename+" : "+e.getMessage());
 		}
-		return postresponse;
-		
-		
+		return getResponse;
+
+
 	}
 
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : Put 
 	 * Parameters : url(The complete URL of the service),Token(generated Authorization Token),ServiceName(name of the service),payload(payload for the request)
 	 * Purpose : generating a Put request for specified service using generated token
 	 * ******************************************************************************
-	*/
+	 */
 	static public Response Put(String url,String token,String servicename,String payload) {
-		
+
 		RequestSpecification httpRequest = null;
 		Response getResponse = null;
 		Response putresponse = null;
-		
+
 		try {			
-			
+
 			//*****************************************************************************
 			switch(servicename) {
 			case "clientservice":
@@ -684,7 +687,7 @@ public class RestApiUtility extends ExtentReport{
 			}		
 			//*****************************************************************************
 			httpRequest.header("authorization", "Bearer "+token);
-				
+
 			getResponse = httpRequest.request(Method.PUT);
 			//putresponse = getResponse.jsonPath();
 			putresponse = getResponse;
@@ -693,24 +696,24 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while generating Put request for Service "+servicename+" : "+e.getMessage());
 		}
 		return putresponse;
-		
+
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : PostJson 
 	 * Parameters : url(The complete URL of the service),Token(generated Authorization Token),ServiceName(name of the service),payloadTemplate(Structure of the json payload),payloadValues(values of the JsonObject keys)
 	 * Purpose : generating a post request for specified service using generated token
 	 * ******************************************************************************
-	*/
+	 */
 	static public Response PostJson(String url,String token,String servicename,String payloadTemplate,String payloadValues) {
-		
+
 		RequestSpecification httpRequest = null;
 		JSONObject JsonService = null;
 		Response getResponse = null;
 		Response postresponse = null;
-		
+
 		try {
 			RestAssured.baseURI = url;
 			httpRequest = RestAssured.given();
@@ -718,7 +721,7 @@ public class RestApiUtility extends ExtentReport{
 			//*****************************************************************************
 			switch(servicename) {
 			case "createservice":
-				
+
 				JsonService = CreateService(payloadTemplate,payloadValues);
 				break;
 			case "device":
@@ -736,51 +739,51 @@ public class RestApiUtility extends ExtentReport{
 			TestLogger.errorMessage("An exception has occured while generating Post request for Service "+servicename+" : "+e.getMessage());
 		}
 		return postresponse;
-		
-		
+
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : Delete 
 	 * Parameters : url(The complete URL of the service),Token(generated Authorization Token)
 	 * Purpose : generating a delete request using generated token
 	 * ******************************************************************************
-	*/
-	
+	 */
+
 	static public Response Delete(String url,String token) {
-			RequestSpecification httpRequest = null;
-			Response getResponse = null;
-			try { 
-				RestAssured.baseURI = url;
-				httpRequest = RestAssured.given();
-				httpRequest.header("authorization", "Bearer "+token);
-				httpRequest.header("Content-Type", "application/json");		
-				getResponse = httpRequest.request(Method.DELETE);
-				TestLogger.appInfo("The delete message body is : "+getResponse.getBody().asString());
-				TestLogger.appInfo("The delete message is : "+getResponse.getStatusLine() +" **** "+getResponse.statusCode());			
-				//deleteMessage = "The deleted service name is "+getResponse.jsonPath().get("name") +" and the id is " + getResponse.jsonPath().get("id");	
-				//TestLogger.appInfo(deleteMessage);
-			}catch(Exception e) {
-				TestLogger.errorMessage("An exception has occured while generating delete request using URL "+url+" : "+e.getMessage());
-			}
-			return getResponse;
+		RequestSpecification httpRequest = null;
+		Response getResponse = null;
+		try { 
+			RestAssured.baseURI = url;
+			httpRequest = RestAssured.given();
+			httpRequest.header("authorization", "Bearer "+token);
+			httpRequest.header("Content-Type", "application/json");		
+			getResponse = httpRequest.request(Method.DELETE);
+			TestLogger.appInfo("The delete message body is : "+getResponse.getBody().asString());
+			TestLogger.appInfo("The delete message is : "+getResponse.getStatusLine() +" **** "+getResponse.statusCode());			
+			//deleteMessage = "The deleted service name is "+getResponse.jsonPath().get("name") +" and the id is " + getResponse.jsonPath().get("id");	
+			//TestLogger.appInfo(deleteMessage);
+		}catch(Exception e) {
+			TestLogger.errorMessage("An exception has occured while generating delete request using URL "+url+" : "+e.getMessage());
+		}
+		return getResponse;
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : PutServices 
 	 * Parameters : servicename(name of the service),payload(payload required for the request)
 	 * Purpose : For getting the list of specified service as json
 	 * ******************************************************************************
-	*/
-public Response PutServices(String servicename,JSONObject payload) {
+	 */
+	public Response PutServices(String servicename,JSONObject payload) {
 		Response ServiceManagementService = null;
 		String base_url = null;
 		String token = null;
-		
+
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
-		
+
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
@@ -794,35 +797,35 @@ public Response PutServices(String servicename,JSONObject payload) {
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				ServiceManagementService =  Put(urlInitiateService,token,servicename,ServiceId);
 				break;
-		}
+			}
 			TestLogger.appInfo("The PutService response is  "+ servicename +" is "+ServiceManagementService);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating PutSeServiceIdrvices request for the service "+servicename+" : "+e.getMessage());
 		}
-		
+
 		return ServiceManagementService;		
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : GetServices 
 	 * Parameters : servicename(name of the service)
 	 * Purpose : For getting the list of specified service as json
 	 * ******************************************************************************
-	*/
-	
- public Response GetServices(String servicename ) {
-		
+	 */
+
+	public Response GetServices(String servicename ) {
+
 		String base_url = null;
 		String token = null;
-		
+
 		Response getJSON = null;
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
-		
-		switch(servicename) {
+
+			switch(servicename) {
 			case "device":
 				String DevicesUrl = jsonData.getJsonData("DEVICE_URL");
 				String Devices = jsonData.getJsonData("DEVICES");
@@ -856,38 +859,38 @@ public Response PutServices(String servicename,JSONObject payload) {
 				String urlServiceDescriptorService = base_url +"/"+ServiceManagementMultiClient+"/"+Services;
 				ExtentReport.info("The InitiateService url is :"+urlServiceDescriptorService);
 				getJSON = Get(urlServiceDescriptorService,token);
-				
-		}
+
+			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating GetServices request for the service "+servicename+" : "+e.getMessage());
 		}
-		
+
 		return getJSON;
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : GetServices 
 	 * Parameters : servicename(name of the service),serviceId(service id)
 	 * Purpose : For getting the list of specified service as json
 	 * ******************************************************************************
-	*/
-	
-	 public Response GetServices(String servicename ,String serviceId) {
-		
+	 */
+
+	public Response GetServices(String servicename ,String serviceId) {
+
 		String base_url = null;
 		String token = null;
-		
+
 		Response getJSON = null;
 		jsonObj = new JsonReader();
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
-		
-		switch(servicename) {
+
+			switch(servicename) {
 			case "device":
 				String DevicesUrl = jsonData.getJsonData("DEVICE_URL");
 				String Devices = jsonData.getJsonData("DEVICES");
@@ -935,31 +938,31 @@ public Response PutServices(String servicename,JSONObject payload) {
 				ExtentReport.info("The Users url is :"+urlClientService);
 				getJSON =  Get(urlClientService,token);
 				break;
-				
-		}
+
+			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating GetServices request for the service "+servicename+" : "+e.getMessage());
 		}
-		
+
 		return getJSON;
 	}
-	
 
-	
-	
+
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateServicesJson 
 	 * Parameters : servicename(name of the service),payloadTemplate(Structure of the json payload),payloadValues(values of the JsonObject keys)
 	 * Purpose : For Creating Specified Service
 	 * ******************************************************************************
-	*/
-public Response CreateServicesJson(String servicename,String payloadtemplate,String payloadValues) {
+	 */
+	public Response CreateServicesJson(String servicename,String payloadtemplate,String payloadValues) {
 		Response CreateServiceString = null;
 		String base_url = null;
 		String token = null;
-		
+
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
@@ -978,22 +981,22 @@ public Response CreateServicesJson(String servicename,String payloadtemplate,Str
 				String urlDevice = base_url +"/"+DeviceUrl+"/"+Devices+"/";
 				ExtentReport.info("The Users url is :"+urlDevice);
 				CreateServiceString =  PostJson(urlDevice,token,servicename,payloadtemplate,payloadValues);
-		}
+			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating CreateServices request for the service "+servicename+" : "+e.getMessage());
 		}
-		
+
 		return CreateServiceString;
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : DeleteServices 
 	 * Parameters : servicename(name of the service),id(service id)
 	 * Purpose : For Deleting Specified Service
 	 * ******************************************************************************
-	*/
+	 */
 	public Response DeleteServices(String servicename,String id) {
 		Response DeleteServiceString = null;
 		String base_url = null;
@@ -1002,44 +1005,44 @@ public Response CreateServicesJson(String servicename,String payloadtemplate,Str
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
-			try {
-				switch(servicename) {
-				case "asset":
-					String AssetsUrl = jsonData.getJsonData("ASSET_URL");
-					String Assets = jsonData.getJsonData("ASSETS");
-					String urlAssetDelete = base_url +"/"+AssetsUrl+"/"+Assets+"/"+id;
-					ExtentReport.info("The asset url is :"+urlAssetDelete);
-					DeleteServiceString =  Delete(urlAssetDelete,token);
-					break;
-				case "vehicle":
-					String VehiclesUrl = jsonData.getJsonData("VEHICLE_URL");
-					String Vehicles = jsonData.getJsonData("VEHICLES");
-					String urlVehicleDelete = base_url +"/"+VehiclesUrl+"/"+Vehicles+"/"+id;
-					ExtentReport.info("The vehicle url is :"+urlVehicleDelete);
-					DeleteServiceString =  Delete(urlVehicleDelete,token);
-					break;
-				case "user":
-					String UsersUrl = jsonData.getJsonData("CLIENT_URL");
-					String Users = jsonData.getJsonData("USERS");
-					String urlUserDelete = base_url +"/"+UsersUrl+"/"+Users+"/"+id;
-					ExtentReport.info("The User url is :"+urlUserDelete);
-					DeleteServiceString =  Delete(urlUserDelete,token);
-					break;
-				case "chargingstation":
-					String ChargingStationUrl = jsonData.getJsonData("ASSET_URL");
-					String ChargingStation = jsonData.getJsonData("CHARGINGSTATIONS");
-					String urlChargingStation = base_url +"/"+ChargingStationUrl+"/"+ChargingStation+"/"+id;
-					ExtentReport.info("The Charging Station url is :"+urlChargingStation);
-					DeleteServiceString = Delete(urlChargingStation,token);
-					break;
-				case "device":
-					String DeviceUrl = jsonData.getJsonData("DEVICE_URL");
-					String Devices = jsonData.getJsonData("DEVICES");
-					String urlDeviceDelete = base_url +"/"+DeviceUrl+"/"+Devices+"/"+id;
-					ExtentReport.info("The Device url is :"+urlDeviceDelete);
-					DeleteServiceString =  Delete(urlDeviceDelete,token);
-					break;
-					
+		try {
+			switch(servicename) {
+			case "asset":
+				String AssetsUrl = jsonData.getJsonData("ASSET_URL");
+				String Assets = jsonData.getJsonData("ASSETS");
+				String urlAssetDelete = base_url +"/"+AssetsUrl+"/"+Assets+"/"+id;
+				ExtentReport.info("The asset url is :"+urlAssetDelete);
+				DeleteServiceString =  Delete(urlAssetDelete,token);
+				break;
+			case "vehicle":
+				String VehiclesUrl = jsonData.getJsonData("VEHICLE_URL");
+				String Vehicles = jsonData.getJsonData("VEHICLES");
+				String urlVehicleDelete = base_url +"/"+VehiclesUrl+"/"+Vehicles+"/"+id;
+				ExtentReport.info("The vehicle url is :"+urlVehicleDelete);
+				DeleteServiceString =  Delete(urlVehicleDelete,token);
+				break;
+			case "user":
+				String UsersUrl = jsonData.getJsonData("CLIENT_URL");
+				String Users = jsonData.getJsonData("USERS");
+				String urlUserDelete = base_url +"/"+UsersUrl+"/"+Users+"/"+id;
+				ExtentReport.info("The User url is :"+urlUserDelete);
+				DeleteServiceString =  Delete(urlUserDelete,token);
+				break;
+			case "chargingstation":
+				String ChargingStationUrl = jsonData.getJsonData("ASSET_URL");
+				String ChargingStation = jsonData.getJsonData("CHARGINGSTATIONS");
+				String urlChargingStation = base_url +"/"+ChargingStationUrl+"/"+ChargingStation+"/"+id;
+				ExtentReport.info("The Charging Station url is :"+urlChargingStation);
+				DeleteServiceString = Delete(urlChargingStation,token);
+				break;
+			case "device":
+				String DeviceUrl = jsonData.getJsonData("DEVICE_URL");
+				String Devices = jsonData.getJsonData("DEVICES");
+				String urlDeviceDelete = base_url +"/"+DeviceUrl+"/"+Devices+"/"+id;
+				ExtentReport.info("The Device url is :"+urlDeviceDelete);
+				DeleteServiceString =  Delete(urlDeviceDelete,token);
+				break;
+
 			}
 			TestLogger.appInfo("The response after deleting the service  "+ servicename +" is "+DeleteServiceString.getBody().asString());
 		}catch(Exception e) {
@@ -1047,20 +1050,20 @@ public Response CreateServicesJson(String servicename,String payloadtemplate,Str
 		}
 		return DeleteServiceString;
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateServices 
 	 * Parameters : servicename(name of the service),payloadTemplate(Structure of the json payload),payloadValues(values of the JsonObject keys)
 	 * Purpose : For Creating Specified Service
 	 * ******************************************************************************
-	*/
-public Response CreateServices(String servicename,String payloadTemplate,String payloadValues) {
+	 */
+	public Response CreateServices(String servicename,String payloadTemplate,String payloadValues) {
 		Response CreateServiceString = null;
 		String base_url = null;
 		String token = null;
-		
+
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
@@ -1093,38 +1096,38 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 				String urlDevice = base_url +"/"+DeviceUrl+"/"+Devices+"/";
 				ExtentReport.info("The Users url is :"+urlDevice);
 				CreateServiceString =  Post(urlDevice,token,servicename,payloadTemplate,payloadValues);
-			
-				
-		}
+
+
+			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating CreateServices request for the service "+servicename+" : "+e.getMessage());
 		}
-		
+
 		return CreateServiceString;
 	}
-	
-	
-		
+
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateServices 
 	 * Parameters : servicename(name of the service),payloadValues(values of the JsonObject keys)
 	 * Purpose : For Creating Specified Service
 	 * ******************************************************************************
-	*/
-	
+	 */
+
 	public Response CreateServices(String servicename,JSONObject payloadValues) {
 		Response CreateServiceString = null;
 		String base_url = null;
 		String token = null;
-		
+
 		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 		base_url = jsonData.getJsonData("BASE_URL");
 		token = getAuthorizationToken(servicename);
 		try {
 			switch(servicename) {			
-			
+
 			case "device":
 				String DeviceUrl = jsonData.getJsonData("DEVICE_URL");
 				String Devices = jsonData.getJsonData("DEVICES");
@@ -1142,7 +1145,7 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 				String CreateServiceUrl = jsonData.getJsonData("CREATESERVICE_URL");
 				String InitiateService = jsonData.getJsonData("INITIATE_SERVICE");
 				String urlInitiateService = base_url +"/"+CreateServiceUrl+"/"+InitiateService+"/";
-				
+
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				CreateServiceString =  Post(urlInitiateService,token,servicename,payloadValues);
 				break;
@@ -1175,18 +1178,30 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 				String urlChargingStations = base_url +"/"+ChargingStationsUrl+"/"+ChargingStations;
 				ExtentReport.info("The Charging Station url is :"+urlChargingStations);
 				CreateServiceString =  Post(urlChargingStations,token,servicename,payloadValues);
-			
-			
-				
-		}
+			case "registration":
+				String RegistrationUrl = jsonData.getJsonData("REGISTRATION_URL");
+				String Registration = jsonData.getJsonData("REGISTRATION");
+				String urlRegistration = base_url +"/"+RegistrationUrl+"/"+Registration;
+				ExtentReport.info("The Registration url is :"+urlRegistration);
+				CreateServiceString =  Post(urlRegistration,token,servicename,payloadValues);
+
+			case "acceptregistration":
+				String AcceptRegistrationUrl = jsonData.getJsonData("REGISTRATION_URL");
+				String AcceptRegistration = jsonData.getJsonData("REGISTRATION");
+				String urlAcceptRegistration = base_url +"/"+AcceptRegistrationUrl+"/"+AcceptRegistration;
+				ExtentReport.info("The Registration url is :"+urlAcceptRegistration);
+				CreateServiceString =  Post(urlAcceptRegistration,token,servicename,payloadValues);	
+
+
+			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating CreateServices request for the service "+servicename+" : "+e.getMessage());
 		}
-		
+
 		return CreateServiceString;
 	}
-	
+
 
 	/*
 	 * ****************************************************************************** 
@@ -1194,13 +1209,13 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 	 * Parameters : payLoad(JsonObject Payload)	 * 
 	 * Purpose : For Creating User
 	 * ******************************************************************************
-	*/
-	 public String CreateUser(String payLoad) {
-		
+	 */
+	public String CreateUser(String payLoad) {
+
 		Response userCreated = null;
 		String createUserID = null;	
 		JSONObject CreateUserJson = null;
-		
+
 		try {
 			CreateUserJson = JsonReader.getJsonObject(payLoad);			
 			String displayName = CreateUserJson.get("displayName").toString() + RestApiUtility.getRandomNumber();
@@ -1217,10 +1232,10 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 				ExtentReport.info("An exception has occured while Creating User payload: "+userCreated.getStatusCode());
 			}
 		}catch(Exception e) {
-			
+
 		}
-		
-		
+
+
 		return createUserID;
 	}
 
@@ -1230,21 +1245,21 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 	 * Parameters : payLoad(JsonObject Payload)	 * 
 	 * Purpose : For Creating Asset
 	 * ******************************************************************************
-	*/
-	 public String CreateAssets(String payLoad) {
-		
+	 */
+	public String CreateAssets(String payLoad) {
+
 		JSONObject CreateAssetJson = null;
 		String AssetId = null;
 		Response AssetResponse = null;
-		
+
 		try {
 			CreateAssetJson = JsonReader.getJsonObject(payLoad);			
 			CreateAssetJson.put("name",CreateAssetJson.get("name").toString() + getRandomNumber());
 			CreateAssetJson.put("description",CreateAssetJson.get("description").toString() + getRandomNumber());	
-			
+
 			ExtentReport.info("Creating asset with:"+CreateAssetJson.toJSONString());
 			AssetResponse = CreateServices("asset",CreateAssetJson);	
-			
+
 			if( AssetResponse!=null && AssetResponse.getStatusCode()==200) {
 				ExtentReport.info("The created Asset response status code is : "+AssetResponse.getStatusCode());
 				AssetId = AssetResponse.getBody().asString();	
@@ -1252,39 +1267,39 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 			}
 			else {
 				ExtentReport.info("The created Asset response status code is : "+AssetResponse.getStatusCode());
-				
+
 			}
-			
-		
+
+
 		}catch(Exception e) {
 			ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
 			AssetId = null;
 		}		
-		
+
 		return AssetId;
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : CreateChargingStation 
 	 * Parameters : payLoad(JsonObject Payload)	 * 
 	 * Purpose : For Creating Charging Station
 	 * ******************************************************************************
-	*/
+	 */
 	public String CreateChargingStation(String payLoad) {
-		
+
 		JSONObject CreateChargingStationJson = null;
 		String ChargingStationId = null;
 		Response ChargingStationResponse = null;
-		
+
 		try {
 			CreateChargingStationJson = JsonReader.getJsonObject(payLoad);			
 			CreateChargingStationJson.put("name",CreateChargingStationJson.get("name").toString() + getRandomNumber());
-			
+
 			ExtentReport.info("Executing Post Request against ChargingStation using payload : "+CreateChargingStationJson.toJSONString());
 			//ExtentReport.info("Created ChargingStationData payload is "+CreateChargingStationJson.toJSONString());
 			ChargingStationResponse = CreateServices("chargingstation",CreateChargingStationJson);	
-			
+
 			if( ChargingStationResponse!=null && ChargingStationResponse.getStatusCode()==200) {
 				ExtentReport.info("The created ChargingStation response status code is : "+ChargingStationResponse.getStatusCode());
 				ExtentReport.info("The created ChargingStation response is : "+ChargingStationResponse.getBody().asString());
@@ -1294,13 +1309,13 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 			else {
 				ExtentReport.info("The created Charging station response status code is : "+ChargingStationResponse.getStatusCode());
 			}
-			
-		
+
+
 		}catch(Exception e) {
 			ExtentReport.info("An exception has occured while Creating ChargingStation payload: "+payLoad);
 			ChargingStationId = null;
 		}		
-		
+
 		return ChargingStationId;
 	}
 
@@ -1310,24 +1325,24 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 	 * Parameters : payLoad(JsonObject Payload)	
 	 * Purpose : For Creating Vehicle
 	 * ******************************************************************************
-	*/
+	 */
 	public String CreateVehicle(String payLoad) {
 		JSONObject CreateVehicleJson = null;
 		String vehicleId = null;
 		Response VehicleResponse = null;
-		
+
 		try {
 			CreateVehicleJson = JsonReader.getJsonObject(payLoad);			
 			CreateVehicleJson.put("name",CreateVehicleJson.get("name").toString() + getRandomNumber());
 			CreateVehicleJson.put("description",CreateVehicleJson.get("description").toString() + getRandomNumber());
 			CreateVehicleJson.put("licensePlate",CreateVehicleJson.get("licensePlate").toString() + getRandomNumber());
 			CreateVehicleJson.put("vin",CreateVehicleJson.get("vin").toString() + getRandomNumber(10,100));
-			
+
 			ExtentReport.info("Executing Post Request against Vehicle using payload : "+CreateVehicleJson.toJSONString());
-			
+
 			//ExtentReport.info("Created VehicleData payload is "+CreateVehicleJson.toJSONString());
 			VehicleResponse = CreateServices("vehicle",CreateVehicleJson);	
-			
+
 			if( VehicleResponse!=null && VehicleResponse.getStatusCode()==200) {
 				ExtentReport.info("The created vehicle response status code is : "+VehicleResponse.getStatusCode());
 				ExtentReport.info("The created vehicle response is : "+VehicleResponse.getBody().asString());
@@ -1337,13 +1352,13 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 			else {
 				ExtentReport.info("The created vehicle response status code is : "+VehicleResponse.getStatusCode());
 			}
-			
-		
+
+
 		}catch(Exception e) {
 			ExtentReport.info("An exception has occured while Creating vehicle payload: "+payLoad);
 			vehicleId = null;
 		}		
-		
+
 		return vehicleId;
 	}
 
@@ -1353,11 +1368,11 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 	 * Parameters : createUserID(id of the user)	 * 
 	 * Purpose : For retrieving the specific user
 	 * ******************************************************************************
-	*/
+	 */
 	public String GetUser(String createUserID) {
 		Response userJson = null;			
 		String userId = null;
-				
+
 		try {
 			userId = (String)JsonReader.getJsonObject(createUserID).get("id");
 		}catch(Exception e) {
@@ -1373,28 +1388,28 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 			ExtentReport.info("User with UserId "+userId +" is not present in the available Users");
 			return null;
 		}
-		
+
 	}
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : GetAsset 
 	 * Parameters : createAssetID(id of the Asset)	 * 
 	 * Purpose : For retrieving the specific Asset
 	 * ******************************************************************************
-	*/
+	 */
 	public String GetAsset(String createAssetID) {
 		Response assetJson = null;			
 		String assetId = null;
 		String assetResponse = null;
-				
+
 		try {
 			assetId = (String)JsonReader.getJsonObject(createAssetID).get("id");
 		}catch(Exception e) {
 			assetId = createAssetID;
 		}	
 		ExtentReport.info("Getting Asset details using assetId : "+assetId);
-		
+
 		try {
 			assetJson = GetServices("asset",assetId);
 			if(assetJson.getStatusCode()==200) {
@@ -1409,20 +1424,20 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 		}
 		return assetResponse;		
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : GetVehicle 
 	 * Parameters : createVehicleID(id of the vehicle)	 * 
 	 * Purpose : For retrieving the specific Vehicle
 	 * ******************************************************************************
-	*/
+	 */
 	public String GetVehicle(String createVehicleID) {
 		Response vehicleJson = null;			
 		String vehicleId = null;
 		String vehicleResponse = null;
-				
+
 		try {
 			vehicleId = (String)JsonReader.getJsonObject(createVehicleID).get("id");
 		}catch(Exception e) {
@@ -1444,31 +1459,31 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 			ExtentReport.info("An execption has generated while working with getvehicle and the message is : "+e.getMessage());
 		}
 		return vehicleResponse;
-		
+
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : GetChargingStation 
 	 * Parameters : createChargingStationID(id of the Charging Station)	 * 
 	 * Purpose : For retrieving the specific Charging Station
 	 * ******************************************************************************
-	*/
-	 public String GetChargingStation(String createChargingStationID) {
+	 */
+	public String GetChargingStation(String createChargingStationID) {
 		Response ChargingStationJson = null;			
 		String ChargingStationId = null;
 		String ChargingStationResponse = null;
-				
+
 		try {
 			ChargingStationId = (String)JsonReader.getJsonObject(createChargingStationID).get("id");
 		}catch(Exception e) {
 			//ExtentReport.info(ChargingStationId +" dictionary is not found in the data file hence using it as ChargingStation Id string ");
 			ChargingStationId = createChargingStationID;
 		}	
-		
+
 		ExtentReport.info("Executing Get Request against ChargingStation using chargingStationId : "+ChargingStationId);
-		
+
 		try {
 			ChargingStationJson = GetServices("chargingstation",ChargingStationId);
 			if(ChargingStationJson.getStatusCode()==200) {
@@ -1484,33 +1499,33 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 		}
 		return ChargingStationResponse;		
 	}
-	
-	
+
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : DeleteAsset 
 	 * Parameters : createAssetID(id of the Asset)	 * 
 	 * Purpose : For deleting the specific Asset using Asset Id
 	 * ******************************************************************************
-	*/
+	 */
 	public boolean DeleteAsset(String createAssetID) {
-		
+
 		Response deleteAssetResponse = null;		
 		boolean result = false;
 		String assetId = null;
-		
+
 		try {
 			assetId = (String)JsonReader.getJsonObject(createAssetID).get("id");
 		}catch(Exception e) {
 			//ExtentReport.info(createAssetID +" dictionary is not found in the data file hence using it as asset Id string ");
 			assetId = createAssetID;
 		}
-		
+
 		ExtentReport.info("Deleting the Asset using assetId : "+assetId);
-		
+
 		try {
 			deleteAssetResponse = DeleteServices("asset",assetId);
-			
+
 			if( deleteAssetResponse!=null && deleteAssetResponse.getStatusCode()==200) {
 				ExtentReport.info("The deleteted Asset id "+assetId+" status code is "+deleteAssetResponse.getStatusCode());
 				ExtentReport.info("The Asset id "+assetId+" is deleted successfully");
@@ -1525,7 +1540,7 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 		}catch(Exception e) {
 			ExtentReport.info("An execption has generated while working with deleteAsset and the message is : "+e.getMessage());
 		}
-		
+
 		return result;
 	}
 
@@ -1535,25 +1550,25 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 	 * Parameters : createVehicleID(id of the vehicle)	 * 
 	 * Purpose : For deleting the specific Vehicle using vehicle Id
 	 * ******************************************************************************
-	*/
+	 */
 	public boolean DeleteVehicle(String createVehicleID) {
-		
+
 		Response deleteVehicleResponse = null;		
 		boolean result = false;
 		String vehicleId = null;
-		
+
 		try {
 			vehicleId = (String)JsonReader.getJsonObject(createVehicleID).get("id");
 		}catch(Exception e) {
 			//ExtentReport.info(vehicleId +" dictionary is not found in the data file hence using it as vehicle Id string ");
 			vehicleId = createVehicleID;
 		}
-		
+
 		ExtentReport.info("Executing Delete Request against vehicle using vehicleId : "+vehicleId);
-		
+
 		try {
 			deleteVehicleResponse = DeleteServices("vehicle",vehicleId);
-			
+
 			if( deleteVehicleResponse!=null && deleteVehicleResponse.getStatusCode()==204) {
 				ExtentReport.info("The deleteted Vehicle id "+vehicleId+" status code is "+deleteVehicleResponse.getStatusCode());
 				ExtentReport.info("The deleteted Vehicle id "+vehicleId+" response is "+deleteVehicleResponse.getBody().asString());
@@ -1568,7 +1583,7 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 		}catch(Exception e) {
 			ExtentReport.info("An execption has generated while working with deleteVehicle and the message is : "+e.getMessage());
 		}
-		
+
 		return result;
 	}
 
@@ -1578,25 +1593,25 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 	 * Parameters : createChargingStationID(id of the ChargingStation)	 * 
 	 * Purpose : For deleting the specific Charging Station using ChargingStation Id
 	 * ******************************************************************************
-	*/
+	 */
 	public boolean DeleteChargingStation(String createChargingStationID) {
-		
+
 		Response deleteChargingStationResponse = null;		
 		boolean result = false;
 		String ChargingStationId = null;
-		
+
 		try {
 			ChargingStationId = (String)JsonReader.getJsonObject(createChargingStationID).get("id");
 		}catch(Exception e) {
 			//ExtentReport.info(createChargingStationID +" dictionary is not found in the data file hence using it as ChargingStation Id string ");
 			ChargingStationId = createChargingStationID;
 		}
-		
+
 		ExtentReport.info("Executing Delete Request against ChargingStation using ChargingStationId : "+ChargingStationId);
-		
+
 		try {
 			deleteChargingStationResponse = DeleteServices("chargingstation",ChargingStationId);
-			
+
 			if( deleteChargingStationResponse!=null && deleteChargingStationResponse.getStatusCode()==204) {
 				ExtentReport.info("The deleteted ChargingStation id "+ChargingStationId+" status code is "+deleteChargingStationResponse.getStatusCode());
 				ExtentReport.info("The deleteted ChargingStation id "+ChargingStationId+" response is "+deleteChargingStationResponse.getBody().asString());
@@ -1615,31 +1630,31 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 		return result;
 	}
 
-	
+
 	/*
 	 * ****************************************************************************** 
 	 * Name : DeleteUser 
 	 * Parameters : createUserID(id of the User)	 
 	 * Purpose : For deleting the specific user using User Id
 	 * ******************************************************************************
-	*/
+	 */
 	public boolean DeleteUser(String createUserID) {
-		
+
 		Response deleteUserResponse = null;		
 		boolean result = false;
 		String userId = null;
-		
+
 		try {
 			userId = (String)JsonReader.getJsonObject(createUserID).get("id");
 		}catch(Exception e) {
 			//ExtentReport.info(createUserID +" dictionary is not found in the data file hence using it as user Id string ");
 			userId = createUserID;
 		}
-		
+
 		ExtentReport.info("Executing Delete Request against User using userId : "+userId);
-		
+
 		deleteUserResponse = DeleteServices("user",userId);
-		
+
 		if( deleteUserResponse!=null && deleteUserResponse.getStatusCode()==204) {
 			ExtentReport.info("The deleteted user id "+userId+" status code is "+deleteUserResponse.getStatusCode());
 			ExtentReport.info("The deleteted user id "+userId+" response is "+deleteUserResponse.getBody().asString());
@@ -1652,9 +1667,143 @@ public Response CreateServices(String servicename,String payloadTemplate,String 
 			ExtentReport.info("The user with userid "+userId+" is not deleted successfully");
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
-	
+	 public String createRegistrationRequestUsedEmail(String payLoad) {
+			
+			JSONObject CreateRegistrationRequestJson = null;
+			String createRegistrationRequestUsedEmailID = null;
+			Response RegistrationRequestResponse = null;
+			
+			try {
+				CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
+				CreateRegistrationRequestJson.put("registrationNumber",CreateRegistrationRequestJson.get("registrationNumber").toString() );
+				CreateRegistrationRequestJson.put("adminEmail",CreateRegistrationRequestJson.get("adminEmail").toString() );
+				CreateRegistrationRequestJson.put("requeststatus",CreateRegistrationRequestJson.get("requeststatus").toString() );
+				CreateRegistrationRequestJson.put("requestedOn",CreateRegistrationRequestJson.get("requestedOn").toString() );
+				CreateRegistrationRequestJson.put("clientInfoModel",CreateRegistrationRequestJson.get("clientInfoModel").toString() );
+				CreateRegistrationRequestJson.put("divisionId",CreateRegistrationRequestJson.get("divisionId").toString() );
+				
+				ExtentReport.info("Creating REGREQ with:"+CreateRegistrationRequestJson.toJSONString());
+				RegistrationRequestResponse = CreateServices("registration",CreateRegistrationRequestJson);	
+				
+				if( RegistrationRequestResponse!=null && RegistrationRequestResponse.getStatusCode()==200) {
+					ExtentReport.info("The created RegReq response status code is : "+RegistrationRequestResponse.getStatusCode());
+					createRegistrationRequestUsedEmailID = RegistrationRequestResponse.getBody().asString();	
+					ExtentReport.info("The created RegReq id is : "+createRegistrationRequestUsedEmailID);
+				}
+				else {
+					ExtentReport.info("The created RegReq response status code is : "+RegistrationRequestResponse.getStatusCode());
+				}
+			} catch(Exception e) {
+				ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
+				createRegistrationRequestUsedEmailID = null;
+			}		
+			return createRegistrationRequestUsedEmailID;
+		}
+
+	public String AcceptRegistrationRequest(String payLoad) {
+		JSONObject AcceptRegistrationRequestJson = null;
+		String AcceptRegistrationRequestID = null;
+		Response AcceptRegistrationResponse = null;
+
+		try {
+			AcceptRegistrationRequestJson = JsonReader.getJsonObject(payLoad);
+			AcceptRegistrationRequestJson.put("action",AcceptRegistrationRequestJson.get("action").toString() );
+			AcceptRegistrationRequestJson.put("message",AcceptRegistrationRequestJson.get("message").toString() );
+			AcceptRegistrationRequestJson.put("id_ext",AcceptRegistrationRequestJson.get("id_ext").toString() );
+
+			ExtentReport.info("Accepting Registration Requestwith:"+AcceptRegistrationRequestJson.toJSONString());
+			AcceptRegistrationResponse = CreateServices("registration",AcceptRegistrationRequestJson);	
+
+			if( AcceptRegistrationResponse!=null && AcceptRegistrationResponse.getStatusCode()==200) {
+				ExtentReport.info("The Accept Request response status code is : "+AcceptRegistrationResponse.getStatusCode());
+				AcceptRegistrationRequestID = AcceptRegistrationResponse.getBody().asString();	
+				ExtentReport.info("The Accept Request id is : "+AcceptRegistrationRequestID);
+			}
+			else {
+				ExtentReport.info("The Accept Request response status code is : "+AcceptRegistrationResponse.getStatusCode());
+			}
+		} catch(Exception e) {
+			ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
+			AcceptRegistrationRequestID = null;
+		}		
+		return AcceptRegistrationRequestID;
+	}
+	public String CreateRegistrationRequests(String payLoad) {
+
+		JSONObject CreateRegistrationRequestJson = null;
+		String RegistrationReqestID = null;
+		Response RegistrationRequestResponse = null;
+
+		try {
+			CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
+			CreateRegistrationRequestJson.put("registrationNumber",CreateRegistrationRequestJson.get("registrationNumber").toString() + getRandomNumber());
+			CreateRegistrationRequestJson.put("adminEmail",CreateRegistrationRequestJson.get("adminEmail").toString() + getRandomNumber());
+			CreateRegistrationRequestJson.put("requeststatus",CreateRegistrationRequestJson.get("requeststatus").toString() + getRandomNumber());
+			CreateRegistrationRequestJson.put("requestedOn",CreateRegistrationRequestJson.get("requestedOn").toString() + getRandomNumber(10,100));
+			CreateRegistrationRequestJson.put("clientInfoId",CreateRegistrationRequestJson.get("clientInfoModel"));
+
+			ExtentReport.info("Executing Post Request against RegistrationRequest using payload : "+CreateRegistrationRequestJson.toJSONString());
+			RegistrationRequestResponse = CreateServices("registration",CreateRegistrationRequestJson);	
+
+			if( RegistrationRequestResponse!=null && RegistrationRequestResponse.getStatusCode()==200) {
+				ExtentReport.info("The created RegistrationRequest response status code is : "+RegistrationRequestResponse.getStatusCode());
+				ExtentReport.info("The created RegistrationRequest response is : "+RegistrationRequestResponse.getBody().asString());
+				RegistrationReqestID = RegistrationRequestResponse.getBody().asString();	
+				ExtentReport.info("The created RegistrationRequest id is : "+RegistrationReqestID);
+			}
+			else {
+				ExtentReport.info("The created Registration Request response status code is : "+RegistrationRequestResponse.getStatusCode());
+			}
+
+
+		}catch(Exception e) {
+			ExtentReport.info("An exception has occured while Creating Registration Request payload: "+payLoad);
+			RegistrationReqestID = null;
+		}		
+
+		return RegistrationReqestID;
+	}
+
+public String rejectRegistrationRequests(String payLoad) {
+		
+		JSONObject RejectRegistrationRequestJson = null;
+		String RejectRegistrationReqestID = null;
+		Response RejectRegistrationRequestResponse = null;
+		
+		try {
+			RejectRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
+			RejectRegistrationRequestJson.put("action",RejectRegistrationRequestJson.get("action").toString());
+			RejectRegistrationRequestJson.put("message",RejectRegistrationRequestJson.get("message").toString());
+			RejectRegistrationRequestJson.put("id_ext",RejectRegistrationRequestJson.get("id_ext").toString());
+
+				
+			ExtentReport.info("Executing put Request against RejectRegistrationRequest using payload : "+RejectRegistrationRequestJson.toJSONString());
+			//ExtentReport.info("Created ChargingStationData payload is "+CreateChargingStationJson.toJSONString());
+			RejectRegistrationRequestResponse = CreateServices("rejectRegistration",RejectRegistrationRequestJson);	
+			
+			if( RejectRegistrationRequestResponse!=null && RejectRegistrationRequestResponse.getStatusCode()==200) {
+				ExtentReport.info("The Rejected RegistrationRequest response status code is : "+RejectRegistrationRequestResponse.getStatusCode());
+				ExtentReport.info("The Rejected RegistrationRequest response is : "+RejectRegistrationRequestResponse.getBody().asString());
+				RejectRegistrationReqestID = RejectRegistrationRequestResponse.getBody().asString();	
+				ExtentReport.info("The Rejected RegistrationRequest id is : "+RejectRegistrationReqestID);
+			}
+			else {
+				ExtentReport.info("The Rejected Registration Request response status code is : "+RejectRegistrationRequestResponse.getStatusCode());
+			}
+			
+		
+		}catch(Exception e) {
+			ExtentReport.info("An exception has occured while Reject Registration Request payload: "+payLoad);
+			RejectRegistrationReqestID = null;
+		}		
+		
+		return RejectRegistrationReqestID;
+	}
+
 }
+
+
+

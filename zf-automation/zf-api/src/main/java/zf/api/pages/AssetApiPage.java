@@ -33,14 +33,18 @@ public class AssetApiPage extends ExtentReport{
 
 	public void validateNewAssetusingGetAPI(String assetID) {
 		try {
+			if(assetID==null) {
+				ExtentReport.testFailed("Assetid is ="+assetID +"not able to validate using get API");	
+			}else {
 			assetResponse = restapiutility.GetAsset(assetID);
 			if(assetResponse!= null) {
 				ExtentReport.testPassed("Value from GetAPI "+assetResponse.toString()+" contains the AssetID : "+assetID );
 			}else {
 				ExtentReport.testFailed("Value from GetAPI "+assetResponse.toString()+" contains the AssetID : "+assetID );
 			}
+			}
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			ExtentReport.testFailed("Assetid "+assetID +"is not deleted from DB");
 		}
 	}
 
