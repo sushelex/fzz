@@ -12,6 +12,6 @@ public class PropulsionTypesPage extends ExtentReport {
 	JsonReader jsonData=new JsonReader();
 	
 	public void createNewPropulsionType(){
-		restapiutility.CreateServices(servicename, payloadValues)
+	//	restapiutility.CreateServices(servicename, payloadValues)
 	}
 }
