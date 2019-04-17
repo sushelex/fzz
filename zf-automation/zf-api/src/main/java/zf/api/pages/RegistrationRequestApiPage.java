@@ -15,7 +15,7 @@ public class RegistrationRequestApiPage extends ExtentReport {
 	List<String> SelectQueryResult = null;
 	/*String assetResponse = null;
 	boolean assetDelete = false;*/
-
+	  String RegistrationRequestID=null;
 	public String acceptRegistrationRequest() {
 		String acceptRegistrationRequestID = null;
 		try {
