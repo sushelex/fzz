@@ -13,10 +13,9 @@ public class RegistrationRequestApiPage extends ExtentReport {
 	RestApiUtility restapiutility=new RestApiUtility();
 	DatabaseUtility databaseutility=new DatabaseUtility();
 	List<String> SelectQueryResult = null;
-	/*String assetResponse = null;
-	boolean assetDelete = false;*/
 	  String RegistrationRequestID=null;
-	public String acceptRegistrationRequest() {
+	
+	  public String acceptRegistrationRequest() {
 		String acceptRegistrationRequestID = null;
 		try {
 			acceptRegistrationRequestID = restapiutility.AcceptRegistrationRequest("AcceptRegistrationRequest");

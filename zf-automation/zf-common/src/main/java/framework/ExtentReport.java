@@ -203,6 +203,7 @@ public class ExtentReport extends CaptureScreenshot {
 	 */
 	public static void testFailed(String message){
 		try {
+			Assert.fail(message);
 			reporter.log(Status.FAIL, message);
 			takeScreenShot(getTimeStamp());
 		}

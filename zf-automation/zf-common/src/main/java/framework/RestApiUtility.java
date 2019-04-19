@@ -362,6 +362,7 @@ public class RestApiUtility extends ExtentReport{
 			case "servicedescriptorservice":
 				token = getClientServicetoken(tauri_authorization_url,serviceName);
 				break;
+		
 			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
 		}catch(Exception e) {
@@ -938,7 +939,13 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The Users url is :"+urlClientService);
 				getJSON =  Get(urlClientService,token);
 				break;
-
+			case "servicedescriptorservice":
+				String ClientServiceUrl1 = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");
+				String services=jsonData.getJsonData("SERVICES");
+				String urlClientService1 = base_url +"/"+ClientServiceUrl1+"/"+services+"/";
+				ExtentReport.info("The Users url is :"+urlClientService1);
+				getJSON =  Get(urlClientService1,token);
+				break;
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1802,6 +1809,32 @@ public String rejectRegistrationRequests(String payLoad) {
 		
 		return RejectRegistrationReqestID;
 	}
+
+//DD
+public String GetService(String ServiceDescriptorID) {
+	Response assetJson = null;			
+	String serviceDescriptorId = null;
+	String assetResponse = null;
+
+	try {
+		serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
+		
+	ExtentReport.info("Getting Asset details using assetId : "+serviceDescriptorId);
+
+	
+		assetJson = GetServices(ServiceDescriptorID,serviceDescriptorId);
+		if(assetJson.getStatusCode()==200) {
+			assetResponse = assetJson.getBody().asString();
+			ExtentReport.info("ServiceId : "+ServiceDescriptorID +" is present in the available service");
+		}else {
+			ExtentReport.info("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
+			assetResponse = null;
+		}	
+	}catch(Exception e) {
+		ExtentReport.info("An execption has generated while working with getAsset and the message is : "+e.getMessage());
+	}
+	return assetResponse;		
+}
 
 }
 

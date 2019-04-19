@@ -50,10 +50,7 @@
 			"vivaldi_management_add_id": "9e02f802-a6c2-46e6-89c1-1fdbed73485e",
 			"vivaldi_management_add_scret": "YWIwMTQxY2MtMTNmYi00MGI2LTk5YmYtNzEwNDJmMTM4NmZj",
 			"winter_add_id": "a6dd2618-8980-4cbc-a3aa-7bc641e7c044",
-			"winter_add_secret": "NDU5MjU2NjctNmY4MC00MDQ0LTg1ZWItZjlhYzRhYzI1YTQz",
-			"REGISTRATION_URL":"global/service-catalog-service/servicecatalog",
-            "REGISTRATION":"registration/register",
-            "REJECTREGISTRATION":"registration/reject/{request id}"
+			"winter_add_secret": "NDU5MjU2NjctNmY4MC00MDQ0LTg1ZWItZjlhYzRhYzI1YTQz"
 			
 		}
 	},
@@ -100,7 +97,10 @@
 			"CREATE_USER_DATA": "CreateUserData",
 			"USERS": "users",
 			"VEHICLE_URL": "global/asset-management-service",
-			"VEHICLES": "vehicles"
+			"VEHICLES": "vehicles",
+			"REGISTRATION_URL": "global/service-catalog-service/servicecatalog",
+			"REGISTRATION": "registration/register",
+			"REJECTREGISTRATION": "registration/reject/{request id}"
 		}
 	},
 	{
@@ -321,6 +321,14 @@
 			"action": "SUCCESS",
 			"message": "SUCCESS",
 			"id_ext": "null"
+		}
+	},
+	{
+		"servicedescriptorservice": {
+			"id": "100ffb69-cca0-4c90-be42-b3b0239120b8",
+			"artifactId": "michal_test1",
+			"groupId": "com.openmatics.cloud.service.test",
+			"singleClient": true
 		}
 	}
 ]
