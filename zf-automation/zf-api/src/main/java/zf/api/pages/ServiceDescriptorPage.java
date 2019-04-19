@@ -14,4 +14,16 @@ public class ServiceDescriptorPage extends ExtentReport{
 	public void getServiceDescriptor() {
 		restapiutility.GetService("servicedescriptorservice");
 	}
+	
+	
+	public boolean AssigningServiceDescriptorWithAppidToTheClient() {
+		boolean ServiceDescriptorRequestID = false;
+		try {
+			ServiceDescriptorRequestID = restapiutility.ServiceDescriptorWithAppidToTheClient("ServiceDescriptorWithAppId");
+
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return ServiceDescriptorRequestID;
+	}
 }

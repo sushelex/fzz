@@ -321,7 +321,9 @@ public class RestApiUtility extends ExtentReport{
 			case "propulsionType":
 				setFormParameters(httpRequest,form);
 				break;
-
+			case "ServiceDescriptorWithAppId":
+				setFormParameters(httpRequest,form);
+				break;
 			}
 
 			response = httpRequest.request(Method.POST);	
@@ -390,6 +392,9 @@ public class RestApiUtility extends ExtentReport{
 				break;
 			case "propulsionType":
 				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
+				break;
+			case "ServiceDescriptorWithAppId":
+				token = getClientServicetoken(tauri_authorization_url,serviceName);
 				break;
 			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
@@ -713,6 +718,10 @@ public class RestApiUtility extends ExtentReport{
 				RestAssured.baseURI = url+payload;
 				httpRequest = RestAssured.given();
 				break;
+			case "ServiceDescriptorWithAppId":
+				RestAssured.baseURI = url+payload;
+				httpRequest = RestAssured.given();
+				break;
 			}		
 			//*****************************************************************************
 			httpRequest.header("authorization", "Bearer "+token);
@@ -826,6 +835,15 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The InitiateService url is :"+urlInitiateService);
 				ServiceManagementService =  Put(urlInitiateService,token,servicename,ServiceId);
 				break;
+			case "ServiceDescriptorWithAppId":
+				String ServiceDescriptorClientId = (String)payload.get("client1id");
+				String ServiceDescriptorServiceId = (String)payload.get("ServiceId");
+				String ServiceescriptorManagementClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String urlInitiateServiceDescriptor = base_url +"/"+ServiceescriptorManagementClient+"/"+"clients"+"/"+ServiceDescriptorClientId+"/service/"+ServiceDescriptorServiceId;
+				ExtentReport.info("The InitiateService url is :"+urlInitiateServiceDescriptor);
+				ServiceManagementService =  Put(urlInitiateServiceDescriptor,token,servicename,ServiceDescriptorServiceId);
+				break;
+				
 			}
 			TestLogger.appInfo("The PutService response is  "+ servicename +" is "+ServiceManagementService);
 		}catch(Exception e) {
@@ -1869,6 +1887,40 @@ public boolean DeletePropulsionType(String propulsionID) {
 		ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
 		ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getBody().jsonPath().getString("message"));
 		ExtentReport.info("The user with userid "+PropulsionTypeId+" is not deleted successfully");
+		result = false;
+	}
+
+	return result;
+	}
+
+/*
+ * ****************************************************************************** 
+ * Name : ServiceDescriptorWithAppidToTheClient
+ * ******************************************************************************
+ */
+public boolean ServiceDescriptorWithAppidToTheClient(String payLoad) {
+	
+	JSONObject ServiceDescriptorRequestJson = null;
+	Response ServiceDescriptorResponse = null;		
+	boolean result = false;
+	String ServiceDescriptorClientId=null;
+	ServiceDescriptorRequestJson = JsonReader.getJsonObject(payLoad);		
+	ServiceDescriptorClientId=(String)JsonReader.getJsonObject(payLoad).get("client1id");
+
+	ExtentReport.info("Executing Put Request against User using userId : "+ServiceDescriptorClientId);
+
+	ServiceDescriptorResponse = PutServices("ServiceDescriptorWithAppId",ServiceDescriptorRequestJson);
+
+	if( ServiceDescriptorResponse!=null && ServiceDescriptorResponse.getStatusCode()==202) {
+		ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
+		ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().asString());
+		ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is successfully");
+		result = true;
+	}
+	else {
+		ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
+		ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().jsonPath().getString("message"));
+		ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is not successfully");
 		result = false;
 	}
 

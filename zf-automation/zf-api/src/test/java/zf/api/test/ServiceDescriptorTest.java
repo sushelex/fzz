@@ -17,12 +17,16 @@ public class ServiceDescriptorTest extends ServiceDescriptorPage{
 	}
 	
 	
-	@Test(priority=1,enabled = true)
+//	@Test(priority=1,enabled = true)
 	public void GetServiceDescriptor() throws InterruptedException {
 		getServiceDescriptor();
 			}
 	
-	
+	@Test
+	public void TCAssigningServiceDescriptorWithAppidToTheClient()
+	{
+		AssigningServiceDescriptorWithAppidToTheClient();
+	}
 	
 	
 	@AfterMethod

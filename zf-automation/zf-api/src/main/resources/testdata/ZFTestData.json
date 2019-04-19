@@ -51,7 +51,6 @@
 			"vivaldi_management_add_scret": "YWIwMTQxY2MtMTNmYi00MGI2LTk5YmYtNzEwNDJmMTM4NmZj",
 			"winter_add_id": "a6dd2618-8980-4cbc-a3aa-7bc641e7c044",
 			"winter_add_secret": "NDU5MjU2NjctNmY4MC00MDQ0LTg1ZWItZjlhYzRhYzI1YTQz"
-			
 		}
 	},
 	{
@@ -101,7 +100,7 @@
 			"REGISTRATION_URL": "global/service-catalog-service/servicecatalog",
 			"REGISTRATION": "registration/register",
 			"REJECTREGISTRATION": "registration/reject/{request id}",
-			"PROPULSIONTYPE":"propulsionTypes"
+			"PROPULSIONTYPE": "propulsionTypes"
 		}
 	},
 	{
@@ -332,12 +331,17 @@
 			"singleClient": true
 		}
 	},
-	
-	  {
-	     "propulsionType":{
-	     	  "PROPULSIONTYPE":"propulsionTypes",
-	          "name": "test_propulsion_sasken_3",
-	          "id":"51f3ebdf-8d59-44d9-a7d6-6f20c5f56ce0"
-	     }
+	{
+		"propulsionType": {
+			"PROPULSIONTYPE": "propulsionTypes",
+			"name": "test_propulsion_sasken_3",
+			"id": "51f3ebdf-8d59-44d9-a7d6-6f20c5f56ce0"
+		}
+	},
+	{
+		"ServiceDescriptorWithAppId": {
+			"client1id": "19309c32-1769-42ba-9829-d18d5e9e072d",
+			"ServiceId": "10c7b95b-6deb-432d-a6d0-a9d30f9b4def"
+		}
 	}
 ]
