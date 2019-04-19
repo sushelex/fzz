@@ -135,6 +135,29 @@ public class RestApiUtility extends ExtentReport{
 		return strToken;
 
 	}
+	
+	public String getPropulsionTypetoken(String authorizationURL,String serviceName) {		
+
+		String strToken = null;
+		Map<String,String> form = null;
+		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
+
+		try {
+			form = new HashMap<String,String>();
+			TestLogger.appInfo(" Populating form parameters of ClientService Authorization Token ");
+			form.put("auth_url", authorizationURL);
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("resource", jsonData.getJsonData("ASSET_RESOURCE"));
+			form.put("client_id", jsonData.getJsonData("ASSET_ADD_ID"));
+			form.put("client_secret", jsonData.getJsonData("ASSET_ADD_SECRET"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+			strToken = getToken(form,serviceName);	
+		}catch(Exception e) {
+			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
+		}
+		return strToken;
+
+	}
 
 
 	/*
@@ -237,9 +260,9 @@ public class RestApiUtility extends ExtentReport{
 		try {
 			TestLogger.appInfo(" Populating form parameters of form ");
 			httpRequest.formParam("grant_type",form.get("grant_type"));
+			httpRequest.formParam("resource",form.get("resource"));
 			httpRequest.formParam("client_id",form.get("client_id"));
 			httpRequest.formParam("client_secret",form.get("client_secret"));
-			httpRequest.formParam("resource",form.get("resource"));
 			httpRequest.header("Content-Type", form.get("Content-Type"));
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while populating form parameters of form parameters of Token "+e.getMessage());
@@ -293,6 +316,9 @@ public class RestApiUtility extends ExtentReport{
 				setFormParameters(httpRequest,form);
 				break;
 			case "servicedescriptorservice":
+				setFormParameters(httpRequest,form);
+				break;
+			case "propulsionType":
 				setFormParameters(httpRequest,form);
 				break;
 
@@ -362,7 +388,9 @@ public class RestApiUtility extends ExtentReport{
 			case "servicedescriptorservice":
 				token = getClientServicetoken(tauri_authorization_url,serviceName);
 				break;
-		
+			case "propulsionType":
+				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
+				break;
 			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
 		}catch(Exception e) {
@@ -939,13 +967,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The Users url is :"+urlClientService);
 				getJSON =  Get(urlClientService,token);
 				break;
-			case "servicedescriptorservice":
-				String ClientServiceUrl1 = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");
-				String services=jsonData.getJsonData("SERVICES");
-				String urlClientService1 = base_url +"/"+ClientServiceUrl1+"/"+services+"/";
-				ExtentReport.info("The Users url is :"+urlClientService1);
-				getJSON =  Get(urlClientService1,token);
-				break;
+
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1049,7 +1071,12 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The Device url is :"+urlDeviceDelete);
 				DeleteServiceString =  Delete(urlDeviceDelete,token);
 				break;
-
+			case "propulsionType":
+				String PropulsionUrl = jsonData.getJsonData("ASSET_URL");
+				String Propulsion = jsonData.getJsonData("PROPULSIONTYPE");
+				String urlDeletePropulsion = base_url +"/"+PropulsionUrl+"/"+Propulsion+"/"+id;
+				ExtentReport.info("The Registration url is :"+urlDeletePropulsion);
+				DeleteServiceString =  Delete(urlDeletePropulsion,token);	
 			}
 			TestLogger.appInfo("The response after deleting the service  "+ servicename +" is "+DeleteServiceString.getBody().asString());
 		}catch(Exception e) {
@@ -1198,8 +1225,7 @@ public class RestApiUtility extends ExtentReport{
 				String urlAcceptRegistration = base_url +"/"+AcceptRegistrationUrl+"/"+AcceptRegistration;
 				ExtentReport.info("The Registration url is :"+urlAcceptRegistration);
 				CreateServiceString =  Post(urlAcceptRegistration,token,servicename,payloadValues);	
-
-
+				
 			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
@@ -1810,33 +1836,42 @@ public String rejectRegistrationRequests(String payLoad) {
 		return RejectRegistrationReqestID;
 	}
 
-//DD
-public String GetService(String ServiceDescriptorID) {
-	Response assetJson = null;			
-	String serviceDescriptorId = null;
-	String assetResponse = null;
+/*
+ * ****************************************************************************** 
+ * Name : DeletePropulsionType 
+ * Parameters : createpropulsionID(id of the User)	 
+ * Purpose : For deleting the specific user using User Id
+ * ******************************************************************************
+ */
+public boolean DeletePropulsionType(String propulsionID) {
+
+	Response deletePropulsionTypeResponse = null;		
+	boolean result = false;
+	String PropulsionTypeId = null;
 
 	try {
-		serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
-		
-	ExtentReport.info("Getting Asset details using assetId : "+serviceDescriptorId);
-
-	
-		assetJson = GetServices(ServiceDescriptorID,serviceDescriptorId);
-		if(assetJson.getStatusCode()==200) {
-			assetResponse = assetJson.getBody().asString();
-			ExtentReport.info("ServiceId : "+ServiceDescriptorID +" is present in the available service");
-		}else {
-			ExtentReport.info("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
-			assetResponse = null;
-		}	
+		PropulsionTypeId = (String)JsonReader.getJsonObject(propulsionID).get("id");
 	}catch(Exception e) {
-		ExtentReport.info("An execption has generated while working with getAsset and the message is : "+e.getMessage());
+		PropulsionTypeId = propulsionID;
 	}
-	return assetResponse;		
+
+	ExtentReport.info("Executing Delete Request against User using userId : "+PropulsionTypeId);
+
+	deletePropulsionTypeResponse = DeleteServices("propulsionType",PropulsionTypeId);
+
+	if( deletePropulsionTypeResponse!=null && deletePropulsionTypeResponse.getStatusCode()==204) {
+		ExtentReport.info("The deleteted user id "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
+		ExtentReport.info("The deleteted user id "+PropulsionTypeId+" response is "+deletePropulsionTypeResponse.getBody().asString());
+		ExtentReport.info("The user with userid "+PropulsionTypeId+" is deleted successfully");
+		result = true;
+	}
+	else {
+		ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
+		ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getBody().jsonPath().getString("message"));
+		ExtentReport.info("The user with userid "+PropulsionTypeId+" is not deleted successfully");
+		result = false;
+	}
+
+	return result;
+	}
 }
-
-}
-
-
-

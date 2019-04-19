@@ -100,7 +100,8 @@
 			"VEHICLES": "vehicles",
 			"REGISTRATION_URL": "global/service-catalog-service/servicecatalog",
 			"REGISTRATION": "registration/register",
-			"REJECTREGISTRATION": "registration/reject/{request id}"
+			"REJECTREGISTRATION": "registration/reject/{request id}",
+			"PROPULSIONTYPE":"propulsionTypes"
 		}
 	},
 	{
@@ -330,5 +331,13 @@
 			"groupId": "com.openmatics.cloud.service.test",
 			"singleClient": true
 		}
+	},
+	
+	  {
+	     "propulsionType":{
+	     	  "PROPULSIONTYPE":"propulsionTypes",
+	          "name": "test_propulsion_sasken_3",
+	          "id":"51f3ebdf-8d59-44d9-a7d6-6f20c5f56ce0"
+	     }
 	}
 ]
