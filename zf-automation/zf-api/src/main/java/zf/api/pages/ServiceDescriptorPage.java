@@ -18,9 +18,11 @@ public class ServiceDescriptorPage extends ExtentReport{
 	}
 	public void assignServiceDescriptorToCLientWithoutAppId() {
 		String assignServiceToClientWithoutAppid = restapiutility.GetService("assignServiceToClientWithoutAppid");
+		System.out.println(assignServiceToClientWithoutAppid);
 	}
 	public void getSagaStatusCLientWithoutAppId() {
 		String getSagaService = restapiutility.GetService("sagastatusfail");
+		System.out.println(getSagaService);
 	
 	}
 	

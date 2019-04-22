@@ -89,7 +89,7 @@
 			"CLIENT": "clients",
 			"INITIATE_SERVICE": "initiate/services",
 			"CLIENT_URL": "global/client-management-service",
-			"CLIENTS": "clients?extendedInfo:true",
+			"CLIENTS": "clients",
 			"CREATE_ASSET_JSON": "CreateAssetTemplate",
 			"CREATE_ASSET_DATA": "CreateAssetData",
 			"CREATE_USER_JSON": "CreateUserTemplate",
@@ -100,7 +100,14 @@
 			"REGISTRATION_URL": "global/service-catalog-service/servicecatalog",
 			"REGISTRATION": "registration/register",
 			"REJECTREGISTRATION": "registration/reject/{request id}",
-			"PROPULSIONTYPE": "propulsionTypes"
+			"PROPULSIONTYPE": "propulsionTypes",
+			"SAGA":"saga",
+			"SERVICEID":"cjujudzok00350116m3sns43y",
+			"CLIENTID":"19309c32-1769-42ba-9829-d18d5e9e072d",
+			"SERVICE": "service",
+			"SERVICESID":"100ffb69-cca0-4c90-be42-b3b0239120b8",
+			"STATUS":"status",
+			"CLIENT_USES_SERVICE":"CLIENT_USES_SERVICE"
 		}
 	},
 	{
@@ -347,6 +354,12 @@
 	     "assignServiceToClientWithoutAppid":{
 	     	 "status": "/saga/cjujudzok00350116m3sns43y/status/CLIENT_USES_SERVICE",
   "audit": "/saga/cjujudzok00350116m3sns43y/?type=CLIENT_USES_SERVICE"
+	     }
+	},  {
+	     "sagastatusfail":{
+	     	 "operation": "CREATE",
+  "status": "FAIL",
+  "type": "CLIENT_USES_SERVICE"
 	     }
 	}
 ]

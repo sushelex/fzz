@@ -24,4 +24,13 @@ public class PropulsionTypePage extends ExtentReport {
 		}
 		return DeletePropulsionRequestID;
 	}
+	
+	public void getSpecificPropulsionTypeDetails() {
+	
+		String getService = restapiutility.GetService("getSpecificPropulsionTypeDetails");
+	}
+	public void getPropulsionTypeDetails() {
+		 String getService = restapiutility.GetService("getPropulsionTypeDetails");
+			System.out.println(getService);
+	}
 }

@@ -324,6 +324,13 @@ public class RestApiUtility extends ExtentReport{
 			case "ServiceDescriptorWithAppId":
 				setFormParameters(httpRequest,form);
 				break;
+			case "sagastatusfail":
+				setFormParameters(httpRequest,form);
+				break;
+			case "assignServiceToClientWithoutAppid":
+				setFormParameters(httpRequest,form);
+				break;
+
 			}
 
 			response = httpRequest.request(Method.POST);	
@@ -357,7 +364,6 @@ public class RestApiUtility extends ExtentReport{
 		tauri_authorization_url = "https://"+base_url+"/"+aad_tenant+"/oauth2/token";
 
 		try {
-
 
 			switch(serviceName) {
 			case "asset":			
@@ -395,6 +401,19 @@ public class RestApiUtility extends ExtentReport{
 				break;
 			case "ServiceDescriptorWithAppId":
 				token = getClientServicetoken(tauri_authorization_url,serviceName);
+				break;
+			case "sagastatusfail":
+				token = getServiceDescriptorToken(tauri_authorization_url,serviceName);
+				break;
+			case "assignServiceToClientWithoutAppid":
+				token = getServiceDescriptorToken(tauri_authorization_url,serviceName);
+				break;
+			
+			case "getPropulsionTypeDetails":
+				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
+				break;
+			case "getSpecificPropulsionTypeDetails":
+				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
 				break;
 			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
@@ -903,10 +922,39 @@ public class RestApiUtility extends ExtentReport{
 			case "servicedescriptorservice":
 				String ServiceManagementMultiClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
 				String Services = jsonData.getJsonData("SERVICES");
-				String urlServiceDescriptorService = base_url +"/"+ServiceManagementMultiClient+"/"+Services;
+				String urlServiceDescriptorService = base_url +"/"+ServiceManagementMultiClient+"/"+Services+"/";
 				ExtentReport.info("The InitiateService url is :"+urlServiceDescriptorService);
 				getJSON = Get(urlServiceDescriptorService,token);
-
+				break;
+			case "sagastatusfail":
+				String SagaClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String Saga = jsonData.getJsonData("SAGA");
+				String ServiceID=jsonData.getJsonData("SERVICEID");
+				String Status = jsonData.getJsonData("STATUS");
+				String ClientUserService = jsonData.getJsonData("CLIENT_USES_SERVICE");
+				String urlSagaService = base_url +"/"+SagaClient+"/"+Saga+"/"+ServiceID+"/"+Status+"/"+ClientUserService;
+				ExtentReport.info("The InitiateService url is :"+urlSagaService);
+				getJSON = Get(urlSagaService,token);
+				break;
+			case "assignServiceToClientWithoutAppid":
+				String ServiceClient = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String clients = jsonData.getJsonData("CLIENTS");
+				String clientID=jsonData.getJsonData("CLIENTID");
+				String service = jsonData.getJsonData("SERVICE");
+				String serviceID = jsonData.getJsonData("SERVICESID");
+				String urlAssignService = base_url +"/"+ServiceClient+"/"+clients+"/"+clientID+"/"+service+"/"+serviceID;
+				ExtentReport.info("The InitiateService url is :"+urlAssignService);
+				getJSON = Get(urlAssignService,token);
+				break;
+				
+			case "getPropulsionTypeDetails":
+				String AssetUrl = jsonData.getJsonData("ASSET_URL");
+				String PropulsionType = jsonData.getJsonData("PROPULSIONTYPE");
+				String urlPropulsionType = base_url +"/"+AssetUrl+"/"+PropulsionType;
+				ExtentReport.info("The InitiateService url is :"+urlPropulsionType);
+				getJSON = Get(urlPropulsionType,token);
+				break;
+			
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -985,7 +1033,13 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The Users url is :"+urlClientService);
 				getJSON =  Get(urlClientService,token);
 				break;
-
+			case "getSpecificPropulsionTypeDetails":
+				String AssetUrl = jsonData.getJsonData("ASSET_URL");
+				String PropulsionType = jsonData.getJsonData("PROPULSIONTYPE");
+				String urlPropulsionType = base_url +"/"+AssetUrl+"/"+PropulsionType+"/"+serviceId;
+				ExtentReport.info("The InitiateService url is :"+urlPropulsionType);
+				getJSON = Get(urlPropulsionType,token);
+				break;
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1934,17 +1988,18 @@ public String GetService(String ServiceDescriptorID) {
 	String assetResponse = null;
 
 	try {
-		serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
+		//serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
 		
 	ExtentReport.info("Getting Asset details using assetId : "+serviceDescriptorId);
 
 	
-		assetJson = GetServices(ServiceDescriptorID,serviceDescriptorId);
+		assetJson = GetServices(ServiceDescriptorID);
 		if(assetJson.getStatusCode()==200) {
 			assetResponse = assetJson.getBody().asString();
+			
 			ExtentReport.info("ServiceId : "+ServiceDescriptorID +" is present in the available service");
 		}else {
-			ExtentReport.info("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
+			testFailed("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
 			assetResponse = null;
 		}	
 	}catch(Exception e) {
