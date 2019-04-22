@@ -16,10 +16,19 @@ public class ServiceDescriptorTest extends ServiceDescriptorPage{
 		startTest(testName.getName());
 	}
 	
-	
-//	@Test(priority=1,enabled = true)
+	@Test(priority=1,enabled = true)
 	public void GetServiceDescriptor() throws InterruptedException {
 		getServiceDescriptor();
+			}
+	
+	@Test(priority=1,enabled = true)
+	public void AssignServiceDescriptorToCLientWithoutAppId() throws InterruptedException {
+		assignServiceDescriptorToCLientWithoutAppId();
+			}
+	
+	@Test(priority=1,enabled = true)
+	public void GetSagaStatusCLientWithoutAppId() throws InterruptedException {
+		getSagaStatusCLientWithoutAppId();
 			}
 	
 	@Test

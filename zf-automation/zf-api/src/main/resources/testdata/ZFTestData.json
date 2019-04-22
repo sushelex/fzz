@@ -343,5 +343,10 @@
 			"client1id": "19309c32-1769-42ba-9829-d18d5e9e072d",
 			"ServiceId": "10c7b95b-6deb-432d-a6d0-a9d30f9b4def"
 		}
+	},  {
+	     "assignServiceToClientWithoutAppid":{
+	     	 "status": "/saga/cjujudzok00350116m3sns43y/status/CLIENT_USES_SERVICE",
+  "audit": "/saga/cjujudzok00350116m3sns43y/?type=CLIENT_USES_SERVICE"
+	     }
 	}
 ]

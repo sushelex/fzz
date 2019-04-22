@@ -1926,4 +1926,53 @@ public boolean ServiceDescriptorWithAppidToTheClient(String payLoad) {
 
 	return result;
 	}
+
+//DD
+public String GetService(String ServiceDescriptorID) {
+	Response assetJson = null;			
+	String serviceDescriptorId = null;
+	String assetResponse = null;
+
+	try {
+		serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
+		
+	ExtentReport.info("Getting Asset details using assetId : "+serviceDescriptorId);
+
+	
+		assetJson = GetServices(ServiceDescriptorID,serviceDescriptorId);
+		if(assetJson.getStatusCode()==200) {
+			assetResponse = assetJson.getBody().asString();
+			ExtentReport.info("ServiceId : "+ServiceDescriptorID +" is present in the available service");
+		}else {
+			ExtentReport.info("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
+			assetResponse = null;
+		}	
+	}catch(Exception e) {
+		ExtentReport.info("An execption has generated while working with getAsset and the message is : "+e.getMessage());
+	}
+	return assetResponse;		
+}
+
+public String getServiceDescriptorToken(String authorizationURL,String serviceName) {		
+
+	String strToken = null;
+	Map<String,String> form = null;
+	JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
+
+	try {
+		form = new HashMap<String,String>();
+		TestLogger.appInfo(" Populating form parameters of ClientService Authorization Token ");
+		form.put("auth_url", authorizationURL);
+		form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+		form.put("client_id", jsonData.getJsonData("SMS_ADD_ID"));
+		form.put("client_secret", jsonData.getJsonData("SMS_ADD_SECRET"));
+		form.put("resource", jsonData.getJsonData("SMS_ADD_ID"));
+		form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+		strToken = getToken(form,serviceName);	
+	}catch(Exception e) {
+		TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
+	}
+	return strToken;
+
+}
 }

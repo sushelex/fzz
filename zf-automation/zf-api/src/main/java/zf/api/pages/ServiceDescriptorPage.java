@@ -12,9 +12,17 @@ public class ServiceDescriptorPage extends ExtentReport{
 	DatabaseUtility databaseutility=new DatabaseUtility();
 	
 	public void getServiceDescriptor() {
-		restapiutility.GetService("servicedescriptorservice");
-	}
+		String getService = restapiutility.GetService("servicedescriptorservice");
 	
+	
+	}
+	public void assignServiceDescriptorToCLientWithoutAppId() {
+		String assignServiceToClientWithoutAppid = restapiutility.GetService("assignServiceToClientWithoutAppid");
+	}
+	public void getSagaStatusCLientWithoutAppId() {
+		String getSagaService = restapiutility.GetService("sagastatusfail");
+	
+	}
 	
 	public boolean AssigningServiceDescriptorWithAppidToTheClient() {
 		boolean ServiceDescriptorRequestID = false;
