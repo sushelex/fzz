@@ -1040,6 +1040,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The InitiateService url is :"+urlPropulsionType);
 				getJSON = Get(urlPropulsionType,token);
 				break;
+				
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {

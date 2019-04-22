@@ -17,11 +17,11 @@ public class PropulsionTypeTest extends PropulsionTypePage {
 		startTest(testName.getName());
 	}
 	
-//	@Test(priority=1,enabled = true)
+	@Test(priority=1,enabled = true)
 	public void TC01DeletePropulsionType() throws InterruptedException {
 		DeletePropulsionType();
 	}
-@Test(priority=0,enabled = true)
+ @Test(priority=0,enabled = true)
 	public void TC02GetSpecificPropulsionTypeDetails(){
 		getSpecificPropulsionTypeDetails();
 	}

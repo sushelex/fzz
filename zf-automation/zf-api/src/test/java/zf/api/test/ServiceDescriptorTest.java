@@ -31,7 +31,7 @@ public class ServiceDescriptorTest extends ServiceDescriptorPage{
 		getSagaStatusCLientWithoutAppId();
 			}
 	
-//	@Test
+	@Test
 	public void TCAssigningServiceDescriptorWithAppidToTheClient()
 	{
 		AssigningServiceDescriptorWithAppidToTheClient();

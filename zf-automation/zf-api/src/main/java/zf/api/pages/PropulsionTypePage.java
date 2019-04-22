@@ -29,6 +29,7 @@ public class PropulsionTypePage extends ExtentReport {
 	
 		String getService = restapiutility.GetService("getSpecificPropulsionTypeDetails");
 	}
+	
 	public void getPropulsionTypeDetails() {
 		 String getService = restapiutility.GetService("getPropulsionTypeDetails");
 			System.out.println(getService);
