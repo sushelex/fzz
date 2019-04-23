@@ -97,8 +97,9 @@
 			"USERS": "users",
 			"VEHICLE_URL": "global/asset-management-service",
 			"VEHICLES": "vehicles",
-			"REGISTRATION_URL": "global/service-catalog-service/servicecatalog",
+			"SERVICECATALOG_URL": "global/service-catalog-service/servicecatalog",
 			"REGISTRATION": "registration/register",
+			"SANDBOXSUB": "sandbox/subscribe",
 			"REJECTREGISTRATION": "registration/reject/{request id}",
 			"PROPULSIONTYPE": "propulsionTypes",
 			"SAGA": "saga",
@@ -391,6 +392,16 @@
 			"propulsionType": {
 				"name": "GAS"
 			}
+		}
+	},
+	{
+		"sandbox": {
+			"projectId": "10003",
+			"applicationId": "1",
+			"subscribedBy": "nag",
+			"divisionName": "dev",
+			"workspaceName": "dev3",
+			"location": "CENTRALINDIA"
 		}
 	}
 ]

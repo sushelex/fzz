@@ -440,10 +440,13 @@ public class RestApiUtility extends ElementManager{
 			case "vehicleTypeOne":
 				token = getVehicletoken(tauri_authorization_url,serviceName);
 				break;	
-				
-				case "serviceCatalog":
+			case "serviceCatalog":
 				token = getServiceCatalogtoken(tauri_authorization_url,serviceName);
 				break;
+			case "sandbox":
+				token = getServiceCatalogtoken(tauri_authorization_url,serviceName);
+				break;	
+				
 			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
 		}catch(Exception e) {
@@ -725,6 +728,12 @@ public class RestApiUtility extends ElementManager{
 				JsonService = (payloadValues);
 				break;
 			case "registration":
+				JsonService = (payloadValues);
+				break;	
+			case "serviceCatalog":
+				JsonService = (payloadValues);
+				break;	
+			case "sandbox":
 				JsonService = (payloadValues);
 				break;	
 			}		
@@ -1345,7 +1354,7 @@ public class RestApiUtility extends ElementManager{
 				CreateServiceString =  Post(urlRegistration,token,servicename,payloadValues);
 				break;
 			case "serviceCatalog":
-				String AcceptRegistrationUrl = jsonData.getJsonData("REGISTRATION_URL");
+				String AcceptRegistrationUrl = jsonData.getJsonData("SERVICECATALOG_URL");
 				String AcceptRegistration = jsonData.getJsonData("REGISTRATION");
 				String urlAcceptRegistration = base_url +"/"+AcceptRegistrationUrl+"/"+AcceptRegistration;
 				ExtentReport.info("The Registration url is :"+urlAcceptRegistration);
@@ -1358,8 +1367,14 @@ public class RestApiUtility extends ElementManager{
 				ExtentReport.info("The CreatePropulsion url is :"+urlCreatePropulsion);
 				CreateServiceString =  Post(urlCreatePropulsion,token,servicename,payloadValues);   
 				break;
-				
-				
+			case "sandbox":
+				String sandboxUrl = jsonData.getJsonData("SERVICECATALOG_URL");
+				String sandbox = jsonData.getJsonData("SANDBOXSUB");
+				String urlSubscribeSandbox = base_url +"/"+sandboxUrl+"/"+sandbox;
+				ExtentReport.info("The Registration url is :"+urlSubscribeSandbox);
+				CreateServiceString =  Post(urlSubscribeSandbox,token,servicename,payloadValues);
+				break;
+
 			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
@@ -1908,9 +1923,9 @@ public class RestApiUtility extends ElementManager{
 		try {
 			CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);	
 			Object clientInfoModel = CreateRegistrationRequestJson.get("clientInfoModel");
-			 String[] email = ((HashMap<String, Object>) clientInfoModel).get("email").toString().split("@");
-			 String emailFront = email[0];
-			 String emailback = email[1];
+			String[] email = ((HashMap<String, Object>) clientInfoModel).get("email").toString().split("@");
+			String emailFront = email[0];
+			String emailback = email[1];
 			((HashMap<String, Object>) clientInfoModel).put( "email",emailFront+ getRandomNumber()+"@"+emailback);
 			ExtentReport.info("Executing Post Request against RegistrationRequest using payload : "+CreateRegistrationRequestJson.toJSONString());
 			RegistrationRequestResponse = CreateServices("serviceCatalog",CreateRegistrationRequestJson);	
@@ -2195,7 +2210,7 @@ public class RestApiUtility extends ElementManager{
 
 		return vehicleTypeId;	
 	}
-	
+
 	public String getServiceCatalogtoken(String authorizationURL,String serviceName) {                        
 
 		By MICROSOFTLOGIN_EMAILUSERNAME_EB         =By.xpath("//input[@type='email']");	
