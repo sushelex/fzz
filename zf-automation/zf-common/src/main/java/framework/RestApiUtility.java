@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import net.minidev.json.JSONObject;
@@ -18,7 +19,7 @@ import io.restassured.specification.RequestSpecification;
 import framework.ExtentReport;
 
 
-public class RestApiUtility extends ExtentReport{
+public class RestApiUtility extends ElementManager{
 	public JsonReader jsonData=new JsonReader();
 	public static JsonReader jsonObj = null;
 
@@ -135,7 +136,7 @@ public class RestApiUtility extends ExtentReport{
 		return strToken;
 
 	}
-	
+
 	public String getPropulsionTypetoken(String authorizationURL,String serviceName) {		
 
 		String strToken = null;
@@ -408,12 +409,15 @@ public class RestApiUtility extends ExtentReport{
 			case "assignServiceToClientWithoutAppid":
 				token = getServiceDescriptorToken(tauri_authorization_url,serviceName);
 				break;
-			
+
 			case "getPropulsionTypeDetails":
 				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
 				break;
 			case "getSpecificPropulsionTypeDetails":
 				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
+				break;
+			case "serviceCatalog":
+				token = getServiceCatalogtoken(tauri_authorization_url,serviceName);
 				break;
 			}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
@@ -695,7 +699,7 @@ public class RestApiUtility extends ExtentReport{
 			case "chargingstation":
 				JsonService = (payloadValues);
 				break;
-			case "registration":
+			case "serviceCatalog":
 				JsonService = (payloadValues);
 				break;	
 			}		
@@ -862,7 +866,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The InitiateService url is :"+urlInitiateServiceDescriptor);
 				ServiceManagementService =  Put(urlInitiateServiceDescriptor,token,servicename,ServiceDescriptorServiceId);
 				break;
-				
+
 			}
 			TestLogger.appInfo("The PutService response is  "+ servicename +" is "+ServiceManagementService);
 		}catch(Exception e) {
@@ -946,7 +950,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The InitiateService url is :"+urlAssignService);
 				getJSON = Get(urlAssignService,token);
 				break;
-				
+
 			case "getPropulsionTypeDetails":
 				String AssetUrl = jsonData.getJsonData("ASSET_URL");
 				String PropulsionType = jsonData.getJsonData("PROPULSIONTYPE");
@@ -954,7 +958,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The InitiateService url is :"+urlPropulsionType);
 				getJSON = Get(urlPropulsionType,token);
 				break;
-			
+
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1040,7 +1044,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The InitiateService url is :"+urlPropulsionType);
 				getJSON = Get(urlPropulsionType,token);
 				break;
-				
+
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1292,13 +1296,13 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The Registration url is :"+urlRegistration);
 				CreateServiceString =  Post(urlRegistration,token,servicename,payloadValues);
 
-			case "acceptregistration":
+			case "serviceCatalog":
 				String AcceptRegistrationUrl = jsonData.getJsonData("REGISTRATION_URL");
 				String AcceptRegistration = jsonData.getJsonData("REGISTRATION");
 				String urlAcceptRegistration = base_url +"/"+AcceptRegistrationUrl+"/"+AcceptRegistration;
 				ExtentReport.info("The Registration url is :"+urlAcceptRegistration);
 				CreateServiceString =  Post(urlAcceptRegistration,token,servicename,payloadValues);	
-				
+
 			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
@@ -1379,7 +1383,6 @@ public class RestApiUtility extends ExtentReport{
 
 		}catch(Exception e) {
 			ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
-			AssetId = null;
 		}		
 
 		return AssetId;
@@ -1776,38 +1779,38 @@ public class RestApiUtility extends ExtentReport{
 
 		return result;
 	}
-	 public String createRegistrationRequestUsedEmail(String payLoad) {
-			
-			JSONObject CreateRegistrationRequestJson = null;
-			String createRegistrationRequestUsedEmailID = null;
-			Response RegistrationRequestResponse = null;
-			
-			try {
-				CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
-				CreateRegistrationRequestJson.put("registrationNumber",CreateRegistrationRequestJson.get("registrationNumber").toString() );
-				CreateRegistrationRequestJson.put("adminEmail",CreateRegistrationRequestJson.get("adminEmail").toString() );
-				CreateRegistrationRequestJson.put("requeststatus",CreateRegistrationRequestJson.get("requeststatus").toString() );
-				CreateRegistrationRequestJson.put("requestedOn",CreateRegistrationRequestJson.get("requestedOn").toString() );
-				CreateRegistrationRequestJson.put("clientInfoModel",CreateRegistrationRequestJson.get("clientInfoModel").toString() );
-				CreateRegistrationRequestJson.put("divisionId",CreateRegistrationRequestJson.get("divisionId").toString() );
-				
-				ExtentReport.info("Creating REGREQ with:"+CreateRegistrationRequestJson.toJSONString());
-				RegistrationRequestResponse = CreateServices("registration",CreateRegistrationRequestJson);	
-				
-				if( RegistrationRequestResponse!=null && RegistrationRequestResponse.getStatusCode()==200) {
-					ExtentReport.info("The created RegReq response status code is : "+RegistrationRequestResponse.getStatusCode());
-					createRegistrationRequestUsedEmailID = RegistrationRequestResponse.getBody().asString();	
-					ExtentReport.info("The created RegReq id is : "+createRegistrationRequestUsedEmailID);
-				}
-				else {
-					ExtentReport.info("The created RegReq response status code is : "+RegistrationRequestResponse.getStatusCode());
-				}
-			} catch(Exception e) {
-				ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
-				createRegistrationRequestUsedEmailID = null;
-			}		
-			return createRegistrationRequestUsedEmailID;
-		}
+	public String createRegistrationRequestUsedEmail(String payLoad) {
+
+		JSONObject CreateRegistrationRequestJson = null;
+		String createRegistrationRequestUsedEmailID = null;
+		Response RegistrationRequestResponse = null;
+
+		try {
+			CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
+			CreateRegistrationRequestJson.put("registrationNumber",CreateRegistrationRequestJson.get("registrationNumber").toString() );
+			CreateRegistrationRequestJson.put("adminEmail",CreateRegistrationRequestJson.get("adminEmail").toString() );
+			CreateRegistrationRequestJson.put("requeststatus",CreateRegistrationRequestJson.get("requeststatus").toString() );
+			CreateRegistrationRequestJson.put("requestedOn",CreateRegistrationRequestJson.get("requestedOn").toString() );
+			CreateRegistrationRequestJson.put("clientInfoModel",CreateRegistrationRequestJson.get("clientInfoModel").toString() );
+			CreateRegistrationRequestJson.put("divisionId",CreateRegistrationRequestJson.get("divisionId").toString() );
+
+			ExtentReport.info("Creating REGREQ with:"+CreateRegistrationRequestJson.toJSONString());
+			RegistrationRequestResponse = CreateServices("registration",CreateRegistrationRequestJson);	
+
+			if( RegistrationRequestResponse!=null && RegistrationRequestResponse.getStatusCode()==200) {
+				ExtentReport.info("The created RegReq response status code is : "+RegistrationRequestResponse.getStatusCode());
+				createRegistrationRequestUsedEmailID = RegistrationRequestResponse.getBody().asString();	
+				ExtentReport.info("The created RegReq id is : "+createRegistrationRequestUsedEmailID);
+			}
+			else {
+				ExtentReport.info("The created RegReq response status code is : "+RegistrationRequestResponse.getStatusCode());
+			}
+		} catch(Exception e) {
+			ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
+			createRegistrationRequestUsedEmailID = null;
+		}		
+		return createRegistrationRequestUsedEmailID;
+	}
 
 	public String AcceptRegistrationRequest(String payLoad) {
 		JSONObject AcceptRegistrationRequestJson = null;
@@ -1837,6 +1840,7 @@ public class RestApiUtility extends ExtentReport{
 		}		
 		return AcceptRegistrationRequestID;
 	}
+	@SuppressWarnings("unchecked")
 	public String CreateRegistrationRequests(String payLoad) {
 
 		JSONObject CreateRegistrationRequestJson = null;
@@ -1844,15 +1848,14 @@ public class RestApiUtility extends ExtentReport{
 		Response RegistrationRequestResponse = null;
 
 		try {
-			CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
-			CreateRegistrationRequestJson.put("registrationNumber",CreateRegistrationRequestJson.get("registrationNumber").toString() + getRandomNumber());
-			CreateRegistrationRequestJson.put("adminEmail",CreateRegistrationRequestJson.get("adminEmail").toString() + getRandomNumber());
-			CreateRegistrationRequestJson.put("requeststatus",CreateRegistrationRequestJson.get("requeststatus").toString() + getRandomNumber());
-			CreateRegistrationRequestJson.put("requestedOn",CreateRegistrationRequestJson.get("requestedOn").toString() + getRandomNumber(10,100));
-			CreateRegistrationRequestJson.put("clientInfoId",CreateRegistrationRequestJson.get("clientInfoModel"));
-
+			CreateRegistrationRequestJson = JsonReader.getJsonObject(payLoad);	
+			Object clientInfoModel = CreateRegistrationRequestJson.get("clientInfoModel");
+			 String[] email = ((HashMap<String, Object>) clientInfoModel).get("email").toString().split("@");
+			 String emailFront = email[0];
+			 String emailback = email[1];
+			((HashMap<String, Object>) clientInfoModel).put( "email",emailFront+ getRandomNumber()+"@"+emailback);
 			ExtentReport.info("Executing Post Request against RegistrationRequest using payload : "+CreateRegistrationRequestJson.toJSONString());
-			RegistrationRequestResponse = CreateServices("registration",CreateRegistrationRequestJson);	
+			RegistrationRequestResponse = CreateServices("serviceCatalog",CreateRegistrationRequestJson);	
 
 			if( RegistrationRequestResponse!=null && RegistrationRequestResponse.getStatusCode()==200) {
 				ExtentReport.info("The created RegistrationRequest response status code is : "+RegistrationRequestResponse.getStatusCode());
@@ -1861,7 +1864,7 @@ public class RestApiUtility extends ExtentReport{
 				ExtentReport.info("The created RegistrationRequest id is : "+RegistrationReqestID);
 			}
 			else {
-				ExtentReport.info("The created Registration Request response status code is : "+RegistrationRequestResponse.getStatusCode());
+				ExtentReport.testFailed("The created Registration Request response status code is : "+RegistrationRequestResponse.getStatusCode());
 			}
 
 
@@ -1873,23 +1876,23 @@ public class RestApiUtility extends ExtentReport{
 		return RegistrationReqestID;
 	}
 
-public String rejectRegistrationRequests(String payLoad) {
-		
+	public String rejectRegistrationRequests(String payLoad) {
+
 		JSONObject RejectRegistrationRequestJson = null;
 		String RejectRegistrationReqestID = null;
 		Response RejectRegistrationRequestResponse = null;
-		
+
 		try {
 			RejectRegistrationRequestJson = JsonReader.getJsonObject(payLoad);			
 			RejectRegistrationRequestJson.put("action",RejectRegistrationRequestJson.get("action").toString());
 			RejectRegistrationRequestJson.put("message",RejectRegistrationRequestJson.get("message").toString());
 			RejectRegistrationRequestJson.put("id_ext",RejectRegistrationRequestJson.get("id_ext").toString());
 
-				
+
 			ExtentReport.info("Executing put Request against RejectRegistrationRequest using payload : "+RejectRegistrationRequestJson.toJSONString());
 			//ExtentReport.info("Created ChargingStationData payload is "+CreateChargingStationJson.toJSONString());
 			RejectRegistrationRequestResponse = CreateServices("rejectRegistration",RejectRegistrationRequestJson);	
-			
+
 			if( RejectRegistrationRequestResponse!=null && RejectRegistrationRequestResponse.getStatusCode()==200) {
 				ExtentReport.info("The Rejected RegistrationRequest response status code is : "+RejectRegistrationRequestResponse.getStatusCode());
 				ExtentReport.info("The Rejected RegistrationRequest response is : "+RejectRegistrationRequestResponse.getBody().asString());
@@ -1899,136 +1902,174 @@ public String rejectRegistrationRequests(String payLoad) {
 			else {
 				ExtentReport.info("The Rejected Registration Request response status code is : "+RejectRegistrationRequestResponse.getStatusCode());
 			}
-			
-		
+
+
 		}catch(Exception e) {
 			ExtentReport.info("An exception has occured while Reject Registration Request payload: "+payLoad);
 			RejectRegistrationReqestID = null;
 		}		
-		
+
 		return RejectRegistrationReqestID;
 	}
 
-/*
- * ****************************************************************************** 
- * Name : DeletePropulsionType 
- * Parameters : createpropulsionID(id of the User)	 
- * Purpose : For deleting the specific user using User Id
- * ******************************************************************************
- */
-public boolean DeletePropulsionType(String propulsionID) {
+	/*
+	 * ****************************************************************************** 
+	 * Name : DeletePropulsionType 
+	 * Parameters : createpropulsionID(id of the User)	 
+	 * Purpose : For deleting the specific user using User Id
+	 * ******************************************************************************
+	 */
+	public boolean DeletePropulsionType(String propulsionID) {
 
-	Response deletePropulsionTypeResponse = null;		
-	boolean result = false;
-	String PropulsionTypeId = null;
+		Response deletePropulsionTypeResponse = null;		
+		boolean result = false;
+		String PropulsionTypeId = null;
 
-	try {
-		PropulsionTypeId = (String)JsonReader.getJsonObject(propulsionID).get("id");
-	}catch(Exception e) {
-		PropulsionTypeId = propulsionID;
+		try {
+			PropulsionTypeId = (String)JsonReader.getJsonObject(propulsionID).get("id");
+		}catch(Exception e) {
+			PropulsionTypeId = propulsionID;
+		}
+
+		ExtentReport.info("Executing Delete Request against User using userId : "+PropulsionTypeId);
+
+		deletePropulsionTypeResponse = DeleteServices("propulsionType",PropulsionTypeId);
+
+		if( deletePropulsionTypeResponse!=null && deletePropulsionTypeResponse.getStatusCode()==204) {
+			ExtentReport.info("The deleteted user id "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
+			ExtentReport.info("The deleteted user id "+PropulsionTypeId+" response is "+deletePropulsionTypeResponse.getBody().asString());
+			ExtentReport.info("The user with userid "+PropulsionTypeId+" is deleted successfully");
+			result = true;
+		}
+		else {
+			ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
+			ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getBody().jsonPath().getString("message"));
+			ExtentReport.info("The user with userid "+PropulsionTypeId+" is not deleted successfully");
+			result = false;
+		}
+
+		return result;
 	}
 
-	ExtentReport.info("Executing Delete Request against User using userId : "+PropulsionTypeId);
+	/*
+	 * ****************************************************************************** 
+	 * Name : ServiceDescriptorWithAppidToTheClient
+	 * ******************************************************************************
+	 */
+	public boolean ServiceDescriptorWithAppidToTheClient(String payLoad) {
 
-	deletePropulsionTypeResponse = DeleteServices("propulsionType",PropulsionTypeId);
+		JSONObject ServiceDescriptorRequestJson = null;
+		Response ServiceDescriptorResponse = null;		
+		boolean result = false;
+		String ServiceDescriptorClientId=null;
+		ServiceDescriptorRequestJson = JsonReader.getJsonObject(payLoad);		
+		ServiceDescriptorClientId=(String)JsonReader.getJsonObject(payLoad).get("client1id");
 
-	if( deletePropulsionTypeResponse!=null && deletePropulsionTypeResponse.getStatusCode()==204) {
-		ExtentReport.info("The deleteted user id "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
-		ExtentReport.info("The deleteted user id "+PropulsionTypeId+" response is "+deletePropulsionTypeResponse.getBody().asString());
-		ExtentReport.info("The user with userid "+PropulsionTypeId+" is deleted successfully");
-		result = true;
-	}
-	else {
-		ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getStatusCode());
-		ExtentReport.info("The deleteted user "+PropulsionTypeId+" status code is "+deletePropulsionTypeResponse.getBody().jsonPath().getString("message"));
-		ExtentReport.info("The user with userid "+PropulsionTypeId+" is not deleted successfully");
-		result = false;
-	}
+		ExtentReport.info("Executing Put Request against User using userId : "+ServiceDescriptorClientId);
 
-	return result;
-	}
+		ServiceDescriptorResponse = PutServices("ServiceDescriptorWithAppId",ServiceDescriptorRequestJson);
 
-/*
- * ****************************************************************************** 
- * Name : ServiceDescriptorWithAppidToTheClient
- * ******************************************************************************
- */
-public boolean ServiceDescriptorWithAppidToTheClient(String payLoad) {
-	
-	JSONObject ServiceDescriptorRequestJson = null;
-	Response ServiceDescriptorResponse = null;		
-	boolean result = false;
-	String ServiceDescriptorClientId=null;
-	ServiceDescriptorRequestJson = JsonReader.getJsonObject(payLoad);		
-	ServiceDescriptorClientId=(String)JsonReader.getJsonObject(payLoad).get("client1id");
+		if( ServiceDescriptorResponse!=null && ServiceDescriptorResponse.getStatusCode()==202) {
+			ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
+			ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().asString());
+			ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is successfully");
+			result = true;
+		}
+		else {
+			ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
+			ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().jsonPath().getString("message"));
+			ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is not successfully");
+			result = false;
+		}
 
-	ExtentReport.info("Executing Put Request against User using userId : "+ServiceDescriptorClientId);
-
-	ServiceDescriptorResponse = PutServices("ServiceDescriptorWithAppId",ServiceDescriptorRequestJson);
-
-	if( ServiceDescriptorResponse!=null && ServiceDescriptorResponse.getStatusCode()==202) {
-		ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
-		ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().asString());
-		ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is successfully");
-		result = true;
-	}
-	else {
-		ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
-		ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().jsonPath().getString("message"));
-		ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is not successfully");
-		result = false;
+		return result;
 	}
 
-	return result;
+	//DD
+	public String GetService(String ServiceDescriptorID) {
+		Response assetJson = null;			
+		String serviceDescriptorId = null;
+		String assetResponse = null;
+
+		try {
+			//serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
+
+			ExtentReport.info("Getting Asset details using assetId : "+serviceDescriptorId);
+
+
+			assetJson = GetServices(ServiceDescriptorID);
+			if(assetJson.getStatusCode()==200) {
+				assetResponse = assetJson.getBody().asString();
+
+				ExtentReport.info("ServiceId : "+ServiceDescriptorID +" is present in the available service");
+			}else {
+				testFailed("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
+				assetResponse = null;
+			}	
+		}catch(Exception e) {
+			ExtentReport.info("An execption has generated while working with getAsset and the message is : "+e.getMessage());
+		}
+		return assetResponse;		
 	}
 
-//DD
-public String GetService(String ServiceDescriptorID) {
-	Response assetJson = null;			
-	String serviceDescriptorId = null;
-	String assetResponse = null;
+	public String getServiceDescriptorToken(String authorizationURL,String serviceName) {		
 
-	try {
-		//serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
-		
-	ExtentReport.info("Getting Asset details using assetId : "+serviceDescriptorId);
+		String strToken = null;
+		Map<String,String> form = null;
+		JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
 
-	
-		assetJson = GetServices(ServiceDescriptorID);
-		if(assetJson.getStatusCode()==200) {
-			assetResponse = assetJson.getBody().asString();
-			
-			ExtentReport.info("ServiceId : "+ServiceDescriptorID +" is present in the available service");
-		}else {
-			testFailed("Asset with AssetId "+ServiceDescriptorID +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
-			assetResponse = null;
-		}	
-	}catch(Exception e) {
-		ExtentReport.info("An execption has generated while working with getAsset and the message is : "+e.getMessage());
+		try {
+			form = new HashMap<String,String>();
+			TestLogger.appInfo(" Populating form parameters of ClientService Authorization Token ");
+			form.put("auth_url", authorizationURL);
+			form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
+			form.put("client_id", jsonData.getJsonData("SMS_ADD_ID"));
+			form.put("client_secret", jsonData.getJsonData("SMS_ADD_SECRET"));
+			form.put("resource", jsonData.getJsonData("SMS_ADD_ID"));
+			form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
+			strToken = getToken(form,serviceName);	
+		}catch(Exception e) {
+			TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
+		}
+		return strToken;
+
 	}
-	return assetResponse;		
-}
 
-public String getServiceDescriptorToken(String authorizationURL,String serviceName) {		
+	public String getServiceCatalogtoken(String authorizationURL,String serviceName) {                        
 
-	String strToken = null;
-	Map<String,String> form = null;
-	JsonReader.getJsonObject(EnvironmentManager.getEnvironmentFile());
+		By MICROSOFTLOGIN_EMAILUSERNAME_EB         =By.xpath("//input[@type='email']");	
+		By MICROSOFTLOGIN_EMAILPASSWORD_EB         =By.id("i0118");
+		By MICROSOFTLOGIN_NEXT_BT                  =By.id("idSIButton9");
+		By MICROSOFTLOGIN_STAYSIGNIN_BT            =By.xpath("//input[@id='idBtn_Back']");
+		String strToken = null;
 
-	try {
-		form = new HashMap<String,String>();
-		TestLogger.appInfo(" Populating form parameters of ClientService Authorization Token ");
-		form.put("auth_url", authorizationURL);
-		form.put("grant_type", jsonData.getJsonData("GRANT_TYPE"));
-		form.put("client_id", jsonData.getJsonData("SMS_ADD_ID"));
-		form.put("client_secret", jsonData.getJsonData("SMS_ADD_SECRET"));
-		form.put("resource", jsonData.getJsonData("SMS_ADD_ID"));
-		form.put("Content-Type", jsonData.getJsonData("AUTHORIZATION_CONTENT_TYPE"));
-		strToken = getToken(form,serviceName);	
-	}catch(Exception e) {
-		TestLogger.errorMessage("An exception has occured while populating form parameters of ClientAuthorization Token "+e.getMessage());
+		try {
+
+			DriverManager.getDriver(EnvironmentManager.getBrowserName());
+			DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getAzureUrl());
+
+			elementSendKeys(MICROSOFTLOGIN_EMAILUSERNAME_EB,"shaik.ansari@sasken.com");
+			elementClick(MICROSOFTLOGIN_NEXT_BT);
+			if(elementDisplayed(MICROSOFTLOGIN_EMAILPASSWORD_EB)) {
+				elementSendKeyWithActions(MICROSOFTLOGIN_EMAILPASSWORD_EB,passwordDecript("Peace!23"));
+				waitElementVisibleClick(MICROSOFTLOGIN_NEXT_BT,100);
+				elementClick(MICROSOFTLOGIN_STAYSIGNIN_BT);
+			}
+			sleep(6000);
+			DriverManager.getDriverInstance().navigate().to(EnvironmentManager.getServieCatalogTokenUrl());
+			String currentUrl = DriverManager.getDriverInstance().getCurrentUrl();
+			String[] splitbefore = currentUrl.split("=");
+			String[] splitafter = splitbefore[1].split("&");
+			strToken = splitafter[0];
+			DriverManager.getDriverInstance().close();
+		}catch(Exception e) {
+			TestLogger.errorMessage("An exception has occured while populatsing form parameters of ClientAuthorization Token "+e.getMessage());
+		}
+		return strToken;
+
 	}
-	return strToken;
 
-}
+
+
+
 }

@@ -16,19 +16,24 @@ public class RegistrationRequestApiTest extends RegistrationRequestApiPage{
 		startTest(testName.getName());
 	}
 	
-	@Test(priority=1,enabled = true)
+	@Test(priority=1,enabled = false)
 	public void AcceptRegistrationRequest() throws InterruptedException {
 		acceptRegistrationRequest();
 	}
 	
-	@Test(priority=1,enabled = true)
+	@Test(priority=1,enabled = false)
 	public void RejectRegistrationRequest() throws InterruptedException {
 		rejectRegistrationRequest();
 		
 	}
+	@Test(priority=1,enabled = false)
+	public void CreateRegistrationRequestUsedEmail() throws InterruptedException {
+		createRegistrationRequestUsedEmail();
+	}
+	
 	@Test(priority=1,enabled = true)
 	public void CreateRegistrationRequest() throws InterruptedException {
-		createRegistrationRequestUsedEmail();
+		createRegistrationRequest();
 	}
 	
 	@AfterMethod
