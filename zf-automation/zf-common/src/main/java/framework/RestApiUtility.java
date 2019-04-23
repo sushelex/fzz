@@ -331,7 +331,19 @@ public class RestApiUtility extends ElementManager{
 			case "assignServiceToClientWithoutAppid":
 				setFormParameters(httpRequest,form);
 				break;
+			case "propulsion":
+				setFormParameters(httpRequest,form);
+				break;
 
+			case "VehicleType":
+				setFormParameters(httpRequest,form);
+				break;
+			case "vehicleType":
+				setFormParameters(httpRequest,form);
+				break;
+			case "vehicleTypeOne":
+				setFormParameters(httpRequest,form);
+				break;
 			}
 
 			response = httpRequest.request(Method.POST);	
@@ -416,7 +428,20 @@ public class RestApiUtility extends ElementManager{
 			case "getSpecificPropulsionTypeDetails":
 				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
 				break;
-			case "serviceCatalog":
+			case "propulsion":
+				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
+				break;
+			case "VehicleType":
+				token = getVehicletoken(tauri_authorization_url,serviceName);
+				break;	
+			case "vehicleType":
+				token = getVehicletoken(tauri_authorization_url,serviceName);
+				break;
+			case "vehicleTypeOne":
+				token = getVehicletoken(tauri_authorization_url,serviceName);
+				break;	
+				
+				case "serviceCatalog":
 				token = getServiceCatalogtoken(tauri_authorization_url,serviceName);
 				break;
 			}
@@ -699,7 +724,7 @@ public class RestApiUtility extends ElementManager{
 			case "chargingstation":
 				JsonService = (payloadValues);
 				break;
-			case "serviceCatalog":
+			case "registration":
 				JsonService = (payloadValues);
 				break;	
 			}		
@@ -959,6 +984,20 @@ public class RestApiUtility extends ElementManager{
 				getJSON = Get(urlPropulsionType,token);
 				break;
 
+			case "vehicleType":
+				String VehicleTypesUrl = jsonData.getJsonData("VEHICLE_URL");
+				String VehicleTypes = jsonData.getJsonData("VEHICLETYPE");
+				String urlVehicleTypes = base_url +"/"+VehicleTypesUrl+"/"+VehicleTypes;
+				ExtentReport.info("The vehicle url is :"+urlVehicleTypes);
+				getJSON = Get(urlVehicleTypes,token);
+				break;
+			case "vehicleTypeOne":
+				String VehicleTypesOneUrl = jsonData.getJsonData("VEHICLE_URL");
+				String VehicleTypesOne = jsonData.getJsonData("VEHICLETYPE");
+				String VehicleTypesOneID = jsonData.getJsonData("VEHICLETYPEONE");
+				String urlVehicleTypesOne = base_url +"/"+VehicleTypesOneUrl+"/"+VehicleTypesOne+"/"+VehicleTypesOneID;
+				ExtentReport.info("The vehicle url is :"+urlVehicleTypesOne);
+				getJSON = Get(urlVehicleTypesOne,token);
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1043,6 +1082,14 @@ public class RestApiUtility extends ElementManager{
 				String urlPropulsionType = base_url +"/"+AssetUrl+"/"+PropulsionType+"/"+serviceId;
 				ExtentReport.info("The InitiateService url is :"+urlPropulsionType);
 				getJSON = Get(urlPropulsionType,token);
+				break;
+			case "vehicleTypeOne":
+				String VehicleTypesOneUrl = jsonData.getJsonData("VEHICLE_URL");
+				String VehicleTypesOne = jsonData.getJsonData("VEHICLETYPE");
+				String VehicleTypesOneID = jsonData.getJsonData("VEHICLETYPEONE");
+				String urlVehicleTypesOne = base_url +"/"+VehicleTypesOneUrl+"/"+VehicleTypesOne+"/"+VehicleTypesOneID;
+				ExtentReport.info("The vehicle url is :"+urlVehicleTypesOne);
+				getJSON = Get(urlVehicleTypesOne,token);
 				break;
 
 			}
@@ -1289,20 +1336,30 @@ public class RestApiUtility extends ElementManager{
 				String urlChargingStations = base_url +"/"+ChargingStationsUrl+"/"+ChargingStations;
 				ExtentReport.info("The Charging Station url is :"+urlChargingStations);
 				CreateServiceString =  Post(urlChargingStations,token,servicename,payloadValues);
+				break;
 			case "registration":
 				String RegistrationUrl = jsonData.getJsonData("REGISTRATION_URL");
 				String Registration = jsonData.getJsonData("REGISTRATION");
 				String urlRegistration = base_url +"/"+RegistrationUrl+"/"+Registration;
 				ExtentReport.info("The Registration url is :"+urlRegistration);
 				CreateServiceString =  Post(urlRegistration,token,servicename,payloadValues);
-
+				break;
 			case "serviceCatalog":
 				String AcceptRegistrationUrl = jsonData.getJsonData("REGISTRATION_URL");
 				String AcceptRegistration = jsonData.getJsonData("REGISTRATION");
 				String urlAcceptRegistration = base_url +"/"+AcceptRegistrationUrl+"/"+AcceptRegistration;
 				ExtentReport.info("The Registration url is :"+urlAcceptRegistration);
-				CreateServiceString =  Post(urlAcceptRegistration,token,servicename,payloadValues);	
-
+				CreateServiceString =  Post(urlAcceptRegistration,token,servicename,payloadValues);
+				break;
+			case "propulsion":
+				String CreatePropulsionUrl = jsonData.getJsonData("PROPULSION_URL");
+				String CreatePropulsion = jsonData.getJsonData("PROPULSION");
+				String urlCreatePropulsion = base_url +"/"+CreatePropulsionUrl+"/"+CreatePropulsion;
+				ExtentReport.info("The CreatePropulsion url is :"+urlCreatePropulsion);
+				CreateServiceString =  Post(urlCreatePropulsion,token,servicename,payloadValues);   
+				break;
+				
+				
 			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
@@ -1383,6 +1440,7 @@ public class RestApiUtility extends ElementManager{
 
 		}catch(Exception e) {
 			ExtentReport.info("An exception has occured while Creating Asset payload: "+payLoad);
+			AssetId = null;
 		}		
 
 		return AssetId;
@@ -2035,6 +2093,109 @@ public class RestApiUtility extends ElementManager{
 
 	}
 
+	public String getVehicleTypeDetails() {
+		Response vehicleTypeJson = null;			
+		String vehicleTypeId = null;
+		String vehicleTypeResponse = null;
+
+		try {
+			vehicleTypeJson = GetServices("vehicleType");
+			if(vehicleTypeJson.getStatusCode()==200) {
+				//			ExtentReport.info("VehicleType with vehicleTypeId "+vehicleTypeId +" is present in the available VehiclesTypes");
+				//			ExtentReport.info("VehicleType with vehicleTypeId "+vehicleTypeId +" is present in the available VehiclesTypes and its response body is : "+ vehicleTypeJson.getBody().asString());			
+				ExtentReport.info("");
+				vehicleTypeResponse = vehicleTypeJson.getBody().asString();
+			}else {
+				ExtentReport.info("Vehicle with vehicleId "+vehicleTypeId +" is not present in the available Vehicles");
+				vehicleTypeResponse = null;
+			}	
+		}catch(Exception e) {
+			ExtentReport.info("An execption has generated while working with getvehicle and the message is : "+e.getMessage());
+		}
+		return vehicleTypeResponse;
+	}
+	//vinidhiee 22ndApril 2019
+	public String getVehicleTypeOneDetails() {
+		Response vehicleTypeJson = null;			
+		String vehicleTypeId = null;
+		String vehicleTypeResponse = null;
+
+		try {
+			vehicleTypeJson = GetServices("vehicleTypeOne");
+			if(vehicleTypeJson.getStatusCode()==200) {
+				//			ExtentReport.info("VehicleType with vehicleTypeId "+vehicleTypeId +" is present in the available VehiclesTypes");
+				//			ExtentReport.info("VehicleType with vehicleTypeId "+vehicleTypeId +" is present in the available VehiclesTypes and its response body is : "+ vehicleTypeJson.getBody().asString());			
+				ExtentReport.info("");
+				vehicleTypeResponse = vehicleTypeJson.getBody().asString();
+			}else {
+				ExtentReport.info("Vehicle with vehicleId "+vehicleTypeId +" is not present in the available Vehicles");
+				vehicleTypeResponse = null;
+			}	
+		}catch(Exception e) {
+			ExtentReport.info("An execption has generated while working with getvehicle and the message is : "+e.getMessage());
+		}
+		return vehicleTypeResponse;
+	}
+
+	public String CreatePropulsionType(String payLoad) {
+		JSONObject CreatePropulsionTypeJson = null;
+		String CreatePropulsionTypeID = null;
+		Response CreatePropulsionTypeResponse = null;
+
+		try {
+			CreatePropulsionTypeJson = JsonReader.getJsonObject(payLoad);
+			CreatePropulsionTypeJson.put("name",CreatePropulsionTypeJson.get("name").toString() );
+
+			ExtentReport.info("Create Propulsion Type with:"+CreatePropulsionTypeJson.toJSONString());
+			CreatePropulsionTypeResponse = CreateServices("propulsion",CreatePropulsionTypeJson);	
+
+			if( CreatePropulsionTypeResponse!=null && CreatePropulsionTypeResponse.getStatusCode()==200) {
+				ExtentReport.info("The Create Propulsion Type status code is : "+CreatePropulsionTypeResponse.getStatusCode());
+				CreatePropulsionTypeID = CreatePropulsionTypeResponse.getBody().asString();	
+				ExtentReport.info("Create Propulsion Type id is : "+CreatePropulsionTypeID);
+			}
+			else {
+				Assert.fail("The Create Propulsion Type response status code is : "+CreatePropulsionTypeResponse.getStatusCode());
+			}
+		} catch(Exception e) {
+			ExtentReport.info("An exception has occured while Creating PropulsionType payload: "+payLoad);
+			CreatePropulsionTypeID = null;
+		}		
+		return CreatePropulsionTypeID;
+	}
+
+	public String CreateVehicleType(String payLoad) {
+		JSONObject CreateVehicleTypeJson = null;
+		String vehicleTypeId = null;
+		Response vehicleTypeResponse = null;
+
+		try {
+			CreateVehicleTypeJson = JsonReader.getJsonObject(payLoad);			
+			CreateVehicleTypeJson.put("name",CreateVehicleTypeJson.get("name").toString() + getRandomNumber());
+			CreateVehicleTypeJson.put("description",CreateVehicleTypeJson.get("description").toString() + getRandomNumber());	
+
+			ExtentReport.info("Creating Vehicle with:"+CreateVehicleTypeJson.toJSONString());
+			vehicleTypeResponse = CreateServices("VehicleType",CreateVehicleTypeJson);	
+
+			if( vehicleTypeResponse!=null && vehicleTypeResponse.getStatusCode()==200) {
+				ExtentReport.info("The created VehicleType response status code is : "+vehicleTypeResponse.getStatusCode());
+				vehicleTypeId = vehicleTypeResponse.getBody().asString();	
+				ExtentReport.info("The created VehicleType id is : "+vehicleTypeId);
+			}
+			else {
+				ExtentReport.info("The created VehicleType response status code is : "+vehicleTypeResponse.getStatusCode());
+
+			}
+
+
+		}catch(Exception e) {
+			ExtentReport.info("An exception has occured while Creating VehicleType payload: "+payLoad);
+			vehicleTypeId = null;
+		}		
+
+		return vehicleTypeId;	
+	}
+	
 	public String getServiceCatalogtoken(String authorizationURL,String serviceName) {                        
 
 		By MICROSOFTLOGIN_EMAILUSERNAME_EB         =By.xpath("//input[@type='email']");	
@@ -2068,8 +2229,5 @@ public class RestApiUtility extends ElementManager{
 		return strToken;
 
 	}
-
-
-
 
 }

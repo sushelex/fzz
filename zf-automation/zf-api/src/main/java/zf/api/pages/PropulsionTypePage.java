@@ -34,4 +34,15 @@ public class PropulsionTypePage extends ExtentReport {
 		 String getService = restapiutility.GetService("getPropulsionTypeDetails");
 			System.out.println(getService);
 	}
+	
+	public String createPropulsionType() {
+		String createPropulsionTypeID = null;
+		try {
+			createPropulsionTypeID = restapiutility.CreatePropulsionType("CreatePropulsionType");
+
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return createPropulsionTypeID;
+	}
 }

@@ -21,19 +21,19 @@ public class AssetApiTest extends AssetApiPage{
 		createAsset();
 	}
 	
-	@Test(priority=1,enabled = true)
+	//@Test(priority=1,enabled = true)
 	public void ValidatenewlycreatedAssetInDB() throws InterruptedException {
 		String assetID = createAsset();
 		validateNewAssetInDB(assetID);
 	}
 	
-	@Test(priority=1,enabled = true)
+	//@Test(priority=1,enabled = true)
 	public void ValidatenewlycreatedAssetUsingApi() {
 		String assetID = createAsset();
 		validateNewAssetusingGetAPI(assetID);
 	}
 	
-	@Test(priority=1,enabled = true)
+	//@Test(priority=1,enabled = true)
 	public void DeleteAssetInDB() {
 		String assetID = createAsset();
 		deleteAssetInDB(assetID);

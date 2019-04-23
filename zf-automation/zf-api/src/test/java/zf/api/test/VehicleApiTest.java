@@ -16,26 +16,26 @@ public class VehicleApiTest extends VehicleApiPage{
 		startTest(testName.getName());
 	}
 	
-	@Test(priority=1,enabled = true)
-	public void CreateVehicle() throws InterruptedException {
-		createVehicle();
+	@Test
+	public void CreateNewVehicle() throws InterruptedException {
+		createVehicleType();
 	}
 	
-	@Test(priority=1,enabled = true)
-	public void ValidatenewlycreatedVehicleInDB() throws InterruptedException {
-		String VehicleID = createVehicle();
-		validateNewVehicleInDB(VehicleID);
+	@Test
+	public void ValidateAllAvailableVehicleTypes() throws InterruptedException {
+		validateVehicleTypeGetAPI();
 	}
 	
-	@Test(priority=1,enabled = true)
-	public void ValidatenewlycreatedVehicleUsingApi() {
-		String VehicleID = createVehicle();
-		validateNewVehicleusingGetAPI(VehicleID);
+	@Test
+	public void ValidateDetailsOfSpecificVehicleType() throws InterruptedException {
+		String vehicleTypeID = createVehicleType();
+		validateNewVehicleusingGetAPI(vehicleTypeID);
 	}
 	
+		
 	@Test(priority=1,enabled = true)
 	public void DeleteVehicleInDB() {
-		String VehicleID = createVehicle();
+		String VehicleID = createVehicleType();
 		deleteVehicleInDB(VehicleID);
 	}
 	

@@ -20,16 +20,16 @@ public class VehicleApiPage extends ExtentReport {
 	boolean vehicleDelete = false;	
 	
 	
-	public String createVehicle() {
-		
+	public String createVehicleType() {
+		String vehicleTypeID = null;
 		try {
-			JsonReader.getJsonObject(EnvironmentManager.getSqlServer().trim());
-			 vehicleID = restapiutility.CreateVehicle("CreateVehicleData");
-			
+			vehicleTypeID = restapiutility.CreateVehicleType("CreateVehicleTypeData");
+
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return vehicleID;
+		return vehicleTypeID;
+
 	}
 	
 	public void validateNewVehicleusingGetAPI(String vehicleID) {
@@ -89,6 +89,21 @@ public class VehicleApiPage extends ExtentReport {
 		}
 	}
 	
+	
+	public void validateVehicleTypeGetAPI() {
+		try {
+			 String getVehicleTypeDetails = restapiutility.getVehicleTypeDetails();
+//			 String getVehicleTypeDetails = restapiutility.GetVehicleTypeDetails();
+			System.out.println(getVehicleTypeDetails);
+			if(getVehicleTypeDetails!= null) {
+				ExtentReport.testPassed("Value from GetAPI "+getVehicleTypeDetails.toString()+" ");
+			}else {
+				testFailed("GetAPI does not containsvehicle details" );
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	
 

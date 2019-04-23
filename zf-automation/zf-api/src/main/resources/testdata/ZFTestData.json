@@ -101,13 +101,16 @@
 			"REGISTRATION": "registration/register",
 			"REJECTREGISTRATION": "registration/reject/{request id}",
 			"PROPULSIONTYPE": "propulsionTypes",
-			"SAGA":"saga",
-			"SERVICEID":"cjujudzok00350116m3sns43y",
-			"CLIENTID":"19309c32-1769-42ba-9829-d18d5e9e072d",
+			"SAGA": "saga",
+			"SERVICEID": "cjujudzok00350116m3sns43y",
+			"CLIENTID": "19309c32-1769-42ba-9829-d18d5e9e072d",
 			"SERVICE": "service",
-			"SERVICESID":"100ffb69-cca0-4c90-be42-b3b0239120b8",
-			"STATUS":"status",
-			"CLIENT_USES_SERVICE":"CLIENT_USES_SERVICE"
+			"SERVICESID": "100ffb69-cca0-4c90-be42-b3b0239120b8",
+			"STATUS": "status",
+			"CLIENT_USES_SERVICE": "CLIENT_USES_SERVICE",
+			"PROPULSION_URL": "global/asset-management-service",
+			"PROPULSION": "propulsionTypes",
+			"VEHICLETYPE": "vehicleTypes"
 		}
 	},
 	{
@@ -350,16 +353,44 @@
 			"client1id": "19309c32-1769-42ba-9829-d18d5e9e072d",
 			"ServiceId": "10c7b95b-6deb-432d-a6d0-a9d30f9b4def"
 		}
-	},  {
-	     "assignServiceToClientWithoutAppid":{
-	     	 "status": "/saga/cjujudzok00350116m3sns43y/status/CLIENT_USES_SERVICE",
-  "audit": "/saga/cjujudzok00350116m3sns43y/?type=CLIENT_USES_SERVICE"
-	     }
-	},  {
-	     "sagastatusfail":{
-	     	 "operation": "CREATE",
-  "status": "FAIL",
-  "type": "CLIENT_USES_SERVICE"
-	     }
+	},
+	{
+		"assignServiceToClientWithoutAppid": {
+			"status": "/saga/cjujudzok00350116m3sns43y/status/CLIENT_USES_SERVICE",
+			"audit": "/saga/cjujudzok00350116m3sns43y/?type=CLIENT_USES_SERVICE"
+		}
+	},
+	{
+		"sagastatusfail": {
+			"operation": "CREATE",
+			"status": "FAIL",
+			"type": "CLIENT_USES_SERVICE"
+		}
+	},
+	{
+		"CreatePropulsionType": {
+			"name": "test_propulsion_sasken_3"
+		}
+	},
+	{
+		"CreateVehicleTypeData": {
+			"name": "pulser203 test 080219-3",
+			"description": "Bajaj Pulser_2",
+			"assetType": {
+				"name": "VEHICLE_ASSET_TYPE_pulser_203"
+			},
+			"clientIdList": [
+				"49a3bc07-2309-48df-8959-732297707e65"
+			],
+			"licensePlate": "pulser-201 test 080218-9",
+			"vin": "98765432333347774",
+			"vehicleType": {
+				"name": "Motor Cycle"
+			},
+			"vehicleModel": null,
+			"propulsionType": {
+				"name": "GAS"
+			}
+		}
 	}
 ]
