@@ -2075,11 +2075,11 @@ public class RestApiUtility extends ElementManager{
 	 * Name : ServiceDescriptorWithAppidToTheClient
 	 * ******************************************************************************
 	 */
-	public boolean ServiceDescriptorWithAppidToTheClient(String payLoad) {
+	public String ServiceDescriptorWithAppidToTheClient(String payLoad) {
 
 		JSONObject ServiceDescriptorRequestJson = null;
 		Response ServiceDescriptorResponse = null;		
-		boolean result = false;
+		String result = null;
 		String ServiceDescriptorClientId=null;
 		ServiceDescriptorRequestJson = JsonReader.getJsonObject(payLoad);		
 		ServiceDescriptorClientId=(String)JsonReader.getJsonObject(payLoad).get("client1id");
@@ -2092,13 +2092,12 @@ public class RestApiUtility extends ElementManager{
 			ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
 			ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().asString());
 			ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is successfully");
-			result = true;
+			result=ServiceDescriptorResponse.jsonPath().getJsonObject("status");
 		}
 		else {
 			ExtentReport.info("The user id "+ServiceDescriptorClientId+" status code is "+ServiceDescriptorResponse.getStatusCode());
 			ExtentReport.info("The user id "+ServiceDescriptorClientId+" response is "+ServiceDescriptorResponse.getBody().jsonPath().getString("message"));
 			ExtentReport.info("The user with userid "+ServiceDescriptorClientId+" response is not successfully");
-			result = false;
 		}
 
 		return result;
