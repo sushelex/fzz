@@ -11,6 +11,7 @@ import zf.api.pages.ServiceDescriptorPage;
 
 public class ServiceDescriptorTest extends ServiceDescriptorPage{
 
+	public String SagaStatus;
 	@BeforeMethod
 	public void beforeMethod(Method testName) {
 		startTest(testName.getName());
@@ -25,23 +26,25 @@ public class ServiceDescriptorTest extends ServiceDescriptorPage{
 	public void AssignServiceDescriptorToCLientWithoutAppId() throws InterruptedException {
 		assignServiceDescriptorToCLientWithoutAppId();
 			}
-	
 	@Test(priority=1,enabled = true)
 	public void GetSagaStatusCLientWithoutAppId() throws InterruptedException {
 		getSagaStatusCLientWithoutAppId();
 			}
 	
-	@Test
+	@Test(priority=1,enabled = true)
 	public void TCAssigningServiceDescriptorWithAppidToTheClient()
 	{
-		AssigningServiceDescriptorWithAppidToTheClient();
+		SagaStatus=AssigningServiceDescriptorWithAppidToTheClient();
+		System.out.println(SagaStatus);
 	}
 	
-	
+	@Test(priority=2,enabled = true)
+	public void GetSagaStatusCLientWithAppId() throws InterruptedException {
+		getSagaStatusCLientWithAppId(SagaStatus);
+			}
 	@AfterMethod
 	public void afterMethod(ITestResult result,Method testName)
 	{
 		getResult(result,testName.getName());
 	}
-
 }

@@ -16,7 +16,7 @@ public class ServiceDescriptorPage extends ExtentReport{
 		
 	}
 	public void assignServiceDescriptorToCLientWithoutAppId() {
-		String assignServiceToClientWithoutAppid = restapiutility.GetService("assignServiceToClientWithoutAppid");
+		String assignServiceToClientWithoutAppid = restapiutility.GetService("ServiceDescriptorWithAppId");
 		System.out.println(assignServiceToClientWithoutAppid);
 	}
 	public void getSagaStatusCLientWithoutAppId() {
@@ -25,8 +25,8 @@ public class ServiceDescriptorPage extends ExtentReport{
 	
 	}
 	
-	public boolean AssigningServiceDescriptorWithAppidToTheClient() {
-		boolean ServiceDescriptorRequestID = false;
+	public String AssigningServiceDescriptorWithAppidToTheClient() {
+		String ServiceDescriptorRequestID = null;
 		try {
 			ServiceDescriptorRequestID = restapiutility.ServiceDescriptorWithAppidToTheClient("ServiceDescriptorWithAppId");
 
@@ -34,5 +34,11 @@ public class ServiceDescriptorPage extends ExtentReport{
 			System.out.println(e.getMessage());
 		}
 		return ServiceDescriptorRequestID;
+}
+	
+	public void getSagaStatusCLientWithAppId(String SagaStatus) {
+		String getSagaService = restapiutility.SagaEntity(SagaStatus);
+		System.out.println(getSagaService);
+	
 	}
 }

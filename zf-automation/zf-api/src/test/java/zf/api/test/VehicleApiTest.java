@@ -32,11 +32,11 @@ public class VehicleApiTest extends VehicleApiPage{
 		validateNewVehicleusingGetAPI(vehicleTypeID);
 	}
 	
-		
+
 	@Test(priority=1,enabled = true)
-	public void DeleteVehicleInDB() {
+	public void TCDeleteTheSpecifiedVehicleType() {
 		String VehicleID = createVehicleType();
-		deleteVehicleInDB(VehicleID);
+		DeleteTheSpecifiedVehicleType(VehicleID);
 	}
 	
 	@AfterMethod

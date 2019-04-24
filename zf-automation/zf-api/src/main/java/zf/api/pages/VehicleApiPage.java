@@ -105,6 +105,18 @@ public class VehicleApiPage extends ExtentReport {
 		}
 	}
 	
+	public boolean DeleteTheSpecifiedVehicleType(String VehicleID)
+	{
+			boolean DeleteVehicleTypeRequestID = false;
+			try {
+				DeleteVehicleTypeRequestID = restapiutility.DeleteVehicle(VehicleID);
+
+			} catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return DeleteVehicleTypeRequestID;
+		}
+	
 	
 
 }

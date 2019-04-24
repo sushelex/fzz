@@ -22,8 +22,8 @@ public class RealTimeDataPage extends ElementManager{
 	private static By DASHBOARD_VEHICLESETTINGS_VEHICLETYPE_DD				 =By.xpath("//div[1]/div[1]/om-dropdown/div/div/div/span");
 	private static By DASHBOARD_VEHICLESETTINGS_VEHICLETYPE_DD2		 =By.xpath("//div[1]/div[1]/om-dropdown/div/ul/li[2]");
 	private static By DASHBOARD__EDITVEHICLES_SAVE_BT		         =By.xpath("//button[@disabled='disabled']");
-	private static By DASHBOARD_ACTIVEVEHICLES_SECONDROW			 =By.xpath("(//div[@class='vehicle-name']/span)[2]");
-	private static By DASHBOARD_VEHICLEDETAILSARROW_ROW2		=By.xpath("(//div[@class='active-icon'])[2]");
+	private static By DASHBOARD_ACTIVEVEHICLES_SECONDROW			 =By.xpath("(//div[@class='vehicle-name']/span)[1])");
+	private static By DASHBOARD_VEHICLEDETAILSARROW_ROW2		=By.xpath("(//div[@class='active-icon'])[1]");
 	private static By DASHBOARD_VEHICLE_SPEED_METER		=By.xpath("(//*[@id='text'])[1]");
 	private static By DASHBOARD__ACTIVE_VEHICLES					 =By.xpath("//div[text()='Active vehicles']");
 	
@@ -81,7 +81,7 @@ public class RealTimeDataPage extends ElementManager{
 			navigateToPortalUrl();
 			waitElementVisibleClick(PORTAL_DASHBOARD_ICON,300);
 			waitElementVisibleClick(DASHBOARD__ACTIVE_VEHICLES,300);
-			String SecondRowVehicleName=elementGetText(DASHBOARD_ACTIVEVEHICLES_SECONDROW);
+//			String SecondRowVehicleName=elementGetText(DASHBOARD_ACTIVEVEHICLES_SECONDROW);
 			waitElementVisibleClick(DASHBOARD_VEHICLEDETAILSARROW_ROW2,300);
 			switchToWindow();
 			String vehicleDataBefore=elementGetText(DASHBOARD_VEHICLE_SPEED_METER);

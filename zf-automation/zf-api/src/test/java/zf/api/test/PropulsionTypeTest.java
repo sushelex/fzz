@@ -25,7 +25,7 @@ public class PropulsionTypeTest extends PropulsionTypePage {
 	public void TC01DeletePropulsionType() throws InterruptedException {
 		DeletePropulsionType();
 	}
- @Test(priority=2,enabled = true)
+	@Test(priority=2,enabled = true)
 	public void TC02GetSpecificPropulsionTypeDetails(){
 		getSpecificPropulsionTypeDetails();
 	}

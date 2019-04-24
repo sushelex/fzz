@@ -367,6 +367,12 @@
 			"status": "FAIL",
 			"type": "CLIENT_USES_SERVICE"
 		}
+	},{
+		"sagastatussuccess": {
+			"operation": "CREATE",
+			"status": "Success",
+			"type": "CLIENT_USES_SERVICE"
+		}
 	},
 	{
 		"CreatePropulsionType": {

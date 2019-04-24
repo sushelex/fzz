@@ -344,6 +344,15 @@ public class RestApiUtility extends ElementManager{
 			case "vehicleTypeOne":
 				setFormParameters(httpRequest,form);
 				break;
+			case "sagastatussuccess":
+				setFormParameters(httpRequest,form);
+				break;
+			case "getPropulsionTypeDetails":
+				setFormParameters(httpRequest,form);
+				break;
+			case "getSpecificPropulsionTypeDetails":
+				setFormParameters(httpRequest,form);
+				break;
 			}
 
 			response = httpRequest.request(Method.POST);	
@@ -445,9 +454,11 @@ public class RestApiUtility extends ElementManager{
 				break;
 			case "sandbox":
 				token = getServiceCatalogtoken(tauri_authorization_url,serviceName);
-				break;	
-				
-			}
+				break;
+			case "sagastatussuccess":
+				token = getPropulsionTypetoken(tauri_authorization_url,serviceName);
+				break;
+		}
 			TestLogger.appInfo("The "+serviceName+" Authorization Token is : "+token);
 		}catch(Exception e) {
 			TestLogger.errorMessage("An exception has occured while generating Authorization access token for service "+serviceName+" : "+e.getMessage());
@@ -736,6 +747,9 @@ public class RestApiUtility extends ElementManager{
 			case "sandbox":
 				JsonService = (payloadValues);
 				break;	
+			case "VehicleType":
+				JsonService = (payloadValues);
+				break;
 			}		
 			//*****************************************************************************
 			httpRequest.header("authorization", "Bearer "+token);
@@ -1007,6 +1021,23 @@ public class RestApiUtility extends ElementManager{
 				String urlVehicleTypesOne = base_url +"/"+VehicleTypesOneUrl+"/"+VehicleTypesOne+"/"+VehicleTypesOneID;
 				ExtentReport.info("The vehicle url is :"+urlVehicleTypesOne);
 				getJSON = Get(urlVehicleTypesOne,token);
+			case "sagastatussuccess":
+				String SagaClient1 = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String Saga1 = jsonData.getJsonData("SAGA");
+				String ServiceID1=jsonData.getJsonData("SERVICEID");
+				String Status1 = jsonData.getJsonData("STATUS");
+				String ClientUserService1 = jsonData.getJsonData("CLIENT_USES_SERVICE");
+				String urlSagaService1 = base_url +"/"+SagaClient1+"/"+Saga1+"/"+ServiceID1+"/"+Status1+"/"+ClientUserService1;
+				ExtentReport.info("The InitiateService url is :"+urlSagaService1);
+				getJSON = Get(urlSagaService1,token);
+				break;
+			case "getSpecificPropulsionTypeDetails":
+				String AssetUrl1 = jsonData.getJsonData("ASSET_URL");
+				String PropulsionType1 = jsonData.getJsonData("PROPULSIONTYPE");
+				String urlPropulsionType1 = base_url +"/"+AssetUrl1+"/"+PropulsionType1;
+				ExtentReport.info("The InitiateService url is :"+urlPropulsionType1);
+				getJSON = Get(urlPropulsionType1,token);
+				break;
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1100,7 +1131,16 @@ public class RestApiUtility extends ElementManager{
 				ExtentReport.info("The vehicle url is :"+urlVehicleTypesOne);
 				getJSON = Get(urlVehicleTypesOne,token);
 				break;
-
+			case "sagastatussuccess":
+				String SagaClient1 = jsonData.getJsonData("SERVICE_MANAGEMENT_SERVICE_MULTICLIENT");				 
+				String Saga1 = jsonData.getJsonData("SAGA");
+				String ServiceID1=jsonData.getJsonData("SERVICEID");
+				String Status1 = jsonData.getJsonData("STATUS");
+				String ClientUserService1 = jsonData.getJsonData("CLIENT_USES_SERVICE");
+				String urlSagaService1 = base_url +"/"+SagaClient1+"/"+Saga1+"/"+ServiceID1+"/"+Status1+"/"+ClientUserService1;
+				ExtentReport.info("The InitiateService url is :"+urlSagaService1);
+				getJSON = Get(urlSagaService1,token);
+				break;
 			}
 			TestLogger.appInfo("The getservices jsonpath for specified service "+ servicename +" is "+getJSON.toString());
 		}catch(Exception e) {
@@ -1374,7 +1414,13 @@ public class RestApiUtility extends ElementManager{
 				ExtentReport.info("The Registration url is :"+urlSubscribeSandbox);
 				CreateServiceString =  Post(urlSubscribeSandbox,token,servicename,payloadValues);
 				break;
-
+			case "VehicleType":
+				String VehicleTypesUrl = jsonData.getJsonData("VEHICLE_URL");
+				String VehicleTypes = jsonData.getJsonData("VEHICLETYPE");
+				String urlVehicleTypes = base_url +"/"+VehicleTypesUrl+"/"+VehicleTypes;
+				ExtentReport.info("The vehicle url is :"+urlVehicleTypes);
+				CreateServiceString =  Post(urlVehicleTypes,token,servicename,payloadValues);
+				break;
 			}
 			TestLogger.appInfo("The Createservice response is  "+ servicename +" is "+CreateServiceString);
 		}catch(Exception e) {
@@ -2244,5 +2290,29 @@ public class RestApiUtility extends ElementManager{
 		return strToken;
 
 	}
+	public String SagaEntity(String SagaStatus) {
+		Response assetJson = null;			
+		String assetResponse = null;
 
+		try {
+			//serviceDescriptorId = (String)JsonReader.getJsonObject(ServiceDescriptorID).get("id");
+
+			ExtentReport.info("Getting Asset details using assetId : "+SagaStatus);
+
+
+			assetJson = GetServices("sagastatussuccess",SagaStatus);
+			System.out.println(assetJson.body().toString());
+			if(assetJson.getStatusCode()==200) {
+				assetResponse = assetJson.getBody().asString();
+
+				ExtentReport.info("ServiceId : "+SagaStatus +" is present in the available service");
+			}else {
+				testFailed("Asset with AssetId "+SagaStatus +" is not present in the available Assets and the response message is : "+assetJson.getBody().jsonPath().getString("message"));
+				assetResponse = null;
+			}	
+		}catch(Exception e) {
+			ExtentReport.info("An execption has generated while working with getAsset and the message is : "+e.getMessage());
+		}
+		return assetResponse;		
+	}
 }
