@@ -143,7 +143,6 @@
 	<modules>
 		<module>zf-common</module>
     <module>zf-web</module>
-    <module>zf-api1</module>
     <module>zf-api</module>
   </modules>
 </project>
